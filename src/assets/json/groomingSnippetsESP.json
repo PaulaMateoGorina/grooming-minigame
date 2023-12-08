@@ -1,0 +1,440 @@
+[
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Q sueles hacer en tu tiempo libre??!"},
+      {"sender": "User2", "text": "Normalmente quedo con mis amigos, o juego con ellos online."},
+      {"sender": "User1", "text": "Y tienes muchos amigos?"},
+      {"sender": "User2", "text": "Normal, supongo"}
+	  ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User2", "text": "Pues aquí estoy, haciendome la comida"},
+      {"sender": "User1", "text": "Y tus padres?"},
+      {"sender": "User2", "text": "Trabajando"},
+      {"sender": "User1", "text": "Y no tienes a nadie más?"},
+      {"sender": "User2", "text": "Nop, soy hija única"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Eyy, soy el de la partida anterior. Jugamos juntos? "},
+      {"sender": "User2", "text": "Uff no s"},
+      {"sender": "User1", "text": "Porfaa, te regalo una skin si quieres"},
+      {"sender": "User2", "text": "Bueno venga"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Cuántos años tienes??"},
+      {"sender": "User2", "text": "15, tu?"},
+      {"sender": "User1", "text": "En serio? Por tu madurez pensé que teníamos la misma edad. Yo tengo 22"},
+      {"sender": "User2", "text": "A si?? Jaja graciass"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User2", "text": "Perdón por no contestar, no me encontraba muy bien 😔​😔"},
+      {"sender": "User1", "text": "Estás bien?"},
+      {"sender": "User2", "text": "Si, es q me he peleado con mis padres"},
+      {"sender": "User1", "text": "Bueno no te preocupes, yo estoy contigo"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User2", "text": "Y tú q sueles hacer cuando estás libre?"},
+      {"sender": "User1", "text": "No mucho, es q en la escuela se meten conmigo"},
+      {"sender": "User1", "text": "Ojala ser como tú, seguro que tienes muchos amigos 😔​😔​"},
+      {"sender": "User2", "text": "Jo que mal"},
+      {"sender": "User2", "text": "No tengo tantos la vd, pero con los que me llevo son muy majos conmigo"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Yo esq soy mucho de quedarme en casa sabes, soy bastante introvertido"},
+      {"sender": "User1", "text": "Tu eres más introvertido o extrovertido?"},
+      {"sender": "User2", "text": "Pues como tu, estar con mucha gente me estresa"},
+      {"sender": "User2", "text": "No se como lo hace la gente que tiene como 100 amigos, que pereza 😪​😪​"},
+      {"sender": "User1", "text": "Real"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User2", "text": "Bueno te dejo que tengo atletismo"},
+      {"sender": "User1", "text": "También haces atletismo?"},
+      {"sender": "User1", "text": "Si que haces extraescolares no? No tendrás tiempo para mí :("},
+      {"sender": "User2", "text": "Bueno, es lo que hay no? jaj"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Has tenido muchas novias?"},
+      {"sender": "User2", "text": "Noo, solo 1, pero no duramos casi nada porque según ella quería centrarse en sus estudios y no tenía tiempo para mí"},
+      {"sender": "User1", "text": "Bueno, no te preocupes, yo te puedo dar todo mi tiempo jeje 😉​😉​"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Te gustan los chicos o las chicas a ti?"},
+      {"sender": "User2", "text": "Aun no lo sé"},
+      {"sender": "User2", "text": "Estoy un poco confundido con ese tema la vd"},
+      {"sender": "User1", "text": "A mi me gustan los dos, yo te puedo ayudar si quieres"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "Tus padres son muy estrictos?"},
+      {"sender": "User2", "text": "Un poco, les tengo que mandar mensajes siempre que salgo"},
+      {"sender": "User1", "text": "Y te revisan el móvil?"},
+      {"sender": "User2", "text": "A, eso no, que va"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "Me escribes desde el móvil o de donde?"},
+      {"sender": "User2", "text": "Ahora mismo desde el pc"},
+      {"sender": "User1", "text": "Es tuyo propio?"},
+      {"sender": "User2", "text": "Noo, es de mi padre pero me deja usarlo cuando acabo los debere"},
+      {"sender": "User1", "text": "Ahhh"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User2", "text": "Bua ayer le conté a mi hermana lo que me dijiste y se partió de risa jajaja"},
+      {"sender": "User1", "text": "Le sueles contar todo lo que hablamos a tu hermana?"},
+      {"sender": "User2", "text": "Noo, fue solo esta vez. Poor??"},
+      {"sender": "User1", "text": "Noo, por nada"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User2", "text": "Un segundo que pongo el portátil a cargar"},
+      {"sender": "User1", "text": "No tienes ningún enchufe cerca? Donde pones el portátil?"},
+      {"sender": "User2", "text": "Estaba en el sofa del comedor y no llega el cable"},
+      {"sender": "User2", "text": "Estoy desde la habitación ahora"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User2", "text": "Perdón, es q mi hermano me había cogido el móvil"},
+      {"sender": "User1", "text": "Te suele robar el móvil tu hermano?"},
+      {"sender": "User2", "text": "Suele? No para el tio"},
+      {"sender": "User2", "text": "Le va demasiado el chisme, es un cotilla"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "Tus amigas y tu también os compartís capturas de pantalla?"},
+      {"sender": "User2", "text": "A veces"},
+      {"sender": "User2", "text": "Por ejemplo si hablamos con alguien que nos gusta y eso"},
+      {"sender": "User1", "text": "Somos iguales entonces, jaja"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "Ayer le pasé una captura de pantalla de un chat con mi amigo Pablo a Alex y se enfadó muchísimo"},
+      {"sender": "User1", "text": "Ni que la captura fuera de su chat!"},
+      {"sender": "User2", "text": "Bueno es normal, yo no paso capturas porque a mi tampoco me gustaría que fueran pasando lo que hablo con mis amigas por ahí sbs."}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "Dios mis amigas no paran de molestarme para que les diga con quien hablo"},
+      {"sender": "User1", "text": "No entienden lo q significa privacidad o q?"},
+      {"sender": "User2", "text": "Q reaaaaal, mis amigas también son así"},
+      {"sender": "User2", "text": "Nunca les enseño nada, eso les pasa por pesadas"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User2", "text": "Espera un momento, q estoy en clase y la profesora está mirando para acá"},
+      {"sender": "User1", "text": "Cuidado no te vayan a confiscar el móvil, algunos incluso te hacen leer los Messages"},
+      {"sender": "User2", "text": "A, en mi insti te lo confiscan, pero no te hacen leer nada"},
+      {"sender": "User2", "text": "Luego al final del día lo recoges en secretaría y ya"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "El pc de donde me escribes, lo tienes en tu cuarto?"},
+      {"sender": "User2", "text": "Noo, es de mi hermano"},
+      {"sender": "User1", "text": "Aaah, cada uno tiene su cuenta en el ordenador no?"},
+      {"sender": "User2", "text": "Noo, compartimos el mismo usuario"},
+      {"sender": "User2", "text": "Luego cada uno se mete a su perfil de chrome"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User1", "text": "Buenos diaas"},
+      {"sender": "User1", "text": "Como está mi chica preferida?? ❤️​❤️"},
+      {"sender": "User2", "text": "Bieeen, y tu?🥰"},
+      {"sender": "User1", "text": "Bieen, te he echado de menos"},
+      {"sender": "User2", "text": "Y yo a ti 🥰"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User2", "text": "Tio mi padre"},
+      {"sender": "User2", "text": "Le cuento q se meten conmigo en la escuela y me llama exagerada 😒😒"},
+      {"sender": "User1", "text": "En fin 😒😒"},
+      {"sender": "User1", "text": "Pero bueno no te preocupes, yo siempre estaré aquí para tí"},
+      {"sender": "User1", "text": "No necesitas a nadie más"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User1", "text": "Ojalá poder vernos en la vida real"},
+      {"sender": "User2", "text": "Ojalá, las relaciones a distancia son muy difíciles 😔"},
+      {"sender": "User1", "text": "Tendremos que conformarnos con hablarnos por aquí y pasarnos fotos 😔❤️❤️"},
+      {"sender": "User2", "text": "😔❤️❤️"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User2", "text": "Muchas gracias por escucharme, ya me siento mucho mejor 🥰🥰"},
+      {"sender": "User1", "text": "De nada, para eso somos novios 😌😌"},
+      {"sender": "User1", "text": "Ya sabes que soy la única en la q puedes confiar "},
+      {"sender": "User1", "text": "Los demás no valen la pena"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User1", "text": "Hola???"},
+      {"sender": "User1", "text": "Por q no contestas? Estás con otra?"},
+      {"sender": "User2", "text": "Qué? No!! Estaba en llamada con Juan, no estaba mirando el móvil"},
+      {"sender": "User1", "text": "Si te hablo contéstame, esto no lo vuelvas a hacer"},
+      {"sender": "User1", "text": "No, no lo haré, perdón 😔"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User2", "text": "[Foto]"},
+      {"sender": "User1", "text": "Qué guapa es mi novia, te queda genial esa falda 🥰🥰"},
+      {"sender": "User1", "text": "Aunque quizás una más corta te quedaría mejor 😝"},
+      {"sender": "User2", "text": "😳😳😳"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User1", "text": "Estaba teniendo muy mal día, pero el hablar contigo me ha alegrado el día 😍😍"},
+      {"sender": "User2", "text": "😳😳😳"},
+      {"sender": "User2", "text": "Tu también alegras mis días jo 😭😭❤️"},
+      {"sender": "User1", "text": "❤️❤️"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User1", "text": "Buenas nochess"},
+      {"sender": "User1", "text": "Ojalá soñar contigo ❤️❤️"},
+      {"sender": "User2", "text": "Ojalá soñar contigo también jeje  🙈🙈❤️❤️"},
+      {"sender": "User2", "text": "Buenas nochess 😘"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User2", "text": "Perdón, estaba jugando con Marta al GoG"},
+      {"sender": "User1", "text": "Pasas demasiado tiempo con ella, me tienes abandonado 😔💔"},
+      {"sender": "User1", "text": "Seguro que ya no te gusto"},
+      {"sender": "User2", "text": "Claro que me sigues gustandoo 🥺🥺"},
+      {"sender": "User2", "text": "Mañana quedamos para llamar"}
+    ]
+  },
+  {
+    "arrayIdx": 2,
+    "stage": 4,
+    "Messages": [
+      {"sender": "User1", "text": "Si es algo que te molesta creo que deberías hablarlo cara a cara con Carlos para aclarar cualquier malentendido."},
+      {"sender": "User2", "text": "Mmm, supongo que sí"},
+      {"sender": "User2", "text": "Muchas gracias por aconsejarme, siempre puedo confiar en ti 😌😌"},
+      {"sender": "User1", "text": "Claro que sí, para algo somos mejores amigos 😉😉❤️"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "Oye, lo que hablamos tú y yo no se lo digas a nadie eh, es secreto"},
+      {"sender": "User2", "text": "Noo, no te preocupes"},
+      {"sender": "User1", "text": "Así me gusta"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User2", "text": "Tio"},
+      {"sender": "User2", "text": "No me paran de preguntar mis padres que con quien hablo"},
+      {"sender": "User1", "text": "Buf, que pesados"},
+      {"sender": "User1", "text": "Tu ni caso, no es asunto suyo"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User2", "text": "Oye, por que no le puedo contar a mis amigas que somos novios?"},
+      {"sender": "User1", "text": "La gente es muy cerrada de mente"},
+      {"sender": "User1", "text": "Nos mirarian mal, no nos entenderian"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User2", "text": "Te puedo llamar?"},
+      {"sender": "User1", "text": "Hay alguien en tu casa?"},
+      {"sender": "User2", "text": "Mi hermana, pero está estudiando con los cascos puestos"},
+      {"sender": "User2", "text": "No nos escuchará"},
+      {"sender": "User1", "text": "Vale"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "Has entrado a Toother?"},
+      {"sender": "User2", "text": "Noo, que ha pasado?"},
+      {"sender": "User1", "text": "Han cancelado a Rabias por hablar con una menor, ni que fuera un delito"},
+      {"sender": "User1", "text": "El amor no tiene edad"},
+      {"sender": "User2", "text": "Bua pues no me había enterado, que injusto"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "No hay nadie que me caiga más mal que los chivatos"},
+      {"sender": "User1", "text": "Menos mal que me enamoré de ti, tu si que sabes guardar secretos 🥰"},
+      {"sender": "User2", "text": "😎​😎​😎​"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "Recuerda no contarle a nadie que estamos saliendo"},
+      {"sender": "User1", "text": "Como me entere de que se lo cuentas a alguien…"},
+      {"sender": "User1", "text": "Ya sabes lo que puede pasar, no?"},
+      {"sender": "User2", "text": "Lo sé lo sé, no se lo contaré a nadie lo juro"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User2", "text": "Bua, le estaba contando a mi amiga lo que hablabamos ayer y no se lo creía"},
+      {"sender": "User1", "text": "Se lo has dicho a tu amiga????"},
+      {"sender": "User1", "text": "Sabes en el lio que me puedo meter si se enteran de q estamos juntos??"},
+      {"sender": "User2", "text": "Perdon, no lo sabía"},
+      {"sender": "User2", "text": "No lo volveré a hacer"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User2", "text": "Uff, no te conté"},
+      {"sender": "User2", "text": "Ayer se pusieron muy pesados mis padres con revisarme el móvil, pero al final pude escaquearme"},
+      {"sender": "User1", "text": "Ooooleee"},
+      {"sender": "User1", "text": "Luego te compro algo en el GoG"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "Recuerda q esto es un secreto entre los dos 😉"},
+      {"sender": "User2", "text": "Y por q tiene q ser secreto?"},
+      {"sender": "User1", "text": "Así es más emocionante, no lo crees?"},
+      {"sender": "User2", "text": "Supongo que sí, jeje"}
+    ]
+  },
+  {
+    "arrayIdx": 4,
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Me pasas una foto tuya??"},
+      {"sender": "User2", "text": "Uff, no sé…"},
+      {"sender": "User1", "text": "Venga vaaa, te paso yo una mía"},
+      {"sender": "User2", "text": "Bueno, vale"}
+    ]
+  },
+  {
+    "arrayIdx": 4,
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "No me creo que tengas solo 16, seguro que tienes 20"},
+      {"sender": "User2", "text": "Que pesao"},
+      {"sender": "User2", "text": "Que si que tengo 16"},
+      {"sender": "User1", "text": "A ver, pasame una foto para demostrarlo"}
+    ]
+  },
+  {
+    "arrayIdx": 4,
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Eyy, que haces??"},
+      {"sender": "User2", "text": "Preparándome para salir"},
+      {"sender": "User1", "text": "A donde?? Qué te vas a poner?"},
+      {"sender": "User2", "text": "Aún no me decido"},
+      {"sender": "User1", "text": "A ver, pásame una foto de las opciones."}
+    ]
+  }
+]

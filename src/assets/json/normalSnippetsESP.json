@@ -1,0 +1,124 @@
+[
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Eyy"},
+      {"sender": "User1", "text": "Te echas un vamogant?"},
+      {"sender": "User2", "text": "okk"},
+      {"sender": "User1", "text": "Dc?"},
+      {"sender": "User2", "text": "5 min y voy"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Te has visto la serie de Bugman?"},
+      {"sender": "User2", "text": "Siii, esta muy chulaa"},
+      {"sender": "User1", "text": "A q siiiii, cual es tu personaje fav??"},
+      {"sender": "User2", "text": "Sarah, obviamente"},
+      {"sender": "User1", "text": "Pues a mi me cae fatal tu 💀💀"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Q haces normalmente en tu tiempo libre??"},
+      {"sender": "User2", "text": "Normalmente juego con mis amigos por discord"},
+      {"sender": "User2", "text": "Tu?"},
+      {"sender": "User1", "text": "Yo tambien, nos agregamos??"},
+      {"sender": "User2", "text": "Valee"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User2", "text": "Pasame las fotos de hoy pls"},
+      {"sender": "User1", "text": "Foto"},
+      {"sender": "User2", "text": "Ty"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Que tal el concierto de Taylor???"},
+      {"sender": "User2", "text": "Bua fue una pasada 😭😭"},
+      {"sender": "User2", "text": "Vaya reina"},
+      {"sender": "User1", "text": "Ya me pasaras los videos jeje"},
+      {"sender": "User2", "text": "Siii💖💖 "}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User", "text": ""},
+      {"sender": "User", "text": ""},
+      {"sender": "User", "text": ""},
+      {"sender": "User", "text": ""},
+      {"sender": "User", "text": ""}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Al final quedamos mañana??"},
+      {"sender": "User2", "text": "Siii, viene Alex tmb, te importa??"},
+      {"sender": "User1", "text": "Noo, pero no he hablado casi con el"},
+      {"sender": "User2", "text": "Es muy majo, ya verás como te cae bien"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User2", "text": "Oye, el boss este del Wicked Inhabitant como se mata? "},
+      {"sender": "User1", "text": "Primero tienes q pillar la escopeta del almacén de abajo"},
+      {"sender": "User1", "text": "Luego tienes q distraerlo con la alarma y pillarlo por detrás"},
+      {"sender": "User2", "text": "Vale mercii"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User2", "text": "Se han vuelto a meter conmigo hoy"},
+      {"sender": "User2", "text": "Se lo he dicho a los profesores pero no hacen nada"},
+      {"sender": "User2", "text": "No se que hacer"},
+      {"sender": "User1", "text": "Has intentado hablar con tus padres? Deberías contárselo."}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Hablaste con la tutora al final??"},
+      {"sender": "User2", "text": "Sii, este jueves tengo una reunión con ella y mis padres"},
+      {"sender": "User2", "text": "Muchas gracias, no sé si habría tenido el valor de contarlo si no fuera por ti"},
+      {"sender": "User1", "text": "De nada hombree. Estas cosas hay que hablarlas, porque si no empeoran sabes"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User2", "text": "Perdon q te de la chapa"},
+      {"sender": "User2", "text": "Pero eres la única persona en la que puedo confiar"},
+      {"sender": "User1", "text": "Deberías intentar buscar consejo de algún adulto de tu alrededor"},
+      {"sender": "User1", "text": "Si no te puedo pasar links con organizaciones, seguro que te ayudan"},
+      {"sender": "User2", "text": "Lo agradecería"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User2", "text": "Has visto lo de la cantante Alex Smith?"},
+      {"sender": "User2", "text": "La gente no para de mandarle odio, aun cuando solo se lleva 4 años con su pareja"},
+      {"sender": "User1", "text": "Aunque solo fueran 4 años, cuando se conocieron el chico era menor, normal que se le tiren encima"},
+      {"sender": "User1", "text": "Hay mucha diferencia de 22 a 18 años"}
+    ]
+  },
+  {
+    "stage": -2,
+    "Messages": [
+      {"sender": "User1", "text": "Qué tal el primer día de instituto?"},
+      {"sender": "User2", "text": "Tenía miedo de quedarme sola el primer día de insti, pero he conocido a una chica llamada Núria 😁 "},
+      {"sender": "User1", "text": "Me alegroo, seguro que os haceis amigas 😌"},
+      {"sender": "User2", "text": "Sii, eso espero 😊 😊"}
+    ]
+  }
+]
