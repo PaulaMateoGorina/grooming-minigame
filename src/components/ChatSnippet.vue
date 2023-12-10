@@ -1,7 +1,7 @@
 <template>
-    <div v-if="chatSnippet">
+    <div v-if="chatSnippet" class="chat-snippet">
         <div v-for="message in chatSnippet!.messages" :key="message.id" :class="message.sender">
-            {{ message.text }}
+           <p class="message-text">{{ message.text }}</p> 
         </div>
     </div>
 </template>
@@ -19,5 +19,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
-</style>../classes/Snippet
+@import '@/css/messages.css'
+</style>

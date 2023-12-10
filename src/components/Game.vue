@@ -1,35 +1,41 @@
 <template>
-    <ChatSnippetComponent :chatSnippet = "snippet"/>
+  <div class="game">
+    <ReportComponent :chatReport = "chatReport"/>
+  </div>
 </template>
   
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ChatSnippetComponent from './ChatSnippet.vue'
+import ReportComponent from './ChatReport.vue'
 
-import DataLoader from '@/utils/classes/DataLoader';
+import DataManager from '@/utils/classes/DataManager';
 
-import Snippet from '@/utils/classes/Snippet'
+import Report from '@/utils/classes/Report'
 
 export default defineComponent({
   name: 'GameComponent',
   components: {
-    ChatSnippetComponent
+    ReportComponent,
   },
   setup() {
-    const dataLoader: DataLoader = new DataLoader();
+    const dataManager: DataManager = DataManager.getInstance();
 
     // Initialize the snippet data property
-    const snippet: Snippet | undefined = dataLoader.getGroomingSnippet();
+    const chatReport: Report | undefined = dataManager.generateReport(true);
 
     // Return the reactive properties and methods
     return {
-      snippet,
+      chatReport
     };
   },
 });
 </script>
     
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 </style>
