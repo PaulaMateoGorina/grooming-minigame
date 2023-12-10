@@ -21,7 +21,7 @@ export default defineComponent({
     const dataManager: DataManager = DataManager.getInstance();
 
     // Initialize the snippet data property
-    const chatReport: Report | undefined = dataManager.generateReport(true);
+    const chatReport: Report | undefined = dataManager.generateReport(Math.random() > 0.5);
 
     // Return the reactive properties and methods
     return {

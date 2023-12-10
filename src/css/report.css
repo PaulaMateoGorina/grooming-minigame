@@ -1,0 +1,60 @@
+.report {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    position: relative;
+    width: 650px;
+    background-image: url('@/assets/report.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.report-wrapper {
+    position: relative;
+}
+
+.report-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 3%;
+    width: 100%;
+}
+
+.report-button {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+}
+
+.answer-buttons-container {
+    display: flex;
+    align-items: center;
+}
+
+.answer-button {
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.grooming {
+    background-color: #f5aeae;
+}
+
+.clear {
+    background-color: #99dda8;
+}
+
+.prev-button,
+.next-button {
+    font-size: 50px;
+    margin-left: 7%;
+    margin-right: 7%;
+    height: 50px;
+    line-height: 40px; /* Adjusted to match the height of the answer buttons */
+}
