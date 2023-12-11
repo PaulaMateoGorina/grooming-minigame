@@ -1,6 +1,7 @@
 <template>
   <div class="game">
-    <ReportComponent :chatReport = "chatReport"/>
+    <ReportComponent :chatReport = "chatReport" @solveReport="handleSolveReport"/>
+    <p>{{points}}</p>
   </div>
 </template>
   
@@ -9,26 +10,35 @@ import { defineComponent } from 'vue';
 import ReportComponent from './ChatReport.vue'
 
 import DataManager from '@/utils/classes/DataManager';
-
 import Report from '@/utils/classes/Report'
+import * as gameConstants from '@/utils/constants'
 
 export default defineComponent({
   name: 'GameComponent',
   components: {
     ReportComponent,
   },
-  setup() {
-    const dataManager: DataManager = DataManager.getInstance();
-
-    // Initialize the snippet data property
-    const chatReport: Report | undefined = dataManager.generateReport(Math.random() > 0.5);
-
-    // Return the reactive properties and methods
+  data() {
     return {
-      chatReport
+      points: 0,
+      chatReport: undefined as Report | undefined,
     };
   },
+  methods: {
+    handleSolveReport(isGrooming: boolean) {
+      const multiplier = this.chatReport ? this.chatReport.getAnswerResult(isGrooming) : gameConstants.ZERO;
+      this.points += gameConstants.POINTS_PER_REPORT * multiplier;
+
+      // Generate a new report
+      this.chatReport = DataManager.getInstance().generateReport(Math.random() > 0.5);
+    },
+  },
+  created() {
+    // Initialize the snippet data property
+    this.chatReport = DataManager.getInstance().generateReport(Math.random() > 0.5);
+  },
 });
+
 </script>
     
 <style scoped>

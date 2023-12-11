@@ -19,8 +19,8 @@
         <div class="report-buttons-container">
             <div @click="changePage(false)" class="report-button prev-button">&#8249;</div>
             <div class="answer-buttons-container">
-                <div class="report-button answer-button grooming">Grooming</div>
-                <div class="report-button answer-button clear">Clear</div>
+                <div class="report-button answer-button grooming" @click="sendSolveReport(true)">Grooming</div>
+                <div class="report-button answer-button clear" @click="sendSolveReport(false)">Clear</div>
             </div>
             <div @click="changePage(true)" class="report-button next-button">&#8250;</div>
         </div>
@@ -31,6 +31,7 @@
 import { defineComponent } from 'vue'
 import ChatSnippetComponent from './ChatSnippet.vue';
 import Report from '@/utils/classes/Report'
+import * as gameConstants from '@/utils/constants'
 
 export default defineComponent({
     name: 'ReportComponent',
@@ -41,7 +42,17 @@ export default defineComponent({
     },
     methods: {
         changePage(isNext: boolean) {
-            this.currentPage = isNext ? Math.min(this.currentPage + 1, this.chatReport!.numPages - 1) : Math.max(this.currentPage - 1, 0);
+            const numPages = this.chatReport ? this.chatReport.numPages : 1;
+            this.currentPage = isNext ? Math.min(this.currentPage + 1, numPages - 1) : Math.max(this.currentPage - 1, 0);
+        },
+        sendSolveReport(isGrooming: boolean){
+            console.log(`Grooming: ${isGrooming}`);
+            try {
+                this.$emit('solveReport', isGrooming);
+                this.currentPage = gameConstants.ZERO;
+            } catch (error) {
+                console.error(`sendSolveReport > ERROR: Could not emit event. ${error}`);
+            }
         }
     },
     components: {

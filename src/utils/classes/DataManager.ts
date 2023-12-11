@@ -132,7 +132,10 @@ class DataManager{
 
             const normalSnippetIdx = hasNormalSnippet ? ~~(rand * numSnippets) : -1;
 
-            for (let i = 0; i < numSnippets; i++) {
+            let i = 0;
+            const snippetIds: number[] = [];
+
+            while(i < numSnippets) {
                 let snippet: Snippet | undefined = undefined;
 
                 if(i === normalSnippetIdx)
@@ -140,8 +143,11 @@ class DataManager{
                 else
                     snippet = this.sampleGroomingSnippet();
 
-                if(snippet)
-                    result.push(snippet);                            
+                if(snippet && !snippetIds.includes(snippet.id)){
+                    result.push(snippet);             
+                    snippetIds.push(snippet.id);
+                    i++;             
+                }
             }
         } catch (error) {
             console.error(`generateGroomingSnippetList > ERROR generating grooming snippet list. ${error}`);   
@@ -154,10 +160,17 @@ class DataManager{
         const result: Snippet[] = [];
 
         try {
-            for (let i = 0; i < numSnippets; i++) {
+            let i = 0;
+            const snippetIds: number[] = [];
+
+            while(i < numSnippets) {
                 const snippet: Snippet | undefined = this.sampleNormalSnippet();
-                if(snippet)
-                    result.push(snippet);                    
+
+                if(snippet && !snippetIds.includes(snippet.id)){
+                    result.push(snippet);             
+                    snippetIds.push(snippet.id);
+                    i++;      
+                }
             }
         } catch (error) {
             console.error(`generateGroomingSnippetList > ERROR generating grooming snippet list. ${error}`);   
@@ -225,6 +238,8 @@ class DataManager{
 
     //TODO: Adapt so that you can choose to have it with or without snippets
     public generateReport(isGrooming: boolean): Report | undefined{
+        console.log("generateReport");
+
         let result: Report | undefined = undefined;
 
         try {

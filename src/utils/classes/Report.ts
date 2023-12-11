@@ -7,6 +7,7 @@ class Report {
     public selectGroomingSnippets: boolean;
     public selectSnippetStages: boolean;
     public numPages: number;
+    public numSnippets: number;
     public hasMultipleSnippetPages: boolean;
     public snippetsPage1: Snippet[];
     public snippetsPage2: Snippet[] | null | undefined;
@@ -16,7 +17,8 @@ class Report {
         // The syntax is used to say: if the parameter is passed use it, otherwise put the default one.
         this.selectGroomingSnippets = selectGroomingSnippets || false;
         this.selectSnippetStages = selectSnippetStages|| false;
-        this.hasMultipleSnippetPages = snippets.length - gameConstants.NUM_SNIPPETS_PER_PAGE > 0;
+        this.numSnippets = snippets.length;
+        this.hasMultipleSnippetPages = this.numSnippets - gameConstants.NUM_SNIPPETS_PER_PAGE > 0;
         
         this.snippetsPage1 = snippets.slice(gameConstants.ZERO, gameConstants.NUM_SNIPPETS_PER_PAGE);
 
@@ -27,6 +29,25 @@ class Report {
         else{
             this.numPages = gameConstants.NUM_REPORT_PAGES_SINGLE;
         }
+    }
+
+    getAnswerResult(isGrooming: boolean): number{
+        let result = 0.0;
+
+        try {
+            const snippets = this.snippetsPage2 ? this.snippetsPage1.concat(this.snippetsPage2) : this.snippetsPage1;
+
+            for(const snippet of snippets){
+                result += snippet.getAnswerResult(isGrooming);
+            }
+
+            result /= snippets.length;
+        } 
+        catch (error) {
+            console.error(`solveAndGetScore > ERROR: Error trying to get the points resulting of solving the report.`)
+        }
+
+        return result;
     }
 }
 
