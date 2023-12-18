@@ -1,5 +1,5 @@
 enum EStage{
-    "Clear" = -2,
+    "Clear" = -1,
     "Friendship & Relathionship forming" = 1,
     "Risk assesment" = 3,
     "Exclusivity" = 4,

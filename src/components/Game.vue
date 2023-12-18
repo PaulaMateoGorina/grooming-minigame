@@ -1,16 +1,16 @@
 <template>
   <div class="game">
-    <ReportComponent :chatReport = "chatReport" @solveReport="handleSolveReport"/>
-    <p>{{points}}</p>
+    <ReportComponent @solveReport="handleSolveReport"/>
+    <p>{{points}} -</p><br/>
+    <p>{{isGrooming}}</p>
   </div>
 </template>
   
 <script lang="ts">
 import { defineComponent } from 'vue';
 import ReportComponent from './ChatReport.vue'
+import {GameState, gameStore} from '@/gameStore'
 
-import DataManager from '@/utils/classes/DataManager';
-import Report from '@/utils/classes/Report'
 import * as gameConstants from '@/utils/constants'
 
 export default defineComponent({
@@ -18,25 +18,29 @@ export default defineComponent({
   components: {
     ReportComponent,
   },
-  data() {
-    return {
-      points: 0,
-      chatReport: undefined as Report | undefined,
-    };
-  },
   methods: {
     handleSolveReport(isGrooming: boolean) {
-      const multiplier = this.chatReport ? this.chatReport.getAnswerResult(isGrooming) : gameConstants.ZERO;
-      this.points += gameConstants.POINTS_PER_REPORT * multiplier;
+      const curState: GameState = gameStore.state;
+      let multiplier = gameConstants.ZERO;
 
-      // Generate a new report
-      this.chatReport = DataManager.getInstance().generateReport(Math.random() > 0.5);
+      if(curState.curReport)
+        multiplier = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected);
+
+      gameStore.commit('addScore', gameConstants.POINTS_PER_REPORT * multiplier);
+      gameStore.commit('changeReport');
     },
   },
   created() {
-    // Initialize the snippet data property
-    this.chatReport = DataManager.getInstance().generateReport(Math.random() > 0.5);
+    gameStore.commit('changeReport');
   },
+  computed : {
+    points(){
+      return gameStore.state.points;
+    },
+    isGrooming(){
+      return gameStore.state.curReport ?  gameStore.state.curReport.isGrooming : false;
+    }
+  }
 });
 
 </script>
@@ -48,4 +52,4 @@ export default defineComponent({
   justify-content: center;
   height: 100%;
 }
-</style>
+</style>@/utils/model/Report
