@@ -4,16 +4,12 @@
             Profile pages
         </div>
 
-        <div v-if="currentPage === 1 && chatReport?.snippetsPage1">
-            <div v-for="snippet in chatReport.snippetsPage1" :key="snippet.id">
-                <ChatSnippetComponent :chatSnippet="snippet" />
-            </div>
+        <div v-if="currentPage === 1 && snippetIdxPairsPage1">
+            <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1"/>
         </div>
 
-        <div v-if="currentPage === 2 && chatReport?.snippetsPage2">
-            <div v-for="snippet in chatReport.snippetsPage2" :key="snippet.id">
-                <ChatSnippetComponent :chatSnippet="snippet" />
-            </div>
+        <div v-if="currentPage === 2 && snippetIdxPairsPage2">
+            <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
         </div>
 
         <div class="report-buttons-container">
@@ -29,12 +25,16 @@
   
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ChatSnippetComponent from './ChatSnippet.vue';
-import Report from '@/utils/classes/Report'
+import ChatSnippetPageComponent from './ChatSnippetPage.vue'
+import { gameStore } from '@/gameStore'
+import Snippet from '@/utils/model/Snippet'
 import * as gameConstants from '@/utils/constants'
 
 export default defineComponent({
     name: 'ReportComponent',
+    components: {
+        ChatSnippetPageComponent,
+    },
     data() {
         return {
             currentPage: 0,
@@ -42,24 +42,54 @@ export default defineComponent({
     },
     methods: {
         changePage(isNext: boolean) {
-            const numPages = this.chatReport ? this.chatReport.numPages : 1;
+            const numPages = this.numPages ? this.numPages : 1;
             this.currentPage = isNext ? Math.min(this.currentPage + 1, numPages - 1) : Math.max(this.currentPage - 1, 0);
         },
         sendSolveReport(isGrooming: boolean){
             console.log(`Grooming: ${isGrooming}`);
             try {
-                this.$emit('solveReport', isGrooming);
-                this.currentPage = gameConstants.ZERO;
+                //TODO: DO THIS BETTER
+                if(!isGrooming && gameStore.getters.aSnippetIsSelected){
+                    window.alert("NO puedes marcar un informe como 'clear' si tienes un snippet seleccionado.");
+                }
+                else{
+                    this.$emit('solveReport', isGrooming);
+                    this.currentPage = gameConstants.ZERO;
+                }
             } catch (error) {
-                console.error(`sendSolveReport > ERROR: Could not emit event. ${error}`);
+                console.error(`ChatReport.vue > sendSolveReport > ERROR: Could not emit event. ${error}`);
             }
         }
     },
-    components: {
-        ChatSnippetComponent,
-    },
-    props: {
-        chatReport: Report
+    computed: {
+        snippetIdxPairsPage1(): [Snippet, number][] {
+            const chatReport = gameStore.state.curReport;
+
+            return chatReport && chatReport.snippets ?
+                chatReport.snippets.slice(gameConstants.ZERO, gameConstants.NUM_SNIPPETS_PER_PAGE)
+                    .map((snippet: Snippet, index: number) => [snippet, index])
+                : 
+                [];
+        },
+
+        snippetIdxPairsPage2(): [Snippet, number][] {
+            const chatReport = gameStore.state.curReport;
+
+            return chatReport && chatReport.snippets && chatReport.snippets.length > gameConstants.NUM_SNIPPETS_PER_PAGE ? 
+                chatReport.snippets
+                    .slice(gameConstants.NUM_SNIPPETS_PER_PAGE, 2 * gameConstants.NUM_SNIPPETS_PER_PAGE)
+                    .map((snippet: Snippet, index: number) => [snippet, index + gameConstants.NUM_SNIPPETS_PER_PAGE])
+                : 
+                [];
+        },
+
+        numPages(): number{
+            const chatReport = gameStore.state.curReport;
+            return chatReport && chatReport.snippets && chatReport.snippets.length > gameConstants.NUM_SNIPPETS_PER_PAGE ?
+            gameConstants.NUM_REPORT_PAGES_MULTI
+            :
+            gameConstants.NUM_REPORT_PAGES_SINGLE;
+        }
     }
 })
 </script>

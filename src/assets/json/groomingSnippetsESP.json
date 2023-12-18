@@ -102,7 +102,7 @@
     ]
   },
   {
-    "arrayIdx": 1,
+    "arrayIdx": 0,
     "stage": 3,
     "Messages": [
       {"sender": "User1", "text": "Tus padres son muy estrictos?"},

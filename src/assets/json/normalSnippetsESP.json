@@ -1,6 +1,6 @@
 [
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Eyy"},
       {"sender": "User1", "text": "Te echas un vamogant?"},
@@ -10,7 +10,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Te has visto la serie de Bugman?"},
       {"sender": "User2", "text": "Siii, esta muy chulaa"},
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Q haces normalmente en tu tiempo libre??"},
       {"sender": "User2", "text": "Normalmente juego con mis amigos por discord"},
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User2", "text": "Pasame las fotos de hoy pls"},
       {"sender": "User1", "text": "Foto"},
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Que tal el concierto de Taylor???"},
       {"sender": "User2", "text": "Bua fue una pasada 😭😭"},
@@ -48,17 +48,7 @@
     ]
   },
   {
-    "stage": -2,
-    "Messages": [
-      {"sender": "User", "text": ""},
-      {"sender": "User", "text": ""},
-      {"sender": "User", "text": ""},
-      {"sender": "User", "text": ""},
-      {"sender": "User", "text": ""}
-    ]
-  },
-  {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Al final quedamos mañana??"},
       {"sender": "User2", "text": "Siii, viene Alex tmb, te importa??"},
@@ -67,7 +57,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User2", "text": "Oye, el boss este del Wicked Inhabitant como se mata? "},
       {"sender": "User1", "text": "Primero tienes q pillar la escopeta del almacén de abajo"},
@@ -76,7 +66,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User2", "text": "Se han vuelto a meter conmigo hoy"},
       {"sender": "User2", "text": "Se lo he dicho a los profesores pero no hacen nada"},
@@ -85,7 +75,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Hablaste con la tutora al final??"},
       {"sender": "User2", "text": "Sii, este jueves tengo una reunión con ella y mis padres"},
@@ -94,7 +84,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User2", "text": "Perdon q te de la chapa"},
       {"sender": "User2", "text": "Pero eres la única persona en la que puedo confiar"},
@@ -104,7 +94,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User2", "text": "Has visto lo de la cantante Alex Smith?"},
       {"sender": "User2", "text": "La gente no para de mandarle odio, aun cuando solo se lleva 4 años con su pareja"},
@@ -113,7 +103,7 @@
     ]
   },
   {
-    "stage": -2,
+    "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Qué tal el primer día de instituto?"},
       {"sender": "User2", "text": "Tenía miedo de quedarme sola el primer día de insti, pero he conocido a una chica llamada Núria 😁 "},

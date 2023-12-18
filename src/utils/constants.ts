@@ -1,5 +1,7 @@
-export const ZERO = 0;
+export const ZERO = 0.0;
 export const HALF = 0.5;
+export const ONE = 1.0;
+export const NORMAL_SNIPPET_STAGE_VAL = -1;
 export const NUM_GROOMING_STAGES = 5;
 export const NUM_REPORT_PAGES_SINGLE = 2;
 export const NUM_REPORT_PAGES_MULTI = 3;

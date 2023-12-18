@@ -1,10 +1,10 @@
 import groomingSnippetsJson from '@/assets/json/groomingSnippetsESP.json'
 import normalSnippetsJson from '@/assets/json/normalSnippetsESP.json'
 
-import Snippet from '@/utils/classes/Snippet'
-import Message from '@/utils/classes/Message'
+import Snippet from '@/utils/model/Snippet'
+import Message from '@/utils/model/Message'
 import EStage from '@/utils/enums/EStage'
-import Report from '@/utils/classes/Report'
+import Report from '@/utils/model/Report'
 // import EStageIdx from '@/utils/EStageIdx'
 import * as gameConstants from '@/utils/constants'
 
@@ -16,13 +16,13 @@ class DataManager{
 
     constructor(){
         this.groomingSnippets = [];
-        for (let idx = 0; idx < gameConstants.NUM_GROOMING_STAGES; idx++) {
+        for (let idx = gameConstants.ZERO; idx < gameConstants.NUM_GROOMING_STAGES; idx++) {
             this.groomingSnippets.push([])
         }
-        this.loadGroomingSnippets();
+        const offset = this.loadGroomingSnippets();
 
         this.normalSnippets = [];
-        this.loadNormalSnippets();
+        this.loadNormalSnippets(offset);
     }
 
     public static getInstance(): DataManager {
@@ -40,7 +40,7 @@ class DataManager{
             result =  new Message(messageId, data.sender, data.text)
         } 
         catch (error) {
-            console.error(`createMessage > ERROR creating new message instance. ${error}`);
+            console.error(`DataManager.ts > createMessage > ERROR creating new message instance. ${error}`);
         }
         
         return result;
@@ -51,7 +51,7 @@ class DataManager{
 
         try {
             const snippetMessages:Message[] = [];
-            let messageId = 0;
+            let messageId = gameConstants.ZERO;
 
             for(const message of data.Messages){
                 const snippetMessage: Message | undefined = this.createMessage(messageId, message);
@@ -64,25 +64,29 @@ class DataManager{
                     messageId++;
                 }
             }
-
-            result = new Snippet(snippetId, data.stage, snippetMessages);
+            
+            if(snippetMessages.length > gameConstants.ZERO)
+                result = new Snippet(snippetId, data.stage, snippetMessages);
+            else
+                throw("The snippet had no messages");
         } 
         catch (error) {
-            console.error(`createSnippet > ERROR creating new snippet instance. ${error}`);
+            console.error(`DataManager.ts > createSnippet > ERROR creating new snippet instance. ${error}`);
         }
         return result;
     }
     // #endregion
 
     // #region methods to load data
-    private loadGroomingSnippets(): void{
+    private loadGroomingSnippets(): number{
+        let numTotalSnippets = gameConstants.ZERO;
         try{
             const jsonSnippets = groomingSnippetsJson as { arrayIdx: number; stage: number; Messages: { sender: string; text: string; }[] }[];
-            let id = 0;
-
+            let id = gameConstants.ZERO;
+            
             for(const snippetJson of jsonSnippets){
                 const snippet : Snippet | undefined = this.createSnippet(id, snippetJson);
-
+                
                 if(snippet === undefined){
                     throw("Snippet created was undefined.");
                 }
@@ -91,20 +95,22 @@ class DataManager{
                     id++;
                 }
             }
+
+            numTotalSnippets = id;
         }
         catch (error) {
-            console.error(`loadGroomingSnippets > ERROR loading grooming snippets. ${error}`);   
+            console.error(`DataManager.ts > loadGroomingSnippets > ERROR loading grooming snippets. ${error}`);   
         }
+        return numTotalSnippets;
     }
 
-    private loadNormalSnippets(): void{
+    private loadNormalSnippets(offset: number): void{
         try {
             const jsonSnippets = normalSnippetsJson as { stage: number; Messages: { sender: string; text: string; }[] }[];
-            let id = 0;
+            let id = gameConstants.ZERO;
 
             for(const snippetJson of jsonSnippets){
-                const snippet : Snippet | undefined = this.createSnippet(id, snippetJson);
-
+                const snippet : Snippet | undefined = this.createSnippet(id + offset, snippetJson);
                 if(snippet === undefined){
                     throw("Snippet created was undefined.");
                 }
@@ -115,7 +121,7 @@ class DataManager{
             }
         }
         catch (error) {
-            console.error(`loadNormalSnippets > ERROR loading normal snippets. ${error}`);   
+            console.error(`DataManager.ts > loadNormalSnippets > ERROR loading normal snippets. ${error}`);   
         }
     }
     // #endregion
@@ -132,7 +138,7 @@ class DataManager{
 
             const normalSnippetIdx = hasNormalSnippet ? ~~(rand * numSnippets) : -1;
 
-            let i = 0;
+            let i = gameConstants.ZERO;
             const snippetIds: number[] = [];
 
             while(i < numSnippets) {
@@ -150,7 +156,7 @@ class DataManager{
                 }
             }
         } catch (error) {
-            console.error(`generateGroomingSnippetList > ERROR generating grooming snippet list. ${error}`);   
+            console.error(`DataManager.ts > generateGroomingSnippetList > ERROR generating grooming snippet list. ${error}`);   
         }
 
         return result;
@@ -160,7 +166,7 @@ class DataManager{
         const result: Snippet[] = [];
 
         try {
-            let i = 0;
+            let i = gameConstants.ZERO;
             const snippetIds: number[] = [];
 
             while(i < numSnippets) {
@@ -173,7 +179,7 @@ class DataManager{
                 }
             }
         } catch (error) {
-            console.error(`generateGroomingSnippetList > ERROR generating grooming snippet list. ${error}`);   
+            console.error(`DataManager.ts > generateGroomingSnippetList > ERROR generating grooming snippet list. ${error}`);   
         }
 
         return result;
@@ -183,11 +189,11 @@ class DataManager{
         let result: Snippet[] = [];
         
         try {
-            const numSnippets = gameConstants.MIN_SNIPPETS_PER_REPORT + ~~(Math.random() * (gameConstants.MAX_SNIPPETS_PER_REPORT - gameConstants.MIN_SNIPPETS_PER_REPORT));
+            const numSnippets = gameConstants.MIN_SNIPPETS_PER_REPORT + ~~(Math.random() * (gameConstants.MAX_SNIPPETS_PER_REPORT - gameConstants.MIN_SNIPPETS_PER_REPORT + gameConstants.ONE));
             result = isGrooming ? this.generateGroomingSnippetList(numSnippets) : this.generateNormalSnippetList(numSnippets);
 
         } catch (error) {
-            console.error(`generateSnippetList > ERROR generating snippet list. ${error}`);   
+            console.error(`DataManager.ts > generateSnippetList > ERROR generating snippet list. ${error}`);   
         }
 
         return result;
@@ -201,7 +207,7 @@ class DataManager{
         try{
             let rand = Math.random();
 
-            let stageSnippetListLength = 0;
+            let stageSnippetListLength = gameConstants.ZERO;
 
             if(stage){
                 stageSnippetListLength = this.groomingSnippets[stage].length
@@ -215,7 +221,7 @@ class DataManager{
             result = this.groomingSnippets[stage][~~(rand * stageSnippetListLength)];
         }
         catch (error){
-            console.error(`sampleGroomingSnippet > ERROR sampling a random grooming snippet. ${error}`);   
+            console.error(`DataManager.ts > sampleGroomingSnippet > ERROR sampling a random grooming snippet. ${error}`);   
         }
 
         return result;
@@ -230,7 +236,7 @@ class DataManager{
             result = this.normalSnippets[~~(rand * snippetLengthList)];
         }
         catch (error){
-            console.error(`sampleNormalSnippet > ERROR sampling a random normal snippet. ${error}`);   
+            console.error(`DataManager.ts > sampleNormalSnippet > ERROR sampling a random normal snippet. ${error}`);   
         }
 
         return result;
@@ -245,13 +251,13 @@ class DataManager{
         try {
             const snippets: Snippet[] = this.generateSnippetList(isGrooming);
             
-            if(snippets.length > 0)
+            if(snippets.length > gameConstants.ZERO)
                 result = new Report(isGrooming, snippets);
             else
                 throw("The snippets array was empty.");
 
         } catch (error) {
-            console.error(`generateReport > ERROR generating a report. ${error}`);   
+            console.error(`DataManager.ts > generateReport > ERROR generating a report. ${error}`);   
         }
         return result;
     }
