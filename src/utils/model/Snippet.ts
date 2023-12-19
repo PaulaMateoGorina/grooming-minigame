@@ -21,16 +21,17 @@ class Snippet {
         try {
             if(checkStageSelected){
                 console.log("check selected");
-                if(checkStageSelected){
-                    console.log("check stage selected");
+                if(this.stage * stageSelected > 0){
+                    result = this.stage === stageSelected ? ECorrectness.CORRECT : ECorrectness.PARTIALLY_CORRECT;
                 }
             }
             else{
                 // We take advantage of the fact that normal snippets have a negative value for the stage, 
                 // and the equivalent for the grooming snippets -> If the product is positive, they have the
                 // same sign and the player's answer is correct.
-                if(this.stage * stageSelected > gameConstants.ZERO)
+                if(this.stage * stageSelected > gameConstants.ZERO){
                     result = ECorrectness.CORRECT;
+                }
             }
             
         } catch (error) {

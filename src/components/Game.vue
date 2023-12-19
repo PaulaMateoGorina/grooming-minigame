@@ -1,8 +1,8 @@
 <template>
   <div class="game">
     <ReportComponent @solveReport="handleSolveReport"/>
-    <p>{{points}} -</p><br/>
-    <p>{{isGrooming}}</p>
+    <div>{{points}}</div>
+    <div>{{isGrooming}}</div>
   </div>
 </template>
   

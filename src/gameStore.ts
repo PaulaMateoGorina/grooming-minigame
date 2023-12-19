@@ -39,7 +39,7 @@ export const gameStore = createStore({
     },
 
     changeSnippetStageSelected(state: GameState, payload: {idx: number, stage: EStage}){
-      console.log(`new stage is ${payload.stage}`);
+      console.log(`new stage for idx ${payload.idx} is ${payload.stage}`);
       state.snippetStagesSelected[payload.idx] = payload.stage;
     }
   },

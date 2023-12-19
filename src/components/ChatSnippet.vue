@@ -1,24 +1,28 @@
 <template>
     <OnClickOutside @trigger="hideOptions">
-        <div 
+        <div
         id="message-container"
         :class="{ 'non-selectable-text': true, 'chat-snippet': stage < 0, 'chat-snippet-selected': stage > 0 }"
         @click="handleClickInside"
         >
             <div v-for="message in chatSnippet!.messages" :key="message.id" :class="message.sender">
-            <p class="message-text">{{ message.text }}</p> 
+                <p class="message-text">{{ message.text }}</p>
             </div>
-        </div>
 
-        <div v-show="selectSnippetStage && stageSelectorVisible" class="stages-list"
-        :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
-            <div v-for="stage in stages" :key="stage[0]">
-                {{ stage[0] }}
+            <div v-show="stage > 0" class="floating-text-wrapper">
+                <p class="floating-text">{{selectedStageName}}</p>
             </div>
         </div>
+        
     </OnClickOutside>
     
-    {{ chatSnippet?.stage }}
+    <div v-show="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
+    :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
+        <div class="stages-list-item" v-for="stage in stages" :key="stage[0]" @click="handleClickStage({name: stage[0], enumVal: stage[1]})">
+        {{ stage[1] }}: {{ stage[0] }}
+        </div>
+    </div>
+{{ chatSnippet?.stage }}
 </template>
   
 <script lang="ts">
@@ -39,6 +43,8 @@ export default defineComponent({
     data() {
         return {
             stage: EStage.Clear,
+            selectedStageName: "",
+            stageIsSelected: false,
             stageSelectorVisible: false,
             mousePosition: {x: 0, y: 0}
         };
@@ -62,16 +68,19 @@ export default defineComponent({
         }
     },
     methods: {
+        hideOptions(){
+            this.stageSelectorVisible = false;
+        },
+
         handleClickInside(event: MouseEvent){
             try {
-                const parentRect = document.getElementById('message-container');
-                if(parentRect === null)
+                const messageContainer = document.getElementById('message-container');
+                if(messageContainer === null)
                     throw new Error("Parent element was null");
 
-                this.mousePosition.x = event.pageX - parentRect.getBoundingClientRect().x;
-                this.mousePosition.y = event.pageY;
-
-                console.log(this.mousePosition.x, " ", this.mousePosition.y);
+                this.mousePosition.x = event.pageX - messageContainer.getBoundingClientRect().x;
+                //TODO: FIX THIS
+                this.mousePosition.y = event.pageY + 40;
 
                 if (this.selectSnippet) {
                     if(this.selectSnippetStage){
@@ -83,12 +92,34 @@ export default defineComponent({
                     }
                 }
             } catch (error) {
-                console.error(`ChatSnippet.vue > handleClickInside > Could not handle click inside element correctly. #ERROR: ${error}`);
+                console.error(`ChatSnippet.vue > handleClickInside >#ERROR: ${error}`);
             }
         },
-        hideOptions(){
-            this.stageSelectorVisible = false;
-        }        
+        handleClickStage(stage: {name: string, enumVal: number}){
+            try {
+                if(stage.name === null || stage.name === ""){
+                    throw new Error("Stage name was null or empty.");
+                }
+                if(stage.enumVal === null || isNaN(stage.enumVal)) {
+                    throw new Error("Value for the enum was null or not a numerical value");
+                }
+               
+                const possibleEnumValues = Object.values(EStage).filter((value) => typeof value === 'number') as EStage[];
+                if (!possibleEnumValues.includes(stage.enumVal)) {
+                    throw new Error("Value for the enum was not valid.");
+                }
+
+                console.log(stage.name, " ", stage.enumVal);
+
+                this.selectedStageName = stage.name;
+                this.stage = stage.enumVal;
+                gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: stage.enumVal })
+                this.stageSelectorVisible = false;
+            } catch (error) {
+                console.error(`ChatSnippet.vue > handleClickStage > #ERROR: ${error}`);
+            }
+        }
+        
     },
     created(){
         if(this.chatSnippet && this.chatSnippet.id === 10)

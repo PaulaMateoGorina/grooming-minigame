@@ -11,7 +11,7 @@
         <div v-if="currentPage === 2 && snippetIdxPairsPage2">
             <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
         </div>
-
+        
         <div class="report-buttons-container">
             <div @click="changePage(false)" class="report-button prev-button">&#8249;</div>
             <div class="answer-buttons-container">

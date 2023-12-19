@@ -1,3 +1,32 @@
+:root {
+    --border-color: #ccc;
+    --hover-background: #f0f0f0;
+    --white: #fff;
+}
+
+.chat-snippet-wrapper{
+    display:flex;
+}
+
+#message-container {
+    position: relative;
+}
+  
+.floating-text-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.floating-text {
+    text-align: center;
+}
+
 .chat-snippet{
     width: 500px;
     padding: 10px;
@@ -97,8 +126,24 @@
 
 .stages-list {
     position: absolute;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
     background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 5px;
+    z-index: 2;
+}
+
+.stages-list-item {
+    padding: 10px; 
+    transition: background-color 0.3s; 
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
+}
+
+.stages-list-item:last-child {
+    border-bottom: none;
+}
+
+.stages-list-item:hover {
+    background-color: #ebebeb;
+    font-weight: 600;
 }
