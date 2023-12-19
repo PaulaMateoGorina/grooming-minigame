@@ -22,7 +22,7 @@ export interface GameState {
 export const gameStore = createStore({
   state: {
     selectGroomingSnippets: true,
-    selectSnippetStages: false,
+    selectSnippetStages: true,
     snippetStagesSelected: [],
     curReport: undefined,
     points: 0
