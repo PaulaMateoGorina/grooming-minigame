@@ -134,7 +134,6 @@
 
 .stages-list-item {
     padding: 10px; 
-    transition: background-color 0.3s; 
     border-bottom: 1px solid var(--border-color);
     cursor: pointer;
 }

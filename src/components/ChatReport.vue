@@ -14,10 +14,8 @@
         
         <div class="report-buttons-container">
             <div @click="changePage(false)" class="report-button prev-button">&#8249;</div>
-            <div class="answer-buttons-container">
-                <div class="report-button answer-button grooming" @click="sendSolveReport(true)">Grooming</div>
-                <div class="report-button answer-button clear" @click="sendSolveReport(false)">Clear</div>
-            </div>
+            <div class="report-button answer-button grooming" @click="sendSolveReport(true)">Grooming</div>
+            <div class="report-button answer-button clear" @click="sendSolveReport(false)">Clear</div>
             <div @click="changePage(true)" class="report-button next-button">&#8250;</div>
         </div>
     </div>
