@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 9.5%;
+    bottom: 6%;
     width: 650px;
 }
 
@@ -36,7 +36,7 @@
     background-color: #f5aeae;
 }
 
-.clear {
+.normal {
     background-color: #99dda8;
 }
 

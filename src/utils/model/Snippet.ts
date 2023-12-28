@@ -1,7 +1,7 @@
 import Message from './Message'
 import EStage from '@/utils/enums/EStage'
 
-import * as gameConstants from '@/utils/constants'
+import { NUM_CONSTANTS } from '@/utils/constants'
 import ECorrectness from '@/utils/enums/ECorrectness'
 
 class Snippet {
@@ -29,13 +29,13 @@ class Snippet {
                 // We take advantage of the fact that normal snippets have a negative value for the stage, 
                 // and the equivalent for the grooming snippets -> If the product is positive, they have the
                 // same sign and the player's answer is correct.
-                if(this.stage * stageSelected > gameConstants.ZERO){
+                if(this.stage * stageSelected > NUM_CONSTANTS.ZERO){
                     result = ECorrectness.CORRECT;
                 }
             }
             
         } catch (error) {
-            console.error(`Snippet.ts > getAnswerResult > Could not compare answers for the chat snippet. ${error}`);        
+            console.error(`Snippet.ts > getAnswerResult > Could not compare answers for the chat snippet. #ERROR: ${error}`);        
         }
 
         return result;

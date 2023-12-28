@@ -11,7 +11,7 @@ import { defineComponent } from 'vue';
 import ReportComponent from './ChatReport.vue'
 import {GameState, gameStore} from '@/gameStore'
 
-import * as gameConstants from '@/utils/constants'
+import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
 
 export default defineComponent({
   name: 'GameComponent',
@@ -21,12 +21,12 @@ export default defineComponent({
   methods: {
     handleSolveReport(isGrooming: boolean) {
       const curState: GameState = gameStore.state;
-      let multiplier = gameConstants.ZERO;
+      let multiplier = NUM_CONSTANTS.ZERO;
 
       if(curState.curReport)
         multiplier = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected);
 
-      gameStore.commit('addScore', gameConstants.POINTS_PER_REPORT * multiplier);
+      gameStore.commit('addScore', REPORT_CONSTANTS.POINTS_PER_REPORT * multiplier);
       gameStore.commit('changeReport');
     },
   },

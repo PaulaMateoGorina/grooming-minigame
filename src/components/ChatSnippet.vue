@@ -42,7 +42,7 @@ export default defineComponent({
     },
     data() {
         return {
-            stage: EStage.Clear,
+            stage: EStage.Normal,
             selectedStageName: "",
             stageIsSelected: false,
             stageSelectorVisible: false,
@@ -87,12 +87,12 @@ export default defineComponent({
                         this.stageSelectorVisible = !this.stageSelectorVisible;
                     }
                     else{
-                        this.stage = this.stage * EStage.Clear;
+                        this.stage = this.stage * EStage.Normal;
                         gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: this.stage })
                     }
                 }
             } catch (error) {
-                console.error(`ChatSnippet.vue > handleClickInside >#ERROR: ${error}`);
+                console.error(`ChatSnippet.vue > handleClickInside >#ERROR: #ERROR: ${error}`);
             }
         },
         handleClickStage(stage: {name: string, enumVal: number}){
@@ -103,7 +103,7 @@ export default defineComponent({
                 if(stage.enumVal === null || isNaN(stage.enumVal)) {
                     throw new Error("Value for the enum was null or not a numerical value");
                 }
-               
+                
                 const possibleEnumValues = Object.values(EStage).filter((value) => typeof value === 'number') as EStage[];
                 if (!possibleEnumValues.includes(stage.enumVal)) {
                     throw new Error("Value for the enum was not valid.");
@@ -116,7 +116,7 @@ export default defineComponent({
                 gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: stage.enumVal })
                 this.stageSelectorVisible = false;
             } catch (error) {
-                console.error(`ChatSnippet.vue > handleClickStage > #ERROR: ${error}`);
+                console.error(`ChatSnippet.vue > handleClickStage > #ERROR: #ERROR: ${error}`);
             }
         }
         
@@ -129,6 +129,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import '@/css/messages.css';
+@import '@/css/message.css';
 @import '@/css/common.css';
 </style>

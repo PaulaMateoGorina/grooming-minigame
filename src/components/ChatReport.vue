@@ -1,7 +1,9 @@
 <template>
     <div class="report">
         <div v-if="currentPage === 0">
-            Profile pages
+            <ProfilesPageComponent v-if="user1 && user2 && friendshipTime" 
+                :user1="user1" :user2="user2" :friendshipTime="friendshipTime" 
+            />
         </div>
 
         <div v-if="currentPage === 1 && snippetIdxPairsPage1">
@@ -12,26 +14,31 @@
             <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
         </div>
         
-        <div class="report-buttons-container">
+        <div class="report-buttons-container non-selectable-text">
             <div @click="changePage(false)" class="report-button prev-button">&#8249;</div>
             <div class="report-button answer-button grooming" @click="sendSolveReport(true)">Grooming</div>
-            <div class="report-button answer-button clear" @click="sendSolveReport(false)">Clear</div>
+            <div class="report-button answer-button normal" @click="sendSolveReport(false)">Normal</div>
             <div @click="changePage(true)" class="report-button next-button">&#8250;</div>
         </div>
     </div>
 </template>
-  
+
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ChatSnippetPageComponent from './ChatSnippetPage.vue'
 import { gameStore } from '@/gameStore'
+
+import ChatSnippetPageComponent from './ChatSnippetPage.vue'
+import ProfilesPageComponent from './ProfilesPage.vue'
+
 import Snippet from '@/utils/model/Snippet'
-import * as gameConstants from '@/utils/constants'
+import Profile from '@/utils/model/Profile'
+import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
 
 export default defineComponent({
     name: 'ReportComponent',
     components: {
         ChatSnippetPageComponent,
+        ProfilesPageComponent
     },
     data() {
         return {
@@ -48,14 +55,14 @@ export default defineComponent({
             try {
                 //TODO: DO THIS BETTER
                 if(!isGrooming && gameStore.getters.aSnippetIsSelected){
-                    window.alert("NO puedes marcar un informe como 'clear' si tienes un snippet seleccionado.");
+                    window.alert("NO puedes marcar un informe como 'normal' si tienes un snippet seleccionado.");
                 }
                 else{
                     this.$emit('solveReport', isGrooming);
-                    this.currentPage = gameConstants.ZERO;
+                    this.currentPage = NUM_CONSTANTS.ZERO;
                 }
             } catch (error) {
-                console.error(`ChatReport.vue > sendSolveReport > ERROR: Could not emit event. ${error}`);
+                console.error(`ChatReport.vue > sendSolveReport > ERROR: Could not emit event. #ERROR: ${error}`);
             }
         }
     },
@@ -64,7 +71,7 @@ export default defineComponent({
             const chatReport = gameStore.state.curReport;
 
             return chatReport && chatReport.snippets ?
-                chatReport.snippets.slice(gameConstants.ZERO, gameConstants.NUM_SNIPPETS_PER_PAGE)
+                chatReport.snippets.slice(NUM_CONSTANTS.ZERO, REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE)
                     .map((snippet: Snippet, index: number) => [snippet, index])
                 : 
                 [];
@@ -73,20 +80,35 @@ export default defineComponent({
         snippetIdxPairsPage2(): [Snippet, number][] {
             const chatReport = gameStore.state.curReport;
 
-            return chatReport && chatReport.snippets && chatReport.snippets.length > gameConstants.NUM_SNIPPETS_PER_PAGE ? 
+            return chatReport && chatReport.snippets && chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ? 
                 chatReport.snippets
-                    .slice(gameConstants.NUM_SNIPPETS_PER_PAGE, 2 * gameConstants.NUM_SNIPPETS_PER_PAGE)
-                    .map((snippet: Snippet, index: number) => [snippet, index + gameConstants.NUM_SNIPPETS_PER_PAGE])
+                    .slice(REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE, 2 * REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE)
+                    .map((snippet: Snippet, index: number) => [snippet, index + REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE])
                 : 
                 [];
         },
 
         numPages(): number{
             const chatReport = gameStore.state.curReport;
-            return chatReport && chatReport.snippets && chatReport.snippets.length > gameConstants.NUM_SNIPPETS_PER_PAGE ?
-            gameConstants.NUM_REPORT_PAGES_MULTI
+            return chatReport && chatReport.snippets && chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ?
+            REPORT_CONSTANTS.NUM_REPORT_PAGES_MULTI
             :
-            gameConstants.NUM_REPORT_PAGES_SINGLE;
+            REPORT_CONSTANTS.NUM_REPORT_PAGES_SINGLE;
+        },
+
+        user1(): Profile | undefined{
+            const chatReport = gameStore.state.curReport;
+            return chatReport && chatReport.user1Profile ? chatReport.user1Profile : undefined;
+        },
+
+        user2(): Profile | undefined{
+            const chatReport = gameStore.state.curReport;
+            return chatReport && chatReport.user2Profile ? chatReport.user2Profile : undefined;
+        },
+
+        friendshipTime(): number[] | undefined{
+            const chatReport = gameStore.state.curReport;
+            return chatReport && chatReport.friendshipTime ? chatReport.friendshipTime : undefined;
         }
     }
 })
@@ -94,5 +116,6 @@ export default defineComponent({
 
 
 <style scoped>
-@import '@/css/report.css'
+@import '@/css/report.css';
+@import '@/css/common.css'; 
 </style>

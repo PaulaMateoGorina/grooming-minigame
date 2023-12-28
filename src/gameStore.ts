@@ -2,13 +2,14 @@ import { createStore } from 'vuex';
 
 // Model
 import Report from '@/utils/model/Report'
-import DataManager from '@/utils/model/DataManager';
+import ReportManager from '@/utils/model/ReportManager';
 
 // Enums
 import EStage from '@/utils/enums/EStage'
 
 // Others
-import * as gameConstants from '@/utils/constants'
+import { NUM_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
+import * as utils from '@/utils/utils'
 
 export interface GameState {
   selectGroomingSnippets: boolean,
@@ -30,8 +31,8 @@ export const gameStore = createStore({
 
   mutations: {
     changeReport(state: GameState){
-      state.curReport = DataManager.getInstance().generateReport(Math.random() > 0.5);
-      state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(gameConstants.NORMAL_SNIPPET_STAGE_VAL): [];
+      state.curReport = ReportManager.getInstance().generateReport(utils.getBoolean(NUM_CONSTANTS.HALF));
+      state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
     },
 
     addScore(state: GameState, points: number){
@@ -48,7 +49,7 @@ export const gameStore = createStore({
       let result = false;
 
       for(const snippetStageSelected of state.snippetStagesSelected){
-        if(snippetStageSelected > gameConstants.ZERO){
+        if(snippetStageSelected > NUM_CONSTANTS.ZERO){
           result = true;
           break;
         }

@@ -1,10 +1,10 @@
 enum EStage{
-    "Clear" = -1,
-    "Friendship & Relathionship forming" = 1,
-    "Risk assesment" = 3,
-    "Exclusivity" = 4,
-    "Damage limitation" = 7,
-    "Asking for pictures" = 9
+    "Normal" = -1,
+    "Comienzo de la amistad y relación" = 1,
+    "Evaluación de riesgo" = 3,
+    "Exclusividad" = 4,
+    "Mitigación de daños" = 7,
+    "Petición de fotos indecentes" = 9
 }
 
 export default EStage;

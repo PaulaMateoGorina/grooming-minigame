@@ -1,21 +1,31 @@
 import Snippet from './Snippet'
+import Profile from './Profile'
 import EStage from '@/utils/enums/EStage'
-import * as gameConstants from '@/utils/constants'
+import { NUM_CONSTANTS } from '@/utils/constants'
+import ECorrectness from '@/utils/enums/ECorrectness'
 
 class Report {
     public isGrooming: boolean;
+    public user1Profile: Profile;
+    public user2Profile: Profile;
+    public friendshipTime: number[];
     public snippets: Snippet[];
     
-    constructor(isGrooming: boolean, snippets: Snippet[]) {
+    constructor(isGrooming: boolean, user1Profile: Profile, user2Profile: Profile, friendshipTime: number[], snippets: Snippet[]) {
         this.isGrooming = isGrooming;
+        this.user1Profile = user1Profile;
+        this.user2Profile = user2Profile;
+        this.friendshipTime = friendshipTime;
         this.snippets = snippets ? snippets : [];
     }
 
     getAnswerResult(isGrooming: boolean, selectGroomingSnippets: boolean, selectSnippetStages: boolean, stagesSelected: EStage[]): number{
-        let result = gameConstants.ZERO;
+        let result = NUM_CONSTANTS.ZERO;
 
         try {
             if(this.isGrooming === isGrooming){
+                result += ECorrectness.CORRECT;
+
                 // If it is not grooming, then we do not need to check that the stage is correct, it will be
                 if(isGrooming && selectGroomingSnippets && this.snippets){
                     for(let i = 0; i < this.snippets.length; i++){
@@ -24,10 +34,10 @@ class Report {
     
                         result += snippet.getAnswerResult(stageSelected, selectSnippetStages);
                     }
-                    result /= this.snippets.length;
+                    result /= (this.snippets.length + NUM_CONSTANTS.ZERO);
                 }
                 else{
-                    result = gameConstants.ONE;
+                    result = NUM_CONSTANTS.ONE;
                 }
             }
         } 
