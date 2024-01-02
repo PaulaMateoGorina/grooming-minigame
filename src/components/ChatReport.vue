@@ -16,10 +16,12 @@
         
         <div class="report-buttons-container non-selectable-text">
             <div @click="changePage(false)" class="report-button prev-button">&#8249;</div>
-            <div class="report-button answer-button grooming" @click="sendSolveReport(true)">Grooming</div>
-            <div class="report-button answer-button normal" @click="sendSolveReport(false)">Normal</div>
+            <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
+            <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
             <div @click="changePage(true)" class="report-button next-button">&#8250;</div>
         </div>
+         
+        <ErrorModalComponent @closeModal="handleCloseModal" :visibility="solveReportErrorModalVisible" :message="'NO puedes marcar un informe como normal si tienes un snippet seleccionado.'"/>
     </div>
 </template>
 
@@ -27,22 +29,31 @@
 import { defineComponent } from 'vue'
 import { gameStore } from '@/gameStore'
 
+import { LogLevel, WriteLog } from '@/utils/logger'
+
 import ChatSnippetPageComponent from './ChatSnippetPage.vue'
 import ProfilesPageComponent from './ProfilesPage.vue'
+import ErrorModalComponent from './ErrorModal.vue'
 
 import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
 
+import { CButton } from '@coreui/vue'
+
 export default defineComponent({
     name: 'ReportComponent',
     components: {
         ChatSnippetPageComponent,
-        ProfilesPageComponent
+        ProfilesPageComponent,
+        ErrorModalComponent,
+        CButton
     },
     data() {
         return {
             currentPage: 0,
+            solveReportErrorModalVisible: false,
+            liveExampleVisible: false
         };
     },
     methods: {
@@ -51,19 +62,21 @@ export default defineComponent({
             this.currentPage = isNext ? Math.min(this.currentPage + 1, numPages - 1) : Math.max(this.currentPage - 1, 0);
         },
         sendSolveReport(isGrooming: boolean){
-            console.log(`Grooming: ${isGrooming}`);
+            WriteLog(`ChatReport.vue > sendSolveReport > Grooming: ${isGrooming}`, LogLevel.VERBOSE);
             try {
-                //TODO: DO THIS BETTER
                 if(!isGrooming && gameStore.getters.aSnippetIsSelected){
-                    window.alert("NO puedes marcar un informe como 'normal' si tienes un snippet seleccionado.");
+                    this.solveReportErrorModalVisible = true;
                 }
                 else{
                     this.$emit('solveReport', isGrooming);
                     this.currentPage = NUM_CONSTANTS.ZERO;
                 }
             } catch (error) {
-                console.error(`ChatReport.vue > sendSolveReport > ERROR: Could not emit event. #ERROR: ${error}`);
+                WriteLog(`ChatReport.vue > sendSolveReport > ERROR: Could not emit event. #ERROR: ${error}`, LogLevel.ERROR);
             }
+        },
+        handleCloseModal(){
+            this.solveReportErrorModalVisible = false;
         }
     },
     computed: {

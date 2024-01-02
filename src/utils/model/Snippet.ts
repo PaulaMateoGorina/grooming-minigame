@@ -3,6 +3,7 @@ import EStage from '@/utils/enums/EStage'
 
 import { NUM_CONSTANTS } from '@/utils/constants'
 import ECorrectness from '@/utils/enums/ECorrectness'
+import { LogLevel, WriteLog } from '../logger';
 
 class Snippet {
     public id: number;
@@ -20,7 +21,7 @@ class Snippet {
 
         try {
             if(checkStageSelected){
-                console.log("check selected");
+                WriteLog("Snippet.ts > getAnswerResult > check selected", LogLevel.VERBOSE);
                 if(this.stage * stageSelected > 0){
                     result = this.stage === stageSelected ? ECorrectness.CORRECT : ECorrectness.PARTIALLY_CORRECT;
                 }
@@ -35,7 +36,7 @@ class Snippet {
             }
             
         } catch (error) {
-            console.error(`Snippet.ts > getAnswerResult > Could not compare answers for the chat snippet. #ERROR: ${error}`);        
+            WriteLog(`Snippet.ts > getAnswerResult > Could not compare answers for the chat snippet. #ERROR: ${error}`, LogLevel.ERROR);        
         }
 
         return result;

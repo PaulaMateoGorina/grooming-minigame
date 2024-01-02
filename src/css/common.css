@@ -2,3 +2,8 @@
     user-select: none;
     cursor: default;
 }
+
+.my-button{
+    border: 2px solid;
+    font-weight: 600;
+}

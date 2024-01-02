@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import '@coreui/coreui/dist/css/coreui.min.css'
 import GameComponent from './components/Game.vue';
 
 export default defineComponent({

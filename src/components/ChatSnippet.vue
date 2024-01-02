@@ -1,5 +1,6 @@
 <template>
-    <OnClickOutside @trigger="hideOptions">
+    <!-- Snippet -->
+    <OnClickOutside @trigger="hideOptions" @contextmenu.prevent="handleRightClick()">
         <div
         id="message-container"
         :class="{ 'non-selectable-text': true, 'chat-snippet': stage < 0, 'chat-snippet-selected': stage > 0 }"
@@ -9,6 +10,7 @@
                 <p class="message-text">{{ message.text }}</p>
             </div>
 
+            <!-- Floating text showing the stage selected -->
             <div v-show="stage > 0" class="floating-text-wrapper">
                 <p class="floating-text">{{selectedStageName}}</p>
             </div>
@@ -16,6 +18,7 @@
         
     </OnClickOutside>
     
+    <!-- Stage selector -->
     <div v-show="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
     :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
         <div class="stages-list-item" v-for="stage in stages" :key="stage[0]" @click="handleClickStage({name: stage[0], enumVal: stage[1]})">
@@ -29,11 +32,14 @@
 import { defineComponent } from 'vue'
 import { gameStore } from '@/gameStore'
 
+import { LogLevel, WriteLog } from '@/utils/logger'
+
 import Snippet from '@/utils/model/Snippet'
 import EStage from '@/utils/enums/EStage'
 
 //external imports
 import { OnClickOutside } from '@vueuse/components'
+import { STAGE_CONSTANTS } from '@/utils/constants'
 
 export default defineComponent({
     name: 'ChatSnippetComponent',
@@ -44,7 +50,6 @@ export default defineComponent({
         return {
             stage: EStage.Normal,
             selectedStageName: "",
-            stageIsSelected: false,
             stageSelectorVisible: false,
             mousePosition: {x: 0, y: 0}
         };
@@ -80,7 +85,7 @@ export default defineComponent({
 
                 this.mousePosition.x = event.pageX - messageContainer.getBoundingClientRect().x;
                 //TODO: FIX THIS
-                this.mousePosition.y = event.pageY + 40;
+                this.mousePosition.y = event.pageY + 10;
 
                 if (this.selectSnippet) {
                     if(this.selectSnippetStage){
@@ -92,9 +97,10 @@ export default defineComponent({
                     }
                 }
             } catch (error) {
-                console.error(`ChatSnippet.vue > handleClickInside >#ERROR: #ERROR: ${error}`);
+                WriteLog(`ChatSnippet.vue > handleClickInside >#ERROR: #ERROR: ${error}`, LogLevel.ERROR);
             }
         },
+
         handleClickStage(stage: {name: string, enumVal: number}){
             try {
                 if(stage.name === null || stage.name === ""){
@@ -109,22 +115,22 @@ export default defineComponent({
                     throw new Error("Value for the enum was not valid.");
                 }
 
-                console.log(stage.name, " ", stage.enumVal);
+                WriteLog(`ChatSnippet.vue > handleClickStage > ${stage.name} ${stage.enumVal}`, LogLevel.VERBOSE);
 
                 this.selectedStageName = stage.name;
                 this.stage = stage.enumVal;
                 gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: stage.enumVal })
                 this.stageSelectorVisible = false;
             } catch (error) {
-                console.error(`ChatSnippet.vue > handleClickStage > #ERROR: #ERROR: ${error}`);
+                WriteLog(`ChatSnippet.vue > handleClickStage > #ERROR: #ERROR: ${error}`, LogLevel.ERROR);
             }
-        }
+        },
         
+        handleRightClick(){
+            this.stage = STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL;
+            gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL });
+        }
     },
-    created(){
-        if(this.chatSnippet && this.chatSnippet.id === 10)
-            console.log(this.chatSnippet);
-    }
 })
 </script>
 

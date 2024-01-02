@@ -10,6 +10,7 @@ import EStage from '@/utils/enums/EStage'
 import Report from '@/utils/model/Report'
 // import EStageIdx from '@/utils/EStageIdx'
 import { NUM_CONSTANTS, STAGE_CONSTANTS, REPORT_CONSTANTS, PROFILE_CONSTANTS, FRIENDSHIP_TIME_CONSTANTS } from '@/utils/constants'
+import { LogLevel, WriteLog } from '../logger'
 
 class ReportManager{
     private static instance: ReportManager | null
@@ -43,7 +44,7 @@ class ReportManager{
             result =  new Message(messageId, data.sender, data.text)
         } 
         catch (error) {
-            console.error(`ReportManager.ts > createMessage > ERROR creating new message instance. #ERROR: ${error}`);
+            WriteLog(`ReportManager.ts > createMessage > ERROR creating new message instance. #ERROR: ${error}`, LogLevel.ERROR);
         }
         
         return result;
@@ -74,7 +75,7 @@ class ReportManager{
                 throw("The snippet had no messages");
         } 
         catch (error) {
-            console.error(`ReportManager.ts > createSnippet > ERROR creating new snippet instance. #ERROR: ${error}`);
+            WriteLog(`ReportManager.ts > createSnippet > ERROR creating new snippet instance. #ERROR: ${error}`, LogLevel.ERROR);
         }
         return result;
     }
@@ -102,7 +103,7 @@ class ReportManager{
             numTotalSnippets = id;
         }
         catch (error) {
-            console.error(`ReportManager.ts > loadGroomingSnippets > ERROR loading grooming snippets. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > loadGroomingSnippets > ERROR loading grooming snippets. #ERROR: ${error}`, LogLevel.ERROR);   
         }
         return numTotalSnippets;
     }
@@ -124,7 +125,7 @@ class ReportManager{
             }
         }
         catch (error) {
-            console.error(`ReportManager.ts > loadNormalSnippets > ERROR loading normal snippets. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > loadNormalSnippets > ERROR loading normal snippets. #ERROR: ${error}`, LogLevel.ERROR);   
         }
     }
     // #endregion
@@ -159,7 +160,7 @@ class ReportManager{
                 }
             }
         } catch (error) {
-            console.error(`ReportManager.ts > generateGroomingSnippetList > ERROR generating grooming snippet list. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > generateGroomingSnippetList > ERROR generating grooming snippet list. #ERROR: ${error}`, LogLevel.ERROR);   
         }
 
         return result;
@@ -182,7 +183,7 @@ class ReportManager{
                 }
             }
         } catch (error) {
-            console.error(`ReportManager.ts > generateGroomingSnippetList > ERROR generating grooming snippet list. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > generateGroomingSnippetList > ERROR generating grooming snippet list. #ERROR: ${error}`, LogLevel.ERROR);   
         }
 
         return result;
@@ -196,7 +197,7 @@ class ReportManager{
             result = isGrooming ? this.generateGroomingSnippetList(numSnippets) : this.generateNormalSnippetList(numSnippets);
 
         } catch (error) {
-            console.error(`ReportManager.ts > generateSnippetList > ERROR generating snippet list. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > generateSnippetList > ERROR generating snippet list. #ERROR: ${error}`, LogLevel.ERROR);   
         }
 
         return result;
@@ -215,7 +216,7 @@ class ReportManager{
             profile = new Profile(PROFILE_CONSTANTS.PLACEHOLDER_URL, PROFILE_CONSTANTS.PLACEHOLDER_USERNAME, realAge, onlineAge);
         } 
         catch (error) {
-            console.error(`ReportManager.ts > generateTeenProfile > ERROR not generate a teenager profile. #ERROR: ${error}`);
+            WriteLog(`ReportManager.ts > generateTeenProfile > ERROR not generate a teenager profile. #ERROR: ${error}`, LogLevel.ERROR);
         }
         return profile;
     }
@@ -230,7 +231,7 @@ class ReportManager{
             profile = new Profile(PROFILE_CONSTANTS.PLACEHOLDER_URL, PROFILE_CONSTANTS.PLACEHOLDER_USERNAME, realAge, onlineAge);
         } 
         catch (error) {
-            console.error(`ReportManager.ts > generateTeenProfile > ERROR not generate a teenager profile. #ERROR: ${error}`);
+            WriteLog(`ReportManager.ts > generateTeenProfile > ERROR not generate a teenager profile. #ERROR: ${error}`, LogLevel.ERROR);
         }
         return profile;
     }
@@ -255,7 +256,7 @@ class ReportManager{
             result = this.groomingSnippets[stage][utils.getRandomIdx(stageSnippetListLength)];
         }
         catch (error){
-            console.error(`ReportManager.ts > sampleGroomingSnippet > ERROR sampling a random grooming snippet. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > sampleGroomingSnippet > ERROR sampling a random grooming snippet. #ERROR: ${error}`, LogLevel.ERROR);   
         }
 
         return result;
@@ -269,7 +270,7 @@ class ReportManager{
             result = this.normalSnippets[utils.getRandomIdx(snippetLengthList)];
         }
         catch (error){
-            console.error(`ReportManager.ts > sampleNormalSnippet > ERROR sampling a random normal snippet. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > sampleNormalSnippet > ERROR sampling a random normal snippet. #ERROR: ${error}`, LogLevel.ERROR);   
         }
 
         return result;
@@ -277,7 +278,7 @@ class ReportManager{
 
     //TODO: Adapt so that you can choose to have it with or without snippets, prolly needs more parameters
     public generateReport(isGrooming: boolean): Report | undefined{
-        console.log("generateReport");
+        WriteLog("generateReport > Start", LogLevel.INFO);
 
         let result: Report | undefined = undefined;
 
@@ -307,7 +308,7 @@ class ReportManager{
                 throw("The snippets array was empty.");
 
         } catch (error) {
-            console.error(`ReportManager.ts > generateReport > ERROR generating a report. #ERROR: ${error}`);   
+            WriteLog(`ReportManager.ts > generateReport > ERROR generating a report. #ERROR: ${error}`, LogLevel.ERROR);   
         }
         return result;
     }

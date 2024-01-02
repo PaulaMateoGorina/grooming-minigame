@@ -1,6 +1,6 @@
 <template>
     <div class="profile-container">
-        <img :src="user!.avatar" alt="User 1 profile picture" class="avatar">
+        <img :src="user!.avatar" alt="User 1 profile picture" class="my-avatar">
         <div class="profile-info">
             <p>Username: {{ user!.username }}</p>
             <p>Age Online: {{ user!.onlineAge }}</p>

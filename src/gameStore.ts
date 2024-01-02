@@ -10,6 +10,7 @@ import EStage from '@/utils/enums/EStage'
 // Others
 import { NUM_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
 import * as utils from '@/utils/utils'
+import { LogLevel, WriteLog } from '@/utils/logger'
 
 export interface GameState {
   selectGroomingSnippets: boolean,
@@ -40,7 +41,7 @@ export const gameStore = createStore({
     },
 
     changeSnippetStageSelected(state: GameState, payload: {idx: number, stage: EStage}){
-      console.log(`new stage for idx ${payload.idx} is ${payload.stage}`);
+      WriteLog(`gameStore.ts > changeSnippetStageSelected > new stage for idx ${payload.idx} is ${payload.stage}`, LogLevel.VERBOSE);
       state.snippetStagesSelected[payload.idx] = payload.stage;
     }
   },
