@@ -80,7 +80,7 @@ export default defineComponent({
 
                 this.mousePosition.x = event.pageX - messageContainer.getBoundingClientRect().x;
                 //TODO: FIX THIS
-                this.mousePosition.y = event.pageY + 40;
+                this.mousePosition.y = event.pageY + 10;
 
                 if (this.selectSnippet) {
                     if(this.selectSnippetStage){
