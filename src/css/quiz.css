@@ -9,7 +9,7 @@
     left: 50%;
     justify-content: center;
     width: 35%;
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
     border: 2px solid;
     border-color: var(--primary);
 }
@@ -34,7 +34,7 @@
     border-radius: 10px;
     border-color: var(--primary);
     color: #5873ad;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 10px; 
     cursor: pointer;
     font-weight: 600;
