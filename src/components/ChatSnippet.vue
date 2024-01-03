@@ -12,7 +12,7 @@
 
             <!-- Floating text showing the stage selected -->
             <div v-show="stage > 0" class="floating-text-wrapper">
-                <p class="floating-text">{{selectedStageName}}</p>
+                {{selectedStageName}}
             </div>
         </div>
         

@@ -1,5 +1,5 @@
 :root {
-    --border-color: #ccc;
+    --primary: #8aa6e4;
     --hover-background: #f0f0f0;
     --white: #fff;
 }
@@ -21,16 +21,13 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.floating-text {
     text-align: center;
 }
 
 .chat-snippet{
     width: 500px;
     padding: 10px;
-    border: 2px solid #a1a2a3;
+    border: 2px solid var(--primary);
     background-color: #ffffff;
     border-radius: 5px;
     margin: 15px 0px 15px 0px;
@@ -122,27 +119,31 @@
 .message-text {
     padding: 0;
     margin: 0;
+    font-size: 14px;
 }
 
 .stages-list {
     position: absolute;
     border-radius: 10px;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--primary);
     background-color: #fff;
     z-index: 2;
 }
 
 .stages-list-item {
     padding: 10px; 
-    border-bottom: 1px solid var(--border-color);
+    color: #5873ad;
+    border-bottom: 1px solid var(--primary);
     cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.stages-list-item:hover {
+    background-color: var(--primary);
+    color: #374253;
 }
 
 .stages-list-item:last-child {
     border-bottom: none;
-}
-
-.stages-list-item:hover {
-    background-color: #ebebeb;
-    font-weight: 600;
 }

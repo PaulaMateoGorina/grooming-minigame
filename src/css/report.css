@@ -1,4 +1,9 @@
+:root {
+    --primary: #8aa6e4;
+}
+
 .report {
+    margin-left: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,8 +11,8 @@
     width: 600px;
     margin-top: 20px;
     border: 2px solid;
-    border-color: rgb(220, 228, 228);
-    box-shadow: 12.5px 12.5px 10px rgb(233, 236, 236);
+    border-color: var(--primary);
+    box-shadow: 12.5px 12.5px 10px rgb(223, 228, 238);
     overflow: hidden;
 }
 

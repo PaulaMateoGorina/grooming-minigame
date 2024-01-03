@@ -18,5 +18,6 @@ export default defineComponent({
 <style>
 body, p, div, span, h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
 }
 </style>

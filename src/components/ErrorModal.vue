@@ -1,5 +1,4 @@
 <template>
-
     <CModal alignment="center" :visible="visibility" @close="() => { sendCloseModal() }">
         <CModalBody>
             <h4 style="color:red;">ERROR</h4>
