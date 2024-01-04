@@ -3,6 +3,8 @@ import { createStore } from 'vuex';
 // Model
 import Report from '@/utils/model/Report'
 import ReportManager from '@/utils/loaders/ReportManager';
+import DailyQuiz from './utils/model/DailyQuiz';
+import QuizManager from '@/utils/loaders/QuizManager';
 
 // Enums
 import EStage from '@/utils/enums/EStage'
@@ -17,6 +19,7 @@ export interface GameState {
   selectSnippetStages: boolean,
   snippetStagesSelected: EStage[],
   curReport: Report | undefined,
+  curDailyQuiz: DailyQuiz | undefined,
   points: number
 }
 
@@ -27,17 +30,23 @@ export const gameStore = createStore({
     selectSnippetStages: true,
     snippetStagesSelected: [],
     curReport: undefined,
+    curDailyQuiz: undefined,
     points: 0
   } as GameState,
 
   mutations: {
+
+    addScore(state: GameState, points: number){
+      state.points += points;
+    },
+
     changeReport(state: GameState){
       state.curReport = ReportManager.getInstance().generateReport(utils.getBoolean(NUM_CONSTANTS.HALF));
       state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
     },
 
-    addScore(state: GameState, points: number){
-      state.points += points;
+    changeDailyQuiz(state: GameState){
+      state.curDailyQuiz = QuizManager.getInstance().sampleDailyQuiz();
     },
 
     changeSnippetStageSelected(state: GameState, payload: {idx: number, stage: EStage}){

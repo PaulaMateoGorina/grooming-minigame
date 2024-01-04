@@ -47,3 +47,8 @@ export const FRIENDSHIP_TIME_CONSTANTS = {
     MIN_DAYS: 1,
     MAX_DAYS: 30
 }
+
+export const QUIZ_CONSTANTS = {
+    POINTS_PER_QUIZ: 200,
+    TIME_TO_SOLVE: 20
+}

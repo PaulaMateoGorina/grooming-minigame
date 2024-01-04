@@ -3,7 +3,8 @@
     <ReportComponent @solveReport="handleSolveReport"/>
     <div>{{points}}</div>
     <div>{{isGrooming}}</div>
-    <QuizCardComponent/>
+
+    <DailyQuizCardComponent @solveDailyQuiz="handleSolveDailyQuiz"/>
 
   </div>
 </template>
@@ -11,31 +12,43 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import ReportComponent from '@/components/report/ChatReport.vue'
-import QuizCardComponent from '@/components/QuizCard.vue'
+import DailyQuizCardComponent from '@/components/DailyQuizCard.vue'
 import {GameState, gameStore} from '@/gameStore'
 
-import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
+import { NUM_CONSTANTS, REPORT_CONSTANTS, QUIZ_CONSTANTS } from '@/utils/constants'
 
 export default defineComponent({
   name: 'GameComponent',
   components: {
     ReportComponent,
-    QuizCardComponent
+    DailyQuizCardComponent
   },
   methods: {
     handleSolveReport(isGrooming: boolean) {
       const curState: GameState = gameStore.state;
-      let multiplier = NUM_CONSTANTS.ZERO;
+      let score = NUM_CONSTANTS.ZERO;
 
       if(curState.curReport)
-        multiplier = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected);
+        score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected, REPORT_CONSTANTS.POINTS_PER_REPORT);
 
-      gameStore.commit('addScore', REPORT_CONSTANTS.POINTS_PER_REPORT * multiplier);
+      gameStore.commit('addScore', score);
       gameStore.commit('changeReport');
     },
+
+    handleSolveDailyQuiz(optionSelected: number){
+      const curState: GameState = gameStore.state;
+
+      let score = NUM_CONSTANTS.ZERO;
+      if(curState.curDailyQuiz)
+        score = curState.curDailyQuiz.getAnswerResult(optionSelected, QUIZ_CONSTANTS.POINTS_PER_QUIZ);
+
+      gameStore.commit('addScore', score);
+      gameStore.commit('changeDailyQuiz');
+    }
   },
   created() {
     gameStore.commit('changeReport');
+    gameStore.commit('changeDailyQuiz');
   },
   computed : {
     points(){

@@ -6,9 +6,8 @@ import normalSnippetsJson from '@/assets/json/normalSnippetsESP.json'
 import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'
 import Message from '@/utils/model/Message'
-import EStage from '@/utils/enums/EStage'
 import Report from '@/utils/model/Report'
-// import EStageIdx from '@/utils/EStageIdx'
+import EStageIdx from '@/utils/enums/EStageIdx'
 import { NUM_CONSTANTS, STAGE_CONSTANTS, REPORT_CONSTANTS, PROFILE_CONSTANTS, FRIENDSHIP_TIME_CONSTANTS } from '@/utils/constants'
 import { LogLevel, WriteLog } from '../logger'
 
@@ -40,7 +39,7 @@ class ReportManager{
 
     public static getInstance(): ReportManager {
         if (!ReportManager.instance) {
-          ReportManager.instance = new ReportManager();
+            ReportManager.instance = new ReportManager();
         }
         return ReportManager.instance;
     }
@@ -248,7 +247,7 @@ class ReportManager{
     // #endregion
 
     // #region public methods
-    public sampleGroomingSnippet(stage?: EStage) : Snippet | undefined{
+    public sampleGroomingSnippet(stage?: EStageIdx) : Snippet | undefined{
         let result: Snippet | undefined = undefined;
         
         try{
