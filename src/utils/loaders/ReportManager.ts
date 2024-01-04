@@ -16,17 +16,26 @@ class ReportManager{
     private static instance: ReportManager | null
 
     private groomingSnippets: Snippet[][];
+    private numGroomingSnippets: number[];
     private normalSnippets: Snippet[];
+    private numNormalSnippets: number;
 
     constructor(){
         this.groomingSnippets = [];
         for (let idx = NUM_CONSTANTS.ZERO; idx < STAGE_CONSTANTS.NUM_GROOMING_STAGES; idx++) {
             this.groomingSnippets.push([])
         }
+        
         const offset = this.loadGroomingSnippets();
+
+        this.numGroomingSnippets=[];
+        for(const stageSnippetList of this.groomingSnippets){
+            this.numGroomingSnippets.push(stageSnippetList.length);
+        }
 
         this.normalSnippets = [];
         this.loadNormalSnippets(offset);
+        this.numNormalSnippets = this.normalSnippets.length;
     }
 
     public static getInstance(): ReportManager {
@@ -245,13 +254,10 @@ class ReportManager{
         try{
             let stageSnippetListLength = NUM_CONSTANTS.ZERO;
 
-            if(stage){
-                stageSnippetListLength = this.groomingSnippets[stage].length
-            }
-            else {
+            if(!stage){
                 stage = utils.getRandomIdx(STAGE_CONSTANTS.NUM_GROOMING_STAGES);
-                stageSnippetListLength = this.groomingSnippets[stage].length
             }
+            stageSnippetListLength = this.numGroomingSnippets[stage]
 
             result = this.groomingSnippets[stage][utils.getRandomIdx(stageSnippetListLength)];
         }
@@ -266,8 +272,7 @@ class ReportManager{
         let result: Snippet | undefined = undefined;
         
         try{
-            const snippetLengthList = this.normalSnippets.length;
-            result = this.normalSnippets[utils.getRandomIdx(snippetLengthList)];
+            result = this.normalSnippets[utils.getRandomIdx(this.numNormalSnippets)];
         }
         catch (error){
             WriteLog(`ReportManager.ts > sampleNormalSnippet > ERROR sampling a random normal snippet. #ERROR: ${error}`, LogLevel.ERROR);   

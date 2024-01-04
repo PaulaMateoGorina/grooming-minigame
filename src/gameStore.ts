@@ -2,7 +2,7 @@ import { createStore } from 'vuex';
 
 // Model
 import Report from '@/utils/model/Report'
-import ReportManager from '@/utils/model/ReportManager';
+import ReportManager from '@/utils/loaders/ReportManager';
 
 // Enums
 import EStage from '@/utils/enums/EStage'
