@@ -33,7 +33,7 @@ import { LogLevel, WriteLog } from '@/utils/logger'
 
 import ChatSnippetPageComponent from './ChatSnippetPage.vue'
 import ProfilesPageComponent from './ProfilesPage.vue'
-import ErrorModalComponent from './ErrorModal.vue'
+import ErrorModalComponent from '@/components/ErrorModal.vue'
 
 import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'

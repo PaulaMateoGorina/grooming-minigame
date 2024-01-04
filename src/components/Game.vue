@@ -10,8 +10,8 @@
   
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ReportComponent from './ChatReport.vue'
-import QuizCardComponent from './QuizCard.vue'
+import ReportComponent from '@/components/report/ChatReport.vue'
+import QuizCardComponent from '@/components/QuizCard.vue'
 import {GameState, gameStore} from '@/gameStore'
 
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
