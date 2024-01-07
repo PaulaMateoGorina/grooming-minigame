@@ -1,5 +1,3 @@
-import { NUM_CONSTANTS } from "../constants";
-
 class DailyQuiz{
     public question: string;
     public options: string[];
@@ -15,8 +13,8 @@ class DailyQuiz{
         this.day = day;
     }
 
-    public getAnswerResult(optionSelected: number, points: number): number{
-        return optionSelected === this.correctAnswer ? points : NUM_CONSTANTS.ZERO;
+    public getAnswerResult(optionSelected: number): boolean{
+        return optionSelected === this.correctAnswer;
     }
 }
 

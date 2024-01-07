@@ -1,8 +1,7 @@
 <template>
   <div class="game">
     <ReportComponent @solveReport="handleSolveReport"/>
-    <div>{{points}}</div>
-    <div>{{isGrooming}}</div>
+    <div class="score">Puntuación: {{points}}</div>
 
     <DailyQuizCardComponent @solveDailyQuiz="handleSolveDailyQuiz"/>
 
@@ -15,7 +14,7 @@ import ReportComponent from '@/components/report/ChatReport.vue'
 import DailyQuizCardComponent from '@/components/DailyQuizCard.vue'
 import {GameState, gameStore} from '@/gameStore'
 
-import { NUM_CONSTANTS, REPORT_CONSTANTS, QUIZ_CONSTANTS } from '@/utils/constants'
+import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
 
 export default defineComponent({
   name: 'GameComponent',
@@ -38,11 +37,11 @@ export default defineComponent({
     handleSolveDailyQuiz(optionSelected: number){
       const curState: GameState = gameStore.state;
 
-      let score = NUM_CONSTANTS.ZERO;
+      let wasCorrect = false;
       if(curState.curDailyQuiz)
-        score = curState.curDailyQuiz.getAnswerResult(optionSelected, QUIZ_CONSTANTS.POINTS_PER_QUIZ);
+        wasCorrect = curState.curDailyQuiz.getAnswerResult(optionSelected);
 
-      gameStore.commit('addScore', score);
+      gameStore.commit('changeMultiplier', wasCorrect);
       gameStore.commit('changeDailyQuiz');
     }
   },
@@ -63,10 +62,5 @@ export default defineComponent({
 </script>
     
 <style scoped>
-.game {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+@import '@/css/game.css'
 </style>

@@ -1,0 +1,23 @@
+:root {
+    --primary: #8aa6e4;
+}
+
+
+.game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.score{
+    position: absolute;
+    top: 3.5%;
+    right: 20%;
+    width: 9.5em;
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: var(--primary);
+    background-color: white;
+}

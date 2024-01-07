@@ -1,5 +1,7 @@
 export const NUM_CONSTANTS = {
+    NEG: -1.0,
     ZERO: 0.0,
+    POINT_ONE: 0.1,
     HALF: 0.5,
     ONE: 1.0
 };
@@ -49,6 +51,5 @@ export const FRIENDSHIP_TIME_CONSTANTS = {
 }
 
 export const QUIZ_CONSTANTS = {
-    POINTS_PER_QUIZ: 200,
     TIME_TO_SOLVE: 20
 }

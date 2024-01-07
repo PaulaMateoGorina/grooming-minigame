@@ -3,8 +3,8 @@
         <img :src="user!.avatar" alt="User 1 profile picture" class="my-avatar">
         <div class="profile-info">
             <p>Username: {{ user!.username }}</p>
-            <p>Age Online: {{ user!.onlineAge }}</p>
-            <p>Real Age: {{ user!.realAge }}</p>
+            <p>Edad Online: {{ user!.onlineAge }}</p>
+            <p>Edad Real: {{ user!.realAge }}</p>
         </div>
     </div>
 </template>

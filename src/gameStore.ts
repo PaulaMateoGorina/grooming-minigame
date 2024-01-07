@@ -15,29 +15,46 @@ import * as utils from '@/utils/utils'
 import { LogLevel, WriteLog } from '@/utils/logger'
 
 export interface GameState {
+  // Score
+  multiplier: number,
+  points: number,
+
+  // Options
   selectGroomingSnippets: boolean,
   selectSnippetStages: boolean,
+
+  // Objects
   snippetStagesSelected: EStage[],
   curReport: Report | undefined,
   curDailyQuiz: DailyQuiz | undefined,
-  points: number
 }
 
 // Create a new store instance.
 export const gameStore = createStore({
   state: {
+    // Score
+    multiplier: NUM_CONSTANTS.ONE,
+    points: 0,
+
+    // Options
     selectGroomingSnippets: true,
     selectSnippetStages: true,
+
+    // Objets
     snippetStagesSelected: [],
     curReport: undefined,
     curDailyQuiz: undefined,
-    points: 0
+    
   } as GameState,
 
   mutations: {
 
     addScore(state: GameState, points: number){
-      state.points += points;
+      state.points += state.multiplier * points;
+    },
+
+    changeMultiplier(state: GameState, shouldIncrease: boolean){
+      state.multiplier += shouldIncrease ? NUM_CONSTANTS.HALF : NUM_CONSTANTS.NEG * NUM_CONSTANTS.POINT_ONE; 
     },
 
     changeReport(state: GameState){
