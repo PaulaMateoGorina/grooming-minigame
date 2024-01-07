@@ -10,6 +10,18 @@
     font-size: 18px;
 }
 
+.bold{
+    font-weight: 700;
+}
+
+.semi-bold{
+    font-weight: 600;
+}
+
+.accepts-new-line{
+    white-space: pre
+}
+
 .non-selectable-text{
     user-select: none;
     cursor: default;

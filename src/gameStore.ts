@@ -10,7 +10,7 @@ import QuizManager from '@/utils/loaders/QuizManager';
 import EStage from '@/utils/enums/EStage'
 
 // Others
-import { NUM_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
+import { NUM_CONSTANTS, QUIZ_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
 import * as utils from '@/utils/utils'
 import { LogLevel, WriteLog } from '@/utils/logger'
 
@@ -50,11 +50,11 @@ export const gameStore = createStore({
   mutations: {
 
     addScore(state: GameState, points: number){
-      state.points += state.multiplier * points;
+      state.points += points;
     },
 
     changeMultiplier(state: GameState, shouldIncrease: boolean){
-      state.multiplier += shouldIncrease ? NUM_CONSTANTS.HALF : NUM_CONSTANTS.NEG * NUM_CONSTANTS.POINT_ONE; 
+      state.multiplier += shouldIncrease ? QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_INCREASE : NUM_CONSTANTS.NEG * QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_DEDUCTION; 
     },
 
     changeReport(state: GameState){

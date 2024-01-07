@@ -1,0 +1,20 @@
+.main-info{
+    margin: 40px 0px  40px 0px;
+}
+
+.answer{
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.correct{
+    color: #41935c;
+}
+
+.partially-correct{
+    color: #f0950c;
+}
+
+.incorrect{
+    color: #e04f4f;
+}
