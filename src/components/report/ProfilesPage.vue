@@ -7,12 +7,18 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import Profile from '@/utils/model/Profile';
 import ProfileComponent from './Profile.vue'
-import { defineComponent } from 'vue'
+import { PROFILE_STRINGS } from '@/assets/stringsESP';
 
 export default defineComponent({
     name: 'ProfilesPageComponent',
+    data(){
+        return{
+            PROFILE_STRINGS: PROFILE_STRINGS
+        }
+    },
     components: {
         ProfileComponent,
     },

@@ -1,14 +1,17 @@
 <template>
   <div class="game">
-    <ReportComponent @solveReport="handleSolveReport"/>
-    <div class="info">
-      <p class="info-text">Puntuación: {{points}} pts</p>
-      <p class="info-text">Informes restantes: X / X</p>
+    <div>
+      <ReportComponent @solveReport="handleSolveReport"/>
+    
+      <div class="info">
+        <p class="info-text">Puntuación: {{points}} pts</p>
+        <p class="info-text">Informes restantes: X / X</p>
+      </div>
     </div>
 
-    <DailyQuizCardComponent @solveDailyQuiz="handleSolveDailyQuiz"/>
+    <DailyQuizCardComponent v-if="true == false" @solveDailyQuiz="handleSolveDailyQuiz"/>
 
-    <ResultCardComponent :isReportResult="true" :correctness="1" :pointsGotten="pointsGotten"/>
+    <ResultCardComponent v-if="true == false" :isReportResult="true" :correctness="correctness" :pointsGotten="pointsGotten"/>
 
   </div>
 </template>
@@ -22,6 +25,7 @@ import ResultCardComponent from '@/components/ResultCard.vue'
 import {GameState, gameStore} from '@/gameStore'
 
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
+import { ECorrectness } from '@/utils/enums';
 
 export default defineComponent({
   name: 'GameComponent',
@@ -32,7 +36,8 @@ export default defineComponent({
   },
   data() {
     return{
-      pointsGotten: 0
+      pointsGotten: 0,
+      correctness: ECorrectness.INCORRECT
     }
   },
   methods: {
@@ -41,11 +46,18 @@ export default defineComponent({
       let score = NUM_CONSTANTS.ZERO;
 
       if(curState.curReport)
-        score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected, REPORT_CONSTANTS.POINTS_PER_REPORT);
+        score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected);
 
-      score = gameStore.state.multiplier * score;
+      if(score === NUM_CONSTANTS.ONE)
+        this.correctness = ECorrectness.CORRECT;
+      else if(score > NUM_CONSTANTS.ZERO)
+        this.correctness = ECorrectness.PARTIALLY_CORRECT;
+      else
+        this.correctness = ECorrectness.INCORRECT;
+
+      score = gameStore.state.multiplier * REPORT_CONSTANTS.POINTS_PER_REPORT * score;
       this.pointsGotten = score; 
-
+      
       gameStore.commit('addScore', score);
       gameStore.commit('changeReport');
     },
@@ -58,6 +70,8 @@ export default defineComponent({
       if(curState.curDailyQuiz)
         wasCorrect = curState.curDailyQuiz.getAnswerResult(optionSelected);
       
+      this.correctness = wasCorrect ? ECorrectness.CORRECT : ECorrectness.INCORRECT;
+
       gameStore.commit('changeMultiplier', wasCorrect);
       gameStore.commit('changeDailyQuiz');
     }

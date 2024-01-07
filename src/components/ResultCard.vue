@@ -6,15 +6,15 @@
 
                 <div class="main-info">
                     <!-- Correctness message -->
-                    <div v-if="correctness === 1">
+                    <div v-if="correctness === ECorrectness.CORRECT">
                         <p class="answer correct">CORRECTA</p>
                     </div>
 
-                    <div v-else-if="correctness === 0.5">
+                    <div v-else-if="correctness === ECorrectness.PARTIALLY_CORRECT">
                         <p class="answer partially-correct">PARCIALMENTE CORRECTA</p>
                     </div>
 
-                    <div v-else-if="correctness === 0">
+                    <div v-else-if="correctness === ECorrectness.INCORRECT">
                         <p class="answer incorrect">INCORRECTA</p>
                     </div>
 
@@ -36,11 +36,16 @@ import { CCard, CCardBody} from '@coreui/vue'
 import {gameStore} from '@/gameStore'
 import { WriteLog, LogLevel } from '@/utils/logger'
 
-import { QUIZ_CONSTANTS } from '@/utils/constants'
 import { ECorrectness } from '@/utils/enums';
+import { RESULT_CARD_STRINGS } from '@/assets/stringsESP';
 
 export default defineComponent({
     name: 'ResultCardComponent',
+    data(){
+        return{
+            ECorrectness: ECorrectness
+        }
+    },
     components: {
         CCard,
         CCardBody
@@ -56,22 +61,19 @@ export default defineComponent({
             try {
                 if(this.isReportResult){
                     if(this.correctness === ECorrectness.CORRECT)
-                        result = `¡Enhorabuena! Has sumado ${this.pointsGotten} puntos.\n ¡Sigue así!`
+                        result = RESULT_CARD_STRINGS.REPORT_CORRECT.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, this.pointsGotten ? this.pointsGotten.toString() : "0");
 
                     else if(this.correctness === ECorrectness.PARTIALLY_CORRECT)
-                        result = `Has sumado ${this.pointsGotten} puntos, pero no te confíes. \n¡Sigamos mejorando!`
+                        result = RESULT_CARD_STRINGS.REPORT_P_CORRECT.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, this.pointsGotten ? this.pointsGotten.toString() : "0");
 
                     else
-                        result = "Esta vez no has sumado puntos, pero no desistas. \n¡Sigamos mejorando!";
+                        result = RESULT_CARD_STRINGS.REPORT_INCORRECT;
 
                 }
                 else{
-                    result = this.correctness === ECorrectness.CORRECT ? 
-                        `¡Enhorabuena! Se ha añadido ${QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_INCREASE} a tu multiplicador de puntuación.` 
-                        : 
-                        `Se ha restado ${QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_DEDUCTION} a tu multiplicador de puntuación.`;
-                }
-            }   
+                    result = this.correctness === ECorrectness.CORRECT ? RESULT_CARD_STRINGS.QUIZ_CORRECT : RESULT_CARD_STRINGS.QUIZ_INCORRECT;
+                }   
+            }
             catch (error) {
                 WriteLog("ResultCard.vue > Computed - message > Error computing the message, ERROR: " + error, LogLevel.ERROR);
             }
@@ -82,9 +84,9 @@ export default defineComponent({
             let result = "";
             try {
                 result = this.isReportResult ? 
-                    `Nueva puntuación: ${gameStore.state.points} pts.`
+                    RESULT_CARD_STRINGS.NEW_SCORE.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, gameStore.state.points.toString())
                     :
-                    `Nuevo multiplicador: x${gameStore.state.multiplier}.`
+                    RESULT_CARD_STRINGS.NEW_MULTIPLIER.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, gameStore.state.multiplier.toString())
             } 
             catch (error) {
                 WriteLog("ResultCard.vue > Computed - newScoreOrMultiplierMessage > ERROR: " + error, LogLevel.ERROR);
@@ -100,4 +102,4 @@ export default defineComponent({
 @import '@/css/card.css';
 @import '@/css/result-card.css';
 </style>
-@/utils/enums/enums
+@/utils/enums/enums@/assets/stringsESP

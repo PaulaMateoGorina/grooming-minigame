@@ -18,7 +18,7 @@ class Report {
         this.snippets = snippets ? snippets : [];
     }
 
-    getAnswerResult(isGrooming: boolean, selectGroomingSnippets: boolean, selectSnippetStages: boolean, stagesSelected: EStage[], maxPoints: number): number{
+    getAnswerResult(isGrooming: boolean, selectGroomingSnippets: boolean, selectSnippetStages: boolean, stagesSelected: EStage[]): number{
         let result = NUM_CONSTANTS.ZERO;
 
         try {
@@ -44,7 +44,7 @@ class Report {
             console.error(`Report.ts solveAndGetScore > ERROR: Error trying to get the points resulting of solving the report.`)
         }
 
-        return result * maxPoints;
+        return result;
     }
 }
 
