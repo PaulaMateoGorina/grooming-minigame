@@ -7,14 +7,17 @@ import DailyQuiz from './utils/model/DailyQuiz';
 import QuizManager from '@/utils/loaders/QuizManager';
 
 // Enums
-import { EStage } from '@/utils/enums'
+import { EStage, EGameStage } from '@/utils/enums'
 
 // Others
-import { NUM_CONSTANTS, QUIZ_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
+import { NUM_CONSTANTS, GAME_CONSTANTS, QUIZ_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
 import * as utils from '@/utils/utils'
 import { LogLevel, WriteLog } from '@/utils/logger'
 
 export interface GameState {
+  // Game stage
+  visibleGameStage: EGameStage,
+
   // Score
   multiplier: number,
   points: number,
@@ -32,6 +35,9 @@ export interface GameState {
 // Create a new store instance.
 export const gameStore = createStore({
   state: {
+    // Game stage visible:
+    visibleGameStage: EGameStage.REPORT, //TODO: Change to intiial page when everything is done
+
     // Score
     multiplier: NUM_CONSTANTS.ONE,
     points: 0,
@@ -51,6 +57,20 @@ export const gameStore = createStore({
 
     addScore(state: GameState, points: number){
       state.points += points;
+    },
+
+    //TODO: Do this better (when days are implemented)
+    changeStage(state: GameState, goToQuiz = false){
+      WriteLog(`From game stage: ${state.visibleGameStage}`, LogLevel.VERBOSE);
+
+      if(state.visibleGameStage === EGameStage.REPORT || state.visibleGameStage === EGameStage.DAILY_QUIZ){
+        state.visibleGameStage = EGameStage.RESULT;
+      }
+      else{
+        state.visibleGameStage = goToQuiz ? EGameStage.DAILY_QUIZ : (state.visibleGameStage + NUM_CONSTANTS.ONE) % GAME_CONSTANTS.NUM_STAGES;
+      }
+
+      WriteLog(`To game stage: ${state.visibleGameStage}`, LogLevel.VERBOSE);
     },
 
     changeMultiplier(state: GameState, shouldIncrease: boolean){

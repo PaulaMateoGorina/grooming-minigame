@@ -15,12 +15,12 @@
 }
 
 .report-buttons-container {
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 6%;
-    width: 650px;
+    width: 650px;;
+    bottom: 7%;
 }
 
 .report-button {
@@ -41,4 +41,16 @@
     font-size: 50px;
     margin-left: 21%;
     margin-right: 21%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s ease;
+    position: absolute;
+    top: 0%;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }

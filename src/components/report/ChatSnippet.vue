@@ -11,20 +11,24 @@
             </div>
 
             <!-- Floating text showing the stage selected -->
-            <div v-show="stage > 0" class="floating-text-wrapper">
-                {{selectedStageName}}
-            </div>
+            <Transition>
+                <div v-if="stage > 0" class="floating-text-wrapper">
+                    {{selectedStageName}}
+                </div>
+            </Transition>
         </div>
         
     </OnClickOutside>
     
     <!-- Stage selector -->
-    <div v-show="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
-    :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
-        <div class="stages-list-item" v-for="stage in stages" :key="stage[0]" @click="handleClickStage({name: stage[0], enumVal: stage[1]})">
-        {{ stage[1] }}: {{ stage[0] }}
+    <Transition>
+        <div v-if="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
+        :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
+            <div class="stages-list-item" v-for="stage in stages" :key="stage[0]" @click="handleClickStage({name: stage[0], enumVal: stage[1]})">
+            {{ stage[1] }}: {{ stage[0] }}
+            </div>
         </div>
-    </div>
+    </Transition>
 {{ chatSnippet?.stage }}
 </template>
   

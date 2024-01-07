@@ -20,7 +20,7 @@
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
             <div @click="changePage(true)" class="report-button next-button">&#8250;</div>
         </div>
-         
+        
         <ErrorModalComponent @closeModal="handleCloseModal" :visibility="solveReportErrorModalVisible" :message="'NO puedes marcar un informe como normal si tienes un snippet seleccionado.'"/>
     </div>
 </template>

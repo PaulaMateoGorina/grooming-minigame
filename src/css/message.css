@@ -147,3 +147,13 @@
 .stages-list-item:last-child {
     border-bottom: none;
 }
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.15s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}

@@ -5,6 +5,10 @@ export const NUM_CONSTANTS = {
     ONE: 1.0
 };
 
+export const GAME_CONSTANTS = {
+    NUM_STAGES: 4
+}
+
 export const STAGE_CONSTANTS = {
     NORMAL_SNIPPET_STAGE_VAL: -1,
     NUM_GROOMING_STAGES: 5

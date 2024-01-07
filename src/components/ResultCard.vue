@@ -24,6 +24,7 @@
 
                 <p class="medium-big-text accepts-new-line">{{ message }}</p>
                 
+                <div class="my-button card-button" @click="handleContinue">{{ RESULT_CARD_STRINGS.CONTINUE }}</div>
             </div>
         </CCardBody>
     </CCard>
@@ -33,7 +34,7 @@
 import { defineComponent } from 'vue'
 import { CCard, CCardBody} from '@coreui/vue'
 
-import {gameStore} from '@/gameStore'
+import { gameStore } from '@/gameStore'
 import { WriteLog, LogLevel } from '@/utils/logger'
 
 import { ECorrectness } from '@/utils/enums';
@@ -43,7 +44,8 @@ export default defineComponent({
     name: 'ResultCardComponent',
     data(){
         return{
-            ECorrectness: ECorrectness
+            ECorrectness: ECorrectness,
+            RESULT_CARD_STRINGS: RESULT_CARD_STRINGS
         }
     },
     components: {
@@ -54,6 +56,11 @@ export default defineComponent({
         isReportResult: Boolean,
         correctness: Number,
         pointsGotten: Number
+    },
+    methods:{
+        handleContinue(){
+            gameStore.commit('changeStage', this.isReportResult);
+        }
     },
     computed: {
         message(){

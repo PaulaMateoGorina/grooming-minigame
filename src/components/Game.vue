@@ -1,17 +1,45 @@
 <template>
   <div class="game">
-    <div>
-      <ReportComponent @solveReport="handleSolveReport"/>
+    <!-- Narration -->
+    <Transition name="slide-fade">
+      <div v-if="curGameStage === EGameStage.NARRATION">
+        HERE WOULD BE THE NARRATION
+        <div @click="next">CLICKME</div>
+      </div>
+    </Transition>
+
     
-      <div class="info">
+    <!-- Report -->
+    <Transition name="fade">
+      <div v-if="curGameStage === EGameStage.REPORT">
+        <ReportComponent @solveReport="handleSolveReport"/>
+      </div>
+    </Transition>
+
+    <Transition name="slide-fade">
+      <div v-if="curGameStage === EGameStage.REPORT" class="info">
         <p class="info-text">Puntuación: {{points}} pts</p>
         <p class="info-text">Informes restantes: X / X</p>
       </div>
-    </div>
+    </Transition>
 
-    <DailyQuizCardComponent v-if="true == false" @solveDailyQuiz="handleSolveDailyQuiz"/>
-
-    <ResultCardComponent v-if="true == false" :isReportResult="true" :correctness="correctness" :pointsGotten="pointsGotten"/>
+    <!-- Daily quiz -->
+    <Transition name="slide-fade">
+      <DailyQuizCardComponent 
+        v-if="curGameStage === EGameStage.DAILY_QUIZ" 
+        @solveDailyQuiz="handleSolveDailyQuiz"
+      />
+    </Transition>
+    
+    <!-- Result -->
+    <Transition name="slide-fade">
+      <ResultCardComponent 
+        v-if="curGameStage === EGameStage.RESULT" 
+        :isReportResult="pointsGotten >= 0" 
+        :correctness="correctness" 
+        :pointsGotten="pointsGotten"
+      />
+    </Transition>
 
   </div>
 </template>
@@ -22,10 +50,10 @@ import ReportComponent from '@/components/report/ChatReport.vue'
 import DailyQuizCardComponent from '@/components/DailyQuizCard.vue'
 import ResultCardComponent from '@/components/ResultCard.vue'
 
-import {GameState, gameStore} from '@/gameStore'
+import { GameState, gameStore } from '@/gameStore'
 
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
-import { ECorrectness } from '@/utils/enums';
+import { ECorrectness, EGameStage } from '@/utils/enums';
 
 export default defineComponent({
   name: 'GameComponent',
@@ -36,8 +64,9 @@ export default defineComponent({
   },
   data() {
     return{
-      pointsGotten: 0,
-      correctness: ECorrectness.INCORRECT
+      pointsGotten: NUM_CONSTANTS.NEG,
+      correctness: ECorrectness.INCORRECT,
+      EGameStage: EGameStage,
     }
   },
   methods: {
@@ -60,6 +89,11 @@ export default defineComponent({
       
       gameStore.commit('addScore', score);
       gameStore.commit('changeReport');
+      gameStore.commit('changeStage');
+    },
+
+    next(){
+      gameStore.commit('changeStage');
     },
 
     handleSolveDailyQuiz(optionSelected: number){
@@ -71,9 +105,12 @@ export default defineComponent({
         wasCorrect = curState.curDailyQuiz.getAnswerResult(optionSelected);
       
       this.correctness = wasCorrect ? ECorrectness.CORRECT : ECorrectness.INCORRECT;
+      this.pointsGotten = NUM_CONSTANTS.NEG;
 
       gameStore.commit('changeMultiplier', wasCorrect);
       gameStore.commit('changeDailyQuiz');
+      gameStore.commit('changeStage');
+      
     }
   },
   created() {
@@ -86,6 +123,9 @@ export default defineComponent({
     },
     isGrooming(){
       return gameStore.state.curReport ?  gameStore.state.curReport.isGrooming : false;
+    },
+    curGameStage(){
+      return gameStore.state.visibleGameStage;
     }
   }
 });

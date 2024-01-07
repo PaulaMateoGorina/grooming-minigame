@@ -2,10 +2,9 @@
     --primary: #8aa6e4;
 }
 
-body, html {
+body {
     overflow: hidden;
-  }
-  
+}
 
 .game {
     display: flex;
@@ -29,3 +28,33 @@ body, html {
 .info-text{
     margin: 5px;
 }
+
+/* Transitions */
+
+/* we will explain what these classes do next! */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0%;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.slide-fade-enter-active {
+    transition: all 0.5s;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.5s;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+}
+

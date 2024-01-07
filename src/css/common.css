@@ -19,7 +19,8 @@
 }
 
 .accepts-new-line{
-    white-space: pre
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .non-selectable-text{

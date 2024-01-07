@@ -16,5 +16,5 @@ export const RESULT_CARD_STRINGS = {
     QUIZ_CORRECT: "¡Enhorabuena! Se ha añadido 0.5 a tu multiplicador de puntuación.", //TODO: Change this if the increase / deduct change
     QUIZ_INCORRECT: "Se ha reastado 0.1 a tu multiplicador de puntuación.",
     NEW_SCORE: "Nueva puntuación: YYY pts",
-    NEW_MULTIPLIER: "Nuevo multiplicador: xYYY"
-};
+    NEW_MULTIPLIER: "Nuevo multiplicador: xYYY",
+    CONTINUE: "Continuar"};
