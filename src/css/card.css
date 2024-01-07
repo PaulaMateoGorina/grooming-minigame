@@ -2,7 +2,17 @@
     --primary: #8aa6e4;
 }
 
-.quiz-card{
+.time-circle{
+    width: 65px;
+    height: 65px;
+    border: 2px solid;
+    border-color: var(--primary);
+    margin: 10px auto 10px auto;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card{
     position: absolute;
     transform: translate(-50%, -50%);
     top: 45%;
@@ -14,23 +24,13 @@
     border-color: var(--primary);
 }
 
-.quiz-body{
+.card-body{
     display:flex;
     align-items:flex-start;
     justify-content: center;
 }
 
-.time-circle{
-    width: 65px;
-    height: 65px;
-    border: 2px solid;
-    border-color: var(--primary);
-    margin: 10px auto 10px auto;
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.quiz-option{
+.card-button{
     border-radius: 10px;
     border-color: var(--primary);
     color: #5873ad;
@@ -41,7 +41,7 @@
     transition: 0.2s;
 }
 
-.quiz-option:hover {
+.card-button:hover {
     background-color: var(--primary);
     color: #374253;
     font-weight: 600;

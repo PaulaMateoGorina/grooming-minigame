@@ -1,13 +1,13 @@
 <template>
-    <CCard class="text-center quiz-card">
-        <CCardBody class="quiz-body">
+    <CCard class="text-center card">
+        <CCardBody class="card-body">
             <div class="non-selectable-text">
                 <p class="big-text">¡Hora de poner a prueba lo aprendido!</p>
                 <div class="circle time-circle">{{ timeRemaining }}</div>
                 <p class="medium-big-text">Pregunta</p>
                 
                 <div v-for="idx in numOptions" :key="idx">
-                    <div class="my-button quiz-option" @click="sendSolveDailyQuiz(idx - 1)">{{ options[idx - 1] }}</div>
+                    <div class="my-button card-button" @click="sendSolveDailyQuiz(idx - 1)">{{ options[idx - 1] }}</div>
                 </div>
             </div>
         </CCardBody>
@@ -33,20 +33,32 @@ export default defineComponent({
     data(){
         return{
             timeRemaining: QUIZ_CONSTANTS.TIME_TO_SOLVE,
+            active: false
         }
     },
 
     mounted (){
-        this.countdownTimer()
+        this.active = true;
+        this.timeRemaining = QUIZ_CONSTANTS.TIME_TO_SOLVE;
+        this.countdownTimer();
+    },
+
+    unmounted(){
+        this.active = false;
     },
 
     methods: {
         countdownTimer(){
-            if (this.timeRemaining > 0){
-                setTimeout( () => {
-                    this.timeRemaining -= 1;
-                    this.countdownTimer()
-                }, 1000)
+            if (this.active){
+                if(this.timeRemaining > 0){
+                    setTimeout( () => {
+                        this.timeRemaining -= 1;
+                        this.countdownTimer()
+                    }, 1000)
+                }
+                else{
+                    this.sendSolveDailyQuiz(NUM_CONSTANTS.NEG);
+                }
             }
         },
 
@@ -70,11 +82,11 @@ export default defineComponent({
             const dailyQuiz = gameStore.state.curDailyQuiz;
             return dailyQuiz ? dailyQuiz.numOptions : NUM_CONSTANTS.ZERO;
         }
-    },
+    }
 })
 </script>
 
 <style scoped>
 @import '@/css/common.css';
-@import '@/css/quiz.css';
+@import '@/css/card.css';
 </style>
