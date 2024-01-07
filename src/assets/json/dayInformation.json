@@ -1,0 +1,9 @@
+[
+    {
+        "numDay": 1,
+        "numReports": 3,
+        "selectSnippets": true,
+        "selectSnippetReason": true,
+        "probabilities": [0.5]
+    }
+]
