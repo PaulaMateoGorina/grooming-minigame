@@ -1,8 +1,7 @@
 import Snippet from './Snippet'
 import Profile from './Profile'
-import EStage from '@/utils/enums/EStage'
+import { EStage, ECorrectness } from '@/utils/enums'
 import { NUM_CONSTANTS } from '@/utils/constants'
-import ECorrectness from '@/utils/enums/ECorrectness'
 
 class Report {
     public isGrooming: boolean;

@@ -2,6 +2,10 @@
     --primary: #8aa6e4;
 }
 
+body, html {
+    overflow: hidden;
+  }
+  
 
 .game {
     display: flex;

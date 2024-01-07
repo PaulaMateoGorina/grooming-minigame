@@ -1,8 +1,7 @@
 import Message from './Message'
-import EStage from '@/utils/enums/EStage'
 
 import { NUM_CONSTANTS } from '@/utils/constants'
-import ECorrectness from '@/utils/enums/ECorrectness'
+import { EStage, ECorrectness } from '@/utils/enums'
 import { LogLevel, WriteLog } from '../logger';
 
 class Snippet {

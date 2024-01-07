@@ -35,7 +35,7 @@ import { gameStore } from '@/gameStore'
 import { LogLevel, WriteLog } from '@/utils/logger'
 
 import Snippet from '@/utils/model/Snippet'
-import EStage from '@/utils/enums/EStage'
+import { EStage } from '@/utils/enums'
 
 //external imports
 import { OnClickOutside } from '@vueuse/components'

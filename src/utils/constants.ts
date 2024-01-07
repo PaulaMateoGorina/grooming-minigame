@@ -9,7 +9,7 @@ export const STAGE_CONSTANTS = {
     NORMAL_SNIPPET_STAGE_VAL: -1,
     NUM_GROOMING_STAGES: 5
 };
-  
+
 export const REPORT_CONSTANTS = {
     // Page related
     NUM_REPORT_PAGES_SINGLE: 2,

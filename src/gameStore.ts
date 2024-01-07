@@ -7,7 +7,7 @@ import DailyQuiz from './utils/model/DailyQuiz';
 import QuizManager from '@/utils/loaders/QuizManager';
 
 // Enums
-import EStage from '@/utils/enums/EStage'
+import { EStage } from '@/utils/enums'
 
 // Others
 import { NUM_CONSTANTS, QUIZ_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'

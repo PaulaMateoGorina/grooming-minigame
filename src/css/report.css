@@ -12,7 +12,6 @@
     border: 2px solid;
     border-color: var(--primary);
     box-shadow: 12.5px 12.5px 10px rgb(223, 228, 238);
-    overflow: hidden;
 }
 
 .report-buttons-container {

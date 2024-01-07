@@ -37,7 +37,7 @@ import {gameStore} from '@/gameStore'
 import { WriteLog, LogLevel } from '@/utils/logger'
 
 import { QUIZ_CONSTANTS } from '@/utils/constants'
-import ECorrectness from '@/utils/enums/ECorrectness';
+import { ECorrectness } from '@/utils/enums';
 
 export default defineComponent({
     name: 'ResultCardComponent',
@@ -100,3 +100,4 @@ export default defineComponent({
 @import '@/css/card.css';
 @import '@/css/result-card.css';
 </style>
+@/utils/enums/enums

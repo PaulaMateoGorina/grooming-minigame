@@ -7,7 +7,7 @@ import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'
 import Message from '@/utils/model/Message'
 import Report from '@/utils/model/Report'
-import EStageIdx from '@/utils/enums/EStageIdx'
+import { EStageIdx } from '@/utils/enums'
 import { NUM_CONSTANTS, STAGE_CONSTANTS, REPORT_CONSTANTS, PROFILE_CONSTANTS, FRIENDSHIP_TIME_CONSTANTS } from '@/utils/constants'
 import { LogLevel, WriteLog } from '../logger'
 
