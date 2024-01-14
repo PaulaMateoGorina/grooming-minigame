@@ -1,0 +1,62 @@
+.starting-screen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/starting-screen.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#game-title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 70vw;
+    height: 70vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+#game-title{
+    font-weight: 700;
+    font-size: 75px;
+}
+
+#game-subtitle{
+    font-weight: 500;
+    font-size: 40px;
+}
+
+#start-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30vw;
+    height: 10vh;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    border: 5px solid;
+    border-radius: 10px;
+    
+    margin-top: 25px;
+    padding-bottom: 10px;
+
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    border-color: #374253;
+    background-color: #374253;
+    color: #d9d8d8;
+    font-weight: 600;
+}

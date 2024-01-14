@@ -42,7 +42,7 @@ class DayManager{
 
     // #region methods to load data
     private loadDays(): void{
-        WriteLog(`DayManager.ts > loadDays > START`, LogLevel.INFO);   
+        WriteLog(`DayManager.ts > loadDays > START`, LogLevel.VERBOSE);   
         try{
             const jsonDays = dayInformationJson as {numDay: number; numReports: number; selectSnippets: boolean; selectSnippetReason: boolean; probabilities: number[]}[];
             for(const jsonDay of jsonDays){
@@ -60,7 +60,7 @@ class DayManager{
         catch (error) {
             WriteLog(`DayManager.ts > loadDays > ERROR loading the day information and creating the days. #ERROR: ${error}`, LogLevel.ERROR);   
         }
-        WriteLog(`DayManager.ts > loadDays > END`, LogLevel.INFO);   
+        WriteLog(`DayManager.ts > loadDays > END`, LogLevel.VERBOSE);   
     }
     // #endregion
 

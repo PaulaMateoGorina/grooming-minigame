@@ -282,7 +282,7 @@ class ReportManager{
 
     //TODO: Adapt so that you can choose to have it with or without snippets, prolly needs more parameters
     public generateReport(isGrooming: boolean): Report | undefined{
-        WriteLog("generateReport > Start", LogLevel.INFO);
+        WriteLog("generateReport > Start", LogLevel.VERBOSE);
 
         let result: Report | undefined = undefined;
 
@@ -314,7 +314,7 @@ class ReportManager{
         } catch (error) {
             WriteLog(`ReportManager.ts > generateReport > ERROR generating a report. #ERROR: ${error}`, LogLevel.ERROR);   
         }
-        WriteLog("generateReport > END", LogLevel.INFO);
+        WriteLog("generateReport > END", LogLevel.VERBOSE);
         return result;
     }
     // #endregion

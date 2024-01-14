@@ -58,7 +58,7 @@ export interface GameState {
 export const gameStore = createStore({
   state: {
     // Game stage visible:
-    visibleGameStage: EGameStage.REPORT, //TODO: Change to intiial page when everything is done
+    visibleGameStage: EGameStage.GAME_START, //TODO: Change to intiial page when everything is done
 
     // Tracking
     curDayIdx: 0,
@@ -86,7 +86,7 @@ export const gameStore = createStore({
     initialize(state:GameState){
       WriteLog("gameStore.ts > Initializing gameStore", LogLevel.INFO);
       try {
-        state.visibleGameStage = EGameStage.REPORT; //TODO: Change to initial page when everything is done
+        state.visibleGameStage = EGameStage.GAME_START; //TODO: Change to initial page when everything is done
 
         state.curDayIdx = 0;
         
@@ -132,7 +132,10 @@ export const gameStore = createStore({
     changeStage(state: GameState, fromReport = false){
       WriteLog(`From game stage: ${state.visibleGameStage}`, LogLevel.VERBOSE);
 
-      if(state.visibleGameStage === EGameStage.REPORT || state.visibleGameStage === EGameStage.DAILY_QUIZ){
+      if(state.visibleGameStage === EGameStage.GAME_START){
+        state.visibleGameStage = EGameStage.NARRATION;
+      }
+      else if(state.visibleGameStage === EGameStage.REPORT || state.visibleGameStage === EGameStage.DAILY_QUIZ){
         state.visibleGameStage = EGameStage.RESULT;
       }
       else{

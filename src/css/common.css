@@ -29,6 +29,7 @@
 }
 
 .my-button{
+    border-radius: 10px;
     border: 2px solid;
     font-weight: 600;
 }

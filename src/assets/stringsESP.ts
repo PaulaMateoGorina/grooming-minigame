@@ -1,3 +1,9 @@
+export const GENERAL_STRINGS = {
+    GAME_TITLE: "Online Grooming Minigame",
+    GAME_SUBTITLE: "Y tú, ¿Sabrías reconocerlo?",
+    START: "Comenzar a jugar"
+}
+
 export const PROFILE_STRINGS = {
     USERNAME: "Username:",
     ONLINE_AGE: "Edad online:",
@@ -17,4 +23,5 @@ export const RESULT_CARD_STRINGS = {
     QUIZ_INCORRECT: "Se ha reastado 0.1 a tu multiplicador de puntuación.",
     NEW_SCORE: "Nueva puntuación: YYY pts",
     NEW_MULTIPLIER: "Nuevo multiplicador: xYYY",
-    CONTINUE: "Continuar"};
+    CONTINUE: "Continuar"
+};

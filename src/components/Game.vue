@@ -1,15 +1,12 @@
 <template>
   <div class="game">
-     <!-- Start Game -->
-     <Transition name="slide-fade">
-      <div v-if="curGameStage === EGameStage.GAME_START">
-        HERE WOULD BE THE FIRST
-        <div @click="next">CLICKME</div>
-      </div>
+    <!-- Start Game -->
+    <Transition name="fade">
+      <StartingScreenComponent v-if="curGameStage === EGameStage.GAME_START"/>
     </Transition>
 
     <!-- Narration -->
-    <Transition name="slide-fade">
+    <Transition name="fade">
       <div v-if="curGameStage === EGameStage.NARRATION">
         HERE WOULD BE THE NARRATION
         <div @click="next">CLICKME</div>
@@ -19,9 +16,7 @@
     
     <!-- Report -->
     <Transition name="fade">
-      <div v-if="curGameStage === EGameStage.REPORT">
-        <ReportComponent @solveReport="handleSolveReport"/>
-      </div>
+      <ReportComponent @solveReport="handleSolveReport" v-if="curGameStage === EGameStage.REPORT"/>
     </Transition>
 
     <Transition name="slide-fade">
@@ -62,6 +57,7 @@
   
 <script lang="ts">
 import { defineComponent } from 'vue';
+import StartingScreenComponent from '@/components/StartingScreen.vue'
 import ReportComponent from '@/components/report/ChatReport.vue'
 import DailyQuizCardComponent from '@/components/DailyQuizCard.vue'
 import ResultCardComponent from '@/components/ResultCard.vue'
@@ -74,6 +70,7 @@ import { ECorrectness, EGameStage } from '@/utils/enums';
 export default defineComponent({
   name: 'GameComponent',
   components: {
+    StartingScreenComponent,
     ReportComponent,
     DailyQuizCardComponent,
     ResultCardComponent

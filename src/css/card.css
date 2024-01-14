@@ -31,7 +31,6 @@
 }
 
 .card-button{
-    border-radius: 10px;
     border-color: var(--primary);
     color: #5873ad;
     margin-bottom: 15px;

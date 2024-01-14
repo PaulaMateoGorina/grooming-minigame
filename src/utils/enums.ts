@@ -22,10 +22,10 @@ export enum EStageIdx{
 }
 
 export enum EGameStage{
-    GAME_START = -1,
     NARRATION,
     REPORT,
     DAILY_QUIZ,
     RESULT,
+    GAME_START,
     GAME_FINISHED,
 }
