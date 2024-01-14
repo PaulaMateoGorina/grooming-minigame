@@ -1,8 +1,4 @@
-.starting-screen{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+#title-screen-background{
     width: 100vw;
     height: 100vh;
 
@@ -11,33 +7,41 @@
     background-size: cover;
 }
 
-#game-title-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+.title-screen-container{
     width: 70vw;
     height: 70vh;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
 }
 
-#game-title{
+.game-title{
     font-weight: 700;
     font-size: 75px;
+    margin-bottom: -5px;
 }
 
-#game-subtitle{
+.divisor{
+    width: 60em;
+    height: 0.5em;
+    background-color: #374253;
+    margin-bottom: 2em;
+}
+
+.game-subtitle{
     font-weight: 500;
     font-size: 40px;
+    margin-bottom: 1em;
 }
 
-#start-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.title-screen-points{
+    color: green;
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: -1em;
+    margin-bottom: 1em;
+}
 
+.title-screen-button{
     width: 30vw;
     height: 10vh;
 
@@ -48,15 +52,34 @@
     border-radius: 10px;
     
     margin-top: 25px;
-    padding-bottom: 10px;
 
     transition: 0.2s;
     cursor: pointer;
 }
 
-#start-button:hover {
+.title-screen-button:hover {
     border-color: #374253;
     background-color: #374253;
     color: #d9d8d8;
     font-weight: 600;
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+    50% {
+		opacity: 0.75;
+	}
+	100% {
+		opacity: 1;
+	}
 }

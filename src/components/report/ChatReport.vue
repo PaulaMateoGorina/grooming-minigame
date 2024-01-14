@@ -1,5 +1,5 @@
 <template>
-    <div class="report">
+    <div class="report flex-center-aligned">
         <div v-if="currentPage === 0">
             <ProfilesPageComponent v-if="user1 && user2 && friendshipTime" 
                 :user1="user1" :user2="user2" :friendshipTime="friendshipTime" 
@@ -14,7 +14,7 @@
             <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
         </div>
         
-        <div class="report-buttons-container non-selectable-text">
+        <div class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
             <div @click="changePage(false)" class="report-button prev-button">&#8249;</div>
             <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>

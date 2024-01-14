@@ -1,5 +1,5 @@
 <template>
-    <div class="profile-page">
+    <div class="flex-center-aligned flex-column">
         <ProfileComponent :user="user1"/>
         <ProfileComponent :user="user2"/>
         <p>Han sido amigos por: {{ friendshipTime![2] }} años, {{ friendshipTime![1] }} meses y {{ friendshipTime![0] }} días</p>

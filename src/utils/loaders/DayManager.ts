@@ -14,6 +14,11 @@ class DayManager{
 
     constructor(){
         this.days = [];
+        this.numDays = 0;
+    }
+
+    public resetDays(): void{
+        this.days = [];
         this.loadDays();
         this.numDays = this.days.length;
     }

@@ -3,9 +3,6 @@
 }
 
 .report {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 90vh;
     width: 600px;
     margin-top: 20px;
@@ -16,9 +13,6 @@
 
 .report-buttons-container {
     position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 650px;;
     bottom: 7%;
 }

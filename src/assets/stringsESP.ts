@@ -1,7 +1,11 @@
 export const GENERAL_STRINGS = {
+    NUM_PLACEHOLDER: "YYY",
     GAME_TITLE: "Online Grooming Minigame",
     GAME_SUBTITLE: "Y tú, ¿Sabrías reconocerlo?",
-    START: "Comenzar a jugar"
+    START: "Comenzar a jugar",
+    END_TITLE: "¡Has completado el juego!",
+    END_PTS_TEXT: "Tu puntuación total es de:",
+    PLAY_AGAIN: "Volver a jugar"
 }
 
 export const PROFILE_STRINGS = {

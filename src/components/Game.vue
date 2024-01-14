@@ -1,8 +1,8 @@
 <template>
-  <div class="game">
-    <!-- Start Game -->
+  <div class="game flex-center-aligned">
+    <!-- Start / End Game -->
     <Transition name="fade">
-      <StartingScreenComponent v-if="curGameStage === EGameStage.GAME_START"/>
+      <TitleScreenComponent v-if="curGameStage === EGameStage.GAME_START || curGameStage === EGameStage.GAME_FINISHED" :isStart="curGameStage === EGameStage.GAME_START"/>
     </Transition>
 
     <!-- Narration -->
@@ -43,21 +43,12 @@
         :pointsGotten="pointsGotten"
       />
     </Transition>
-
-    <!-- End Game -->
-    <Transition name="slide-fade">
-      <div v-if="curGameStage === EGameStage.GAME_FINISHED">
-        GAME FINISHED
-        <div @click="next">CLICKME</div>
-      </div>
-    </Transition>
-
   </div>
 </template>
   
 <script lang="ts">
 import { defineComponent } from 'vue';
-import StartingScreenComponent from '@/components/StartingScreen.vue'
+import TitleScreenComponent from '@/components/TitleScreen.vue'
 import ReportComponent from '@/components/report/ChatReport.vue'
 import DailyQuizCardComponent from '@/components/DailyQuizCard.vue'
 import ResultCardComponent from '@/components/ResultCard.vue'
@@ -70,10 +61,10 @@ import { ECorrectness, EGameStage } from '@/utils/enums';
 export default defineComponent({
   name: 'GameComponent',
   components: {
-    StartingScreenComponent,
+    TitleScreenComponent,
     ReportComponent,
     DailyQuizCardComponent,
-    ResultCardComponent
+    ResultCardComponent,
   },
   data() {
     return{

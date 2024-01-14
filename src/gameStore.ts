@@ -28,6 +28,10 @@ function commitChangeStage(toDailyQuiz: boolean){
   gameStore.commit('changeStage', toDailyQuiz);
 }
 
+function commitNewGame(){
+  gameStore.commit('newGame');
+}
+
 export interface GameState {
   // Game stage
   visibleGameStage: EGameStage,
@@ -58,7 +62,7 @@ export interface GameState {
 export const gameStore = createStore({
   state: {
     // Game stage visible:
-    visibleGameStage: EGameStage.GAME_START, //TODO: Change to intiial page when everything is done
+    visibleGameStage: EGameStage.GAME_FINISHED, //TODO: Change to intiial page when everything is done
 
     // Tracking
     curDayIdx: 0,
@@ -83,21 +87,27 @@ export const gameStore = createStore({
   } as GameState,
 
   mutations: {
-    initialize(state:GameState){
+    initialize(){
       WriteLog("gameStore.ts > Initializing gameStore", LogLevel.INFO);
       try {
-        state.visibleGameStage = EGameStage.GAME_START; //TODO: Change to initial page when everything is done
-
-        state.curDayIdx = 0;
-        
-        state.points = NUM_CONSTANTS.ZERO;
-        state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
-
-        commitNewDay();
+        commitNewGame();
       } 
       catch (error) {
         WriteLog("gameStore.ts > initialize > Error initializing the game store. #ERROR: " + error, LogLevel.ERROR);
       }
+    },
+
+    newGame(state: GameState){
+      WriteLog("gameStore.ts > newGame", LogLevel.INFO);
+      DayManager.getInstance().resetDays();
+      state.visibleGameStage = EGameStage.GAME_START; //TODO: Change to initial page when everything is done
+
+      state.curDayIdx = 0;
+      
+      state.points = NUM_CONSTANTS.ZERO;
+      state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
+
+      commitNewDay();
     },
 
     newDay(state: GameState){
@@ -128,7 +138,6 @@ export const gameStore = createStore({
       }
     },
 
-    //TODO: Do this better (when days are implemented)
     changeStage(state: GameState, fromReport = false){
       WriteLog(`From game stage: ${state.visibleGameStage}`, LogLevel.VERBOSE);
 
@@ -166,7 +175,7 @@ export const gameStore = createStore({
         commitNewDay();
       }
       else{
-        //TODO: change this to go to the final screen
+        state.visibleGameStage = EGameStage.GAME_FINISHED
         WriteLog("Game finished.", LogLevel.INFO);
       }
     },
