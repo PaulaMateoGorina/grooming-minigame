@@ -3,7 +3,6 @@ import dayInformationJson from '@/assets/json/dayInformation.json'
 
 import Day from '@/utils/model/Day'
 
-import * as utils from '../utils'
 import { LogLevel, WriteLog } from '../logger'
 import { NUM_CONSTANTS } from '../constants'
 
@@ -43,6 +42,7 @@ class DayManager{
 
     // #region methods to load data
     private loadDays(): void{
+        WriteLog(`DayManager.ts > loadDays > START`, LogLevel.INFO);   
         try{
             const jsonDays = dayInformationJson as {numDay: number; numReports: number; selectSnippets: boolean; selectSnippetReason: boolean; probabilities: number[]}[];
             for(const jsonDay of jsonDays){
@@ -55,11 +55,12 @@ class DayManager{
                     this.days.push(day);
                 }
             }
-
+            
         }
         catch (error) {
             WriteLog(`DayManager.ts > loadDays > ERROR loading the day information and creating the days. #ERROR: ${error}`, LogLevel.ERROR);   
         }
+        WriteLog(`DayManager.ts > loadDays > END`, LogLevel.INFO);   
     }
     // #endregion
 
@@ -79,6 +80,10 @@ class DayManager{
         }
 
         return result;
+    }
+
+    public getNumDays():number{
+        return this.numDays;
     }
     // #endregion
 }

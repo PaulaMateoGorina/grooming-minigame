@@ -26,5 +26,6 @@ export enum EGameStage{
     NARRATION,
     REPORT,
     DAILY_QUIZ,
-    RESULT
+    RESULT,
+    GAME_FINISHED,
 }

@@ -5,5 +5,12 @@
         "selectSnippets": true,
         "selectSnippetReason": true,
         "probabilities": [0.5]
+    },
+    {
+        "numDay": 2,
+        "numReports": 2,
+        "selectSnippets": false,
+        "selectSnippetReason": false,
+        "probabilities": [0.5]
     }
 ]

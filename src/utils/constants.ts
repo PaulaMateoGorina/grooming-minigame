@@ -6,7 +6,8 @@ export const NUM_CONSTANTS = {
 };
 
 export const GAME_CONSTANTS = {
-    NUM_STAGES: 4
+    INITIAL_MULTIPLIER: 1.5,
+    NUM_PLAYING_STAGES: 4
 }
 
 export const STAGE_CONSTANTS = {

@@ -309,11 +309,12 @@ class ReportManager{
             if(snippets.length > NUM_CONSTANTS.ZERO)
                 result = new Report(isGrooming, profile1Nullable, profile1Nullable2, friendshipTime, snippets);
             else
-                throw("The snippets array was empty.");
+                throw("The snippets array was empty.");            
 
         } catch (error) {
             WriteLog(`ReportManager.ts > generateReport > ERROR generating a report. #ERROR: ${error}`, LogLevel.ERROR);   
         }
+        WriteLog("generateReport > END", LogLevel.INFO);
         return result;
     }
     // #endregion

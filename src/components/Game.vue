@@ -1,5 +1,13 @@
 <template>
   <div class="game">
+     <!-- Start Game -->
+     <Transition name="slide-fade">
+      <div v-if="curGameStage === EGameStage.GAME_START">
+        HERE WOULD BE THE FIRST
+        <div @click="next">CLICKME</div>
+      </div>
+    </Transition>
+
     <!-- Narration -->
     <Transition name="slide-fade">
       <div v-if="curGameStage === EGameStage.NARRATION">
@@ -39,6 +47,14 @@
         :correctness="correctness" 
         :pointsGotten="pointsGotten"
       />
+    </Transition>
+
+    <!-- End Game -->
+    <Transition name="slide-fade">
+      <div v-if="curGameStage === EGameStage.GAME_FINISHED">
+        GAME FINISHED
+        <div @click="next">CLICKME</div>
+      </div>
     </Transition>
 
   </div>
@@ -89,7 +105,6 @@ export default defineComponent({
       
       gameStore.commit('addScore', score);
       gameStore.commit('changeReport');
-      gameStore.commit('changeStage');
     },
 
     next(){
@@ -108,14 +123,12 @@ export default defineComponent({
       this.pointsGotten = NUM_CONSTANTS.NEG;
 
       gameStore.commit('changeMultiplier', wasCorrect);
-      gameStore.commit('changeDailyQuiz');
       gameStore.commit('changeStage');
       
     }
   },
   created() {
-    gameStore.commit('changeReport');
-    gameStore.commit('changeDailyQuiz');
+    gameStore.commit('initialize');
   },
   computed : {
     points(){
