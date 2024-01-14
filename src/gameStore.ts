@@ -118,6 +118,8 @@ export const gameStore = createStore({
         
         state.curReportIdx = 0;
         const curReport: Report | undefined = curDay.reports[state.curReportIdx];
+        state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
+
         if(curDay === undefined){
           throw new Error("Error when fetching the first report of the day.");
         }

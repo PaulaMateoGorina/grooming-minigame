@@ -24,8 +24,8 @@
 
     <Transition name="slide-fade">
       <div v-if="curGameStage === EGameStage.REPORT" class="info">
-        <p class="info-text">Puntuación: {{points}} pts</p>
-        <p class="info-text">Informes restantes: X / X</p>
+        <p class="info-text">{{pointsText}}</p>
+        <p class="info-text">{{reportsRemainingText}}</p>
       </div>
     </Transition>
 
@@ -57,6 +57,7 @@ import DailyQuizCardComponent from '@/components/DailyQuizCard.vue'
 import ResultCardComponent from '@/components/ResultCard.vue'
 
 import { GameState, gameStore } from '@/gameStore'
+import { GENERAL_STRINGS } from '@/assets/stringsESP';
 
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
 import { ECorrectness, EGameStage } from '@/utils/enums';
@@ -122,8 +123,16 @@ export default defineComponent({
     gameStore.commit('initialize');
   },
   computed : {
-    points(){
-      return gameStore.state.points;
+    pointsText(){
+      return GENERAL_STRINGS.POINTS_INFO.replace(GENERAL_STRINGS.NUM_PLACEHOLDER, gameStore.state.points.toString());
+    },
+    reportsRemainingText(){
+      // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
+      const totalNumReports = gameStore.state.curDay!.numReports;
+      const reportsDone = gameStore.state.curReportIdx;
+      let message =  GENERAL_STRINGS.REPORTS_REMAINING.replace(GENERAL_STRINGS.NUM_PLACEHOLDER, reportsDone.toString());
+      return message.replace(GENERAL_STRINGS.NUM_PLACEHOLDER_2, totalNumReports.toString());
+
     },
     isGrooming(){
       return gameStore.state.curReport ?  gameStore.state.curReport.isGrooming : false;

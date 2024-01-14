@@ -1,5 +1,8 @@
 export const GENERAL_STRINGS = {
     NUM_PLACEHOLDER: "YYY",
+    NUM_PLACEHOLDER_2: "XXX",
+    POINTS_INFO: "Puntuación: YYY pts",
+    REPORTS_REMAINING: "Informes realizados: YYY / XXX",
     GAME_TITLE: "Online Grooming Minigame",
     GAME_SUBTITLE: "Y tú, ¿Sabrías reconocerlo?",
     START: "Comenzar a jugar",
