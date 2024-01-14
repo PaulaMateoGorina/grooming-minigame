@@ -2,7 +2,7 @@
     <div id="title-screen-background" class="flex-center-aligned">
         <div class="title-screen-container flex-center-aligned flex-column">
                 <!-- Starting screen -->
-            <div v-if="isStart" class="fade-in flex-center-aligned flex-column">
+            <div v-if="isStart" class="fade-in flex-center-aligned flex-column non-selectable-text">
                 <p class="game-title">{{GENERAL_STRINGS.GAME_TITLE}}</p>
                 <div class="divisor"/>
                 <p class="game-subtitle">{{GENERAL_STRINGS.GAME_SUBTITLE}}</p>

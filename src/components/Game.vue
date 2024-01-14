@@ -9,13 +9,7 @@
     </Transition>
 
     <!-- Narration -->
-    <Transition name="fade">
-      <div v-if="curGameStage === EGameStage.NARRATION">
-        HERE WOULD BE THE NARRATION
-        <div @click="next">CLICKME</div>
-      </div>
-    </Transition>
-
+    <NarrativeScreenComponent class="fade-in" v-if="curGameStage === EGameStage.NARRATION"/>
     
     <!-- Report -->
     <Transition name="fade">
@@ -52,6 +46,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TitleScreenComponent from '@/components/TitleScreen.vue'
+import NarrativeScreenComponent from '@/components/NarrativeScreen.vue'
 import ReportComponent from '@/components/report/ChatReport.vue'
 import DailyQuizCardComponent from '@/components/DailyQuizCard.vue'
 import ResultCardComponent from '@/components/ResultCard.vue'
@@ -66,6 +61,7 @@ export default defineComponent({
   name: 'GameComponent',
   components: {
     TitleScreenComponent,
+    NarrativeScreenComponent,
     ReportComponent,
     DailyQuizCardComponent,
     ResultCardComponent,
@@ -97,10 +93,6 @@ export default defineComponent({
       
       gameStore.commit('addScore', score);
       gameStore.commit('changeStage', EGameStage.RESULT);
-    },
-
-    next(){
-      gameStore.commit('changeStage', EGameStage.REPORT);//TODO: Change this
     },
 
     handleSolveDailyQuiz(optionSelected: number){
