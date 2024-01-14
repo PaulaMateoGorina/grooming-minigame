@@ -4,13 +4,25 @@
         "numReports": 3,
         "selectSnippets": true,
         "selectSnippetReason": true,
-        "probabilities": [0.5]
+        "probabilities": [0.5],
+        "narrationNodes": 
+        [
+            {"text": "Comienza el día 1", "goTo": 2},
+            {"text": "text 2", "goTo": -1, "options":[{"text": "option1", "goTo": 3}, {"text": "option2", "goTo": 4}]},
+            {"text": "Seleccionaste la opción 1", "goTo": -1},
+            {"text": "Seleccionaste la opción 2", "goTo": -1}
+        ]
     },
     {
         "numDay": 2,
         "numReports": 2,
         "selectSnippets": false,
         "selectSnippetReason": false,
-        "probabilities": [0.5]
+        "probabilities": [0.5],
+        "narrationNodes": 
+        [
+            {"text": "Comienza el día 2", "goTo": 2},
+            {"text": "text 2", "goTo": -1}
+        ]
     }
 ]

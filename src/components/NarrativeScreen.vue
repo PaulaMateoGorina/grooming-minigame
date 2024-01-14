@@ -2,16 +2,23 @@
     <OnClickOutside @trigger="nextDialogue">
         <div 
             id="narrative-text-container" 
-            class="flex-center-aligned non-selectable-text"
-            @click="nextDialogue"
+            class="flex-center-aligned non-selectable-text flex-column"
+            @click="nextDialogue(curNode ? curNode.goTo : -1)"
         >
             <TypewriterTextComponent 
-                :textToWriteProp="texts[curTextIdx]"
+                :textToWriteProp="curNode!.text"
                 :newTextDelayProp="newTextDelay"
                 :typingSpeed="typingSpeed"
                 @finishedTyping="handleFinishedTyping"
             />
-            <p id="continue-narration" class="pulsating-element" v-if="showContinueMessage">{{ GENERAL_STRINGS.CONTINUE_NARRATION }}</p>
+
+            <div v-if="curNode && curNode.options !== undefined && showContinueMessage" class="narrative-option-container">
+                <div v-for="option in curNode.options" :key="option.text" @click.stop="goTo(option.goTo)" class="narrative-option">
+                    {{ option.text }}
+                </div>
+            </div>
+
+            <p id="continue-narration" class="pulsating-element" v-if="showContinueMessage && !curNodeHasOptions">{{ GENERAL_STRINGS.CONTINUE_NARRATION }}</p>
         </div>
     </OnClickOutside>
 </template>
@@ -25,6 +32,7 @@ import { NUM_CONSTANTS } from '@/utils/constants';
 import { EGameStage } from '@/utils/enums';
 
 import { gameStore } from '@/gameStore';
+import NarrationNode from '@/utils/model/NarrationNode';
 
 import { OnClickOutside } from '@vueuse/components'
 
@@ -36,35 +44,44 @@ export default defineComponent({
     },
     data(){
         return{
+            GENERAL_STRINGS : GENERAL_STRINGS,
             typingSpeed: 50,
+            curNode: undefined as NarrationNode | undefined,
+            curNodeHasOptions: false,
             newTextDelay: 0,
             showContinueMessage: false,
-            GENERAL_STRINGS : GENERAL_STRINGS,
-            curText: "",
-            texts: ["This is an example of the text to write.", "Another example of the text to write."],
-            curTextIdx: 0
         }
     },
     methods:{
         handleFinishedTyping(){
             this.showContinueMessage = true;
         },
-        nextDialogue(){
-            console.log("next");
+        nextDialogue(to: number){
             if(this.showContinueMessage){
-                this.curTextIdx++;
-
-                if(this.curTextIdx < this.texts.length){
-                    this.curText = this.texts[this.curTextIdx];
-                }
-                else{
-                    gameStore.commit('changeStage', EGameStage.REPORT);
+                if(!this.curNodeHasOptions){
+                    if(to > 0){
+                        this.curNode = this.narrationNodes[to];
+                        this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
+                    }
+                    else{
+                        gameStore.commit('changeStage', EGameStage.REPORT);
+                    }
                 }
             }
         },
+        goTo(to: number){
+            this.curNode = this.narrationNodes[to];
+            this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
+        }
+    },
+    computed:{
+        narrationNodes(){
+            return gameStore.state.curDay && gameStore.state.curDay.narrationNodes ? gameStore.state.curDay.narrationNodes : []
+        }
     },
     created(){
-        this.curText = this.texts[NUM_CONSTANTS.ZERO];
+        this.curNode = this.narrationNodes[NUM_CONSTANTS.ZERO];
+        this.curNodeHasOptions = this.curNode.options !== undefined && this.curNode.options.length > 0;
     }
 })
 </script>

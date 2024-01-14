@@ -1,4 +1,8 @@
 #narrative-text-container{
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
     width: 100vw;
     height: 50vh;
     background-color: rgba(255, 255, 255, 0.8);
@@ -6,6 +10,31 @@
 
 #continue-narration{
     position: absolute;
-    align-self: flex-end;
+    bottom: 1em;
     font-size: 1.25em;
+    margin-top: 4em;
+}
+
+.narrative-option-container{
+    display: flex;
+    margin-top: 2em;
+    flex-direction: row;
+    align-items: center;
+}
+
+.narrative-option{
+    padding: 5px;
+    font-weight: 600;
+
+    border: 2px solid;
+    border-radius: 10px;
+
+    margin: 0px 20px 20px 20px;
+    cursor: pointer;
+}
+
+.narrative-option:hover{
+    border-color: #374253;
+    background-color: #374253;
+    color: #d9d8d8;
 }
