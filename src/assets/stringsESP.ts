@@ -20,11 +20,15 @@ export const PROFILE_STRINGS = {
 
 export const RESULT_CARD_STRINGS = {
     NUM_PLACEHOLDER: "YYY",
+    CORRECT: "CORRECTA",
+    PARTIALLY_CORRECT: "PARCIALMENTE CORRECTA",
+    INCORRECT: "INCORRECTA",
     REPORT_CORRECT: "¡Enhorabuena! Has sumado YYY puntos.\n ¡Sigue así!",
     REPORT_P_CORRECT: "Has sumado YYY puntos, pero no te confíes. \n¡Sigamos mejorando!",
     REPORT_INCORRECT: "Esta vez no has sumado puntos, pero no desistas. \n¡Sigamos mejorando!",
     QUIZ_CORRECT: "¡Enhorabuena! Se ha añadido 0.5 a tu multiplicador de puntuación.", //TODO: Change this if the increase / deduct change
-    QUIZ_INCORRECT: "Se ha reastado 0.1 a tu multiplicador de puntuación.",
+    QUIZ_INCORRECT: "Se ha restado 0.1 a tu multiplicador de puntuación.",
+    QUIZ_CORRECT_ANSWER_WAS: "La respuesta correcta era: ",
     NEW_SCORE: "Nueva puntuación: YYY pts",
     NEW_MULTIPLIER: "Nuevo multiplicador: xYYY",
     CONTINUE: "Continuar"

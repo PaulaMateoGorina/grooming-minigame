@@ -6,18 +6,17 @@
 
                 <div class="main-info">
                     <!-- Correctness message -->
-                    <div v-if="correctness === ECorrectness.CORRECT">
-                        <p class="answer correct">CORRECTA</p>
-                    </div>
+                    <p class="answer correct" v-if="correctness === ECorrectness.CORRECT">{{ RESULT_CARD_STRINGS.CORRECT }}</p>
 
-                    <div v-else-if="correctness === ECorrectness.PARTIALLY_CORRECT">
-                        <p class="answer partially-correct">PARCIALMENTE CORRECTA</p>
-                    </div>
+                    <p class="answer partially-correct" v-else-if="correctness === ECorrectness.PARTIALLY_CORRECT">{{ RESULT_CARD_STRINGS.PARTIALLY_CORRECT }}</p>
 
+                    
                     <div v-else-if="correctness === ECorrectness.INCORRECT">
-                        <p class="answer incorrect">INCORRECTA</p>
+                        <p class="answer incorrect">{{ RESULT_CARD_STRINGS.INCORRECT }}</p>
+                        <p class="big-text" v-if="!isReportResult">{{ RESULT_CARD_STRINGS.QUIZ_CORRECT_ANSWER_WAS }}</p>
+                        <p class="big-text correct bold" v-if="!isReportResult">{{ correctAnswer }}</p>
                     </div>
-
+                    
                     <!-- Message with new score / multiplier-->
                     <p class="big-text bold accepts-new-line">{{ newScoreOrMultiplierMessage }}</p>
                 </div>
@@ -97,6 +96,22 @@ export default defineComponent({
             } 
             catch (error) {
                 WriteLog("ResultCard.vue > Computed - newScoreOrMultiplierMessage > ERROR: " + error, LogLevel.ERROR);
+            }
+            return result;
+        },
+
+        correctAnswer(){
+            let result = "";
+            try {
+                const correctAnswerIdx = gameStore.state.curDailyQuiz ? gameStore.state.curDailyQuiz?.correctAnswer : -1;
+                if(correctAnswerIdx < 0){
+                    throw new Error("Could not get the index of the correct answer to the daily quiz.");
+                }
+
+                result = gameStore.state.curDailyQuiz ? gameStore.state.curDailyQuiz.options[correctAnswerIdx] : "";                
+            } 
+            catch (error) {
+                WriteLog("ResultCard.vue > Computed - correctAnswer > ERROR: " + error, LogLevel.ERROR);
             }
             return result;
         }
