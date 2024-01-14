@@ -8,7 +8,8 @@ export const GENERAL_STRINGS = {
     START: "Comenzar a jugar",
     END_TITLE: "¡Has completado el juego!",
     END_PTS_TEXT: "Tu puntuación total es de:",
-    PLAY_AGAIN: "Volver a jugar"
+    PLAY_AGAIN: "Volver a jugar",
+    CONTINUE_NARRATION: "Haz click para continuar"
 }
 
 export const PROFILE_STRINGS = {

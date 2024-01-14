@@ -1,3 +1,6 @@
+:root{
+    --semiblack: #374253;
+}
 .container {
     width: 100%;
     height: 100vh;
@@ -6,9 +9,14 @@
     align-items: center;
 }
 
+.typed-text{
+    font-size: 1.5em;
+}
+
 .blinking-cursor {
-    font-size: 6rem;
-    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 0.25em;
+    color: var(--semiblack);
     -webkit-animation: 1s blink step-end infinite;
     -moz-animation: 1s blink step-end infinite;
     -ms-animation: 1s blink step-end infinite;
@@ -22,7 +30,7 @@
         color: transparent;
     }
     50% {
-        color: #2c3e50;
+        color: var(--semiblack);
     }
 }
 
@@ -32,7 +40,7 @@
         color: transparent;
     }
     50% {
-        color: #2c3e50;
+        color: var(--semiblack);
     }
 }
 
@@ -42,7 +50,7 @@
         color: transparent;
     }
     50% {
-        color: #2c3e50;
+        color: var(--semiblack);
     }
 }
 
@@ -52,7 +60,7 @@
         color: transparent;
     }
     50% {
-        color: #2c3e50;
+        color: var(--semiblack);
     }
 }
 
@@ -62,6 +70,6 @@
         color: transparent;
     }
     50% {
-        color: #2c3e50;
+        color: var(--semiblack);
     }
 }

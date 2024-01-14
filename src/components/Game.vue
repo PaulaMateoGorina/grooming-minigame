@@ -12,9 +12,7 @@
     <NarrativeScreenComponent class="fade-in" v-if="curGameStage === EGameStage.NARRATION"/>
     
     <!-- Report -->
-    <Transition name="fade">
-      <ReportComponent @solveReport="handleSolveReport" v-if="curGameStage === EGameStage.REPORT"/>
-    </Transition>
+    <ReportComponent @solveReport="handleSolveReport" v-if="curGameStage === EGameStage.REPORT" class="fade-in"/>
 
     <Transition name="slide-fade">
       <div v-if="curGameStage === EGameStage.REPORT" class="info">
