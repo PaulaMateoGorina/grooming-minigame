@@ -25,6 +25,7 @@
 import { defineComponent } from 'vue'
 import { GENERAL_STRINGS } from '@/assets/stringsESP';
 import { gameStore } from '@/gameStore';
+import { EGameStage } from '@/utils/enums';
 
 export default defineComponent({
     name: 'TitleScreenComponent',
@@ -41,7 +42,7 @@ export default defineComponent({
     
     methods:{
         startGame(){
-            gameStore.commit('changeStage');
+            gameStore.commit('changeStage', EGameStage.NARRATION);
         },
         resetGame(){
             gameStore.commit('newGame');

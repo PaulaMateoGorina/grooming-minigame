@@ -24,10 +24,6 @@ function commitChangeDay(){
   gameStore.commit('changeDay');
 }
 
-function commitChangeStage(toDailyQuiz: boolean){
-  gameStore.commit('changeStage', toDailyQuiz);
-}
-
 function commitNewGame(){
   gameStore.commit('newGame');
 }
@@ -138,26 +134,31 @@ export const gameStore = createStore({
       }
     },
 
-    changeStage(state: GameState, fromReport = false){
-      WriteLog(`From game stage: ${state.visibleGameStage}`, LogLevel.VERBOSE);
+    changeStage(state: GameState, toStage: EGameStage){
+      // If we want to move to the next report, and we do not come from the narration
+      if(toStage === EGameStage.REPORT && state.visibleGameStage !== EGameStage.NARRATION){
+        state.curReportIdx++;
 
-      if(state.visibleGameStage === EGameStage.GAME_START){
-        state.visibleGameStage = EGameStage.NARRATION;
+        // If there are still reports left unsolved, then we change the curReport accordingly and display it
+        if(state.curReportIdx < state.curDay!.numReports){
+          state.curReport = state.curDay!.reports[state.curReportIdx];
+          state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
+          state.visibleGameStage = EGameStage.REPORT;
+        }
+        // If not, then we must move to the daily quiz
+        else{
+          state.visibleGameStage = EGameStage.DAILY_QUIZ;
+        }
       }
-      else if(state.visibleGameStage === EGameStage.REPORT || state.visibleGameStage === EGameStage.DAILY_QUIZ){
-        state.visibleGameStage = EGameStage.RESULT;
+      // If we are trying to go to a narration, then it is a new day, unless the previous state was the initial page
+      else if(toStage === EGameStage.NARRATION && state.visibleGameStage !== EGameStage.GAME_START)
+      {
+        state.visibleGameStage = EGameStage.NARRATION
+        commitChangeDay();
       }
       else{
-        if(fromReport){
-          state.visibleGameStage = state.curReportIdx < state.curDay!.numReports ? EGameStage.REPORT : EGameStage.DAILY_QUIZ;
-        }
-        else{
-          state.visibleGameStage =(state.visibleGameStage + NUM_CONSTANTS.ONE) % GAME_CONSTANTS.NUM_PLAYING_STAGES;
-          commitChangeDay();
-        }
-      }
-
-      WriteLog(`To game stage: ${state.visibleGameStage}`, LogLevel.VERBOSE);
+        state.visibleGameStage = toStage;
+      } 
     },
 
     addScore(state: GameState, points: number){
@@ -176,21 +177,7 @@ export const gameStore = createStore({
       }
       else{
         state.visibleGameStage = EGameStage.GAME_FINISHED
-        WriteLog("Game finished.", LogLevel.INFO);
       }
-    },
-
-    changeReport(state: GameState){
-      state.curReportIdx++;
-
-      if(state.curReportIdx < state.curDay!.numReports){
-        commitChangeStage(false);
-        state.curReport = state.curDay!.reports[state.curReportIdx];
-      }
-      else{
-        commitChangeStage(true);
-      }
-      state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
     },
 
     changeSnippetStageSelected(state: GameState, payload: {idx: number, stage: EStage}){

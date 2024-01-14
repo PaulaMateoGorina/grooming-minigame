@@ -37,7 +37,7 @@ import { CCard, CCardBody} from '@coreui/vue'
 import { gameStore } from '@/gameStore'
 import { WriteLog, LogLevel } from '@/utils/logger'
 
-import { ECorrectness } from '@/utils/enums';
+import { ECorrectness, EGameStage } from '@/utils/enums';
 import { RESULT_CARD_STRINGS } from '@/assets/stringsESP';
 
 export default defineComponent({
@@ -59,7 +59,7 @@ export default defineComponent({
     },
     methods:{
         handleContinue(){
-            gameStore.commit('changeStage', this.isReportResult);
+            gameStore.commit('changeStage', this.isReportResult ? EGameStage.REPORT : EGameStage.NARRATION);
         }
     },
     computed: {

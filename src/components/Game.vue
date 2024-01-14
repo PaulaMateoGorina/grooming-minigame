@@ -2,7 +2,10 @@
   <div class="game flex-center-aligned">
     <!-- Start / End Game -->
     <Transition name="fade">
-      <TitleScreenComponent v-if="curGameStage === EGameStage.GAME_START || curGameStage === EGameStage.GAME_FINISHED" :isStart="curGameStage === EGameStage.GAME_START"/>
+      <TitleScreenComponent 
+        v-if="curGameStage === EGameStage.GAME_START || curGameStage === EGameStage.GAME_FINISHED" 
+        :isStart="curGameStage === EGameStage.GAME_START"
+      />
     </Transition>
 
     <!-- Narration -->
@@ -92,11 +95,11 @@ export default defineComponent({
       this.pointsGotten = score; 
       
       gameStore.commit('addScore', score);
-      gameStore.commit('changeReport');
+      gameStore.commit('changeStage', EGameStage.RESULT);
     },
 
     next(){
-      gameStore.commit('changeStage');
+      gameStore.commit('changeStage', EGameStage.REPORT);//TODO: Change this
     },
 
     handleSolveDailyQuiz(optionSelected: number){
@@ -111,7 +114,7 @@ export default defineComponent({
       this.pointsGotten = NUM_CONSTANTS.NEG;
 
       gameStore.commit('changeMultiplier', wasCorrect);
-      gameStore.commit('changeStage');
+      gameStore.commit('changeStage', EGameStage.RESULT);
       
     }
   },
