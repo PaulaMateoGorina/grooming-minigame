@@ -52,7 +52,6 @@ export default defineComponent({
     },
     data() {
         return {
-            stages: [] as [string, number][],
             stageSelectorVisible: false,
             mousePosition: {x: 0, y: 0},
             STAGES: STAGES
@@ -137,14 +136,9 @@ export default defineComponent({
         },
         
         handleRightClick(){
-            this.stage = STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL;
             gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL });
         }
-    },
-    created() {
-        this.stages = Object.entries(EStage)
-            .filter(([, value]) => typeof value === 'number') as [string, number][];
-    },
+    }
 })
 </script>
 
