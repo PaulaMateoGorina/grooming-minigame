@@ -53,11 +53,27 @@ export const PROFILE_CONSTANTS = {
 }
 
 export const FRIENDSHIP_TIME_CONSTANTS = {
-    MIN_YEARS: 0,
-    MAX_YEARS: 3,
+    YEAR_SAMPLES: [
+        { value: 0, weight: 70 },
+        { value: 1, weight: 18 },
+        { value: 2, weight: 7 },
+        { value: 3, weight: 5 },
+    ],
     
-    MIN_MONTHS: 0,
-    MAX_MONTHS: 11,
+    MONTH_SAMPLES: [
+        { value: 0, weight: 30 },
+        { value: 1, weight: 15 },
+        { value: 2, weight: 13 },
+        { value: 3, weight: 10 },
+        { value: 4, weight: 7 },
+        { value: 5, weight: 6 },
+        { value: 6, weight: 5 },
+        { value: 7, weight: 4 },
+        { value: 8, weight: 3 },
+        { value: 9, weight: 3 },
+        { value: 10, weight: 2 },
+        { value: 11, weight: 2 }, 
+    ],
 
     MIN_DAYS: 1,
     MAX_DAYS: 30

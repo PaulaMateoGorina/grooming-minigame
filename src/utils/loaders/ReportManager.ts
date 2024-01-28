@@ -161,7 +161,7 @@ class ReportManager{
                 else
                     snippet = this.sampleGroomingSnippet();
 
-                if(snippet && !snippet.chosen){
+                if(snippet && snippet.chosen === false){
                     snippet.chosen = true;
                     result.push(snippet);             
                     snippetIds.push(snippet.id);
@@ -301,8 +301,8 @@ class ReportManager{
             // friendship time
             const friendshipTime = [
                 utils.getRandomNumber(FRIENDSHIP_TIME_CONSTANTS.MIN_DAYS, FRIENDSHIP_TIME_CONSTANTS.MAX_DAYS),
-                utils.getRandomNumber(FRIENDSHIP_TIME_CONSTANTS.MIN_MONTHS, FRIENDSHIP_TIME_CONSTANTS.MAX_MONTHS),
-                utils.getRandomNumber(FRIENDSHIP_TIME_CONSTANTS.MIN_YEARS, FRIENDSHIP_TIME_CONSTANTS.MAX_YEARS),
+                utils.weightedSample(FRIENDSHIP_TIME_CONSTANTS.MONTH_SAMPLES),
+                utils.weightedSample(FRIENDSHIP_TIME_CONSTANTS.YEAR_SAMPLES)
             ];
 
             //snippets
