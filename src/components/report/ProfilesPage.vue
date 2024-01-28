@@ -2,7 +2,8 @@
     <div class="flex-center-aligned flex-column">
         <ProfileComponent :user="user1"/>
         <ProfileComponent :user="user2"/>
-        <p>Han sido amigos por: {{ friendshipTime![2] }} años, {{ friendshipTime![1] }} meses y {{ friendshipTime![0] }} días</p>
+        <p>{{PROFILE_STRINGS.FRIENDSHIP_START}} {{ friendshipTime![2] }} {{PROFILE_STRINGS.FRIENDSHIP_YEARS}}
+            {{ friendshipTime![1] }} {{PROFILE_STRINGS.FRIENDSHIP_MONTHS}} {{ friendshipTime![0] }} {{PROFILE_STRINGS.FRIENDSHIP_DAYS}}</p>
     </div>
 </template>
 

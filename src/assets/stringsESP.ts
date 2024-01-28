@@ -9,14 +9,15 @@ export const GENERAL_STRINGS = {
     END_TITLE: "¡Has completado el juego!",
     END_PTS_TEXT: "Tu puntuación total es de:",
     PLAY_AGAIN: "Volver a jugar",
-    CONTINUE_NARRATION: "Haz click para continuar"
+    CONTINUE_NARRATION: "Haz click para continuar",
+    DAILY_QUIZ_TIME: "¡Hora de poner a prueba lo aprendido!"
 }
 
 export const PROFILE_STRINGS = {
     USERNAME: "Username:",
     ONLINE_AGE: "Edad online:",
     REAL_AGE: "Edad real:",
-    FRIENDSHIP_START: "Han sido amigos por: años, MMM meses y DDD días",
+    FRIENDSHIP_START: "Han sido amigos por: ",
     FRIENDSHIP_YEARS: "años,",
     FRIENDSHIP_MONTHS: "meses y",
     FRIENDSHIP_DAYS: "días",

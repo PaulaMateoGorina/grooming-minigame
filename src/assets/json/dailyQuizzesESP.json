@@ -19,6 +19,16 @@
             "3"
         ],
         "correctAnswer": 1,
-        "day": 3
+        "day": 1
+    },
+    {
+        "question": "sampleQuestion3",
+        "options": [
+            "The correct answer",
+            "2",
+            "3"
+        ],
+        "correctAnswer": 1,
+        "day": 1
     }
 ]

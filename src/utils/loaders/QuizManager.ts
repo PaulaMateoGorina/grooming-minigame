@@ -70,8 +70,9 @@ class QuizManager{
             do{
                 const randIdx: number = utils.getRandomIdx(this.numDailyQuizzes);
                 result = this.dailyQuizzes[randIdx];
-            } while(day && result.day < day);
+            } while(result.chosen && day && result.day < day);
             //NOTE: VERY IMPORTANT to have AT LEAST ONE DAILY QUIZ for that day, otherwise infinite loop happens
+            result.chosen = true;
         }
         catch (error){
             WriteLog(`QuizManager.ts > sampleDailyQuiz > ERROR sampling a random daily quiz. #ERROR: ${error}`, LogLevel.ERROR);   

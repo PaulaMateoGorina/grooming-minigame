@@ -4,6 +4,7 @@ class DailyQuiz{
     public numOptions: number;
     public correctAnswer: number;
     public day: number; // TODO: this may be used if some questions can only be answered from a certain point onwards, remove otherwise
+    public chosen: boolean;
 
     constructor(question: string, options: string[], correctAnswer: number, day: number) {
         this.question = question;
@@ -11,6 +12,7 @@ class DailyQuiz{
         this.numOptions = options.length;
         this.correctAnswer = correctAnswer;
         this.day = day;
+        this.chosen = false;
     }
 
     public getAnswerResult(optionSelected: number): boolean{

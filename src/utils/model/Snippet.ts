@@ -8,11 +8,13 @@ class Snippet {
     public id: number;
     public stage: EStage;
     public messages: Message[];
+    public chosen: boolean;
 
     constructor(id:number, stage:number, messages: Message[]) {
         this.id = id;
         this.stage = stage;
         this.messages = messages;
+        this.chosen = false;
     }
 
     public getAnswerResult(stageSelected: EStage, checkStageSelected: boolean) : ECorrectness{

@@ -161,7 +161,8 @@ class ReportManager{
                 else
                     snippet = this.sampleGroomingSnippet();
 
-                if(snippet && !snippetIds.includes(snippet.id)){
+                if(snippet && !snippet.chosen){
+                    snippet.chosen = true;
                     result.push(snippet);             
                     snippetIds.push(snippet.id);
                     i++;             
