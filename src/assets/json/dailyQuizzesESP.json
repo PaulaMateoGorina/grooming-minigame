@@ -4,7 +4,7 @@
         "options": [
             "1",
             "2",
-            "The correct answer is this one, click me!",
+            "The correct answer",
             "4",
             "5"
         ],
@@ -14,11 +14,11 @@
     {
         "question": "sampleQuestion2",
         "options": [
-            "The correct answer is this one, click me!",
+            "The correct answer",
             "2",
             "3"
         ],
         "correctAnswer": 1,
-        "day": 2
+        "day": 3
     }
 ]

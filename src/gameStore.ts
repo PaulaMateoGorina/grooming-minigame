@@ -96,7 +96,7 @@ export const gameStore = createStore({
     newGame(state: GameState){
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
       DayManager.getInstance().resetDays();
-      state.visibleGameStage = EGameStage.GAME_START; //TODO: Change to initial page when everything is done
+      state.visibleGameStage = EGameStage.REPORT; //TODO: Change to initial page when everything is done
 
       state.curDayIdx = 0;
       

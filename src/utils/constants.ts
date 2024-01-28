@@ -1,3 +1,12 @@
+export const STAGES = [
+    { name: "Normal", enumValue: -1 },
+    { name: "Comienzo de la amistad y relación", enumValue: 1 },
+    { name: "Evaluación de riesgo", enumValue: 3 },
+    { name: "Exclusividad", enumValue: 4 },
+    { name: "Mitigación de daños", enumValue: 7 },
+    { name: "Petición de fotos indecentes", enumValue: 9 }
+];
+
 export const NUM_CONSTANTS = {
     NEG: -1.0,
     ZERO: 0.0,
@@ -44,8 +53,8 @@ export const PROFILE_CONSTANTS = {
 }
 
 export const FRIENDSHIP_TIME_CONSTANTS = {
-    MIN_YEARS: 1,
-    MAX_YEARS: 5,
+    MIN_YEARS: 0,
+    MAX_YEARS: 3,
     
     MIN_MONTHS: 0,
     MAX_MONTHS: 11,
@@ -55,7 +64,7 @@ export const FRIENDSHIP_TIME_CONSTANTS = {
 }
 
 export const QUIZ_CONSTANTS = {
-    TIME_TO_SOLVE: 20,
+    TIME_TO_SOLVE: 10,
     SUCCESS_MULTIPLIER_INCREASE: 0.5,
     SUCCESS_MULTIPLIER_DEDUCTION: 0.1,
 }

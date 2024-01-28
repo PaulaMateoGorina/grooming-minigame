@@ -15,14 +15,24 @@
     },
     {
         "numDay": 2,
-        "numReports": 2,
-        "selectSnippets": false,
+        "numReports": 1,
+        "selectSnippets": true,
         "selectSnippetReason": false,
         "probabilities": [0.5],
         "narrationNodes": 
         [
-            {"text": "Comienza el día 2", "goTo": 2},
-            {"text": "text 2", "goTo": -1}
+            {"text": "Comienza el día 2", "goTo": -1}
+        ]
+    },
+    {
+        "numDay": 3,
+        "numReports": 1,
+        "selectSnippets": true,
+        "selectSnippetReason": true,
+        "probabilities": [0.5],
+        "narrationNodes": 
+        [
+            {"text": "Comienza el día 3", "goTo": -1}
         ]
     }
 ]
