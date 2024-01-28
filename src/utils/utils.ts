@@ -13,7 +13,7 @@ export function getRandomIdx(length: number, minIdx?: number){
 }
 
 export function getBoolean(successProbability: number): boolean{
-    return Math.random() > successProbability;
+    return Math.random() < successProbability;
 }
 
 export function weightedSample (samples: {value: number, weight: number}[]): number {

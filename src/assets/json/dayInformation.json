@@ -2,23 +2,75 @@
     {
         "numDay": 1,
         "numReports": 1,
-        "selectSnippets": true,
-        "selectSnippetReason": true,
-        "probabilities": [0.5],
+        "configuration": 
+        {
+            "shouldSkipQuiz": true,
+            "hasSnippets": false,
+            "selectSnippets": true,
+            "selectSnippetStages": true,
+            "groomingProbability": 1.0,
+            "minAgeGroomer": 22,
+            "maxAgeGroomer": 35
+        },
         "narrationNodes": 
         [
-            {"text": "Comienza el día 1", "goTo": 2},
-            {"text": "text 2", "goTo": -1, "options":[{"text": "option1", "goTo": 3}, {"text": "option2", "goTo": 4}]},
-            {"text": "Seleccionaste la opción 1", "goTo": -1},
-            {"text": "Seleccionaste la opción 2", "goTo": -1}
+            {"text": "¡Bienvenido a las oficinas de Instapic! Eres el nuevo becario, ¿correcto?", "goTo": -1, 
+                "options":[
+                    {"text": "Sí, soy yo.", "goTo": 2}, 
+                    {"text": "No sé de qué me hablas.", "goTo": 3}
+                ]
+            },
+            {"text": "¡Perfecto! Déjame que te explique las tareas que vas a llevar a cabo.", "goTo": 4},
+            {"text": "¿En serio? Pues qué mala suerte, te va a tocar trabajar igualmente ^^. Déjame que te explique las tareas que vas a llevar a cabo.", "goTo": 4},
+            {"text": "Básicamente serás algo parecido a un moderador de chats.", "goTo": 5},
+            {"text": "A lo largo del día te llegarán informes que han sido marcados como posibles casos de grooming, y tendrás que decidir si efectivamente lo son, o si son chats normales.", "goTo": 6},
+            {"text": "Espera... ¿Sabes siquiera lo que significa el término grooming?", "goTo": -1, 
+                "options":[
+                    {"text": "Claro que sí.", "goTo": 7}, 
+                    {"text": "No, no lo sé.", "goTo": 10}
+                ]
+            },
+            {"text": "Ajá. ¿Y qué significa?", "goTo": -1, 
+                "options":[
+                    {"text": "Es el proceso por el cual un adulto establece una relación con un menor para abusar de este.", "goTo": 8}, 
+                    {"text": "Se da cuando una persona percibe falsamente a su ídolo como alguien cercano a ella.", "goTo": 9},
+                    {"text": "Vale, lo admito. No lo sé.", "goTo": 10}
+                ]
+            },
+            {"text": "¡Correcto! Y cuando se da en las redes, se le llama online grooming.", "goTo": 12},
+            {"text": "¡Incorrecto! Eso es lo que se llama una relación parasocial. A veces se puede dar en casos de grooming, pero no es grooming en sí mismo.", "goTo": 11},
+            {"text": "No pasa nada, ahora te lo explico.", "goTo": 11},
+            {"text": "El grooming es el proceso por el cual un adulto establece una relación con un menor para abusar de este. Si se da en las redes, se categoriza como online grooming.", "goTo": 12},
+            {"text": "El grooming puede ser más o menos largo, llegando a durar incluso años.", "goTo": 13},
+            {"text": "Creo que tienes suficiente información por ahora, sigamos con la explicación de tu trabajo.", "goTo": 14},
+            {"text": "Cada informe contendrá información diversa sobre el chat entre dos usuarios.", "goTo": 15},
+            {"text": "Como es tu primer día, comenzaremos con los más simples. Estos contienen solo la edad de las dos personas y el tiempo que llevan de amigos.", "goTo": 16},
+            {"text": "Cada vez que clasifiques un informe correctamente obtendrás puntos. Al final de la beca, el número de puntos que tengas determinará si te contratamos o no.", "goTo": 17},
+            {"text": "Al final del día volveré y te haré una pregunta relacionada con lo que has visto ese día.", "goTo": 18},
+            {"text": "Si la aciertas, incrementaré tu multiplicador de puntos. Y si fallas, lo disminuiré.", "goTo": 19},
+            {"text": "Te has quedado con todo, ¿o necesitas que te lo repita?", "goTo": -1, 
+            "options":[
+                {"text": "Lo he entendido todo.", "goTo": 20}, 
+                {"text": "Repíte, por favor.", "goTo": 21}
+            ]
+            },
+            {"text": "Perfecto. ¡Pues a trabajar se ha dicho, ahí va tu primer informe!", "goTo": -1},
+            {"text": "Tu trabajo consiste en revisar informes de chats y decidir si son casos de grooming o no.", "goTo": 14}
         ]
     },
     {
         "numDay": 2,
         "numReports": 1,
-        "selectSnippets": true,
-        "selectSnippetReason": false,
-        "probabilities": [0.5],
+        "configuration": 
+        {
+            "shouldSkipQuiz": true,
+            "hasSnippets": false,
+            "selectSnippets": true,
+            "selectSnippetStages": true,
+            "groomingProbability": 1.0,
+            "minAgeGroomer": 22,
+            "maxAgeGroomer": 35
+        },
         "narrationNodes": 
         [
             {"text": "Comienza el día 2", "goTo": -1}
@@ -27,9 +79,16 @@
     {
         "numDay": 3,
         "numReports": 1,
-        "selectSnippets": true,
-        "selectSnippetReason": true,
-        "probabilities": [0.5],
+        "configuration": 
+        {
+            "shouldSkipQuiz": true,
+            "hasSnippets": false,
+            "selectSnippets": true,
+            "selectSnippetStages": true,
+            "groomingProbability": 1.0,
+            "minAgeGroomer": 22,
+            "maxAgeGroomer": 35
+        },
         "narrationNodes": 
         [
             {"text": "Comienza el día 3", "goTo": -1}

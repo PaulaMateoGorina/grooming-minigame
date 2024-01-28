@@ -26,11 +26,11 @@ class QuizManager{
     }
     
     // #region methods to create instances from data
-    private createDailyQuiz(data: {question: string; options: string[]; correctAnswer: number; day: number;}): DailyQuiz | undefined{
+    private createDailyQuiz(data: {question: string; options: string[]; correctAnswer: number; explanation: string, day: number;}): DailyQuiz | undefined{
         let result: DailyQuiz | undefined = undefined;
 
         try {
-            result =  new DailyQuiz(data.question, data.options, data.correctAnswer - NUM_CONSTANTS.ONE, data.day - NUM_CONSTANTS.ONE);
+            result =  new DailyQuiz(data.question, data.options, data.correctAnswer - NUM_CONSTANTS.ONE, data.explanation ,data.day - NUM_CONSTANTS.ONE);
         } 
         catch (error) {
             WriteLog(`QuizManager.ts > createDailyQuiz > ERROR creating new daily quiz instance. #ERROR: ${error}`, LogLevel.ERROR);
@@ -43,7 +43,7 @@ class QuizManager{
     // #region methods to load data
     private loadDailyQuizzes(): void{
         try{
-            const jsonQuizzes = dailyQuizQuestionsJson as { question: string; options: string[]; correctAnswer: number; day: number; }[];
+            const jsonQuizzes = dailyQuizQuestionsJson as { question: string; options: string[]; correctAnswer: number; explanation: string; day: number; }[];
 
             for(const jsonQuiz of jsonQuizzes){
                 const quiz : DailyQuiz | undefined = this.createDailyQuiz(jsonQuiz);

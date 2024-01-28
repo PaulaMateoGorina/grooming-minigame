@@ -1,8 +1,6 @@
 <template>
-    <div class="flex-center-aligned non-selectable-text typewriter-text-container">
+    <div class="flex-center-aligned non-selectable-text typewriter-container">
         <span class="typed-text">{{ curText }}</span>
-        <span class="blinking-cursor">|</span>
-        <span class="cursor" :class="{ typing: typeStatus }">&nbsp;</span>
     </div>
 </template>
 

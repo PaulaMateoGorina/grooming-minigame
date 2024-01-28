@@ -3,7 +3,7 @@
 import { createStore } from 'vuex';
 
 // Model
-import Day from '@/utils/model/Day'
+import { Day } from '@/utils/model/Day'
 import Report from '@/utils/model/Report'
 import DailyQuiz from './utils/model/DailyQuiz';
 
@@ -113,8 +113,8 @@ export const gameStore = createStore({
           throw new Error("Error when fetching the day.");
         }
         state.curDay = curDay;
-        state.selectGroomingSnippets = curDay.selectSnippets;
-        state.selectSnippetStages = curDay.selectSnippetStages;
+        state.selectGroomingSnippets = curDay.configuration.selectSnippets;
+        state.selectSnippetStages = curDay.configuration.selectSnippetStages;
         
         state.curReportIdx = 0;
         const curReport: Report | undefined = curDay.reports[state.curReportIdx];
@@ -147,9 +147,16 @@ export const gameStore = createStore({
           state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
           state.visibleGameStage = EGameStage.REPORT;
         }
-        // If not, then we must move to the daily quiz
+        // If not, then we must move to the daily quiz, if there is any
         else{
-          state.visibleGameStage = EGameStage.DAILY_QUIZ;
+          if(state.curDay && state.curDay.configuration.shouldSkipQuiz){
+            state.visibleGameStage = EGameStage.NARRATION
+            commitChangeDay();
+          }
+          else
+          {
+            state.visibleGameStage = EGameStage.DAILY_QUIZ;
+          }
         }
       }
       // If we are trying to go to a narration, then it is a new day, unless the previous state was the initial page

@@ -1,7 +1,7 @@
 
 import dayInformationJson from '@/assets/json/dayInformation.json'
 
-import Day from '@/utils/model/Day'
+import { Day, DayConfiguration } from '@/utils/model/Day'
 
 import NarrationNode from '@/utils/model/NarrationNode';
 import { LogLevel, WriteLog } from '../logger'
@@ -32,11 +32,11 @@ class DayManager{
     }
     
     // #region methods to create instances from data
-    private createDay(data: {numDay: number; numReports: number; selectSnippets: boolean; selectSnippetReason: boolean; probabilities: number[], narrationNodes: NarrationNode[]}): Day | undefined{
+    private createDay(data: {numDay: number; numReports: number; configuration: DayConfiguration; narrationNodes: NarrationNode[]}): Day | undefined{
         let result: Day | undefined = undefined;
 
         try {
-            result =  new Day(data.numDay - NUM_CONSTANTS.ONE, data.numReports, data.selectSnippets, data.selectSnippetReason, data.probabilities, data.narrationNodes);
+            result =  new Day(data.numDay - NUM_CONSTANTS.ONE, data.numReports, data.configuration, data.narrationNodes);
         } 
         catch (error) {
             WriteLog(`DayManager.ts > createDay > ERROR creating new day instance. #ERROR: ${error}`, LogLevel.ERROR);
@@ -50,7 +50,7 @@ class DayManager{
     private loadDays(): void{
         WriteLog(`DayManager.ts > loadDays > START`, LogLevel.VERBOSE);   
         try{
-            const jsonDays = dayInformationJson as {numDay: number; numReports: number; selectSnippets: boolean; selectSnippetReason: boolean; probabilities: number[]; narrationNodes: NarrationNode[]}[];
+            const jsonDays = dayInformationJson as {numDay: number; numReports: number; configuration: DayConfiguration; narrationNodes: NarrationNode[]}[];
             for(const jsonDay of jsonDays){
                 const day : Day | undefined = this.createDay(jsonDay);
                 

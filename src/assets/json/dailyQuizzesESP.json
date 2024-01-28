@@ -1,34 +1,72 @@
 [
     {
-        "question": "sampleQuestion1",
+        "question": "El grooming es:",
         "options": [
-            "1",
-            "2",
-            "The correct answer",
-            "4",
-            "5"
+            "El proceso en el que un adulto entabla una relación con un menor para abusar de este",
+            "Un término sacado del inglés, que descrie el cuidado de la apariencia personal con tal de mejorar la imagen de uno mismo contra los demás",
+            "El proceso por el cual una persona percibe falsamente que conoce de manera personal a su ídolo, y que es una persona cercana a este"
         ],
-        "correctAnswer": 3,
+        "correctAnswer": 1,
+        "explanation": "El grooming se da cuando un adulto crea un vículo con un menor de edad para abusar de este",
         "day": 1
     },
     {
-        "question": "sampleQuestion2",
+        "question": "El grooming se da: ",
         "options": [
-            "The correct answer",
-            "2",
-            "3"
+            "Entre un adulto mayor de 40 y un menor de edad",
+            "Entre un adulto desconocido y un menor de edad",
+            "Entre un adulto y un menor de edad"
         ],
-        "correctAnswer": 1,
+        "explanation": "No TODOS los acosadores tienen más de 40 años. Además, hay acosadores que establecen relaciones duraderas con sus víctimas. Por ello, para estas, ya no son desconocidos.",
         "day": 1
     },
     {
-        "question": "sampleQuestion3",
+        "question": "El acosador siempre es un desconocido para la víctima. Esta afirmación es:",
         "options": [
-            "The correct answer",
-            "2",
-            "3"
+            "Verdadera",
+            "Falsa"
+        ],
+        "explanation": "Los acosadores entablecen una relación de amistad con la víctima previo al abuso. Para ese entonces, el acosador ya no es un 'desconocido'.\nEs un amigo.",
+        "correctAnswer": 2,
+        "day": 1
+    },
+    {
+        "question": "La víctima siempre es una mujer. Esta afirmación es:",
+        "options": [
+            "Verdadera",
+            "Falsa"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Los hombres también pueden ser víctimas de grooming. De hecho, bastantes casos se dan contra chicos intentando descubrir si son homosexuales o no.",
+        "day": 1
+    },
+    {
+        "question": "El acosador: ",
+        "options": [
+            "No siempre aparenta ser un menor de edad.",
+            "Siempre oculta su verdadera identidad, haciendo creer a la víctima que es un menor de edad."
         ],
         "correctAnswer": 1,
+        "explanation": "Los hombres también pueden ser víctimas de grooming. De hecho, bastantes casos se dan contra chicos intentando descubrir si son homosexuales o no.",
         "day": 1
+    },
+    {
+        "question": "Los acosadores son violentos e insistentes, y suelen abducir a sus víctimas cuando es posile. Esta afirmación es:",
+        "options": [
+            "Verdadera",
+            "Falsa"
+        ],
+        "correctAnswer": 2,
+        "explanation": "En la mayoría de casos, los acosadores se muestran amigables con sus víctimas con tal de ganarse su confianza. Además, si bien hay casos en que la víctima ha sido secuestrada, son pocos.",
+        "day": 2
+    },
+    {
+        "question": "Entre otros, las personas más susceptibles a ser víctimas de grooming son:",
+        "options": [
+            "Verdadera",
+            "Falsa"
+        ],
+        "correctAnswer": 2,
+        "day": 2
     }
 ]

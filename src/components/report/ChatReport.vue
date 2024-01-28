@@ -6,19 +6,19 @@
             />
         </div>
 
-        <div v-if="currentPage === 1 && snippetIdxPairsPage1">
+        <div v-if="currentPage === 1 && snippetIdxPairsPage1.length > 0">
             <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1"/>
         </div>
 
-        <div v-if="currentPage === 2 && snippetIdxPairsPage2">
+        <div v-if="currentPage === 2 && snippetIdxPairsPage2.length > 0">
             <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
         </div>
         
         <div class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
-            <div @click="changePage(false)" class="report-button prev-button">&#8249;</div>
+            <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
             <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
-            <div @click="changePage(true)" class="report-button next-button">&#8250;</div>
+            <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
         </div>
         
         <ErrorModalComponent @closeModal="handleCloseModal" :visibility="solveReportErrorModalVisible" :message="'NO puedes marcar un informe como normal si tienes un snippet seleccionado.'"/>
@@ -102,11 +102,16 @@ export default defineComponent({
         },
 
         numPages(): number{
+            let result = 1;
             const chatReport = gameStore.state.curReport;
-            return chatReport && chatReport.snippets && chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ?
-            REPORT_CONSTANTS.NUM_REPORT_PAGES_MULTI
-            :
-            REPORT_CONSTANTS.NUM_REPORT_PAGES_SINGLE;
+
+            if(chatReport && chatReport.snippets.length > 0){
+                result = chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ?
+                    REPORT_CONSTANTS.NUM_REPORT_PAGES_MULTI
+                    :
+                    REPORT_CONSTANTS.NUM_REPORT_PAGES_SINGLE;
+            }
+            return result;
         },
 
         user1(): Profile | undefined{

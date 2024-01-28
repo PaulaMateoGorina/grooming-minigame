@@ -9,15 +9,13 @@
                     <p class="answer correct" v-if="correctness === ECorrectness.CORRECT">{{ RESULT_CARD_STRINGS.CORRECT }}</p>
 
                     <p class="answer partially-correct" v-else-if="correctness === ECorrectness.PARTIALLY_CORRECT">{{ RESULT_CARD_STRINGS.PARTIALLY_CORRECT }}</p>
-
                     
                     <div v-else-if="correctness === ECorrectness.INCORRECT">
                         <p class="answer incorrect">{{ RESULT_CARD_STRINGS.INCORRECT }}</p>
-                        <p class="big-text" v-if="!isReportResult">{{ RESULT_CARD_STRINGS.QUIZ_CORRECT_ANSWER_WAS }}</p>
-                        <p class="big-text correct bold" v-if="!isReportResult">{{ correctAnswer }}</p>
                     </div>
                     
                     <!-- Message with new score / multiplier-->
+                    <p class="medium-big-text accepts-new-line" v-if="!isReportResult">{{ explanation }}</p>
                     <p class="big-text bold accepts-new-line">{{ newScoreOrMultiplierMessage }}</p>
                 </div>
 
@@ -100,15 +98,13 @@ export default defineComponent({
             return result;
         },
 
-        correctAnswer(){
+        explanation(){
             let result = "";
             try {
-                const correctAnswerIdx = gameStore.state.curDailyQuiz ? gameStore.state.curDailyQuiz?.correctAnswer : -1;
-                if(correctAnswerIdx < 0){
-                    throw new Error("Could not get the index of the correct answer to the daily quiz.");
-                }
-
-                result = gameStore.state.curDailyQuiz ? gameStore.state.curDailyQuiz.options[correctAnswerIdx] : "";                
+                result = gameStore.state.curDailyQuiz ? gameStore.state.curDailyQuiz?.explanation : "";
+                if(result === ""){
+                    throw new Error("Could not get the explanation for the correct answer to the daily quiz.");
+                }           
             } 
             catch (error) {
                 WriteLog("ResultCard.vue > Computed - correctAnswer > ERROR: " + error, LogLevel.ERROR);

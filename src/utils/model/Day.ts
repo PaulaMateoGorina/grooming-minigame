@@ -4,28 +4,31 @@ import DailyQuiz from '@/utils/model/DailyQuiz';
 import QuizManager from '@/utils/loaders/QuizManager';
 import NarrationNode from '@/utils/model/NarrationNode';
 
-import * as utils from '../utils'
+export interface DayConfiguration{
+    shouldSkipQuiz: boolean;
+    hasSnippets: boolean;
+    selectSnippets: boolean;
+    selectSnippetStages: boolean;
+    groomingProbability: number;
+    minAgeGroomer: number;
+    maxAgeGroomer: number;
+}
 
-class Day{
-    //TODO: add narration
+export class Day{
     public numReports: number;
-    public selectSnippets: boolean;
-    public selectSnippetStages: boolean;
-    public probabilities: number[];
+    configuration: DayConfiguration;
     public narrationNodes: NarrationNode[];
 
     // generated
     public reports: Report[];
     public dailyQuiz?: DailyQuiz;
 
-    constructor(numDay:number, numReports: number, selectSnippets: boolean, selectSnippetStages: boolean, probabilities: number[], narrationNodes: NarrationNode[]) {
+    constructor(numDay:number, numReports: number, configuration: DayConfiguration, narrationNodes: NarrationNode[]) {
         const reportManager = ReportManager.getInstance();
         const quizManager = QuizManager.getInstance();
 
         this.numReports = numReports;
-        this.selectSnippets = selectSnippets;
-        this.selectSnippetStages = selectSnippets && selectSnippetStages;
-        this.probabilities = probabilities;
+        this.configuration = configuration;
         
         this.narrationNodes = narrationNodes;
         for(const node of this.narrationNodes){
@@ -37,10 +40,9 @@ class Day{
             }
         }
 
-
         this.reports = [];
         for(let i = 0; i < numReports;){
-            const report: Report | undefined = reportManager.generateReport(utils.getBoolean(probabilities[0]));
+            const report: Report | undefined = reportManager.generateReport(this.configuration);
             
             if(report !== undefined){
                 this.reports.push(report);
@@ -53,5 +55,3 @@ class Day{
             this.dailyQuiz = dailyQuiz;
     }
 }
-
-export default Day;

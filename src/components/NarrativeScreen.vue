@@ -12,7 +12,7 @@
                 @finishedTyping="handleFinishedTyping"
             />
 
-            <div v-if="curNode && curNode.options !== undefined && showContinueMessage" class="narrative-option-container">
+            <div v-if="curNode && curNode.options !== undefined && showContinueMessage" class="fade-in narrative-option-container">
                 <div v-for="option in curNode.options" :key="option.text" @click.stop="goTo(option.goTo)" class="narrative-option">
                     {{ option.text }}
                 </div>
@@ -45,7 +45,7 @@ export default defineComponent({
     data(){
         return{
             GENERAL_STRINGS : GENERAL_STRINGS,
-            typingSpeed: 50,
+            typingSpeed: 0,
             curNode: undefined as NarrationNode | undefined,
             curNodeHasOptions: false,
             newTextDelay: 0,
@@ -59,6 +59,7 @@ export default defineComponent({
         nextDialogue(to: number){
             if(this.showContinueMessage){
                 if(!this.curNodeHasOptions){
+                    this.showContinueMessage = false;
                     if(to > 0){
                         this.curNode = this.narrationNodes[to];
                         this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
@@ -72,6 +73,7 @@ export default defineComponent({
         goTo(to: number){
             this.curNode = this.narrationNodes[to];
             this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
+            this.showContinueMessage = false;
         }
     },
     computed:{

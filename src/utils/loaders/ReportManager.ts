@@ -7,6 +7,7 @@ import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'
 import Message from '@/utils/model/Message'
 import Report from '@/utils/model/Report'
+import { DayConfiguration } from '@/utils/model/Day'
 import { EStageIdx } from '@/utils/enums'
 import { NUM_CONSTANTS, STAGE_CONSTANTS, REPORT_CONSTANTS, PROFILE_CONSTANTS, FRIENDSHIP_TIME_CONSTANTS } from '@/utils/constants'
 import { LogLevel, WriteLog } from '../logger'
@@ -161,7 +162,7 @@ class ReportManager{
                 else
                     snippet = this.sampleGroomingSnippet();
 
-                if(snippet && snippet.chosen === false){
+                if(snippet && !snippetIds.includes(snippet.id)){
                     snippet.chosen = true;
                     result.push(snippet);             
                     snippetIds.push(snippet.id);
@@ -218,11 +219,14 @@ class ReportManager{
         const min = minAge ? minAge : PROFILE_CONSTANTS.MIN_AGE_GROOMER;
         const max = maxAge ? maxAge : PROFILE_CONSTANTS.MAX_AGE_GROOMER;
 
+        console.log("MIN: "+ min);
+        console.log(max);
+        
         try {
             const realAge: number = utils.getRandomNumber(min, max);
             const onlineAge: number = doAgesMatch ? realAge : utils.getRandomNumber(PROFILE_CONSTANTS.MAX_AGE_TEENAGER, PROFILE_CONSTANTS.MIN_AGE_FAKE);
-
-            profile = new Profile(PROFILE_CONSTANTS.PLACEHOLDER_URL, PROFILE_CONSTANTS.PLACEHOLDER_USERNAME, realAge, onlineAge);
+            
+            profile = new Profile(PROFILE_CONSTANTS.PLACEHOLDER_URL, PROFILE_CONSTANTS.PLACEHOLDER_USERNAME, onlineAge, realAge);
         } 
         catch (error) {
             WriteLog(`ReportManager.ts > generateTeenProfile > ERROR not generate a teenager profile. #ERROR: ${error}`, LogLevel.ERROR);
@@ -281,16 +285,19 @@ class ReportManager{
         return result;
     }
 
-    //TODO: Adapt so that you can choose to have it with or without snippets, prolly needs more parameters
-    public generateReport(isGrooming: boolean): Report | undefined{
+    public generateReport(configuration: DayConfiguration): Report | undefined{
         WriteLog("generateReport > Start", LogLevel.VERBOSE);
 
+        const isGrooming = utils.getBoolean(configuration.groomingProbability);
         let result: Report | undefined = undefined;
 
         try {
             // profiles
             const agesMatchUser1: boolean = utils.getBoolean(NUM_CONSTANTS.HALF);
-            const profile1Nullable: Profile | undefined = isGrooming ? this.generateGroomerProfile(agesMatchUser1) : this.generateTeenProfile(agesMatchUser1);
+            const profile1Nullable: Profile | undefined = isGrooming ? 
+                this.generateGroomerProfile(agesMatchUser1, configuration.minAgeGroomer, configuration.maxAgeGroomer) 
+                : 
+                this.generateTeenProfile(agesMatchUser1);
 
             const agesMatchUser2: boolean = utils.getBoolean(NUM_CONSTANTS.HALF);
             const profile1Nullable2: Profile | undefined = this.generateTeenProfile(agesMatchUser2);
@@ -306,11 +313,11 @@ class ReportManager{
             ];
 
             //snippets
-            const snippets: Snippet[] = this.generateSnippetList(isGrooming);
-            if(snippets.length > NUM_CONSTANTS.ZERO)
-                result = new Report(isGrooming, profile1Nullable, profile1Nullable2, friendshipTime, snippets);
-            else
-                throw("The snippets array was empty.");            
+            let snippets: Snippet[] = [];
+            if(configuration.hasSnippets){
+                snippets = this.generateSnippetList(isGrooming);
+            }
+            result = new Report(isGrooming, profile1Nullable, profile1Nullable2, friendshipTime, snippets);
 
         } catch (error) {
             WriteLog(`ReportManager.ts > generateReport > ERROR generating a report. #ERROR: ${error}`, LogLevel.ERROR);   
