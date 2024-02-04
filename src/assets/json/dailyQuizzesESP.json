@@ -31,16 +31,6 @@
         "day": 1
     },
     {
-        "question": "La víctima siempre es una mujer. Esta afirmación es:",
-        "options": [
-            "Verdadera",
-            "Falsa"
-        ],
-        "correctAnswer": 2,
-        "explanation": "Los hombres también pueden ser víctimas de grooming. De hecho, bastantes casos se dan contra chicos intentando descubrir si son homosexuales o no.",
-        "day": 1
-    },
-    {
         "question": "El acosador: ",
         "options": [
             "No siempre aparenta ser un menor de edad.",
@@ -58,7 +48,17 @@
         ],
         "correctAnswer": 2,
         "explanation": "En la mayoría de casos, los acosadores se muestran amigables con sus víctimas con tal de ganarse su confianza. Además, si bien hay casos en que la víctima ha sido secuestrada, son pocos.",
-        "day": 2
+        "day": 1
+    },
+    {
+        "question": "La víctima siempre es una mujer. Esta afirmación es:",
+        "options": [
+            "Verdadera",
+            "Falsa"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Los hombres también pueden ser víctimas de grooming. De hecho, bastantes casos se dan contra chicos intentando descubrir si son homosexuales o no.",
+        "day": 3
     },
     {
         "question": "Entre otros, las personas más susceptibles a ser víctimas de grooming son:",
@@ -67,6 +67,6 @@
             "Falsa"
         ],
         "correctAnswer": 2,
-        "day": 2
+        "day": 3
     }
 ]

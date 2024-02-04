@@ -25,11 +25,11 @@
         <div v-if="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
         :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
             <div class="stages-list-item" v-for="stage in STAGES" :key="stage.enumValue" @click="handleClickStage({name: stage.name, enumVal: stage.enumValue})">
-            {{ stage.enumValue }}: {{ stage.name }}
+            {{ debugMode? stage.enumValue + ": " : ""}}{{ stage.name }}
             </div>
         </div>
     </Transition>
-{{ chatSnippet?.stage }}
+{{ debugMode ? chatSnippet?.stage : "" }}
 </template>
   
 <script lang="ts">
@@ -81,6 +81,10 @@ export default defineComponent({
                 result = STAGES.filter(stage => stage.enumValue === this.stage)[0].name;
             }
             return result;
+        },
+
+        debugMode(): boolean{
+            return gameStore.getters.isDebugMode();
         }
     },
     methods: {

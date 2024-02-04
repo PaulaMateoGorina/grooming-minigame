@@ -6,11 +6,11 @@
         {
             "shouldSkipQuiz": true,
             "hasSnippets": false,
-            "selectSnippets": true,
-            "selectSnippetStages": true,
-            "groomingProbability": 1.0,
-            "minAgeGroomer": 22,
-            "maxAgeGroomer": 35
+            "selectSnippets": false,
+            "selectSnippetStages": false,
+            "groomingProbability": 0.75,
+            "minAgeGroomer": 40,
+            "maxAgeGroomer": 60
         },
         "narrationNodes": 
         [
@@ -44,54 +44,212 @@
             {"text": "El grooming puede ser más o menos largo, llegando a durar incluso años.", "goTo": 13},
             {"text": "Creo que tienes suficiente información por ahora, sigamos con la explicación de tu trabajo.", "goTo": 14},
             {"text": "Cada informe contendrá información diversa sobre el chat entre dos usuarios.", "goTo": 15},
-            {"text": "Como es tu primer día, comenzaremos con los más simples. Estos contienen solo la edad de las dos personas y el tiempo que llevan de amigos.", "goTo": 16},
-            {"text": "Cada vez que clasifiques un informe correctamente obtendrás puntos. Al final de la beca, el número de puntos que tengas determinará si te contratamos o no.", "goTo": 17},
+            {"text": "Como es tu primer día, comenzaremos con informes simplificados. Estos contienen solo la edad de las dos personas, la primera el posible groomer (acosador), y el tiempo que llevan de amigos. Te tendrás que basar en la edad para decidir.", "goTo": 16},
+            {"text": "Cada vez que clasifiques un informe correctamente obtendrás puntos, que nos servirán para ver cómo te desenvuelves con tus tareas.", "goTo": 17},
             {"text": "Al final del día volveré y te haré una pregunta relacionada con lo que has visto ese día.", "goTo": 18},
-            {"text": "Si la aciertas, incrementaré tu multiplicador de puntos. Y si fallas, lo disminuiré.", "goTo": 19},
             {"text": "Te has quedado con todo, ¿o necesitas que te lo repita?", "goTo": -1, 
             "options":[
-                {"text": "Lo he entendido todo.", "goTo": 20}, 
-                {"text": "Repíte, por favor.", "goTo": 21}
+                {"text": "Lo he entendido todo.", "goTo": 19}, 
+                {"text": "Repíte, por favor.", "goTo": 20}
             ]
             },
-            {"text": "Perfecto. ¡Pues a trabajar se ha dicho, ahí va tu primer informe!", "goTo": -1},
+            {"text": "¡Pues a trabajar se ha dicho! Ahí van tus primeros informes, a ver qué tal. Cuando acabes comentamos.", "goTo": -1},
             {"text": "Tu trabajo consiste en revisar informes de chats y decidir si son casos de grooming o no.", "goTo": 14}
         ]
     },
     {
-        "numDay": 2,
-        "numReports": 1,
+        "numDay": 1,
+        "numReports": 2,
         "configuration": 
         {
             "shouldSkipQuiz": true,
             "hasSnippets": false,
-            "selectSnippets": true,
-            "selectSnippetStages": true,
+            "selectSnippets": false,
+            "selectSnippetStages": false,
             "groomingProbability": 1.0,
             "minAgeGroomer": 22,
-            "maxAgeGroomer": 35
+            "maxAgeGroomer": 30
         },
         "narrationNodes": 
         [
-            {"text": "Comienza el día 2", "goTo": -1}
+            {"text": "¿Bueno, cómo lo vas llevando de momento?", "goTo": -1, 
+                "options":[
+                    {"text": "Ha sido pan comdio, era evidente.", "goTo": 2}
+                ]
+            },
+            {"text": "¿Sí? A ver cómo te desenvuelves con los siguientes entonces.", "goTo": -1}
         ]
     },
     {
-        "numDay": 3,
-        "numReports": 1,
+        "numDay": 1,
+        "numReports": 0,
         "configuration": 
         {
-            "shouldSkipQuiz": true,
+            "shouldSkipQuiz": false,
             "hasSnippets": false,
-            "selectSnippets": true,
-            "selectSnippetStages": true,
+            "selectSnippets": false,
+            "selectSnippetStages": false,
             "groomingProbability": 1.0,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 35
         },
         "narrationNodes": 
         [
-            {"text": "Comienza el día 3", "goTo": -1}
+            {"text": "¿Qué te han parecido estos?", "goTo": -1, 
+                "options":[
+                    {"text": "Todo bien de momento.", "goTo": 2},
+                    {"text": "No lo entiendo. Eran muy jóvenes, podrían ser amigos perfectamente.", "goTo": 3}
+                ]
+            },
+            {"text": "Genial!", "goTo": 3},
+            {"text": "Obviamente, sé que no se puede juzgar su relación solamente en la edad de las personas.", "goTo": 4},
+            {"text": "Aun así, es importante saber que no todos los groomers son personas 'mayores'.", "goTo": 5},
+            {"text": "Muchas campañas lo pintan así, pero no es verdad. Los acosadores tampoco suelen ser agresivos, o raptar a niños como dicen muchos.", "goTo": 6},
+            {"text": "En fin, creo que te hge dado suficiente información por hoy.", "goTo": -1, 
+            "options":[
+                {"text": "Pues ale, ¡hasta mañana!", "goTo": 7}
+            ]
+            },
+            {"text": "¡Espera! Aún no hemos acabado.", "goTo": -1, 
+                "options":[
+                    {"text": "¿Qué falta ahora?", "goTo": 8}
+                ]
+            },
+            {"text": "Falta el quiz diario. No te preocupes, es súper rápido. Si aciertas, incrementaré tu multiplicador de puntos, así ganarás más.", "goTo": -1, 
+                "options":[
+                    {"text": "¿Y si fallo?", "goTo": 9}
+                ]
+            },
+            {"text": "Como es tu primer día, no pasará nada. Pero a partir de mañana, si fallas disminuiré tu multiplicador. Listo?", "goTo": -1, 
+                "options":[
+                    {"text": "Sí. ¡Vamos!", "goTo": -1}
+                ]
+            }
+        ]
+    },
+    {
+        "numDay": 2,
+        "numReports": 4,
+        "configuration": 
+        {
+            "shouldSkipQuiz": false,
+            "hasSnippets": true,
+            "selectSnippets": false,
+            "selectSnippetStages": false,
+            "groomingProbability": 0.6,
+            "minAgeGroomer": 22,
+            "maxAgeGroomer": 65
+        },
+        "narrationNodes": 
+        [
+            {"text": "Buenos días. ¿Preparado para otro día de trabajo?", "goTo": -1, 
+                "options":[
+                    {"text": "Listo.", "goTo": 2}
+                ]
+            },
+            {"text": "Perfecto! Hoy los informes serán un poco más complejos. Además de los perfiles de los usuarios tendrás también una serie de extractos de su chat con los que guiar tu decisión.", "goTo": 3},
+            {"text": "¿Entendido?", "goTo": -1, 
+                "options":[
+                    {"text": "Espera. ¿Qué signos debería buscar en los chats?", "goTo": 4}
+                ]
+            },
+            {"text": "Bueno, cada acosador es diferente, pero la mayoría se pueden encasillar en 3 grupos.", "goTo": 5},
+            {"text": "El primero es el groomer que realmente quiere entablar una relación con el menor, por lo que mensajes demasiado cariñosos lo delatan.", "goTo": 6},
+            {"text": "El segundo es el acosador insistente en el tema sexual, ya sea fotos, mensajes subidos de tono... Como aún eres nuevo, no te pondremos a cargo de informes de ese tipo, no te preocupes.", "goTo": 7},
+            {"text": "Finalmente, está el groomer más adaptable, que cambia su estrategia según la víctima.", "goTo": 8},
+            {"text": "Aunque haya 3 tipos, todos tienen en común que al principio intentan sacarle la máxima información al menor sobre cosas como su situación en casa, en la escuela, etc. Eso les dice si son vulnerables o no.", "goTo": 9},
+            {"text": "También hay mucho énfasis en el secretismo, en caso de que haya relación.", "goTo": 10},
+            {"text": "Pero bueno, de esto te dire más próximamente, de momento con esto ya creo que es suficiente.", "goTo": 11},
+            {"text": "Todo bien?", "goTo": -1, 
+                "options":[
+                    {"text": "Sí, estoy listo para comenzar el día.", "goTo": 14},
+                    {"text": "No, la verdad. Es mucha información. ¿Me lo podrías repetir, por favor?", "goTo": 12}
+                ]
+            },
+            {"text": "¡Claro! No te preocupes, te lo explico de nuevo.", "goTo": 13},
+            {"text": "Si tuvieramos que agrupar a los acosadores en grupos, habría 3 prominentes:", "goTo": 5},
+            {"text": "Pues allá vas. Esta vez, cuando acabes con los informes pasaremos directamente al quiz diario. ¡Mucha suerte!", "goTo": -1}
+        ]   
+    },
+    {
+        "numDay": 3,
+        "numReports": 0,
+        "configuration": 
+        {
+            "shouldSkipQuiz": false,
+            "hasSnippets": true,
+            "selectSnippets": true,
+            "selectSnippetStages": false,
+            "groomingProbability": 1.0,
+            "minAgeGroomer": 22,
+            "maxAgeGroomer": 65
+        },
+        "narrationNodes": 
+        [
+            {"text": "Buenas. ¿Cómo va todo?", "goTo": -1, 
+                "options":[
+                    {"text": "Bien, ya me voy adaptando.", "goTo": 3},
+                    {"text": "Un poco así asá.", "goTo": 2}
+                ]
+            },
+            {"text": "Bueno, no te preocupes. Poco a poco lo irás pillando todo.", "goTo": 3},
+            {"text": "Como ayer nos enfocamos en los acosadores, hoy te daré un poco de información sobre las víctimas.", "goTo": 4},
+            {"text": "Según tú, las víctimas son:", "goTo": -1, 
+                "options":[
+                    {"text": "Solo chicas.", "goTo": 5},
+                    {"text": "Solo chicos.", "goTo": 5},
+                    {"text": "Tanto chicas como chicos.", "goTo": 6}
+                ]
+            },
+            {"text": "Pues no. Pueden ser tanto chicos como chicas, de la misma manera que los groomers pueden ser hombres o mujeres.", "goTo": 7},
+            {"text": "¡Correcto! Del mismo modo, los groomers pueden ser hombres o mujeres.", "goTo": 7},
+            {"text": "Algunos factores que influyen en la propensidad a ser víctimas de grooming son los problemas para relacionarse con su família y compañeros de edad, o una actitud que muestre que se está dispuesto a tomar riesgos en Internet.", "goTo": 8},
+            {"text": "También suelen ser víctimas los chicos que dudan de su sexualidad, y menores con problemas de salud mental.", "goTo": 8},
+            {"text": "Pero bueno, que me voy por las ramas.", "goTo": 9},
+            {"text": "Hoy aumentaremos la dificultad de tus tareas un poco.", "goTo": 10},
+            {"text": "Aparte de marcar el informe como grooming o no, tendrás que indicar entre los extractos de chats los que son indicios de grooming.", "goTo": 11},
+            {"text": "Ya sabes qué buscar: énfasis en el secretismo de la relación, preguntas sobre la relación con los padres, etc. ¿Listo?", "goTo": -1,
+                "options":[
+                    {"text": "Listo.", "goTo": 12}
+                ]
+            },
+            {"text": "Pues ale. ¡Comenzamos!", "goTo": -1},
+        ]
+    },
+    {
+        "numDay": 4,
+        "numReports": 0,
+        "configuration": 
+        {
+            "shouldSkipQuiz": false,
+            "hasSnippets": true,
+            "selectSnippets": true,
+            "selectSnippetStages": true,
+            "groomingProbability": 1.0,
+            "minAgeGroomer": 22,
+            "maxAgeGroomer": 65
+        },
+        "narrationNodes": 
+        [
+            {"text": "Genial!", "goTo": 3}
+        ]
+    },
+    {
+        "numDay": 5,
+        "numReports": 0,
+        "configuration": 
+        {
+            "shouldSkipQuiz": false,
+            "hasSnippets": true,
+            "selectSnippets": true,
+            "selectSnippetStages": true,
+            "groomingProbability": 1.0,
+            "minAgeGroomer": 22,
+            "maxAgeGroomer": 65
+        },
+        "narrationNodes": 
+        [
+            {"text": "Genial!", "goTo": 3}
         ]
     }
 ]

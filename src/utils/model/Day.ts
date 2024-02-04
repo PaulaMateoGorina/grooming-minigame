@@ -22,11 +22,13 @@ export class Day{
     // generated
     public reports: Report[];
     public dailyQuiz?: DailyQuiz;
+    public numDay: number;
 
     constructor(numDay:number, numReports: number, configuration: DayConfiguration, narrationNodes: NarrationNode[]) {
         const reportManager = ReportManager.getInstance();
         const quizManager = QuizManager.getInstance();
 
+        this.numDay = numDay;
         this.numReports = numReports;
         this.configuration = configuration;
         

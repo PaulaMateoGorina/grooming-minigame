@@ -50,6 +50,10 @@ export const PROFILE_CONSTANTS = {
     MIN_AGE_GROOMER: 27,
     MAX_AGE_GROOMER: 50,
     MIN_AGE_FAKE: 15,
+
+    // Age normal
+    MIN_AGE_NORMAL: 13,
+    MAX_AGE_NORMAL: 30
 }
 
 export const FRIENDSHIP_TIME_CONSTANTS = {

@@ -51,7 +51,8 @@ export interface GameState {
   curDailyQuiz: DailyQuiz | undefined,
 
   // Error
-  hasError: boolean
+  hasError: boolean,
+  debugMode: boolean
 }
 
 // Create a new store instance.
@@ -78,7 +79,8 @@ export const gameStore = createStore({
     curReport: undefined,
     curDailyQuiz: undefined,
 
-    hasError: false
+    hasError: false,
+    debugMode: false
     
   } as GameState,
 
@@ -102,6 +104,8 @@ export const gameStore = createStore({
       
       state.points = NUM_CONSTANTS.ZERO;
       state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
+
+      state.debugMode = true; //TODO: Change this before publishing it
 
       commitNewDay();
     },
@@ -138,8 +142,9 @@ export const gameStore = createStore({
 
     changeStage(state: GameState, toStage: EGameStage){
       // If we want to move to the next report, and we do not come from the narration
-      if(toStage === EGameStage.REPORT && state.visibleGameStage !== EGameStage.NARRATION){
-        state.curReportIdx++;
+      if(toStage === EGameStage.REPORT){
+        if(state.visibleGameStage !== EGameStage.NARRATION)
+          state.curReportIdx++;
 
         // If there are still reports left unsolved, then we change the curReport accordingly and display it
         if(state.curReportIdx < state.curDay!.numReports){
@@ -171,11 +176,12 @@ export const gameStore = createStore({
     },
 
     addScore(state: GameState, points: number){
-      state.points += points;
+      state.points = Math.round(state.points + points);
     },
 
     changeMultiplier(state: GameState, shouldIncrease: boolean){
-      state.multiplier += shouldIncrease ? QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_INCREASE : NUM_CONSTANTS.NEG * QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_DEDUCTION; 
+      if(state.curDay && state.curDay.numDay !== 0)
+        state.multiplier += shouldIncrease ? QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_INCREASE : NUM_CONSTANTS.NEG * QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_DEDUCTION; 
     },
 
     changeDay(state: GameState){
@@ -207,5 +213,9 @@ export const gameStore = createStore({
 
       return result;
     },
+
+    isDebugMode: (state) => {
+      return state.debugMode;
+    }
   }
 });

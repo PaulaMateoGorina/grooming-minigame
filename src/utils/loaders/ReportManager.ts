@@ -219,9 +219,6 @@ class ReportManager{
         const min = minAge ? minAge : PROFILE_CONSTANTS.MIN_AGE_GROOMER;
         const max = maxAge ? maxAge : PROFILE_CONSTANTS.MAX_AGE_GROOMER;
 
-        console.log("MIN: "+ min);
-        console.log(max);
-        
         try {
             const realAge: number = utils.getRandomNumber(min, max);
             const onlineAge: number = doAgesMatch ? realAge : utils.getRandomNumber(PROFILE_CONSTANTS.MAX_AGE_TEENAGER, PROFILE_CONSTANTS.MIN_AGE_FAKE);
@@ -239,6 +236,20 @@ class ReportManager{
         let profile: Profile | undefined = undefined;
         try {
             const realAge: number = utils.getRandomNumber(PROFILE_CONSTANTS.MAX_AGE_TEENAGER, PROFILE_CONSTANTS.MIN_AGE_TEENAGER);
+            const onlineAge: number = doAgesMatch ? realAge : utils.getRandomNumber(realAge + PROFILE_CONSTANTS.MAX_AGE_DIFFERENCE_TEENAGER, realAge);
+
+            profile = new Profile(PROFILE_CONSTANTS.PLACEHOLDER_URL, PROFILE_CONSTANTS.PLACEHOLDER_USERNAME, realAge, onlineAge);
+        } 
+        catch (error) {
+            WriteLog(`ReportManager.ts > generateTeenProfile > ERROR not generate a teenager profile. #ERROR: ${error}`, LogLevel.ERROR);
+        }
+        return profile;
+    }
+
+    private generateNormalProfile(doAgesMatch: boolean): Profile| undefined{
+        let profile: Profile | undefined = undefined;
+        try {
+            const realAge: number = utils.getRandomNumber(PROFILE_CONSTANTS.MAX_AGE_NORMAL, PROFILE_CONSTANTS.MIN_AGE_NORMAL);
             const onlineAge: number = doAgesMatch ? realAge : utils.getRandomNumber(realAge + PROFILE_CONSTANTS.MAX_AGE_DIFFERENCE_TEENAGER, realAge);
 
             profile = new Profile(PROFILE_CONSTANTS.PLACEHOLDER_URL, PROFILE_CONSTANTS.PLACEHOLDER_USERNAME, realAge, onlineAge);
@@ -297,7 +308,7 @@ class ReportManager{
             const profile1Nullable: Profile | undefined = isGrooming ? 
                 this.generateGroomerProfile(agesMatchUser1, configuration.minAgeGroomer, configuration.maxAgeGroomer) 
                 : 
-                this.generateTeenProfile(agesMatchUser1);
+                this.generateNormalProfile(agesMatchUser1);
 
             const agesMatchUser2: boolean = utils.getBoolean(NUM_CONSTANTS.HALF);
             const profile1Nullable2: Profile | undefined = this.generateTeenProfile(agesMatchUser2);
