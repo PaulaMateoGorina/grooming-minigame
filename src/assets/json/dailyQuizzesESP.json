@@ -17,7 +17,8 @@
             "Entre un adulto desconocido y un menor de edad",
             "Entre un adulto y un menor de edad"
         ],
-        "explanation": "No TODOS los acosadores tienen más de 40 años. Además, hay acosadores que establecen relaciones duraderas con sus víctimas. Por ello, para estas, ya no son desconocidos.",
+        "correctAnswer": 3,
+        "explanation": "No TODOS los acosadores tienen más de 40 años. Además, hay acosadores que establecen relaciones duraderas con sus víctimas. Por ello, para estas, ya no son desconocidos",
         "day": 1
     },
     {
@@ -26,47 +27,149 @@
             "Verdadera",
             "Falsa"
         ],
-        "explanation": "Los acosadores entablecen una relación de amistad con la víctima previo al abuso. Para ese entonces, el acosador ya no es un 'desconocido'.\nEs un amigo.",
+        "explanation": "Los acosadores entablecen una relación de amistad con la víctima previo al abuso. Para ese entonces, el acosador ya no es un 'desconocido'.\nEs un amigo",
         "correctAnswer": 2,
         "day": 1
     },
     {
         "question": "El acosador: ",
         "options": [
-            "No siempre aparenta ser un menor de edad.",
-            "Siempre oculta su verdadera identidad, haciendo creer a la víctima que es un menor de edad."
+            "No siempre aparenta ser un menor de edad",
+            "Siempre oculta su verdadera identidad, haciendo creer a la víctima que es un menor de edad"
         ],
         "correctAnswer": 1,
-        "explanation": "Los hombres también pueden ser víctimas de grooming. De hecho, bastantes casos se dan contra chicos intentando descubrir si son homosexuales o no.",
+        "explanation": "No todos los groomers ocultan su edad, o al menos no siempre aparentan ser menores de edad. Muchos intentan mostrarse como figuras de autoridad y confianza con tal de ganarse al menor.",
         "day": 1
     },
     {
-        "question": "Los acosadores son violentos e insistentes, y suelen abducir a sus víctimas cuando es posile. Esta afirmación es:",
+        "question": "Los acosadores no siempre son violentos e insistentes, ni tampoco suelen abducir a sus víctimas cuando es posible. Esta afirmación es:",
+        "options": [
+            "Verdadera",
+            "Falsa"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En la mayoría de casos, los acosadores se muestran amigables con sus víctimas con tal de ganarse su confianza. Además, si bien hay casos en que la víctima ha sido secuestrada, son pocos",
+        "day": 1
+    },
+    {
+        "question": "Un menor y un adulto:",
+        "options": [
+            "Pueden tener gustos en común, pero no deberían establezcer una relación romántica",
+            "Pueden tener cosas en común, y es normal que formen una relación romántica",
+            "Tienen muchas cosas en común, por lo que es natural que puedan entablar una relación romántica"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Un adulto y un menor pueden compartir intereses, pero la diferencia de edad crea un diferencia de poder de la que el adulto se puede aprovechar para explotar al menor",
+        "day": 1
+    },
+    {
+        "question": "Por muy maduro que seas, nunca tendrás la suficiente madurez mental como para salir con un adulto. Esta afirmación es:",
+        "options": [
+            "Verdadera",
+            "Falsa"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Los groomers acostumbran a decirle a sus víctimas que son maduras para su edad con tal de manipularlos. No importa la madurez que se tenga, la brecha siempre será demasiada",
+        "day": 1
+    },
+    {
+        "question": "Hay 3 tipos de groomers. El 'buscador de intimidad' es aquel que:",
+        "options": [
+            "Busca entablar una relación romántica verdadera con el menor",
+            "Cambia su estrategia dependiendo de las actitudes que tenga su víctima",
+            "Hace mucho énfasis y se precipita en el tema sexual"
+        ],
+        "correctAnswer": 1,
+        "explanation": "El groomer 'buscador de intimidad' es aquel que busca entablar una relación romántica verdadera con el menor",
+        "day": 2
+    },
+    {
+        "question": "Hay 3 tipos de groomers. El 'polivalente' es aquel que:",
+        "options": [
+            "Busca entablar una relación romántica verdadera con el menor",
+            "Cambia su estrategia dependiendo de las actitudes que tenga su víctima",
+            "Hace mucho énfasis y se precipita en el tema sexual"
+        ],
+        "correctAnswer": 2,
+        "explanation": "El acosador 'polivalmente' es aquel que cambia su estrategia dependiendo de las actitudes que tenga su víctima",
+        "day": 2
+    },
+    {
+        "question": "Hay 3 tipos de groomers. El 'hipersexualizado' es aquel que:",
+        "options": [
+            "Busca entablar una relación romántica verdadera con el menor",
+            "Cambia su estrategia dependiendo de las actitudes que tenga su víctima",
+            "Hace mucho énfasis y se precipita en el tema sexual"
+        ],
+        "correctAnswer": 3,
+        "explanation": "El acosador 'hipersexualizado' es aquel que hace mucho énfasis y se precipita en el tema sexual",
+        "day": 2
+    },
+    {
+        "question": "El groomer que busca entablar una relación romántica verdadera con el menor es el:",
+        "options": [
+            "Buscador de intimidad",
+            "Polivalente",
+            "Hipersexualizado"
+        ],
+        "correctAnswer": 1,
+        "explanation": "El groomer 'buscador de intimidad' es aquel que busca entablar una relación romántica verdadera con el menor",
+        "day": 2
+    },
+    {
+        "question": "El groomer que cambia su estrategia dependiendo de las actitudes que tenga su víctima es el:",
+        "options": [
+            "Buscador de intimidad",
+            "Polivalente",
+            "Hipersexualizado"
+        ],
+        "correctAnswer": 2,
+        "explanation": "El acosador 'polivalmente' es aquel que cambia su estrategia dependiendo de las actitudes que tenga su víctima",
+        "day": 2
+    },
+    {
+        "question": "El groomer que busca entablar una relación romántica verdadera con el menor es el:",
+        "options": [
+            "Buscador de intimidad",
+            "Polivalente",
+            "Hipersexualizado"
+        ],
+        "correctAnswer": 3,
+        "explanation": "El acosador 'hipersexualizado' es aquel que hace mucho énfasis y se precipita en el tema sexual",
+        "day": 2
+    },
+    {
+        "question": "La víctima siempre es una chica. Esta afirmación es:",
         "options": [
             "Verdadera",
             "Falsa"
         ],
         "correctAnswer": 2,
-        "explanation": "En la mayoría de casos, los acosadores se muestran amigables con sus víctimas con tal de ganarse su confianza. Además, si bien hay casos en que la víctima ha sido secuestrada, son pocos.",
-        "day": 1
-    },
-    {
-        "question": "La víctima siempre es una mujer. Esta afirmación es:",
-        "options": [
-            "Verdadera",
-            "Falsa"
-        ],
-        "correctAnswer": 2,
-        "explanation": "Los hombres también pueden ser víctimas de grooming. De hecho, bastantes casos se dan contra chicos intentando descubrir si son homosexuales o no.",
+        "explanation": "Los chicos también pueden ser víctimas de grooming. De hecho, bastantes casos se dan contra chicos intentando descubrir si son homosexuales o no",
         "day": 3
     },
     {
         "question": "Entre otros, las personas más susceptibles a ser víctimas de grooming son:",
         "options": [
-            "Verdadera",
-            "Falsa"
+            "Aquellos con una red de apoyo emocional fuerte",
+            "Solo aquellos con problemas familiares o en la escuela, que están apartados de la sociedad",
+            "Solo aquellos que se muestran abiertos a tomar riesgos",
+            "Menores de edad que se sienten solos, tienen problemas al relacionarse con los demás o se muestran abiertos a tomar riesgos",
+            "Todos los anteriores"
+        ],
+        "correctAnswer": 4,
+        "explanation": "Mostrarse abierto a tomar riesgos por internet, sentimientos de soledad y problemas en las relaciones interpersonales son factores que aumentan el riesgo a ser víctima de grooming",
+        "day": 3
+    },
+    {
+        "question": "Para protegerme del grooming, debo:",
+        "options": [
+            "Intentar encontrar personas con quien pueda comunicarme en caso de tener algún prolema en internet",
+            "Mostrarme cauteloso con las personas con las que me comunico por internet",
+            "Ambas son correctas"
         ],
         "correctAnswer": 2,
+        "explanation": "Los groomers generalmente atacan a víctimas con poco apoyo emocional y que se muestran abiertos a tomar riesgos en las redes. Hay que ser cautelosos e intentar tener alguien a quién acudir en caso de conflicto.",
         "day": 3
     }
 ]
