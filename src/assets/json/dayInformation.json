@@ -105,7 +105,7 @@
             {"text": "Obviamente, sé que no se puede juzgar su relación solamente en la edad de las personas.", "goTo": 4},
             {"text": "Aun así, es importante saber que no todos los groomers son personas 'mayores'.", "goTo": 5},
             {"text": "Muchas campañas lo pintan así, pero no es verdad. Los acosadores tampoco suelen ser agresivos, o raptar a niños como dicen muchos.", "goTo": 6},
-            {"text": "En fin, creo que te hge dado suficiente información por hoy.", "goTo": -1, 
+            {"text": "En fin, creo que te he dado suficiente información por hoy.", "goTo": -1, 
             "options":[
                 {"text": "Pues ale, ¡hasta mañana!", "goTo": 7}
             ]
@@ -129,7 +129,7 @@
     },
     {
         "numDay": 2,
-        "numReports": 1,
+        "numReports": 3,
         "configuration": 
         {
             "shouldSkipQuiz": false,
@@ -173,7 +173,7 @@
     },
     {
         "numDay": 3,
-        "numReports": 1,
+        "numReports": 4,
         "configuration": 
         {
             "shouldSkipQuiz": false,
@@ -204,13 +204,13 @@
             {"text": "Pues no. Pueden ser tanto chicos como chicas, de la misma manera que los groomers pueden ser hombres o mujeres.", "goTo": 7},
             {"text": "¡Correcto! Del mismo modo, los groomers pueden ser hombres o mujeres.", "goTo": 7},
             {"text": "Algunos factores que influyen en la propensidad a ser víctimas de grooming son los problemas para relacionarse con su família y compañeros de edad, o una actitud que muestre que se está dispuesto a tomar riesgos en Internet.", "goTo": 8},
-            {"text": "También suelen ser víctimas los chicos que dudan de su sexualidad, y menores con problemas de salud mental.", "goTo": 8},
-            {"text": "Pero bueno, que me voy por las ramas.", "goTo": 9},
-            {"text": "Hoy aumentaremos la dificultad de tus tareas un poco.", "goTo": 10},
-            {"text": "Aparte de marcar el informe como grooming o no, tendrás que indicar entre los extractos de chats los que son indicios de grooming.", "goTo": 11},
+            {"text": "También suelen ser víctimas los chicos que dudan de su sexualidad, y menores con problemas de salud mental.", "goTo": 9},
+            {"text": "Pero bueno, que me voy por las ramas.", "goTo": 10},
+            {"text": "Hoy aumentaremos la dificultad de tus tareas un poco.", "goTo": 11},
+            {"text": "Aparte de marcar el informe como grooming o no, tendrás que indicar entre los extractos de chats los que son indicios de grooming.", "goTo": 12},
             {"text": "Ya sabes qué buscar: énfasis en el secretismo de la relación, preguntas sobre la relación con los padres, etc. ¿Listo?", "goTo": -1,
                 "options":[
-                    {"text": "Listo.", "goTo": 12}
+                    {"text": "Listo.", "goTo": 13}
                 ]
             },
             {"text": "Pues ale. ¡Comenzamos!", "goTo": -1}
@@ -218,7 +218,7 @@
     },
     {
         "numDay": 4,
-        "numReports": 1,
+        "numReports": 4,
         "configuration": 
         {
             "shouldSkipQuiz": false,
@@ -281,14 +281,16 @@
                     {"text": "Comienza desde la fase 5.", "goTo": 20}
                 ]    
             },
-            {"text": "¡Perfecto! En los informes no apareceran ni la 'Fase sexual' ni la 'Reproducción de fantasías', pero el resto sí.", "goTo": 28},
-            {"text": "Además, también habrán extractos donde habrá que marcar que el acosador está pidiendo fotos indebidas.", "goTo": 29},
+            {"text": "¡Perfecto! En los informes no apareceran ni la 'Fase sexual' ni la 'Reproducción de fantasías', pero el resto sí.", "goTo": 29},
+            {"text": "Además, también habrán extractos donde habrá que marcar que el acosador está pidiendo fotos indebidas.", "goTo": 30}, 
+            {"text": "Como dato, puedes cambiar tu selección cuando quieras. Para marcar rápidamente un extracto como normal, simplemente haz click derecho.", "goTo": 31},
+            {"text": "Por último, no podrás marcar un informe como 'normal' si tienes algún extracto marcado.", "goTo": 32},
             {"text": "En fin, ¡A ello!", "goTo": -1}
         ]
     },
     {
         "numDay": 5,
-        "numReports": 0,
+        "numReports": 5,
         "configuration": 
         {
             "shouldSkipQuiz": false,
@@ -310,22 +312,23 @@
                     {"text": "Sí, por favor.", "goTo": 5}
                 ]    
             },
-            {"text": "Vale, esta vez te las resumiré un poco.", "goTo": 7},
-            {"text": "Las dos primeras fases las juntamos en 'Comienzo de la amistad y relación'.", "goTo": 8},
-            {"text": "El acosador intentará averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo.", "goTo": 9},
-            {"text": "3a fase: 'Evaluación de riesgo'.", "goTo": 10},
-            {"text": "Aquí el groomer intenta saber qué tan probable es que lo pillen en caso de comenzar una 'relación' con el menor.", "goTo": 11},
-            {"text": "4a fase: 'Fase de exclusividad'.", "goTo": 12},
-            {"text": "En esta fase el acosador o bien se intenta mostrar como alguien a quien contarle sus problemas, o ya ha comenzado su relación con el menor y actúa como su pareja.", "goTo": 13},
-            {"text": "5a fase: 'Fase sexual', donde el groomer comienza a introducir temas sexuales en las conversaciones que tiene con el menor.", "goTo": 14},
-            {"text": "6a fase: 'Reproducción de fantasías'.", "goTo": 15},
-            {"text": "Aquí el acosador y el menor reproducen fantasías sexuales, y puede que intercambien fotos subidas de tono.", "goTo": 16},
-            {"text": "7a y última fase: 'Mitigación de daños'.", "goTo": 17},
-            {"text": "El acosador intentará manipular a la víctima para que mantenga su relación en secreto. Puede ser sutilmente, o a base de amenazas.", "goTo": 18},
+            {"text": "Vale, esta vez te las resumiré un poco.", "goTo": 6},
+            {"text": "Las dos primeras fases las juntamos en 'Comienzo de la amistad y relación'.", "goTo": 7},
+            {"text": "El acosador intentará averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo.", "goTo": 8},
+            {"text": "3a fase: 'Evaluación de riesgo'.", "goTo": 9},
+            {"text": "Aquí el groomer intenta saber qué tan probable es que lo pillen en caso de comenzar una 'relación' con el menor.", "goTo": 10},
+            {"text": "4a fase: 'Fase de exclusividad'.", "goTo": 11},
+            {"text": "En esta fase el acosador o bien se intenta mostrar como alguien a quien contarle sus problemas, o ya ha comenzado su relación con el menor y actúa como su pareja.", "goTo": 12},
+            {"text": "5a fase: 'Fase sexual', donde el groomer comienza a introducir temas sexuales en las conversaciones que tiene con el menor.", "goTo": 13},
+            {"text": "6a fase: 'Reproducción de fantasías'.", "goTo": 14},
+            {"text": "Aquí el acosador y el menor reproducen fantasías sexuales, y puede que intercambien fotos subidas de tono.", "goTo": 15},
+            {"text": "7a y última fase: 'Mitigación de daños'.", "goTo": 16},
+            {"text": "El acosador intentará manipular a la víctima para que mantenga su relación en secreto. Puede ser sutilmente, o a base de amenazas.", "goTo": 17},
+            {"text": "Te recuerdo que, aunque numeremos las fases, no es algo que suceda de manera lineal. Algunos groomers se saltan fases, o las hacen en diferente orden", "goTo": 18},
             {"text": "¿Entendido o repito?", "goTo": -1,
                 "options":[
                     {"text": "Vale, lo he pillado.", "goTo": 19},
-                    {"text": "Repite, por favor.", "goTo": 8}
+                    {"text": "Repite, por favor.", "goTo": 6}
                 ]    
             },
             {"text": "Pues ale. ¡A trabajar!.", "goTo": -1}

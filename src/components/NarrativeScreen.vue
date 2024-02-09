@@ -71,9 +71,14 @@ export default defineComponent({
             }
         },
         goTo(to: number){
-            this.curNode = this.narrationNodes[to];
-            this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
-            this.showContinueMessage = false;
+            if(to > 0){
+                this.curNode = this.narrationNodes[to];
+                this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
+                this.showContinueMessage = false;
+            }
+            else{
+                gameStore.commit('changeStage', EGameStage.REPORT);
+            }
         }
     },
     computed:{

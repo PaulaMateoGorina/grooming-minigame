@@ -52,8 +52,10 @@ export class Day{
             }
         }
         
-        const dailyQuiz = quizManager.sampleDailyQuiz(numDay);
-        if(dailyQuiz)
-            this.dailyQuiz = dailyQuiz;
+        if(!configuration.shouldSkipQuiz){
+            const dailyQuiz = quizManager.sampleDailyQuiz(numDay);
+            if(dailyQuiz)
+                this.dailyQuiz = dailyQuiz;
+        }
     }
 }

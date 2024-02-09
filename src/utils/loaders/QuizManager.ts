@@ -64,14 +64,15 @@ class QuizManager{
     // #endregion
 
     // #region public 
-    public sampleDailyQuiz(day?: number) : DailyQuiz | undefined{
+    public sampleDailyQuiz(dayNullable?: number) : DailyQuiz | undefined{
+        const day = dayNullable === undefined ? 0 : dayNullable;
+
         let result: DailyQuiz | undefined = undefined;
         try{
             do{
                 const randIdx: number = utils.getRandomIdx(this.numDailyQuizzes);
                 result = this.dailyQuizzes[randIdx];
-            } while(result.chosen && day && result.day < day);
-            //NOTE: VERY IMPORTANT to have AT LEAST ONE DAILY QUIZ for that day, otherwise infinite loop happens
+            } while(result.chosen || result.day > day);
             result.chosen = true;
         }
         catch (error){

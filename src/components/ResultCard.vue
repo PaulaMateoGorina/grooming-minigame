@@ -75,7 +75,10 @@ export default defineComponent({
 
                 }
                 else{
-                    result = this.correctness === ECorrectness.CORRECT ? RESULT_CARD_STRINGS.QUIZ_CORRECT : RESULT_CARD_STRINGS.QUIZ_INCORRECT;
+                    if(this.isFirstDay)
+                        result = "";
+                    else
+                        result = this.correctness === ECorrectness.CORRECT ? RESULT_CARD_STRINGS.QUIZ_CORRECT : RESULT_CARD_STRINGS.QUIZ_INCORRECT;
                 }   
             }
             catch (error) {
@@ -110,6 +113,10 @@ export default defineComponent({
                 WriteLog("ResultCard.vue > Computed - correctAnswer > ERROR: " + error, LogLevel.ERROR);
             }
             return result;
+        },
+
+        isFirstDay(){
+            return gameStore.getters.isFirstDay;
         }
     }
 })

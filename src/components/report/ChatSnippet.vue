@@ -54,7 +54,7 @@ export default defineComponent({
         return {
             stageSelectorVisible: false,
             mousePosition: {x: 0, y: 0},
-            STAGES: STAGES
+            STAGES: STAGES,
         };
     },
     props: {
@@ -71,7 +71,7 @@ export default defineComponent({
         },
 
         stage(): number{
-            return this.arrayIdx && gameStore.state.snippetStagesSelected.length > this.arrayIdx ? gameStore.state.snippetStagesSelected[this.arrayIdx] : -1;
+            return this.arrayIdx !== undefined && gameStore.state.snippetStagesSelected.length > this.arrayIdx ? gameStore.state.snippetStagesSelected[this.arrayIdx] : -1;
         },
         
         selectedStageName(): string{
@@ -84,7 +84,7 @@ export default defineComponent({
         },
 
         debugMode(): boolean{
-            return gameStore.getters.isDebugMode();
+            return gameStore.getters.isDebugMode;
         }
     },
     methods: {
@@ -107,8 +107,8 @@ export default defineComponent({
                         this.stageSelectorVisible = !this.stageSelectorVisible;
                     }
                     else{
-                        this.stage = this.stage * EStage.Normal;
-                        gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: this.stage })
+                        const auxStage = this.stage * EStage.Normal;
+                        gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: auxStage })
                     }
                 }
             } catch (error) {

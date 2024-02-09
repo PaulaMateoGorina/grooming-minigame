@@ -42,7 +42,7 @@
         "day": 1
     },
     {
-        "question": "Los acosadores no siempre son violentos e insistentes, ni tampoco suelen abducir a sus víctimas cuando es posible. Esta afirmación es:",
+        "question": "Los acosadores NO siempre son violentos e insistentes, ni tampoco suelen abducir a sus víctimas cuando es posible. Esta afirmación es:",
         "options": [
             "Verdadera",
             "Falsa"
@@ -128,7 +128,7 @@
         "day": 2
     },
     {
-        "question": "El groomer que busca entablar una relación romántica verdadera con el menor es el:",
+        "question": "El groomer que hace mucho énfasis en el tema sexual es el:",
         "options": [
             "Buscador de intimidad",
             "Polivalente",
@@ -171,5 +171,182 @@
         "correctAnswer": 2,
         "explanation": "Los groomers generalmente atacan a víctimas con poco apoyo emocional y que se muestran abiertos a tomar riesgos en las redes. Hay que ser cautelosos e intentar tener alguien a quién acudir en caso de conflicto.",
         "day": 3
+    }
+    ,
+    {
+        "question": "En el 'Comienzo de la amistad y relación', el acosador intentará:",
+        "options": [
+            "Introducir temas sexuales a las conversaciones con el menor",
+            "Averiguar qué tan probable es que lo descubran en caso de entablar una relación con el menor",
+            "Averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo",
+            "A base de elogios o amenazas, impedir que el menor hable de su relación con el groomer",
+            "Hacer creer a la víctima que es una persona de confianza, y entablar una relación romántica con ella"
+        ],
+        "correctAnswer": 3,
+        "explanation": "En el 'Comienzo de la amistad y relación', el acosador intenta averiguar qué tan vulnerable es la víctima.",
+        "day": 4
+    }
+    ,
+    {
+        "question": "En la 'Evaluación de riesgo', el acosador intentará:",
+        "options": [
+            "Averiguar qué tan probable es que lo descubran en caso de entablar una relación con el menor",
+            "Introducir temas sexuales a las conversaciones con el menor",
+            "Averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo",
+            "A base de elogios o amenazas, impedir que el menor hable de su relación con el groomer",
+            "Reproducir fantasías sexuales con el menor"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En la 'Evaluación de riesgo', el acosador intenta saber si es probable que se le descura o no.",
+        "day": 4
+    },
+    {
+        "question": "En la 'Fase de exclusividad', el acosador intentará:",
+        "options": [
+            "Averiguar qué tan probable es que lo descubran en caso de entablar una relación con el menor",
+            "Introducir temas sexuales a las conversaciones con el menor",
+            "Averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo",
+            "Reproducir fantasías sexuales con el menor",
+            "Hacer creer a la víctima que es una persona de confianza, y entablar una relación romántica con ella"
+        ],
+        "correctAnswer": 5,
+        "explanation": "En la 'Fase de exclusividad', el acosador trata de mostrarse como alguien de confianza y comenzar su relación con el menor.",
+        "day": 4
+    },
+    {
+        "question": "En la 'Fase sexual', el acosador intentará:",
+        "options": [
+            "Introducir temas sexuales a las conversaciones con el menor",
+            "Averiguar qué tan probable es que lo descubran en caso de entablar una relación con el menor",
+            "A base de elogios o amenazas, impedir que el menor hable de su relación con el groomer",
+            "Hacer creer a la víctima que es una persona de confianza, y entablar una relación romántica con ella",
+            "Reproducir fantasías sexuales con el menor"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En la 'Fase sexual', el acosador introduce poco a poco temas sexuales para desensibilizar a su víctima.",
+        "day": 4
+    },
+    {
+        "question": "En la fase de 'Recreación de fantasías', el acosador intentará:",
+        "options": [
+            "Averiguar qué tan probable es que lo descubran en caso de entablar una relación con el menor",
+            "Introducir temas sexuales a las conversaciones con el menor",
+            "Reproducir fantasías sexuales con el menor",
+            "Averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo",
+            "Hacer creer a la víctima que es una persona de confianza, y entablar una relación romántica con ella"
+        ],
+        "correctAnswer": 3,
+        "explanation": "En la fase de 'Recreación de fantasías', el acosador recrea fantasías sexuales con el menor via chat.",
+        "day": 4
+    },
+    {
+        "question": "En la fase de 'Mitigación de daños', el acosador intentará:",
+        "options": [
+            "Averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo",
+            "Reproducir fantasías sexuales con el menor",
+            "Averiguar qué tan probable es que lo descubran en caso de entablar una relación con el menor",
+            "A base de elogios o amenazas, impedir que el menor hable de su relación con el groomer",
+            "Introducir temas sexuales a las conversaciones con el menor"
+        ],
+        "correctAnswer": 4,
+        "explanation": "En la fase de 'Mitigación de daños', el acosador intentará de diversas maneras evitar que la víctima delate su relación.",
+        "day": 4
+    },
+    {
+        "question": "En la fase de 'Mitigación de daños', el acosador intentará:",
+        "options": [
+            "Averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo",
+            "Reproducir fantasías sexuales con el menor",
+            "Averiguar qué tan probable es que lo descubran en caso de entablar una relación con el menor",
+            "A base de elogios o amenazas, impedir que el menor hable de su relación con el groomer",
+            "Introducir temas sexuales a las conversaciones con el menor"
+        ],
+        "correctAnswer": 4,
+        "explanation": "En la fase de 'Mitigación de daños', el acosador intentará de diversas maneras evitar que la víctima delate su relación.",
+        "day": 4
+    },
+    {
+        "question": "El acosador intenta averiguar lo vulnerable que es la víctima en la fase:",
+        "options": [
+            "Comienzo de la amistad y relación",
+            "Evaluación de riesgo",
+            "Fase de exclusividad",
+            "Fase sexual",
+            "Recreación de fantasías",
+            "Mitigación de daños"
+        ],
+        "correctAnswer": 1,
+        "explanation": "En el 'Comienzo de la amistad y relación', el acosador intenta averiguar qué tan vulnerable es la víctima.",
+        "day": 4
+    },
+    {
+        "question": "El acosador intenta averiguar lo probable es que le pillen en la fase:",
+        "options": [
+            "Comienzo de la amistad y relación",
+            "Evaluación de riesgo",
+            "Fase de exclusividad",
+            "Fase sexual",
+            "Recreación de fantasías",
+            "Mitigación de daños"
+        ],
+        "correctAnswer": 2,
+        "explanation": "En la 'Evaluación de riesgo', el acosador intenta saber si es probable que se le descura o no.",
+        "day": 4
+    },
+    {
+        "question": "El acosador intenta entablar la relación romántica en la fase:",
+        "options": [
+            "Comienzo de la amistad y relación",
+            "Evaluación de riesgo",
+            "Fase de exclusividad",
+            "Fase sexual",
+            "Recreación de fantasías",
+            "Mitigación de daños"
+        ],
+        "correctAnswer": 3,
+        "explanation": "En la 'Fase de exclusividad', el acosador trata de mostrarse como alguien de confianza y comenzar su relación con el menor.",
+        "day": 4
+    },
+    {
+        "question": "El acosador intenta introducir temas sexuales en las conversaciones en la fase:",
+        "options": [
+            "Comienzo de la amistad y relación",
+            "Evaluación de riesgo",
+            "Fase de exclusividad",
+            "Fase sexual",
+            "Recreación de fantasías",
+            "Mitigación de daños"
+        ],
+        "correctAnswer": 4,
+        "explanation": "En la 'Fase sexual', el acosador introduce poco a poco temas sexuales para desensibilizar a su víctima.",
+        "day": 4
+    },
+    {
+        "question": "El acosador intenta recrear fantasías sexuales en la fase:",
+        "options": [
+            "Comienzo de la amistad y relación",
+            "Evaluación de riesgo",
+            "Fase de exclusividad",
+            "Fase sexual",
+            "Recreación de fantasías",
+            "Mitigación de daños"
+        ],
+        "correctAnswer": 5,
+        "explanation": "En la fase de 'Recreación de fantasías', el acosador recrea fantasías sexuales con el menor via chat.",
+        "day": 4
+    },
+    {
+        "question": "El acosador intenta evitar que la víctima hable de su relación con otros en la fase:",
+        "options": [
+            "Comienzo de la amistad y relación",
+            "Evaluación de riesgo",
+            "Fase de exclusividad",
+            "Fase sexual",
+            "Recreación de fantasías",
+            "Mitigación de daños"
+        ],
+        "correctAnswer": 6,
+        "explanation": "En la fase de 'Mitigación de daños', el acosador intentará de diversas maneras evitar que la víctima delate su relación.",
+        "day": 4
     }
 ]

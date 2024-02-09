@@ -33,8 +33,8 @@ export interface GameState {
   visibleGameStage: EGameStage,
   
   // Tracking
-  curDayIdx: 0,
-  curReportIdx: 0,
+  curDayIdx: number,
+  curReportIdx: number,
 
   // Score
   multiplier: number,
@@ -100,7 +100,7 @@ export const gameStore = createStore({
       DayManager.getInstance().resetDays();
       state.visibleGameStage = EGameStage.REPORT; //TODO: Change to initial page when everything is done
 
-      state.curDayIdx = 0;
+      state.curDayIdx = 5;  //TODO: Change to initial page when everything is done
       
       state.points = NUM_CONSTANTS.ZERO;
       state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
@@ -130,9 +130,6 @@ export const gameStore = createStore({
         state.curReport = curReport;
         
         const curDailyQuiz: DailyQuiz | undefined = curDay.dailyQuiz;
-        if(curDay === undefined){
-          throw new Error("Error when fetching the daily quiz of the day.");
-        }
         state.curDailyQuiz = curDailyQuiz;
       } 
       catch (error) {
@@ -155,8 +152,8 @@ export const gameStore = createStore({
         // If not, then we must move to the daily quiz, if there is any
         else{
           if(state.curDay && state.curDay.configuration.shouldSkipQuiz){
-            state.visibleGameStage = EGameStage.NARRATION
             commitChangeDay();
+            state.visibleGameStage = EGameStage.NARRATION;
           }
           else
           {
@@ -180,7 +177,7 @@ export const gameStore = createStore({
     },
 
     changeMultiplier(state: GameState, shouldIncrease: boolean){
-      if(state.curDay && state.curDay.numDay !== 0)
+      if(state.curDay && (state.curDay.numDay !== 0 || shouldIncrease))
         state.multiplier += shouldIncrease ? QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_INCREASE : NUM_CONSTANTS.NEG * QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_DEDUCTION; 
     },
 
@@ -212,6 +209,10 @@ export const gameStore = createStore({
       }
 
       return result;
+    },
+
+    isFirstDay: (state) => {
+      return state.curDay?.numDay === 0 ;
     },
 
     isDebugMode: (state) => {
