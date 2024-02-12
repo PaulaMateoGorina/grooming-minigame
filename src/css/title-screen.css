@@ -1,17 +1,15 @@
-#title-screen-background{
-    width: 100vw;
-    height: 100vh;
-
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/starting-screen.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .title-screen-container{
     width: 70vw;
     height: 70vh;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
+}
+
+.divisor{
+    width: 60em;
+    height: 0.5em;
+    background-color: #374253;
+    margin-bottom: 2em;
 }
 
 .game-title{
@@ -20,11 +18,28 @@
     margin-bottom: -5px;
 }
 
-.divisor{
-    width: 60em;
-    height: 0.5em;
-    background-color: #374253;
-    margin-bottom: 2em;
+@media (max-width: 1500px) {
+    .title-screen-container{
+        width: 85vw;
+        height: 90vh;
+    }
+
+    .divisor{
+        width: 80vw;
+    }
+
+    .game-title{
+        font-size: 60px;
+    }
+}
+
+#title-screen-background{
+    width: 100vw;
+    height: 100vh;
+
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/starting-screen.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .game-subtitle{

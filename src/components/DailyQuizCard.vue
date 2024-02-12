@@ -2,9 +2,8 @@
     <CCard class="text-center card">
         <CCardBody class="card-body">
             <div class="non-selectable-text">
-                <p class="big-text">{{ GENERAL_STRINGS.DAILY_QUIZ_TIME }}</p>
                 <div class="circle time-circle">{{ timeRemaining }}</div>
-                <p class="medium-big-text">{{ question }}</p>
+                <p class="medium-big-text semi-bold">{{ question }}</p>
                 
                 <div v-for="idx in numOptions" :key="idx">
                     <div class="my-button card-button" @click="sendSolveDailyQuiz(idx - 1)">{{ options[idx - 1] }}</div>
@@ -33,7 +32,7 @@ export default defineComponent({
     
     data(){
         return{
-            timeRemaining: QUIZ_CONSTANTS.TIME_TO_SOLVE,
+            timeRemaining: 100,
             active: false,
             GENERAL_STRINGS: GENERAL_STRINGS
         }
@@ -41,7 +40,7 @@ export default defineComponent({
 
     mounted (){
         this.active = true;
-        this.timeRemaining = QUIZ_CONSTANTS.TIME_TO_SOLVE;
+        this.timeRemaining = 100;
         this.countdownTimer();
     },
 

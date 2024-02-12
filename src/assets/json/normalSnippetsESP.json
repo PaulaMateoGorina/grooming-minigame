@@ -23,8 +23,7 @@
     "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Q haces normalmente en tu tiempo libre??"},
-      {"sender": "User2", "text": "Normalmente juego con mis amigos por discord"},
-      {"sender": "User2", "text": "Tu?"},
+      {"sender": "User2", "text": "Normalmente juego con mis amigos por discord, tu?"},
       {"sender": "User1", "text": "Yo tambien, nos agregamos??"},
       {"sender": "User2", "text": "Valee"}
     ]
@@ -41,8 +40,7 @@
     "stage": -1,
     "Messages": [
       {"sender": "User1", "text": "Que tal el concierto de Taylor???"},
-      {"sender": "User2", "text": "Bua fue una pasada 😭😭"},
-      {"sender": "User2", "text": "Vaya reina"},
+      {"sender": "User2", "text": "Bua fue una pasada 😭😭. Vaya reina"},
       {"sender": "User1", "text": "Ya me pasaras los videos jeje"},
       {"sender": "User2", "text": "Siii💖💖 "}
     ]
@@ -88,8 +86,7 @@
     "Messages": [
       {"sender": "User2", "text": "Perdon q te de la chapa"},
       {"sender": "User2", "text": "Pero eres la única persona en la que puedo confiar"},
-      {"sender": "User1", "text": "Deberías intentar buscar consejo de algún adulto de tu alrededor"},
-      {"sender": "User1", "text": "Si no te puedo pasar links con organizaciones, seguro que te ayudan"},
+      {"sender": "User1", "text": "Deberías intentar buscar consejo de algún adulto de tu alrededor. Si no te puedo pasar links con organizaciones, seguro que te ayudan"},
       {"sender": "User2", "text": "Lo agradecería"}
     ]
   },

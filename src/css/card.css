@@ -7,14 +7,14 @@
     height: 65px;
     border: 2px solid;
     border-color: var(--primary);
-    margin: 10px auto 10px auto;
+    margin: -15px auto 10px auto;
     font-size: 20px;
     font-weight: 600;
 }
 
 .card{
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -45%);
     top: 45%;
     left: 50%;
     justify-content: center;
@@ -44,4 +44,15 @@
     background-color: var(--primary);
     color: #374253;
     font-weight: 600;
+}
+
+@media (max-width: 1500px) {
+    .card{
+        width: 65%;
+    }
+
+    .card-button{
+        font-size: 15px;
+        font-weight: 600;
+    }
 }

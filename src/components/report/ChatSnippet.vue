@@ -29,7 +29,6 @@
             </div>
         </div>
     </Transition>
-{{ debugMode ? chatSnippet?.stage : "" }}
 </template>
   
 <script lang="ts">

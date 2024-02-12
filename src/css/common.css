@@ -65,6 +65,17 @@
 	animation-duration: 0.5s;
 }
 
+@media (max-height: 850px) {
+    .big-text{
+        font-size: 16px;
+    }
+    
+    .medium-big-text{
+        font-size: 16px;
+    }
+}
+
+
 @keyframes fadeInOpacity {
 	0% {
 		opacity: 0;
