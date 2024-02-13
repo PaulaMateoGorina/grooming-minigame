@@ -10,7 +10,8 @@ export const GENERAL_STRINGS = {
     END_PTS_TEXT: "Tu puntuación total es de:",
     PLAY_AGAIN: "Volver a jugar",
     CONTINUE_NARRATION: "Haz click para continuar",
-    DAILY_QUIZ_TIME: "¡Hora de poner a prueba lo aprendido!"
+    DAILY_QUIZ_TIME: "¡Hora de poner a prueba lo aprendido!",
+    ANSWER: "El informe es"
 }
 
 export const PROFILE_STRINGS = {

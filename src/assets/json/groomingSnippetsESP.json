@@ -219,8 +219,7 @@
     "Messages": [
       {"sender": "User2", "text": "Tio mi padre"},
       {"sender": "User2", "text": "Le cuento q se meten conmigo en la escuela y me llama exagerada 😒😒"},
-      {"sender": "User1", "text": "En fin 😒😒"},
-      {"sender": "User1", "text": "Pero bueno no te preocupes, yo siempre estaré aquí para tí"},
+      {"sender": "User1", "text": "En fin 😒😒. Pero bueno no te preocupes, yo siempre estaré aquí para tí"},
       {"sender": "User1", "text": "No necesitas a nadie más"}
     ]
   },
@@ -248,8 +247,7 @@
     "arrayIdx": 2,
     "stage": 4,
     "Messages": [
-      {"sender": "User1", "text": "Hola???"},
-      {"sender": "User1", "text": "Por q no contestas? Estás con otra?"},
+      {"sender": "User1", "text": "Hola??? Por q no contestas? Estás con otra?"},
       {"sender": "User2", "text": "Qué? No!! Estaba en llamada con Juan, no estaba mirando el móvil"},
       {"sender": "User1", "text": "Si te hablo contéstame, esto no lo vuelvas a hacer"},
       {"sender": "User1", "text": "No, no lo haré, perdón 😔"}
@@ -290,8 +288,7 @@
     "stage": 4,
     "Messages": [
       {"sender": "User2", "text": "Perdón, estaba jugando con Marta al GoG"},
-      {"sender": "User1", "text": "Pasas demasiado tiempo con ella, me tienes abandonado 😔💔"},
-      {"sender": "User1", "text": "Seguro que ya no te gusto"},
+      {"sender": "User1", "text": "Pasas demasiado tiempo con ella, me tienes abandonado 😔💔, eguro que ya no te gusto"},
       {"sender": "User2", "text": "Claro que me sigues gustandoo 🥺🥺"},
       {"sender": "User2", "text": "Mañana quedamos para llamar"}
     ]
@@ -341,8 +338,7 @@
       {"sender": "User2", "text": "Te puedo llamar?"},
       {"sender": "User1", "text": "Hay alguien en tu casa?"},
       {"sender": "User2", "text": "Mi hermana, pero está estudiando con los cascos puestos"},
-      {"sender": "User2", "text": "No nos escuchará"},
-      {"sender": "User1", "text": "Vale"}
+      {"sender": "User2", "text": "No nos escuchará"}
     ]
   },
   {
@@ -351,8 +347,7 @@
     "Messages": [
       {"sender": "User1", "text": "Has entrado a Toother?"},
       {"sender": "User2", "text": "Noo, que ha pasado?"},
-      {"sender": "User1", "text": "Han cancelado a Rabias por hablar con una menor, ni que fuera un delito"},
-      {"sender": "User1", "text": "El amor no tiene edad"},
+      {"sender": "User1", "text": "Han cancelado a Rabias por hablar con una menor, ni que fuera un delito. El amor no tiene edad"},
       {"sender": "User2", "text": "Bua pues no me había enterado, que injusto"}
     ]
   },
@@ -380,8 +375,7 @@
     "stage": 7,
     "Messages": [
       {"sender": "User2", "text": "Bua, le estaba contando a mi amiga lo que hablabamos ayer y no se lo creía"},
-      {"sender": "User1", "text": "Se lo has dicho a tu amiga????"},
-      {"sender": "User1", "text": "Sabes en el lio que me puedo meter si se enteran de q estamos juntos??"},
+      {"sender": "User1", "text": "Se lo has dicho a tu amiga???? Sabes en el lio que me puedo meter si se enteran de q estamos juntos??"},
       {"sender": "User2", "text": "Perdon, no lo sabía"},
       {"sender": "User2", "text": "No lo volveré a hacer"}
     ]

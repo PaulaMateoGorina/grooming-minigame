@@ -2,80 +2,39 @@
     --primary: #8aa6e4;
 }
 
-@media (min-height: 850px) {
-    .report {
-        height: 90vh;
-        width: 600px;
-        border: 2px solid;
-        border-color: var(--primary);
-        background-color: white;
-        box-shadow: 12.5px 12.5px 10px rgb(63, 65, 68);
-    }
-
-    .report-buttons-container {
-        position: fixed;
-        width: 650px;;
-        bottom: 3.25vh;
-    }
-
-    .report-button {
-        cursor: pointer;
-        padding: 10px;
-    }
-    
-    .answer-button {
-        border-radius: 10px;
-        margin-left: 15px;
-        margin-right: 15px;
-        font-weight: 600;
-        height: 50%;
-    }
-    
-    .prev-button,
-    .next-button {
-        font-size: 50px;
-        margin-left: 21%;
-        margin-right: 21%;
-    }
+.report {
+    height: 90vh;
+    width: 600px;
+    border: 2px solid;
+    border-color: var(--primary);
+    background-color: white;
+    box-shadow: 12.5px 12.5px 10px rgb(63, 65, 68);
 }
 
-@media (max-height: 850px) {
-    .report {
-        height: 98vh;
-        width: 800px;
-        border: 2px solid;
-        border-color: var(--primary);
-        background-color: white;
-        box-shadow: 12.5px 12.5px 10px rgb(63, 65, 68);
-    }
+.report-buttons-container {
+    position: fixed;
+    width: 650px;;
+    bottom: 3.25vh;
+}
 
-    .report-buttons-container {
-        position: fixed;
-        width: 925px;
-        bottom: 2px;
-    }
+.report-button {
+    cursor: pointer;
+    padding: 10px;
+}
 
-    .report-button {
-        cursor: pointer;
-        padding: 10px;
-    }
-    
-    .answer-button {
-        border-radius: 10px;
-        margin-left: 15px;
-        margin-right: 15px;
-        font-weight: 600;
-        height: 50%;
-    }
-    
-    .prev-button,
-    .next-button {
-        color: white;   
-        font-size: 70px;
-        margin-left: 21%;
-        margin-right: 21%;
-    }
+.answer-button {
+    border-radius: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-weight: 600;
+    height: 50%;
+}
 
+.prev-button,
+.next-button {
+    font-size: 50px;
+    margin-left: 21%;
+    margin-right: 21%;
 }
 
 .fade-enter-active,
@@ -88,4 +47,44 @@
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
+}
+
+@media (max-height: 850px) {
+    .report {
+        height: 98vh;
+        width: 800px;
+    }
+
+    .bottom-report-buttons-container {
+        width: 900px;
+        position: absolute;
+        bottom: -30px;
+        justify-content: space-between;
+        margin-right: 20px;
+    }
+
+    .floating-report-buttons-container{
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        right: 1.5%;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid;
+        padding: 12px 20px;
+        border-color: var(--primary);
+    }
+
+    .answer-button {
+        margin: 5px;
+    }
+
+    .prev-button,
+    .next-button {
+        color: white;   
+        font-size: 100px;
+    }
 }

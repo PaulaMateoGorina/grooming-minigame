@@ -14,7 +14,7 @@
             <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
         </div>
         
-        <div class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
+        <div v-if="this.showReportButtonsContainerInside" class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
             <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
             <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
@@ -23,6 +23,22 @@
         
         <ErrorModalComponent @closeModal="handleCloseModal" :visibility="solveReportErrorModalVisible" :message="'NO puedes marcar un informe como normal si tienes un snippet seleccionado.'"/>
     </div>
+
+    <div v-if="!this.showReportButtonsContainerInside" class="bottom-report-buttons-container non-selectable-text flex-center-aligned flex-col">
+        <div class="button-container">
+            <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
+        </div>
+        <div class="button-container">
+            <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
+        </div>
+    </div>
+
+    <div v-if="!this.showReportButtonsContainerInside" class="floating-report-buttons-container non-selectable-text">
+        <p>{{ GENERAL_STRINGS.ANSWER }}</p>
+        <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
+        <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
+    </div>
+
 </template>
 
 <script lang="ts">
@@ -38,6 +54,7 @@ import ErrorModalComponent from '@/components/ErrorModal.vue'
 import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
+import { GENERAL_STRINGS } from '@/assets/stringsESP';
 
 import { CButton } from '@coreui/vue'
 
@@ -53,7 +70,8 @@ export default defineComponent({
         return {
             currentPage: 0,
             solveReportErrorModalVisible: false,
-            liveExampleVisible: false
+            liveExampleVisible: false,
+            GENERAL_STRINGS: GENERAL_STRINGS
         };
     },
     methods: {
@@ -80,6 +98,10 @@ export default defineComponent({
         }
     },
     computed: {
+        showReportButtonsContainerInside() {
+            return window.innerHeight >= 850;
+        },
+
         snippetIdxPairsPage1(): [Snippet, number][] {
             const chatReport = gameStore.state.curReport;
 
