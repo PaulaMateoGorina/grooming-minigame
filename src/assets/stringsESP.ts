@@ -11,7 +11,9 @@ export const GENERAL_STRINGS = {
     PLAY_AGAIN: "Volver a jugar",
     CONTINUE_NARRATION: "Haz click para continuar",
     DAILY_QUIZ_TIME: "¡Hora de poner a prueba lo aprendido!",
-    ANSWER: "El informe es"
+    ANSWER: "El informe es",
+    PROMPT_QUESTIONNAIRE: "Antes de volver a jugar, agradeceríamos que rellanaras el siguiente cuestionario:",
+    CLICK_TO_QUESTIONNAIRE: "Clica aquí para ir al cuestionario"
 }
 
 export const PROFILE_STRINGS = {

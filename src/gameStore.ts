@@ -52,7 +52,9 @@ export interface GameState {
 
   // Error
   hasError: boolean,
-  debugMode: boolean
+  debugMode: boolean,
+
+  firstPlaythrough: boolean
 }
 
 // Create a new store instance.
@@ -80,7 +82,8 @@ export const gameStore = createStore({
     curDailyQuiz: undefined,
 
     hasError: false,
-    debugMode: false
+    debugMode: false,
+    firstPlaythrough: true
     
   } as GameState,
 
@@ -100,7 +103,7 @@ export const gameStore = createStore({
       DayManager.getInstance().resetDays();
       state.visibleGameStage = EGameStage.REPORT; //TODO: Change to initial page when everything is done
 
-      state.curDayIdx = 5;  //TODO: Change to initial page when everything is done
+      state.curDayIdx = 0;  //TODO: Change to initial page when everything is done
       
       state.points = NUM_CONSTANTS.ZERO;
       state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
@@ -195,6 +198,10 @@ export const gameStore = createStore({
     changeSnippetStageSelected(state: GameState, payload: {idx: number, stage: EStage}){
       WriteLog(`gameStore.ts > changeSnippetStageSelected > new stage for idx ${payload.idx} is ${payload.stage}`, LogLevel.VERBOSE);
       state.snippetStagesSelected[payload.idx] = payload.stage;
+    },
+
+    nextPlaythrough(state){
+      state.firstPlaythrough = false;
     }
   },
   getters: {
@@ -217,6 +224,10 @@ export const gameStore = createStore({
 
     isDebugMode: (state) => {
       return state.debugMode;
+    },
+
+    isFirstPlaythrough: (state) => {
+      return state.firstPlaythrough;
     }
   }
 });
