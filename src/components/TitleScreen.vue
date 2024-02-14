@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <CModal alignment="center" :visible="this.questionnaireModalOpen" @close="() => { closeModal() }">
+    <CModal alignment="center" :visible="questionnaireModalOpen" @close="() => { closeModal() }">
         <CModalBody>
             <h4 style="font-size: 18px;">{{ GENERAL_STRINGS.PROMPT_QUESTIONNAIRE }}</h4>
             <a href="https://forms.gle/wwxafQtGNyxz2Fn76" style="font-size: 18px;">{{ GENERAL_STRINGS.CLICK_TO_QUESTIONNAIRE }}</a>
@@ -64,8 +64,6 @@ export default defineComponent({
             gameStore.commit('changeStage', EGameStage.NARRATION);
         },
         resetGame(){
-            console.log(this.firstPlaythrough);
-
             if(this.firstPlaythrough){
                 this.questionnaireModalOpen = true;
             }

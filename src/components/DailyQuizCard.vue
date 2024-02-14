@@ -32,7 +32,7 @@ export default defineComponent({
     
     data(){
         return{
-            timeRemaining: 100,
+            timeRemaining: QUIZ_CONSTANTS.TIME_TO_SOLVE,
             active: false,
             GENERAL_STRINGS: GENERAL_STRINGS
         }
@@ -40,7 +40,7 @@ export default defineComponent({
 
     mounted (){
         this.active = true;
-        this.timeRemaining = 100;
+        this.timeRemaining = QUIZ_CONSTANTS.TIME_TO_SOLVE;
         this.countdownTimer();
     },
 

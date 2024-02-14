@@ -61,7 +61,7 @@ export interface GameState {
 export const gameStore = createStore({
   state: {
     // Game stage visible:
-    visibleGameStage: EGameStage.GAME_FINISHED, //TODO: Change to intiial page when everything is done
+    visibleGameStage: EGameStage.GAME_START,
 
     // Tracking
     curDayIdx: 0,
@@ -101,14 +101,14 @@ export const gameStore = createStore({
     newGame(state: GameState){
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
       DayManager.getInstance().resetDays();
-      state.visibleGameStage = EGameStage.REPORT; //TODO: Change to initial page when everything is done
+      state.visibleGameStage = EGameStage.GAME_START;
 
-      state.curDayIdx = 0;  //TODO: Change to initial page when everything is done
+      state.curDayIdx = 0; 
       
       state.points = NUM_CONSTANTS.ZERO;
       state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
 
-      state.debugMode = true; //TODO: Change this before publishing it
+      state.debugMode = false;
 
       commitNewDay();
     },

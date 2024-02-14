@@ -45,7 +45,7 @@ export default defineComponent({
     data(){
         return{
             GENERAL_STRINGS : GENERAL_STRINGS,
-            typingSpeed: 0,
+            typingSpeed: 40,
             curNode: undefined as NarrationNode | undefined,
             curNodeHasOptions: false,
             newTextDelay: 0,
