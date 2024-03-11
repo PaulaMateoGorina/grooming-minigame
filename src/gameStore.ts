@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-
+// 
 import { createStore } from 'vuex';
 
 // Model
@@ -59,6 +59,7 @@ export interface GameState {
 
 // Create a new store instance.
 export const gameStore = createStore({
+  //#region State init
   state: {
     // Game stage visible:
     visibleGameStage: EGameStage.GAME_START,
@@ -86,6 +87,7 @@ export const gameStore = createStore({
     firstPlaythrough: true
     
   } as GameState,
+  //#endregion
 
   mutations: {
     initialize(){

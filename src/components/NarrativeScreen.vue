@@ -63,6 +63,8 @@ export default defineComponent({
                     if(to > 0){
                         this.curNode = this.narrationNodes[to];
                         this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
+                        if(this.curNode.audio)
+                            this.curNode.audio.play();
                     }
                     else{
                         gameStore.commit('changeStage', EGameStage.REPORT);
@@ -75,6 +77,8 @@ export default defineComponent({
                 this.curNode = this.narrationNodes[to];
                 this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
                 this.showContinueMessage = false;
+                if(this.curNode.audio)
+                    this.curNode.audio.play();
             }
             else{
                 gameStore.commit('changeStage', EGameStage.REPORT);
@@ -89,6 +93,8 @@ export default defineComponent({
     created(){
         this.curNode = this.narrationNodes[NUM_CONSTANTS.ZERO];
         this.curNodeHasOptions = this.curNode.options !== undefined && this.curNode.options.length > 0;
+        if(this.curNode.audio)
+            this.curNode.audio.play();
     }
 })
 </script>

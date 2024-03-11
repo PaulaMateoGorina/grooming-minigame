@@ -14,47 +14,47 @@
         },
         "narrationNodes": 
         [
-            {"text": "¡Bienvenido a Instapic! Eres el nuevo becario, ¿correcto?", "goTo": -1, 
+            {"text": "¡Bienvenido a Instapic! Eres el nuevo becario, ¿cierto?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Sí, soy yo.", "goTo": 2}, 
                     {"text": "No sé de qué me hablas.", "goTo": 3}
                 ]
             },
-            {"text": "¡Perfecto! Déjame que te explique tus tareas.", "goTo": 4},
-            {"text": "¿En serio? Vaya, te va a tocar trabajar igualmente ^^. Déjame que te explique tus tareas.", "goTo": 4},
-            {"text": "Básicamente serás un moderador de chats.", "goTo": 5},
-            {"text": "Durante el día te llegarán chats que son posibles casos de grooming, y tendrás que decidir si lo son, o si son chats normales.", "goTo": 6},
-            {"text": "Espera... ¿Sabes siquiera lo que significa el término grooming?", "goTo": -1, 
+            {"text": "¡Perfecto! Déja que te explique tus tareas.", "audioFile": "music.mp3", "goTo": 4},
+            {"text": "¿En serio? Vaya, te va a tocar trabajar igualmente ^^. Deja que te explique tus tareas.", "audioFile": "music.mp3", "goTo": 4},
+            {"text": "Básicamente serás un moderador de chats.", "audioFile": "music.mp3", "goTo": 5},
+            {"text": "Durante el día te llegarán chats que son posibles casos de grooming, y tendrás que decidir si lo son, o si son chats normales.", "audioFile": "music.mp3", "goTo": 6},
+            {"text": "Espera... ¿Sabes siquiera lo que significa el término grooming?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Claro que sí.", "goTo": 7}, 
                     {"text": "No, no lo sé.", "goTo": 10}
                 ]
             },
-            {"text": "Ajá. ¿Y qué significa?", "goTo": -1, 
+            {"text": "Ajá. ¿Y qué significa?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Es cuando un adulto establece una relación con un menor para abusar de este.", "goTo": 8}, 
                     {"text": "Se da cuando una persona percibe falsamente a su ídolo como un amigo.", "goTo": 9},
                     {"text": "Vale, lo admito. No lo sé.", "goTo": 10}
                 ]
             },
-            {"text": "¡Correcto! Y cuando se da en las redes, se le llama online grooming.", "goTo": 12},
-            {"text": "¡Incorrecto! Eso es lo que se llama una relación parasocial. A veces se puede dar en casos de grooming, pero no es grooming en sí mismo.", "goTo": 11},
-            {"text": "No pasa nada, ahora te lo explico.", "goTo": 11},
-            {"text": "El grooming es cuando un adulto establece una relación con un menor para abusar de este. Si se da en las redes, se online grooming.", "goTo": 12},
-            {"text": "El grooming puede ser más o menos largo, llegando a durar incluso años.", "goTo": 13},
-            {"text": "Creo que tienes suficiente información por ahora, sigamos con la explicación de tu trabajo.", "goTo": 14},
-            {"text": "Cada informe contendrá información sobre el chat entre dos usuarios.", "goTo": 15},
-            {"text": "Como es tu primer día, solo contendran la edad de las dos personas, siendo la 1a la del posible groomer (acosador), y el tiempo que llevan de amigos.", "goTo": 16},
-            {"text": "Cada vez que aciertes obtendrás puntos, que nos servirán para ver cómo te desenvuelves con tus tareas.", "goTo": 17},
-            {"text": "Al final del día volveré y te haré una pregunta respecto a lo que has aprendido.", "goTo": 18},
-            {"text": "¿Necesitas que te lo repita?", "goTo": -1, 
+            {"text": "¡Correcto! Y cuando se da en las redes, se llama online grooming.", "audioFile": "music.mp3", "goTo": 12},
+            {"text": "¡Incorrecto! Eso es lo que se llama una relación parasocial. A veces se puede dar en casos de grooming, pero no es grooming en sí mismo.", "audioFile": "music.mp3", "goTo": 11},
+            {"text": "No pasa nada, ahora te lo explico.", "audioFile": "music.mp3", "goTo": 11},
+            {"text": "El grooming es cuando un adulto establece una relación con un menor para abusar de este. Si se da en las redes, es online grooming.", "audioFile": "music.mp3", "goTo": 12},
+            {"text": "El grooming puede ser más o menos largo, llegando a durar incluso años.", "audioFile": "music.mp3", "goTo": 13},
+            {"text": "Pero bueno, creo que esto es suficiente por ahora, sigamos con la explicación de tu trabajo.", "audioFile": "music.mp3", "goTo": 14},
+            {"text": "Cada informe contendrá información sobre el chat entre dos usuarios.", "audioFile": "music.mp3", "goTo": 15},
+            {"text": "Como es tu primer día, solo contendran la edad de las dos personas, siendo la primera la del posible groomer (acosador), y el tiempo que llevan de amistad.", "audioFile": "music.mp3", "goTo": 16},
+            {"text": "Cada vez que aciertes obtendrás puntos, que nos servirán para ver cómo te desenvuelves con tus tareas.", "audioFile": "music.mp3", "goTo": 17},
+            {"text": "Al final del día volveré y te haré una pregunta respecto a lo que has aprendido.", "audioFile": "music.mp3", "goTo": 18},
+            {"text": "¿Necesitas que lo repita?", "audioFile": "music.mp3", "goTo": -1, 
             "options":[
                 {"text": "No. Lo he entendido todo.", "goTo": 19}, 
                 {"text": "Repite, por favor.", "goTo": 20}
             ]
             },
-            {"text": "¡Pues a ahí van tus primeros informes! A ver qué tal. Cuando acabes comentamos.", "goTo": -1},
-            {"text": "Tu trabajo consiste en revisar informes de chats y decidir si son casos de grooming o no.", "goTo": 14}
+            {"text": "¡Pues a ahí van tus primeros informes! A ver qué tal. Cuando acabes comentamos.", "audioFile": "music.mp3", "goTo": -1},
+            {"text": "Tu trabajo consiste en revisar informes de chats y decidir si son casos de grooming o no.", "audioFile": "music.mp3", "goTo": 14}
         ]
     },
     {
@@ -72,12 +72,12 @@
         },
         "narrationNodes": 
         [
-            {"text": "¿Bueno, qué tal de momento?", "goTo": -1, 
+            {"text": "¿Bueno, qué tal de momento?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Ha sido pan comdio, era evidente.", "goTo": 2}
                 ]
             },
-            {"text": "¿Sí? A ver cómo se te dan los siguientes.", "goTo": -1}
+            {"text": "¿Sí? A ver cómo se te dan los siguientes.", "audioFile": "music.mp3", "goTo": -1}
         ]
     },
     {
@@ -95,28 +95,28 @@
         },
         "narrationNodes": 
         [
-            {"text": "¿Qué te han parecido estos?", "goTo": -1, 
+            {"text": "¿Qué te han parecido estos?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Todo bien de momento.", "goTo": 2},
                     {"text": "No lo entiendo. Eran muy jóvenes, podrían ser amigos perfectamente.", "goTo": 3}
                 ]
             },
-            {"text": "Genial!", "goTo": 3},
-            {"text": "Obviamente, no se puede juzgar su relación solamente por la edad.", "goTo": 4},
-            {"text": "Aun así, es importante saber que no todos los groomers son personas 'mayores'.", "goTo": 5},
-            {"text": "Muchos lo pintan así, pero no es verdad. Los acosadores tampoco suelen ser agresivos, o raptar a niños como dicen.", "goTo": 6},
-            {"text": "En fin, creo que es suficiente por hoy.", "goTo": -1, 
-            "options":[
-                {"text": "¡Hasta mañana!", "goTo": 7}
-            ]
+            {"text": "Genial!", "audioFile": "music.mp3", "goTo": 3},
+            {"text": "Obviamente, no se puede juzgar su relación solamente por la edad.", "audioFile": "music.mp3", "goTo": 4},
+            {"text": "Aun así, es importante saber que no todos los groomers son personas 'mayores'.", "audioFile": "music.mp3", "goTo": 5},
+            {"text": "Muchos lo pintan así, pero no es verdad. Los acosadores tampoco suelen ser agresivos, o raptar a niños como dicen.", "audioFile": "music.mp3", "goTo": 6},
+            {"text": "En fin, creo que es suficiente por hoy.", "audioFile": "music.mp3", "goTo": -1, 
+                "options":[
+                    {"text": "¡Hasta mañana!", "goTo": 7}
+                ]
             },
-            {"text": "¡Espera! Aún no hemos acabado.", "goTo": 8},
-            {"text": "Falta el quiz diario. No te preocupes, es súper rápido. Si aciertas, incrementaré tu multiplicador de puntos, así ganarás más.", "goTo": -1, 
+            {"text": "¡Espera! Aún no hemos acabado.", "audioFile": "music.mp3", "goTo": 8},
+            {"text": "Falta el quiz diario. No te preocupes, es súper rápido. Si aciertas, incrementaré tu multiplicador de puntos, así ganarás más.", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "¿Y si fallo?", "goTo": 9}
                 ]
             },
-            {"text": "Como es tu primer día, no pasará nada. A partir de mañana, si fallas disminuiré tu multiplicador. ¿Listo?", "goTo": -1, 
+            {"text": "Como es tu primer día, no pasará nada. A partir de mañana, si fallas disminuiré tu multiplicador. ¿Listo?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Sí. ¡Vamos!", "goTo": -1}
                 ]
@@ -138,33 +138,33 @@
         },
         "narrationNodes": 
         [
-            {"text": "Buenos días. ¿Preparado para otro día de trabajo?", "goTo": -1, 
+            {"text": "Buenos días. ¿Preparado para otro día de trabajo?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Listo.", "goTo": 2}
                 ]
             },
-            {"text": "Perfecto! Hoy los informes serán más complejos. Además de los perfiles de los usuarios tendrás también una serie de extractos de su chat con los que guiar tu decisión.", "goTo": 3},
-            {"text": "¿Entendido?", "goTo": -1, 
+            {"text": "Perfecto! Hoy los informes serán más complejos. Además de los perfiles de los usuarios tendrás también una serie de extractos de su chat con los que guiar tu decisión.", "audioFile": "music.mp3", "goTo": 3},
+            {"text": "¿Entendido?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Espera. ¿Qué signos debería buscar en los chats?", "goTo": 4}
                 ]
             },
-            {"text": "Bueno, cada acosador es diferente, pero la mayoría se pueden encasillar en 3 grupos.", "goTo": 5},
-            {"text": "El primero, el 'buscador de intimidad', es el groomer que realmente quiere entablar una relación con el menor, suele mandar mensajes cariñosos.", "goTo": 6},
-            {"text": "El segundo es el acosador 'hipersexualizado', que insiste mucho en el tema sexual: fotos, mensajes subidos de tono... Como aún eres nuevo, no te pondremos a cargo de informes de ese tipo.", "goTo": 7},
-            {"text": "Finalmente, está el groomer 'polivalente', que cambia su estrategia según la víctima.", "goTo": 8},
-            {"text": "Todos tienen en común que al principio intentan sacarle la máxima información al menor sobre cosas como su situación en casa, en la escuela, etc. Eso les dice si son vulnerables o no.", "goTo": 9},
-            {"text": "También hay mucho énfasis en el secretismo, en caso de que haya relación.", "goTo": 10},
-            {"text": "De esto te dire más otro día, de momento con esto ya basta.", "goTo": 11},
-            {"text": "Todo bien?", "goTo": -1, 
+            {"text": "Bueno, cada acosador es diferente, pero la mayoría se pueden encasillar en 3 grupos.", "audioFile": "music.mp3", "goTo": 5},
+            {"text": "El primero, el 'buscador de intimidad', es el groomer que realmente quiere entablar una relación con el menor, suele mandar mensajes cariñosos.", "audioFile": "music.mp3", "goTo": 6},
+            {"text": "El segundo es el acosador 'hipersexualizado', que insiste mucho en el tema sexual: fotos, mensajes subidos de tono... Como aún eres nuevo, no te pondremos a cargo de informes de ese tipo.", "audioFile": "music.mp3", "goTo": 7},
+            {"text": "Finalmente, está el groomer 'polivalente', que cambia su estrategia según la víctima.", "audioFile": "music.mp3", "goTo": 8},
+            {"text": "Todos tienen en común que al principio intentan sacarle la máxima información al menor sobre cosas como su situación en casa, en la escuela, etc. Eso les dice si son vulnerables o no.", "audioFile": "music.mp3", "goTo": 9},
+            {"text": "También hay mucho énfasis en el secretismo, en caso de que haya relación.", "audioFile": "music.mp3", "goTo": 10},
+            {"text": "De esto te dire más otro día, de momento con esto ya basta.", "audioFile": "music.mp3", "goTo": 11},
+            {"text": "Todo bien?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Sí, estoy listo para comenzar el día.", "goTo": 14},
                     {"text": "No, la verdad. ¿Me lo podrías repetir, por favor?", "goTo": 12}
                 ]
             },
-            {"text": "¡Claro! No te preocupes.", "goTo": 13},
-            {"text": "Si tuvieramos que agrupar a los acosadores, habría 3 grupos:", "goTo": 5},
-            {"text": "¡Perfecto! Esta vez, cuando acabes con los informes pasaremos directamente al quiz diario. ¡Suerte!", "goTo": -1}
+            {"text": "¡Claro! No te preocupes.", "audioFile": "music.mp3", "goTo": 13},
+            {"text": "Si tuvieramos que agrupar a los acosadores, habría 3 grupos:", "audioFile": "music.mp3", "goTo": 5},
+            {"text": "¡Perfecto! Esta vez, cuando acabes con los informes pasaremos directamente al quiz diario. ¡Suerte!", "audioFile": "music.mp3", "goTo": -1}
         ]   
     },
     {
@@ -182,34 +182,34 @@
         },
         "narrationNodes": 
         [
-            {"text": "Buenas. ¿Cómo va todo?", "goTo": -1, 
+            {"text": "Buenas. ¿Cómo va todo?", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Bien, ya me voy adaptando.", "goTo": 3},
                     {"text": "Un poco así asá.", "goTo": 2}
                 ]
             },
-            {"text": "Bueno, poco a poco lo irás pillando todo.", "goTo": 3},
-            {"text": "Como ayer nos enfocamos en los acosadores, hoy nos centraremos en las víctimas.", "goTo": 4},
-            {"text": "Según tú, las víctimas son:", "goTo": -1, 
+            {"text": "Bueno, poco a poco lo irás pillando todo.", "audioFile": "music.mp3", "goTo": 3},
+            {"text": "Como ayer nos enfocamos en los acosadores, hoy nos centraremos en las víctimas.", "audioFile": "music.mp3", "goTo": 4},
+            {"text": "Según tú, las víctimas son:", "audioFile": "music.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Solo chicas.", "goTo": 5},
                     {"text": "Solo chicos.", "goTo": 5},
                     {"text": "Tanto chicas como chicos.", "goTo": 6}
                 ]
             },
-            {"text": "Pues no. Pueden ser tanto chicos como chicas, de la misma manera que los groomers pueden ser hombres o mujeres.", "goTo": 7},
-            {"text": "¡Correcto! Del mismo modo, los groomers pueden ser hombres o mujeres.", "goTo": 7},
-            {"text": "Algunos factores que aumentan las probabilidades de ser víctimas de grooming son los problemas para relacionarse con su família y compañeros de edad, o una actitud que muestre que se está dispuesto a tomar riesgos en Internet.", "goTo": 8},
-            {"text": "También suelen ser víctimas los chicos que dudan de su sexualidad y menores con problemas de salud mental.", "goTo": 9},
-            {"text": "Pero bueno, que me voy por las ramas.", "goTo": 10},
-            {"text": "Hoy aumentaremos la dificultad otro poco.", "goTo": 11},
-            {"text": "Aparte de marcar el informe como grooming o no, tendrás que indicar qué extractos son indicios de grooming.", "goTo": 12},
-            {"text": "Ya sabes qué buscar: énfasis en el secretismo de la relación, preguntas sobre la relación con los padres, etc. ¿Listo?", "goTo": -1,
+            {"text": "Pues no. Pueden ser tanto chicos como chicas, de la misma manera que los groomers pueden ser hombres o mujeres.", "audioFile": "music.mp3", "goTo": 7},
+            {"text": "¡Correcto! Del mismo modo, los groomers pueden ser hombres o mujeres.", "audioFile": "music.mp3", "goTo": 7},
+            {"text": "Algunos factores que aumentan las probabilidades de ser víctimas de grooming son los problemas para relacionarse con su família y compañeros de edad, o una actitud que muestre que se está dispuesto a tomar riesgos en Internet.", "audioFile": "music.mp3", "goTo": 8},
+            {"text": "También suelen ser víctimas los chicos que dudan de su sexualidad y menores con problemas de salud mental.", "audioFile": "music.mp3", "goTo": 9},
+            {"text": "Pero bueno, que me voy por las ramas.", "audioFile": "music.mp3", "goTo": 10},
+            {"text": "Hoy aumentaremos la dificultad otro poco.", "audioFile": "music.mp3", "goTo": 11},
+            {"text": "Aparte de marcar el informe como grooming o no, tendrás que indicar qué extractos son indicios de grooming.", "audioFile": "music.mp3", "goTo": 12},
+            {"text": "Ya sabes qué buscar: énfasis en el secretismo de la relación, preguntas sobre la relación con los padres, etc. ¿Listo?", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "Listo.", "goTo": 13}
                 ]
             },
-            {"text": "¡Comenzamos!", "goTo": -1}
+            {"text": "¡Comenzamos!", "audioFile": "music.mp3", "goTo": -1}
         ]
     },
     {
@@ -227,61 +227,61 @@
         },
         "narrationNodes": 
         [
-            {"text": "Buenos días. Ya en nada acabamos con la formación.", "goTo": 2},
-            {"text": "Hoy volveremos a subir la dificultad.", "goTo": 3},
-            {"text": "Además de marcar los fragmentos de chats que son indicios de grooming, también tendrás que indicar a qué fase corresponden.", "goTo": -1,
+            {"text": "Buenos días. Ya en nada acabamos con la formación.", "audioFile": "music.mp3", "goTo": 2},
+            {"text": "Hoy volveremos a subir la dificultad.", "audioFile": "music.mp3", "goTo": 3},
+            {"text": "Además de marcar los fragmentos de chats que son indicios de grooming, también tendrás que indicar a qué fase corresponden.", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "Pero si eso no me lo has explicado aún.", "goTo": 4}
                 ]
             },
-            {"text": "Traaaanqui, a eso iba.", "goTo": 5},
-            {"text": "Hay que recalcar que las llamamos fases, pero no necesariamente se dan en orden. Es más para englobar ciertos comportamientos comunes en los groomers.", "goTo": 6},
-            {"text": "Definimos 7 fases. No las verás todas en los informes, pero igualmente te puedo preguntar sobre ellas en el quiz diario. ¿Entendido?", "goTo": -1,
+            {"text": "Traaaanqui, a eso iba.", "audioFile": "music.mp3", "goTo": 5},
+            {"text": "Hay que recalcar que las llamamos fases, pero no necesariamente se dan en orden. Es más para englobar ciertos comportamientos comunes en los groomers.", "audioFile": "music.mp3", "goTo": 6},
+            {"text": "Definimos 7 fases. No las verás todas en los informes, pero igualmente te puedo preguntar sobre ellas en el quiz diario. ¿Entendido?", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "Entendido.", "goTo": 7}
                 ]    
             },
-            {"text": "Agrupamos la 1a y la 2a por su similitud en 'Comienzo de la amistad y relación'.", "goTo": 8},
-            {"text": "En este período el acosador intenta averiguar qué tan vulnerable es el menor, preguntándole sobre la relación con sus compañeros en la escuela, en casa...", "goTo": 9},
-            {"text": "Buscan saber si el menor tiene una red de apoyo, o si por contra se siente solo o incomprendido.", "goTo": 10},
-            {"text": "La 3a fase la llamamos 'Evaluación de riesgo'.", "goTo": 11},
-            {"text": "Aquí el groomer intenta saber si, en caso de entablar una 'relación' con el menor, habría la posibilidad de ser descubierto.", "goTo": 12},
-            {"text": "Por ejemplo, el acosador puede hacer preguntas sobre el dispositivo que utiliza para comunicarse por chat.", "goTo": 13},
-            {"text": "También si ese dispositivo es compartido entre miembros de la família, si se lo revisa su tutor, o si está en algún sitio visible como el comedor.", "goTo": 14},
-            {"text": "La 4a fase, 'Fase de exclusividad', es donde el acosador se gana a la víctima y formar una relación romántica con el menor.", "goTo": 15},
-            {"text": "En esta fase, los groomers se intentan mostrar como una persona de confianza, a la que el menor le puede contar cualquier cosa.", "goTo": 16},
-            {"text": "Una vez el 'noviazgo' ha comenzado, el acosador se muestra muy cariñoso con la víctima.", "goTo": 17},
-            {"text": "De momento todo bien, ¿o te lo repito?", "goTo": -1,
+            {"text": "Agrupamos la 1a y la 2a por su similitud en 'Comienzo de la amistad y relación'.", "audioFile": "music.mp3", "goTo": 8},
+            {"text": "En este período el acosador intenta averiguar qué tan vulnerable es el menor, preguntándole sobre la relación con sus compañeros en la escuela, en casa...", "audioFile": "music.mp3", "goTo": 9},
+            {"text": "Buscan saber si el menor tiene una red de apoyo, o si por contra se siente solo o incomprendido.", "audioFile": "music.mp3", "goTo": 10},
+            {"text": "La 3a fase la llamamos 'Evaluación de riesgo'.", "audioFile": "music.mp3", "goTo": 11},
+            {"text": "Aquí el groomer intenta saber si, en caso de entablar una 'relación' con el menor, habría la posibilidad de ser descubierto.", "audioFile": "music.mp3", "goTo": 12},
+            {"text": "Por ejemplo, el acosador puede hacer preguntas sobre el dispositivo que utiliza para comunicarse por chat.", "audioFile": "music.mp3", "goTo": 13},
+            {"text": "También si ese dispositivo es compartido entre miembros de la família, si se lo revisa su tutor, o si está en algún sitio visible como el comedor.", "audioFile": "music.mp3", "goTo": 14},
+            {"text": "La 4a fase, 'Fase de exclusividad', es donde el acosador se gana a la víctima y formar una relación romántica con el menor.", "audioFile": "music.mp3", "goTo": 15},
+            {"text": "En esta fase, los groomers se intentan mostrar como una persona de confianza, a la que el menor le puede contar cualquier cosa.", "audioFile": "music.mp3", "goTo": 16},
+            {"text": "Una vez el 'noviazgo' ha comenzado, el acosador se muestra muy cariñoso con la víctima.", "audioFile": "music.mp3", "goTo": 17},
+            {"text": "De momento todo bien, ¿o te lo repito?", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "Todo bien, continúa.", "goTo": 20},
                     {"text": "Repíte, por favor.", "goTo": 18}
                 ]    
             },
-            {"text": "Claro, sin problema.", "goTo": 19},
-            {"text": "Como te decía, hay 7 fases.", "goTo": 7},
-            {"text": "En la 5a fase, 'Fase sexual', el groomer comienza a introducir temas sexuales.", "goTo": 21},
-            {"text": "Esto lo puede hacer preguntando por la sexualidad del menor o haciendo comentarios subidos de tono, por ejemplo.", "goTo": 22},
-            {"text": "Luego tenemos la 6a fase, a la que llamamos 'Reproducción de fantasías'.", "goTo": 23},
-            {"text": "En esta fase el acosador y el menor recrean una fantasía sexual por mensaje. Dicha recreación puede también incluir el intercambio de fotos indebidas.", "goTo": 24},
-            {"text": "Finalmente, en la 7a fase, 'Mitigación de daños', el acosador se intenta asegurar de que la víctima no le contará a nadie de su relación.", "goTo": 25},
-            {"text": "Esto incluye elogios por manetener la relación en secreto, insistencia en el secretismo e incluso amenazas, en caso de tener fotos del menor.", "goTo": 26},
-            {"text": "Se ha entendido todo?", "goTo": -1,
+            {"text": "Claro, sin problema.", "audioFile": "music.mp3", "goTo": 19},
+            {"text": "Como te decía, hay 7 fases.", "audioFile": "music.mp3", "goTo": 7},
+            {"text": "En la 5a fase, 'Fase sexual', el groomer comienza a introducir temas sexuales.", "audioFile": "music.mp3", "goTo": 21},
+            {"text": "Esto lo puede hacer preguntando por la sexualidad del menor o haciendo comentarios subidos de tono, por ejemplo.", "audioFile": "music.mp3", "goTo": 22},
+            {"text": "Luego tenemos la 6a fase, a la que llamamos 'Reproducción de fantasías'.", "audioFile": "music.mp3", "goTo": 23},
+            {"text": "En esta fase el acosador y el menor recrean una fantasía sexual por mensaje. Dicha recreación puede también incluir el intercambio de fotos indebidas.", "audioFile": "music.mp3", "goTo": 24},
+            {"text": "Finalmente, en la 7a fase, 'Mitigación de daños', el acosador se intenta asegurar de que la víctima no le contará a nadie de su relación.", "audioFile": "music.mp3", "goTo": 25},
+            {"text": "Esto incluye elogios por manetener la relación en secreto, insistencia en el secretismo e incluso amenazas, en caso de tener fotos del menor.", "audioFile": "music.mp3", "goTo": 26},
+            {"text": "Se ha entendido todo?", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "Sí, lo tengo todo claro.", "goTo": 28},
                     {"text": "No todo. ¿Me lo repites?", "goTo": 27}
                 ]    
             },
-            {"text": "Sin problema. ¿Desde el principio, o a desde la fase 5?", "goTo": -1,
+            {"text": "Sin problema. ¿Desde el principio, o a desde la fase 5?", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "Desde el principio", "goTo": 7},
                     {"text": "Comienza desde la fase 5.", "goTo": 20}
                 ]    
             },
-            {"text": "¡Perfecto! En los informes no apareceran ni la 'Fase sexual' ni la 'Reproducción de fantasías', pero el resto sí.", "goTo": 29},
-            {"text": "Además, también habrán extractos donde el acosador está pidiendo fotos indebidas.", "goTo": 30}, 
-            {"text": "Puedes cambiar tu selección cuando quieras. Para marcar rápidamente un extracto como normal, simplemente haz click derecho.", "goTo": 31},
-            {"text": "Por último, no podrás marcar un informe como 'normal' si tienes algún extracto marcado.", "goTo": 32},
-            {"text": "En fin, ¡A ello!", "goTo": -1}
+            {"text": "¡Perfecto! En los informes no apareceran ni la 'Fase sexual' ni la 'Reproducción de fantasías', pero el resto sí.", "audioFile": "music.mp3", "goTo": 29},
+            {"text": "Además, también habrán extractos donde el acosador está pidiendo fotos indebidas.", "audioFile": "music.mp3", "goTo": 30}, 
+            {"text": "Puedes cambiar tu selección cuando quieras. Para marcar rápidamente un extracto como normal, simplemente haz click derecho.", "audioFile": "music.mp3", "goTo": 31},
+            {"text": "Por último, no podrás marcar un informe como 'normal' si tienes algún extracto marcado.", "audioFile": "music.mp3", "goTo": 32},
+            {"text": "En fin, ¡A ello!", "audioFile": "music.mp3", "goTo": -1}
         ]
     },
     {
@@ -299,35 +299,35 @@
         },
         "narrationNodes": 
         [
-            {"text": "¡Buenas! ¡Hoy es tu último día de formación!", "goTo": 2},
-            {"text": "Ayer ya te conté lo último que tenías que saber. Hoy lo practicaremos.", "goTo": 3},
-            {"text": "Misma mecánica que la de ayer: marcar los fragmentos sospechosos e indicar la fase.", "goTo": 4},
-            {"text": "¿Necesitas que te vuelva a explicar las fases?", "goTo": -1,
+            {"text": "¡Buenas! ¡Hoy es tu último día de formación!", "audioFile": "music.mp3", "goTo": 2},
+            {"text": "Ayer ya te conté lo último que tenías que saber. Hoy lo practicaremos.", "audioFile": "music.mp3", "goTo": 3},
+            {"text": "Misma mecánica que la de ayer: marcar los fragmentos sospechosos e indicar la fase.", "audioFile": "music.mp3", "goTo": 4},
+            {"text": "¿Necesitas que te vuelva a explicar las fases?", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "No, no hace falta", "goTo": 19},
                     {"text": "Sí, por favor.", "goTo": 5}
                 ]    
             },
-            {"text": "Vale, esta vez te las resumiré un poco.", "goTo": 6},
-            {"text": "Las dos primeras fases las juntamos en 'Comienzo de la amistad y relación'.", "goTo": 7},
-            {"text": "El acosador intentará averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo.", "goTo": 8},
-            {"text": "3a fase: 'Evaluación de riesgo'.", "goTo": 9},
-            {"text": "Aquí el groomer intenta saber qué tan probable es que lo pillen en caso de comenzar una 'relación' con el menor.", "goTo": 10},
-            {"text": "4a fase: 'Fase de exclusividad'.", "goTo": 11},
-            {"text": "En esta fase el acosador o bien se intenta mostrar como alguien a quien contarle sus problemas, o ya ha comenzado su relación con el menor y actúa como su pareja.", "goTo": 12},
-            {"text": "5a fase: 'Fase sexual', donde el groomer comienza a introducir temas sexuales en las conversaciones que tiene con el menor.", "goTo": 13},
-            {"text": "6a fase: 'Reproducción de fantasías'.", "goTo": 14},
-            {"text": "Aquí el acosador y el menor reproducen fantasías sexuales, y puede que intercambien fotos subidas de tono.", "goTo": 15},
-            {"text": "7a y última fase: 'Mitigación de daños'.", "goTo": 16},
-            {"text": "El acosador intentará manipular a la víctima para que mantenga su relación en secreto. Puede ser sutilmente, o a base de amenazas.", "goTo": 17},
-            {"text": "Te recuerdo que, aunque numeremos las fases, no es algo que suceda de manera lineal. Algunos groomers se saltan fases, o las hacen en diferente orden", "goTo": 18},
-            {"text": "¿Entendido o repito?", "goTo": -1,
+            {"text": "Vale, esta vez te las resumiré un poco.", "audioFile": "music.mp3", "goTo": 6},
+            {"text": "Las dos primeras fases las juntamos en 'Comienzo de la amistad y relación'.", "audioFile": "music.mp3", "goTo": 7},
+            {"text": "El acosador intentará averiguar si el menor tiene una red de apoyo (família, amigos) o está o se siente solo.", "audioFile": "music.mp3", "goTo": 8},
+            {"text": "3a fase: 'Evaluación de riesgo'.", "audioFile": "music.mp3", "goTo": 9},
+            {"text": "Aquí el groomer intenta saber qué tan probable es que lo pillen en caso de comenzar una 'relación' con el menor.", "audioFile": "music.mp3", "goTo": 10},
+            {"text": "4a fase: 'Fase de exclusividad'.", "audioFile": "music.mp3", "goTo": 11},
+            {"text": "En esta fase el acosador o bien se intenta mostrar como alguien a quien contarle sus problemas, o ya ha comenzado su relación con el menor y actúa como su pareja.", "audioFile": "music.mp3", "goTo": 12},
+            {"text": "5a fase: 'Fase sexual', donde el groomer comienza a introducir temas sexuales en las conversaciones que tiene con el menor.", "audioFile": "music.mp3", "goTo": 13},
+            {"text": "6a fase: 'Reproducción de fantasías'.", "audioFile": "music.mp3", "goTo": 14},
+            {"text": "Aquí el acosador y el menor reproducen fantasías sexuales, y puede que intercambien fotos subidas de tono.", "audioFile": "music.mp3", "goTo": 15},
+            {"text": "7a y última fase: 'Mitigación de daños'.", "audioFile": "music.mp3", "goTo": 16},
+            {"text": "El acosador intentará manipular a la víctima para que mantenga su relación en secreto. Puede ser sutilmente, o a base de amenazas.", "audioFile": "music.mp3", "goTo": 17},
+            {"text": "Te recuerdo que, aunque numeremos las fases, no es algo que suceda de manera lineal. Algunos groomers se saltan fases, o las hacen en diferente orden", "audioFile": "music.mp3", "goTo": 18},
+            {"text": "¿Entendido o repito?", "audioFile": "music.mp3", "goTo": -1,
                 "options":[
                     {"text": "Vale, lo he pillado.", "goTo": 19},
                     {"text": "Repite, por favor.", "goTo": 6}
                 ]    
             },
-            {"text": "Pues ale. ¡A trabajar!.", "goTo": -1}
+            {"text": "Pues ale. ¡A trabajar!.", "audioFile": "music.mp3", "goTo": -1}
         ]
     }
 ]

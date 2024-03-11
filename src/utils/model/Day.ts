@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 import Report from '@/utils/model/Report'
 import ReportManager from '@/utils/loaders/ReportManager';
 import DailyQuiz from '@/utils/model/DailyQuiz';
 import QuizManager from '@/utils/loaders/QuizManager';
 import NarrationNode from '@/utils/model/NarrationNode';
+
+import { IMPORT_CONSTANTS } from '@/utils/constants'
 
 export interface DayConfiguration{
     shouldSkipQuiz: boolean;
@@ -56,6 +60,12 @@ export class Day{
             const dailyQuiz = quizManager.sampleDailyQuiz(numDay);
             if(dailyQuiz)
                 this.dailyQuiz = dailyQuiz;
+        }
+
+        //TODO: delete
+        const initialPath = IMPORT_CONSTANTS.ESP_AUDIO;
+        for(const narrationNode of narrationNodes){
+            narrationNode.audio = new Audio(require(`@/assets/${initialPath}/${narrationNode.audioFile}`));
         }
     }
 }

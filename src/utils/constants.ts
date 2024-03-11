@@ -1,3 +1,7 @@
+export const IMPORT_CONSTANTS = {
+    ESP_AUDIO: "audio/ESP"
+}
+
 export const STAGES = [
     { name: "Normal", enumValue: -1 },
     { name: "Comienzo de la amistad y relación", enumValue: 1 },
