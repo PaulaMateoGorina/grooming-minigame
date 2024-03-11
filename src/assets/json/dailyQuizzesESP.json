@@ -3,8 +3,8 @@
         "question": "El grooming es:",
         "options": [
             "El proceso en el que un adulto entabla una relación con un menor para abusar de este",
-            "Un término sacado del inglés, que descrie el cuidado de la apariencia personal con tal de mejorar la imagen de uno mismo contra los demás",
-            "El proceso por el cual una persona percibe falsamente que conoce de manera personal a su ídolo, y que es una persona cercana a este"
+            "Un término sacado del inglés, que describe el cuidado de la apariencia personal para mejorar la imagen de uno mismo",
+            "Cuando una persona percibe falsamente que conoce de manera personal a su ídolo, y que es alguien cercano a este"
         ],
         "correctAnswer": 1,
         "explanation": "El grooming se da cuando un adulto crea un vículo con un menor de edad para abusar de este",
@@ -18,7 +18,7 @@
             "Entre un adulto y un menor de edad"
         ],
         "correctAnswer": 3,
-        "explanation": "No TODOS los acosadores tienen más de 40 años. Además, hay acosadores que establecen relaciones duraderas con sus víctimas. Por ello, para estas, ya no son desconocidos",
+        "explanation": "No TODOS los acosadores tienen más de 40 años. Además, hay acosadores que establecen relaciones duraderas con sus víctimas, por lo que dejan de ser desconocidos",
         "day": 1
     },
     {
@@ -27,7 +27,7 @@
             "Verdadera",
             "Falsa"
         ],
-        "explanation": "Los acosadores entablecen una relación de amistad con la víctima previo al abuso. Para ese entonces, el acosador ya no es un 'desconocido'.\nEs un amigo",
+        "explanation": "Los acosadores entablecen una relación de amistad con la víctima previo al abuso. Para entonces, el acosador ya no es un 'desconocido'.\nEs un amigo",
         "correctAnswer": 2,
         "day": 1
     },
@@ -38,7 +38,7 @@
             "Siempre oculta su verdadera identidad, haciendo creer a la víctima que es un menor de edad"
         ],
         "correctAnswer": 1,
-        "explanation": "No todos los groomers ocultan su edad, o al menos no siempre aparentan ser menores de edad. Muchos intentan mostrarse como figuras de autoridad y confianza con tal de ganarse al menor.",
+        "explanation": "No todos los groomers aparentan ser menores de edad. Algunos usan ser adultos para mostrarse como figuras de confianza.",
         "day": 1
     },
     {
@@ -48,7 +48,7 @@
             "Falsa"
         ],
         "correctAnswer": 1,
-        "explanation": "En la mayoría de casos, los acosadores se muestran amigables con sus víctimas con tal de ganarse su confianza. Además, si bien hay casos en que la víctima ha sido secuestrada, son pocos",
+        "explanation": "En la mayoría de casos, los acosadores son amigables con sus víctimas para ganarse su confianza. Además, raramente abducen a sus víctimas",
         "day": 1
     },
     {
@@ -69,7 +69,7 @@
             "Falsa"
         ],
         "correctAnswer": 1,
-        "explanation": "Los groomers acostumbran a decirle a sus víctimas que son maduras para su edad con tal de manipularlos. No importa la madurez que se tenga, la brecha siempre será demasiada",
+        "explanation": "Los groomers acostumbran a decirle a sus víctimas que son maduras para manipularlas. No importa la madurez que se tenga, la diferencia siempre será demasiada",
         "day": 1
     },
     {
@@ -169,7 +169,7 @@
             "Ambas son correctas"
         ],
         "correctAnswer": 2,
-        "explanation": "Los groomers generalmente atacan a víctimas con poco apoyo emocional y que se muestran abiertos a tomar riesgos en las redes. Hay que ser cautelosos e intentar tener alguien a quién acudir en caso de conflicto.",
+        "explanation": "Los groomers generalmente atacan a víctimas con poco apoyo emocional y que se muestran abiertos a tomar riesgos en las redes.\nHay que ser cautelosos e intentar tener alguien a quién acudir en caso de conflicto.",
         "day": 3
     }
     ,
