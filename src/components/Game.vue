@@ -1,12 +1,10 @@
 <template>
   <div class="game flex-center-aligned">
     <!-- Start / End Game -->
-    <Transition name="fade">
-      <TitleScreenComponent 
-        v-if="curGameStage === EGameStage.GAME_START || curGameStage === EGameStage.GAME_FINISHED" 
-        :isStart="curGameStage === EGameStage.GAME_START"
-      />
-    </Transition>
+    <TitleScreenComponent 
+      v-if="curGameStage === EGameStage.GAME_START || curGameStage === EGameStage.GAME_FINISHED" 
+      :isStart="curGameStage === EGameStage.GAME_START"
+    />
 
     <!-- Narration -->
     <NarrativeScreenComponent class="fade-in" v-if="curGameStage === EGameStage.NARRATION"/>

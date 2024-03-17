@@ -29,13 +29,12 @@ export class Day{
     public numDay: number;
 
     constructor(numDay:number, numReports: number, configuration: DayConfiguration, narrationNodes: NarrationNode[]) {
-        const reportManager = ReportManager.getInstance();
-        const quizManager = QuizManager.getInstance();
-
+        this.reports = [];
         this.numDay = numDay;
         this.numReports = numReports;
         this.configuration = configuration;
         
+        // Create the narration nodes
         this.narrationNodes = narrationNodes;
         for(const node of this.narrationNodes){
             node.goTo--;
@@ -45,9 +44,22 @@ export class Day{
                 }
             }
         }
+        
+        const initialPath = IMPORT_CONSTANTS.ESP_AUDIO;
+        for(const narrationNode of narrationNodes){
+            narrationNode.audio = new Audio(require(`@/assets/${initialPath}/${narrationNode.audioFile}`));
+        }
+
+        // Create the reports and daily quiz
+        this.resetReports();
+        this.resetDailyQuiz();
+    }
+
+    public resetReports():void{
+        const reportManager = ReportManager.getInstance();
 
         this.reports = [];
-        for(let i = 0; i < numReports;){
+        for(let i = 0; i < this.numReports;){
             const report: Report | undefined = reportManager.generateReport(this.configuration);
             
             if(report !== undefined){
@@ -55,17 +67,15 @@ export class Day{
                 i++;
             }
         }
-        
-        if(!configuration.shouldSkipQuiz){
-            const dailyQuiz = quizManager.sampleDailyQuiz(numDay);
+    }
+
+    public resetDailyQuiz():void{
+        const quizManager = QuizManager.getInstance();
+
+        if(!this.configuration.shouldSkipQuiz){
+            const dailyQuiz = quizManager.sampleDailyQuiz(this.numDay);
             if(dailyQuiz)
                 this.dailyQuiz = dailyQuiz;
-        }
-
-        //TODO: delete
-        const initialPath = IMPORT_CONSTANTS.ESP_AUDIO;
-        for(const narrationNode of narrationNodes){
-            narrationNode.audio = new Audio(require(`@/assets/${initialPath}/${narrationNode.audioFile}`));
         }
     }
 }

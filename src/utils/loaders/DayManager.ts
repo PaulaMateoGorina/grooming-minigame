@@ -20,8 +20,19 @@ class DayManager{
 
     public resetDays(): void{
         this.days = [];
-        this.loadDays();
-        this.numDays = this.days.length;
+        
+        // Load days for the first time if there are none
+        if(this.days.length === 0){
+            this.loadDays();
+            this.numDays = this.days.length;
+        }
+        // Otherwise reset them
+        else{
+            for(const day of this.days){
+                day.resetReports();
+                day.resetDailyQuiz();
+            }
+        }
     }
 
     public static getInstance(): DayManager {

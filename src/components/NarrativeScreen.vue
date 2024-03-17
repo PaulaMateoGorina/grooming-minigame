@@ -12,13 +12,13 @@
                 @finishedTyping="handleFinishedTyping"
             />
 
-            <div v-if="curNode && curNode.options !== undefined && showContinueMessage" class="fade-in narrative-option-container">
+            <div v-if="curNode && curNode.options !== undefined && typingFinished && voiceOverFinished" class="fade-in narrative-option-container">
                 <div v-for="option in curNode.options" :key="option.text" @click.stop="goTo(option.goTo)" class="narrative-option">
                     {{ option.text }}
                 </div>
             </div>
 
-            <p id="continue-narration" class="pulsating-element" v-if="showContinueMessage && !curNodeHasOptions">{{ GENERAL_STRINGS.CONTINUE_NARRATION }}</p>
+            <p id="continue-narration" class="pulsating-element" v-if="typingFinished && voiceOverFinished && !curNodeHasOptions">{{ GENERAL_STRINGS.CONTINUE_NARRATION }}</p>
         </div>
     </OnClickOutside>
 </template>
@@ -45,26 +45,31 @@ export default defineComponent({
     data(){
         return{
             GENERAL_STRINGS : GENERAL_STRINGS,
-            typingSpeed: 40,
+            typingSpeed: 35,
             curNode: undefined as NarrationNode | undefined,
             curNodeHasOptions: false,
             newTextDelay: 0,
-            showContinueMessage: false,
+            typingFinished: false,
+            voiceOverFinished: false
         }
     },
     methods:{
         handleFinishedTyping(){
-            this.showContinueMessage = true;
+            this.typingFinished = true;
         },
         nextDialogue(to: number){
-            if(this.showContinueMessage){
+            if(this.typingFinished){
                 if(!this.curNodeHasOptions){
-                    this.showContinueMessage = false;
+                    this.typingFinished = false;
                     if(to > 0){
                         this.curNode = this.narrationNodes[to];
                         this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
-                        if(this.curNode.audio)
+                        if(this.curNode.audio){
                             this.curNode.audio.play();
+                            this.curNode.audio.addEventListener('ended', () =>{
+                                this.voiceOverFinished = true;
+                            })
+                        }
                     }
                     else{
                         gameStore.commit('changeStage', EGameStage.REPORT);
@@ -76,9 +81,15 @@ export default defineComponent({
             if(to > 0){
                 this.curNode = this.narrationNodes[to];
                 this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
-                this.showContinueMessage = false;
-                if(this.curNode.audio)
+                this.typingFinished = false;
+                this.voiceOverFinished = false;
+                
+                if(this.curNode.audio){
                     this.curNode.audio.play();
+                    this.curNode.audio.addEventListener('ended', () =>{
+                        this.voiceOverFinished = true;
+                    })
+                }
             }
             else{
                 gameStore.commit('changeStage', EGameStage.REPORT);
@@ -93,8 +104,12 @@ export default defineComponent({
     created(){
         this.curNode = this.narrationNodes[NUM_CONSTANTS.ZERO];
         this.curNodeHasOptions = this.curNode.options !== undefined && this.curNode.options.length > 0;
-        if(this.curNode.audio)
+        if(this.curNode.audio){
             this.curNode.audio.play();
+            this.curNode.audio.addEventListener('ended', () =>{
+                this.voiceOverFinished = true;
+            })
+        }
     }
 })
 </script>
