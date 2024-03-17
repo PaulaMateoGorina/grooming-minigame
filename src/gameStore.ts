@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-// 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 import { createStore } from 'vuex';
 
 // Model
@@ -8,7 +9,7 @@ import Report from '@/utils/model/Report'
 import DailyQuiz from './utils/model/DailyQuiz';
 
 // Enums
-import { EStage, EGameStage } from '@/utils/enums'
+import { EStage, EGameStage, ESound } from '@/utils/enums'
 
 // Others
 import { NUM_CONSTANTS, GAME_CONSTANTS, QUIZ_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
@@ -110,6 +111,7 @@ export const gameStore = createStore({
     newGame(state: GameState){
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
       DayManager.getInstance().resetDays();
+      SoundManager.getInstance();
       state.visibleGameStage = EGameStage.GAME_START;
 
       state.curDayIdx = 0; 
@@ -160,23 +162,32 @@ export const gameStore = createStore({
         if(state.curReportIdx < state.curDay!.numReports){
           state.curReport = state.curDay!.reports[state.curReportIdx];
           state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
+        
+          if(state.visibleGameStage !== EGameStage.RESULT)
+            SoundManager.getInstance().stopSounds();
+          SoundManager.getInstance().playSoundEffect(ESound.REPORT_MUSIC, true);
+
           state.visibleGameStage = EGameStage.REPORT;
         }
         // If not, then we must move to the daily quiz, if there is any
         else{
           if(state.curDay && state.curDay.configuration.shouldSkipQuiz){
             commitChangeDay();
+            SoundManager.getInstance().stopSounds();
             state.visibleGameStage = EGameStage.NARRATION;
           }
           else
           {
             state.visibleGameStage = EGameStage.DAILY_QUIZ;
+            SoundManager.getInstance().stopSounds();
+            SoundManager.getInstance().playSoundEffect(ESound.QUIZ_MUSIC, true);
           }
         }
       }
       // If we are trying to go to a narration, then it is a new day, unless the previous state was the initial page
       else if(toStage === EGameStage.NARRATION && state.visibleGameStage !== EGameStage.GAME_START)
       {
+        SoundManager.getInstance().stopSounds();
         state.visibleGameStage = EGameStage.NARRATION
         commitChangeDay();
       }

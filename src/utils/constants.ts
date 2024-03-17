@@ -92,3 +92,13 @@ export const QUIZ_CONSTANTS = {
     SUCCESS_MULTIPLIER_INCREASE: 0.5,
     SUCCESS_MULTIPLIER_DEDUCTION: 0.1,
 }
+
+export const SOUND_PATHS = [
+    "correct.mp3",
+    "partially_correct.mp3",
+    "incorrect.mp3",
+    "quiz_music.mp3",
+    "report_music.mp3",
+    "select.mp3",
+    "error.mp3",
+]

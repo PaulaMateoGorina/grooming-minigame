@@ -51,8 +51,7 @@ export default defineComponent({
             curNodeHasOptions: false,
             newTextDelay: 0,
             typingFinished: false,
-            voiceOverFinished: false,
-            soundManager: SoundManager.getInstance()
+            voiceOverFinished: false
         }
     },
     methods:{
@@ -67,15 +66,18 @@ export default defineComponent({
             else if(this.curNode)
                 to = this.curNode.goTo;
 
-            if(this.typingFinished){
+            if(this.typingFinished && (this.isMuted || this.voiceOverFinished)){
                 if(!this.curNodeHasOptions){
                     this.typingFinished = false;
+                    this.voiceOverFinished = false;
 
                     if(to > 0){
                         this.curNode = this.narrationNodes[to];
                         this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
+                        SoundManager.getInstance().stopSounds();
+
                         if(this.curNode.audio){
-                            this.soundManager.playSound(this.curNode.audio).then(()=>{
+                            SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
                                 this.voiceOverFinished = true;
                             })
                         }
@@ -94,7 +96,7 @@ export default defineComponent({
                 this.voiceOverFinished = false;
                 
                 if(this.curNode.audio){
-                    this.soundManager.playSound(this.curNode.audio).then(()=>{
+                    SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
                         this.voiceOverFinished = true;
                     })
                 }
@@ -117,7 +119,7 @@ export default defineComponent({
         this.curNode = this.narrationNodes[NUM_CONSTANTS.ZERO];
         this.curNodeHasOptions = this.curNode.options !== undefined && this.curNode.options.length > 0;
         if(this.curNode.audio){
-            this.soundManager.playSound(this.curNode.audio).then(()=>{
+            SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
                 this.voiceOverFinished = true;
             })
         }

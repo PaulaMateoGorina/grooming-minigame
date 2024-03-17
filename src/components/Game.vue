@@ -57,7 +57,8 @@ import { GameState, gameStore } from '@/gameStore'
 import { GENERAL_STRINGS } from '@/assets/stringsESP';
 
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
-import { ECorrectness, EGameStage } from '@/utils/enums';
+import { ECorrectness, EGameStage, ESound } from '@/utils/enums';
+import SoundManager from '@/utils/SoundManager'
 
 import { cilVolumeHigh, cilVolumeOff } from '@coreui/icons';
 
@@ -91,12 +92,18 @@ export default defineComponent({
       if(curState.curReport)
         score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected);
 
-      if(score === NUM_CONSTANTS.ONE)
+      if(score === NUM_CONSTANTS.ONE){
         this.correctness = ECorrectness.CORRECT;
-      else if(score > NUM_CONSTANTS.ZERO)
+        SoundManager.getInstance().playSoundEffect(ESound.CORRECT);
+      }
+      else if(score > NUM_CONSTANTS.ZERO){
         this.correctness = ECorrectness.PARTIALLY_CORRECT;
-      else
+        SoundManager.getInstance().playSoundEffect(ESound.PARTIALLY_CORRECT);
+      }
+      else{
         this.correctness = ECorrectness.INCORRECT;
+        SoundManager.getInstance().playSoundEffect(ESound.INCORRECT);
+      }
 
       score = gameStore.state.multiplier * REPORT_CONSTANTS.POINTS_PER_REPORT * score;
       this.pointsGotten = score; 
@@ -113,7 +120,14 @@ export default defineComponent({
       if(curState.curDailyQuiz)
         wasCorrect = curState.curDailyQuiz.getAnswerResult(optionSelected);
       
-      this.correctness = wasCorrect ? ECorrectness.CORRECT : ECorrectness.INCORRECT;
+      if(wasCorrect){
+        SoundManager.getInstance().playSoundEffect(ESound.CORRECT);
+        this.correctness = ECorrectness.CORRECT;
+      }
+      else{
+        this.correctness = ECorrectness.INCORRECT;
+        SoundManager.getInstance().playSoundEffect(ESound.INCORRECT);
+      }
       this.pointsGotten = NUM_CONSTANTS.NEG;
 
       gameStore.commit('changeMultiplier', wasCorrect);

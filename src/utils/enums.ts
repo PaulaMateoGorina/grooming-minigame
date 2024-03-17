@@ -29,3 +29,14 @@ export enum EGameStage{
     RESULT,
     GAME_FINISHED,
 }
+
+//INFO: This has to be the same order as the SOUND_PATH constants
+export enum ESound{
+    CORRECT,
+    PARTIALLY_CORRECT,
+    INCORRECT,
+    QUIZ_MUSIC,
+    REPORT_MUSIC,
+    SELECT,
+    ERROR,
+}

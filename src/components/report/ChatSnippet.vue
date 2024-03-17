@@ -40,11 +40,13 @@ import { gameStore } from '@/gameStore'
 import { LogLevel, WriteLog } from '@/utils/logger'
 
 import Snippet from '@/utils/model/Snippet'
-import { EStage } from '@/utils/enums'
+import { EStage, ESound } from '@/utils/enums'
 
 //external imports
 import { OnClickOutside } from '@vueuse/components'
 import { STAGES, STAGE_CONSTANTS } from '@/utils/constants'
+import SoundManager from '@/utils/SoundManager'
+
 
 export default defineComponent({
     name: 'ChatSnippetComponent',
@@ -55,7 +57,7 @@ export default defineComponent({
         return {
             stageSelectorVisible: false,
             mousePosition: {x: 0, y: 0},
-            STAGES: STAGES,
+            STAGES: STAGES
         };
     },
     props: {
@@ -111,6 +113,7 @@ export default defineComponent({
                         const auxStage = this.stage * EStage.Normal;
                         gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: auxStage })
                     }
+                    SoundManager.getInstance().playSoundEffect(ESound.SELECT);
                 }
             } catch (error) {
                 WriteLog(`ChatSnippet.vue > handleClickInside >#ERROR: #ERROR: ${error}`, LogLevel.ERROR);
@@ -132,16 +135,18 @@ export default defineComponent({
                 }
 
                 WriteLog(`ChatSnippet.vue > handleClickStage > ${stage.name} ${stage.enumVal}`, LogLevel.VERBOSE);
-
                 gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: stage.enumVal })
                 this.stageSelectorVisible = false;
-            } catch (error) {
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            } 
+            catch (error) {
                 WriteLog(`ChatSnippet.vue > handleClickStage > #ERROR: #ERROR: ${error}`, LogLevel.ERROR);
             }
         },
         
         handleRightClick(){
             gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL });
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         }
     }
 })
@@ -150,4 +155,4 @@ export default defineComponent({
 <style scoped>
 @import '@/css/message.css';
 @import '@/css/common.css';
-</style>
+</style>ESound, 

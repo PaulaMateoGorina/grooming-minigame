@@ -74,7 +74,7 @@
         [
             {"text": "¿Bueno, qué tal de momento?", "audioFile": "day1.2/day1.2_1.mp3", "goTo": -1, 
                 "options":[
-                    {"text": "Ha sido pan comdio, era evidente.", "goTo": 2}
+                    {"text": "Ha sido pan comido, era evidente.", "goTo": 2}
                 ]
             },
             {"text": "¿Sí? A ver cómo se te dan los siguientes.", "audioFile": "day1.2/day1.2_2.mp3", "goTo": -1}

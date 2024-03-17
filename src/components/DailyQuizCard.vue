@@ -21,6 +21,7 @@ import { GENERAL_STRINGS } from '@/assets/stringsESP';
 import { NUM_CONSTANTS, QUIZ_CONSTANTS } from '@/utils/constants'
 import { LogLevel, WriteLog } from '@/utils/logger'
 
+
 import { gameStore } from '@/gameStore'
 
 export default defineComponent({

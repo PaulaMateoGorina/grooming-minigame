@@ -43,6 +43,7 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { defineComponent } from 'vue'
 import { gameStore } from '@/gameStore'
 
@@ -55,9 +56,11 @@ import ErrorModalComponent from '@/components/ErrorModal.vue'
 import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
+import { ESound } from '@/utils/enums'
 import { GENERAL_STRINGS } from '@/assets/stringsESP';
 
 import { CButton } from '@coreui/vue'
+import SoundManager from '@/utils/SoundManager'
 
 export default defineComponent({
     name: 'ReportComponent',
@@ -79,12 +82,14 @@ export default defineComponent({
         changePage(isNext: boolean) {
             const numPages = this.numPages ? this.numPages : 1;
             this.currentPage = isNext ? Math.min(this.currentPage + 1, numPages - 1) : Math.max(this.currentPage - 1, 0);
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         },
         sendSolveReport(isGrooming: boolean){
             WriteLog(`ChatReport.vue > sendSolveReport > Grooming: ${isGrooming}`, LogLevel.VERBOSE);
             try {
                 if(!isGrooming && gameStore.getters.aSnippetIsSelected){
                     this.solveReportErrorModalVisible = true;
+                    SoundManager.getInstance().playSoundEffect(ESound.ERROR);
                 }
                 else{
                     this.$emit('solveReport', isGrooming);
@@ -96,6 +101,7 @@ export default defineComponent({
         },
         handleCloseModal(){
             this.solveReportErrorModalVisible = false;
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         }
     },
     computed: {
@@ -159,4 +165,4 @@ export default defineComponent({
 <style scoped>
 @import '@/css/report.css';
 @import '@/css/common.css'; 
-</style>
+</style>, SOUND_CONSTANTS

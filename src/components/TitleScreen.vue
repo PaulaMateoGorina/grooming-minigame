@@ -23,7 +23,7 @@
     <CModal alignment="center" :visible="questionnaireModalOpen" @close="() => { closeModal() }">
         <CModalBody>
             <h4 style="font-size: 18px;">{{ GENERAL_STRINGS.PROMPT_QUESTIONNAIRE }}</h4>
-            <a href="https://forms.gle/wwxafQtGNyxz2Fn76" style="font-size: 18px;">{{ GENERAL_STRINGS.CLICK_TO_QUESTIONNAIRE }}</a>
+            <a href="https://forms.gle/wwxafQtGNyxz2Fn76" target="_blank" style="font-size: 18px;">{{ GENERAL_STRINGS.CLICK_TO_QUESTIONNAIRE }}</a>
         </CModalBody>
         <CModalFooter>
             <CButton variant="outline" @click="closeModal" class="title-screen-button play-again-button">{{ GENERAL_STRINGS.PLAY_AGAIN }}</CButton>
@@ -32,13 +32,15 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { defineComponent } from 'vue'
 import { GENERAL_STRINGS } from '@/assets/stringsESP';
 import { gameStore } from '@/gameStore';
-import { EGameStage } from '@/utils/enums';
+import { EGameStage, ESound } from '@/utils/enums';
 
 import { CModal, CModalBody, CModalFooter, CButton } from '@coreui/vue'
 
+import SoundManager from '@/utils/SoundManager'
 
 export default defineComponent({
     name: 'TitleScreenComponent',
@@ -62,6 +64,7 @@ export default defineComponent({
     methods:{
         startGame(){
             gameStore.commit('changeStage', EGameStage.NARRATION);
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         },
         resetGame(){
             if(this.firstPlaythrough){
@@ -70,11 +73,13 @@ export default defineComponent({
             else{
                 gameStore.commit('newGame');
             }
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         },
         closeModal(){
             this.questionnaireModalOpen = false;
             gameStore.commit('newGame');
             gameStore.commit('nextPlaythrough');
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         }
     },
     
