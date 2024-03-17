@@ -1,44 +1,45 @@
 <template>
-    <div class="report flex-center-aligned">
-        <div v-if="currentPage === 0">
-            <ProfilesPageComponent v-if="user1 && user2 && friendshipTime" 
-                :user1="user1" :user2="user2" :friendshipTime="friendshipTime" 
-            />
+    <div>
+        <div class="report flex-center-aligned">
+            <div v-if="currentPage === 0">
+                <ProfilesPageComponent v-if="user1 && user2 && friendshipTime" 
+                    :user1="user1" :user2="user2" :friendshipTime="friendshipTime" 
+                />
+            </div>
+
+            <div v-if="currentPage === 1 && snippetIdxPairsPage1.length > 0">
+                <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1"/>
+            </div>
+
+            <div v-if="currentPage === 2 && snippetIdxPairsPage2.length > 0">
+                <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
+            </div>
+            
+            <div v-if="showReportButtonsContainerInside" class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
+                <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
+                <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
+                <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
+                <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
+            </div>
+            
+            <ErrorModalComponent @closeModal="handleCloseModal" :visibility="solveReportErrorModalVisible" :message="'NO puedes marcar un informe como normal si tienes un snippet seleccionado.'"/>
         </div>
 
-        <div v-if="currentPage === 1 && snippetIdxPairsPage1.length > 0">
-            <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1"/>
+        <div v-if="!showReportButtonsContainerInside" class="bottom-report-buttons-container non-selectable-text flex-center-aligned flex-col">
+            <div class="button-container">
+                <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
+            </div>
+            <div class="button-container">
+                <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
+            </div>
         </div>
 
-        <div v-if="currentPage === 2 && snippetIdxPairsPage2.length > 0">
-            <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
-        </div>
-        
-        <div v-if="!showReportButtonsContainerInside" class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
-            <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
+        <div v-if="!showReportButtonsContainerInside" class="floating-report-buttons-container non-selectable-text">
+            <p>{{ GENERAL_STRINGS.ANSWER }}</p>
             <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
-            <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
-        </div>
-        
-        <ErrorModalComponent @closeModal="handleCloseModal" :visibility="solveReportErrorModalVisible" :message="'NO puedes marcar un informe como normal si tienes un snippet seleccionado.'"/>
-    </div>
-
-    <div v-if="!showReportButtonsContainerInside" class="bottom-report-buttons-container non-selectable-text flex-center-aligned flex-col">
-        <div class="button-container">
-            <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
-        </div>
-        <div class="button-container">
-            <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
         </div>
     </div>
-
-    <div v-if="!showReportButtonsContainerInside" class="floating-report-buttons-container non-selectable-text">
-        <p>{{ GENERAL_STRINGS.ANSWER }}</p>
-        <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
-        <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
-    </div>
-
 </template>
 
 <script lang="ts">

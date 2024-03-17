@@ -59,10 +59,18 @@ export default defineComponent({
         handleFinishedTyping(){
             this.typingFinished = true;
         },
-        nextDialogue(to: number){
+        nextDialogue(goto: number){
+            let to = -1;
+            
+            if(!isNaN(goto))
+                to = goto;
+            else if(this.curNode)
+                to = this.curNode.goTo;
+
             if(this.typingFinished){
                 if(!this.curNodeHasOptions){
                     this.typingFinished = false;
+
                     if(to > 0){
                         this.curNode = this.narrationNodes[to];
                         this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;

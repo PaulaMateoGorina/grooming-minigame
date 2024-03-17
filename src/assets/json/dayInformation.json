@@ -164,7 +164,7 @@
             },
             {"text": "¡Claro! No te preocupes.", "audioFile": "day2/day2_12.mp3", "goTo": 13},
             {"text": "Si tuvieramos que agrupar a los acosadores, habría 3 grupos:", "audioFile": "day2/day2_13.mp3", "goTo": 5},
-            {"text": "¡Perfecto! Esta vez, cuando acabes con los informes pasaremos directamente al quiz diario. ¡Suerte!", "audioFile": "day2/day2_14.mp3", "goTo": -1}
+            {"text": "Esta vez, cuando acabes con los informes pasaremos directamente al quiz diario. ¡Suerte!", "audioFile": "day2/day2_14.mp3", "goTo": -1}
         ]   
     },
     {
@@ -265,7 +265,7 @@
             {"text": "Luego tenemos la 6a fase, a la que llamamos 'Reproducción de fantasías'.", "audioFile": "day4/day4_22.mp3", "goTo": 23},
             {"text": "En esta fase el acosador y el menor recrean una fantasía sexual por chat. Dicha recreación puede también incluir el intercambio de fotos indebidas.", "audioFile": "day4/day4_23.mp3", "goTo": 24},
             {"text": "Finalmente, en la 7a fase, 'Mitigación de daños', el acosador se intenta asegurar de que la víctima no le contará a nadie de su relación.", "audioFile": "day4/day4_24.mp3", "goTo": 25},
-            {"text": "Esto incluye elogios por manetener la relación en secreto, insistencia en el secretismo e incluso amenazas, en caso de tener fotos del menor.", "audioFile": "day4/day4_25.mp3", "goTo": 26},
+            {"text": "Esto incluye elogios por mantener la relación en secreto, insistencia en el secretismo e incluso amenazas, en caso de tener fotos del menor.", "audioFile": "day4/day4_25.mp3", "goTo": 26},
             {"text": "Se ha entendido todo?", "audioFile": "day4/day4_26.mp3", "goTo": -1,
                 "options":[
                     {"text": "Sí, lo tengo todo claro.", "goTo": 28},
@@ -278,7 +278,7 @@
                     {"text": "Comienza desde la fase 5.", "goTo": 20}
                 ]    
             },
-            {"text": "¡Perfecto! En los informes no apareceran ni la 'Fase sexual' ni la 'Reproducción de fantasías', pero el resto sí.", "audioFile": "day4/day4_28.mp3", "goTo": 29},
+            {"text": "¡Perfecto! En los informes no aparecerán ni la 'Fase sexual' ni la 'Reproducción de fantasías', pero el resto sí.", "audioFile": "day4/day4_28.mp3", "goTo": 29},
             {"text": "Además, también habrán extractos donde el acosador está pidiendo fotos indebidas.", "audioFile": "day4/day4_29.mp3", "goTo": 30}, 
             {"text": "Puedes cambiar tu selección cuando quieras. Para marcar rápidamente un extracto como normal, simplemente haz click derecho.", "audioFile": "day4/day4_30.mp3", "goTo": 31},
             {"text": "Por último, no podrás marcar un informe como 'normal' si tienes algún extracto marcado.", "audioFile": "day4/day4_31.mp3", "goTo": 32},

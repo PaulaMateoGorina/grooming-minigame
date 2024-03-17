@@ -22,16 +22,25 @@ class SoundManager{
         }
         else{
             return new Promise<void>((resolve) => {
-                audio.play();
-                this.audiosPlaying.push(audio);
+                // audio ready to be played
+                if(audio.readyState >= 3){
+                    audio.play();
+                    this.audiosPlaying.push(audio);
 
-                // If game is muted, volume to 0 -> allows users to mute / unmute mid sound play
-                if(gameStore.getters.isMuted){
-                    audio.volume = 0;
+                    // If game is muted, volume to 0 -> allows users to mute / unmute mid sound play
+                    if(gameStore.getters.isMuted){
+                        audio.volume = 0;
+                    }
+                    audio.onended = () =>{
+                        this.audiosPlaying = this.audiosPlaying.filter(audioPlaying => audioPlaying !== audio);
+                        resolve();
+                    }
                 }
-                audio.onended = () =>{
-                    this.audiosPlaying = this.audiosPlaying.filter(audioPlaying => audioPlaying !== audio);
-                    resolve();
+                // Else, wait for it to be loaded
+                else{
+                    audio.oncanplaythrough = () => {
+                        this.playSound(audio);
+                    }
                 }
             })
         }

@@ -1,34 +1,36 @@
 <template>
-    <!-- Snippet -->
-    <OnClickOutside @trigger="hideOptions" @contextmenu.prevent="handleRightClick()">
-        <div
-        id="message-container"
-        :class="{ 'non-selectable-text': true, 'chat-snippet': true, 'chat-snippet-selected': stage > 0 }"
-        @click="handleClickInside"
-        >
-            <div v-for="message in chatSnippet!.messages" :key="message.id" :class="message.sender">
-                <p class="message-text">{{ message.text }}</p>
-            </div>
-
-            <!-- Floating text showing the stage selected -->
-            <Transition>
-                <div v-if="selectSnippetStage && stage > 0" class="floating-text-wrapper">
-                    {{selectedStageName}}
+    <div>
+        <!-- Snippet -->
+        <OnClickOutside @trigger="hideOptions" @contextmenu.prevent="handleRightClick()">
+            <div
+            id="message-container"
+            :class="{ 'non-selectable-text': true, 'chat-snippet': true, 'chat-snippet-selected': stage > 0 }"
+            @click="handleClickInside"
+            >
+                <div v-for="message in chatSnippet!.messages" :key="message.id" :class="message.sender">
+                    <p class="message-text">{{ message.text }}</p>
                 </div>
-            </Transition>
-        </div>
-        
-    </OnClickOutside>
-    
-    <!-- Stage selector -->
-    <Transition>
-        <div v-if="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
-        :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
-            <div class="stages-list-item" v-for="stage in STAGES" :key="stage.enumValue" @click="handleClickStage({name: stage.name, enumVal: stage.enumValue})">
-            {{ debugMode? stage.enumValue + ": " : ""}}{{ stage.name }}
+
+                <!-- Floating text showing the stage selected -->
+                <Transition>
+                    <div v-if="selectSnippetStage && stage > 0" class="floating-text-wrapper">
+                        {{selectedStageName}}
+                    </div>
+                </Transition>
             </div>
-        </div>
-    </Transition>
+            
+        </OnClickOutside>
+        
+        <!-- Stage selector -->
+        <Transition>
+            <div v-if="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
+            :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
+                <div class="stages-list-item" v-for="stage in STAGES" :key="stage.enumValue" @click="handleClickStage({name: stage.name, enumVal: stage.enumValue})">
+                {{ debugMode? stage.enumValue + ": " : ""}}{{ stage.name }}
+                </div>
+            </div>
+        </Transition>
+    </div>
 </template>
   
 <script lang="ts">
