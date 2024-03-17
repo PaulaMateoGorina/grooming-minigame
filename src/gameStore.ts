@@ -14,6 +14,7 @@ import { EStage, EGameStage } from '@/utils/enums'
 import { NUM_CONSTANTS, GAME_CONSTANTS, QUIZ_CONSTANTS, STAGE_CONSTANTS } from '@/utils/constants'
 import { LogLevel, WriteLog } from '@/utils/logger'
 import DayManager from './utils/loaders/DayManager';
+import SoundManager from '@/utils/SoundManager';
 
 
 function commitNewDay(){
@@ -50,6 +51,9 @@ export interface GameState {
   curReport: Report | undefined,
   curDailyQuiz: DailyQuiz | undefined,
 
+  // Others
+  isMuted: boolean,
+
   // Error
   hasError: boolean,
   debugMode: boolean,
@@ -82,6 +86,9 @@ export const gameStore = createStore({
     curReport: undefined,
     curDailyQuiz: undefined,
 
+    // Others
+    isMuted: false,
+
     hasError: false,
     debugMode: false,
     firstPlaythrough: true
@@ -111,6 +118,7 @@ export const gameStore = createStore({
       state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
 
       state.debugMode = false;
+      state.isMuted = false;
 
       commitNewDay();
     },
@@ -204,6 +212,18 @@ export const gameStore = createStore({
 
     nextPlaythrough(state){
       state.firstPlaythrough = false;
+    },
+
+    toggleMute(state){
+      if(state.isMuted){
+        SoundManager.getInstance().unmute();
+        state.isMuted = false;
+      }
+      else
+      {
+        SoundManager.getInstance().mute();
+        state.isMuted = true;
+      }
     }
   },
   getters: {
@@ -230,6 +250,10 @@ export const gameStore = createStore({
 
     isFirstPlaythrough: (state) => {
       return state.firstPlaythrough;
+    },
+
+    isMuted: (state) => {
+      return state.isMuted;
     }
   }
 });

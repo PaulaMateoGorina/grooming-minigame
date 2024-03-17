@@ -1,5 +1,11 @@
 <template>
   <div class="game flex-center-aligned">
+    <!-- Mute icon -->
+    <button id="muteButton" @click="muteGame">
+      <p class="iconButton" v-if="isMuted">&#128264;</p>
+      <p class="iconButton" v-if="!isMuted">&#128266;</p>
+    </button>
+
     <!-- Start / End Game -->
     <TitleScreenComponent 
       v-if="curGameStage === EGameStage.GAME_START || curGameStage === EGameStage.GAME_FINISHED" 
@@ -53,6 +59,8 @@ import { GENERAL_STRINGS } from '@/assets/stringsESP';
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
 import { ECorrectness, EGameStage } from '@/utils/enums';
 
+import { cilVolumeHigh, cilVolumeOff } from '@coreui/icons';
+
 export default defineComponent({
   name: 'GameComponent',
   components: {
@@ -67,6 +75,12 @@ export default defineComponent({
       pointsGotten: NUM_CONSTANTS.NEG,
       correctness: ECorrectness.INCORRECT,
       EGameStage: EGameStage,
+    }
+  },
+  setup() {
+    return {
+      cilVolumeHigh,
+      cilVolumeOff,
     }
   },
   methods: {
@@ -105,6 +119,10 @@ export default defineComponent({
       gameStore.commit('changeMultiplier', wasCorrect);
       gameStore.commit('changeStage', EGameStage.RESULT);
       
+    },
+    
+    muteGame(): void {
+      gameStore.commit('toggleMute');
     }
   },
   created() {
@@ -127,6 +145,9 @@ export default defineComponent({
     },
     curGameStage(){
       return gameStore.state.visibleGameStage;
+    },
+    isMuted(){
+      return gameStore.getters.isMuted;
     }
   }
 });

@@ -30,6 +30,56 @@ body {
     margin: 5px;
 }
 
+#muteButton{
+    bottom: 5%;
+    right: 15%;
+
+    width: 60px;
+
+    position:absolute;
+    background-color: transparent;
+    border-color: transparent;
+    color:red;
+
+    text-align:left;
+}
+
+.iconButton{
+    font-size: 30px;
+}
+
+@media (max-width: 1700px) {
+    .info{
+        top: 3.5%;
+        right: 7.5%;
+    }
+
+    .info-text{
+        font-size: 15px;
+    }
+
+    
+    #muteButton{
+        right: 7.5%;
+    }
+}
+
+@media (max-width: 1500px) {
+    .info{
+        width: auto;
+        top: 3.5%;
+        right: 1.5%;
+    }
+
+    .info-text{
+        font-size: 15px;
+    }
+
+    #muteButton{
+        right: 1.5%;
+    }
+}
+
 /* Transitions */
 .fade-enter-active,
 .fade-leave-active {
@@ -55,28 +105,4 @@ body {
 .slide-fade-leave-to {
     transform: translateX(-50%) translateY(100%);
     opacity: 0;
-}
-
-
-@media (max-width: 1700px) {
-    .info{
-        top: 3.5%;
-        right: 7.5%;
-    }
-
-    .info-text{
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 1500px) {
-    .info{
-        width: auto;
-        top: 3.5%;
-        right: 1.5%;
-    }
-
-    .info-text{
-        font-size: 15px;
-    }
 }

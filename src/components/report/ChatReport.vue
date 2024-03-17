@@ -14,7 +14,7 @@
             <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
         </div>
         
-        <div v-if="this.showReportButtonsContainerInside" class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
+        <div v-if="!showReportButtonsContainerInside" class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
             <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
             <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
@@ -24,7 +24,7 @@
         <ErrorModalComponent @closeModal="handleCloseModal" :visibility="solveReportErrorModalVisible" :message="'NO puedes marcar un informe como normal si tienes un snippet seleccionado.'"/>
     </div>
 
-    <div v-if="!this.showReportButtonsContainerInside" class="bottom-report-buttons-container non-selectable-text flex-center-aligned flex-col">
+    <div v-if="!showReportButtonsContainerInside" class="bottom-report-buttons-container non-selectable-text flex-center-aligned flex-col">
         <div class="button-container">
             <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
         </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div v-if="!this.showReportButtonsContainerInside" class="floating-report-buttons-container non-selectable-text">
+    <div v-if="!showReportButtonsContainerInside" class="floating-report-buttons-container non-selectable-text">
         <p>{{ GENERAL_STRINGS.ANSWER }}</p>
         <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
         <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
