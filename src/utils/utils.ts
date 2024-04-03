@@ -29,3 +29,9 @@ export function weightedSample (samples: {value: number, weight: number}[]): num
 
     return result ? result : samples[0].value;
 }
+
+export function stringFormat(template: string, ...args: any[]): string {
+    return template.replace(/{(\d+)}/g, (match, index) => {
+        return typeof args[index] !== 'undefined' ? args[index] : match;
+    });
+}

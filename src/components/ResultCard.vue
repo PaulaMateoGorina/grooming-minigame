@@ -21,7 +21,10 @@
 
                 <p class="medium-big-text accepts-new-line">{{ message }}</p>
                 
-                <div class="my-button card-button" @click="handleContinue">{{ RESULT_CARD_STRINGS.CONTINUE }}</div>
+                <div class="card-button-container">
+                    <div class="my-button card-button" @click="showResult" v-if="isReportResult && correctness !== ECorrectness.CORRECT">{{ RESULT_CARD_STRINGS.SHOW_SOLUTION }}</div>
+                    <div class="my-button card-button" @click="handleContinue">{{ GENERAL_STRINGS.CONTINUE }}</div>
+                </div>
             </div>
         </CCardBody>
     </CCard>
@@ -35,14 +38,16 @@ import { gameStore } from '@/gameStore'
 import { WriteLog, LogLevel } from '@/utils/logger'
 
 import { ECorrectness, EGameStage } from '@/utils/enums';
-import { RESULT_CARD_STRINGS } from '@/assets/stringsESP';
+import { RESULT_CARD_STRINGS, GENERAL_STRINGS } from '@/assets/stringsESP';
+import { stringFormat } from '@/utils/utils';
 
 export default defineComponent({
     name: 'ResultCardComponent',
     data(){
         return{
             ECorrectness: ECorrectness,
-            RESULT_CARD_STRINGS: RESULT_CARD_STRINGS
+            RESULT_CARD_STRINGS: RESULT_CARD_STRINGS,
+            GENERAL_STRINGS: GENERAL_STRINGS
         }
     },
     components: {
@@ -57,6 +62,9 @@ export default defineComponent({
     methods:{
         handleContinue(){
             gameStore.commit('changeStage', this.isReportResult ? EGameStage.REPORT : EGameStage.NARRATION);
+        },
+        showResult(){
+            gameStore.commit('showSolution', this.isReportResult ? EGameStage.REPORT : EGameStage.NARRATION);
         }
     },
     computed: {
@@ -65,10 +73,10 @@ export default defineComponent({
             try {
                 if(this.isReportResult){
                     if(this.correctness === ECorrectness.CORRECT)
-                        result = RESULT_CARD_STRINGS.REPORT_CORRECT.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, this.pointsGotten ? this.pointsGotten.toString() : "0");
+                        result = stringFormat(RESULT_CARD_STRINGS.REPORT_CORRECT, this.pointsGotten ? this.pointsGotten.toString() : "0");
 
                     else if(this.correctness === ECorrectness.PARTIALLY_CORRECT)
-                        result = RESULT_CARD_STRINGS.REPORT_P_CORRECT.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, this.pointsGotten ? this.pointsGotten.toString() : "0");
+                        result =  stringFormat(RESULT_CARD_STRINGS.REPORT_P_CORRECT, this.pointsGotten ? this.pointsGotten.toString() : "0");
 
                     else
                         result = RESULT_CARD_STRINGS.REPORT_INCORRECT;
@@ -91,9 +99,9 @@ export default defineComponent({
             let result = "";
             try {
                 result = this.isReportResult ? 
-                    RESULT_CARD_STRINGS.NEW_SCORE.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, gameStore.state.points.toString())
+                    stringFormat(RESULT_CARD_STRINGS.NEW_SCORE, gameStore.state.points.toString())
                     :
-                    RESULT_CARD_STRINGS.NEW_MULTIPLIER.replace(RESULT_CARD_STRINGS.NUM_PLACEHOLDER, gameStore.state.multiplier.toString())
+                    stringFormat(RESULT_CARD_STRINGS.NEW_MULTIPLIER, gameStore.state.multiplier.toString())
             } 
             catch (error) {
                 WriteLog("ResultCard.vue > Computed - newScoreOrMultiplierMessage > ERROR: " + error, LogLevel.ERROR);

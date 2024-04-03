@@ -30,13 +30,19 @@ function commitNewGame(){
   gameStore.commit('newGame');
 }
 
+function commitChangeStage(){
+  gameStore.commit('newStage');
+}
+
 export interface GameState {
   // Game stage
   visibleGameStage: EGameStage,
+  nextStage: EGameStage,
   
   // Tracking
   curDayIdx: number,
   curReportIdx: number,
+  showingSolution: boolean,
 
   // Score
   multiplier: number,
@@ -68,10 +74,12 @@ export const gameStore = createStore({
   state: {
     // Game stage visible:
     visibleGameStage: EGameStage.GAME_START,
+    nextStage: EGameStage.NONE,
 
     // Tracking
     curDayIdx: 0,
     curReportIdx: 0,
+    showingSolution: false,
 
     // Score
     multiplier: NUM_CONSTANTS.ONE,
@@ -91,7 +99,7 @@ export const gameStore = createStore({
     isMuted: false,
 
     hasError: false,
-    debugMode: false,
+    debugMode: true,
     firstPlaythrough: true
     
   } as GameState,
@@ -112,15 +120,28 @@ export const gameStore = createStore({
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
       DayManager.getInstance().resetDays();
       SoundManager.getInstance();
-      state.visibleGameStage = EGameStage.GAME_START;
 
-      state.curDayIdx = 0; 
-      
-      state.points = NUM_CONSTANTS.ZERO;
-      state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
-
-      state.debugMode = false;
-      state.isMuted = false;
+      if(state.debugMode){
+        state.visibleGameStage = EGameStage.REPORT;
+  
+        state.curDayIdx = 4; 
+        state.showingSolution = false;
+        
+        state.points = NUM_CONSTANTS.ZERO;
+        state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
+  
+        state.isMuted = false;
+      }
+      else{
+        state.visibleGameStage = EGameStage.GAME_START;
+  
+        state.curDayIdx = 0; 
+        
+        state.points = NUM_CONSTANTS.ZERO;
+        state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
+  
+        state.isMuted = false;
+      }
 
       commitNewDay();
     },
@@ -163,7 +184,7 @@ export const gameStore = createStore({
           state.curReport = state.curDay!.reports[state.curReportIdx];
           state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
         
-          if(state.visibleGameStage !== EGameStage.RESULT)
+          if(state.visibleGameStage !== EGameStage.RESULT && !state.showingSolution)
             SoundManager.getInstance().stopSounds();
           SoundManager.getInstance().playSoundEffect(ESound.REPORT_MUSIC, true);
 
@@ -221,6 +242,19 @@ export const gameStore = createStore({
       state.snippetStagesSelected[payload.idx] = payload.stage;
     },
 
+    showSolution(state:GameState, nextStage: EGameStage){
+      WriteLog(`gameStore.ts > showSolution > nextState is ${nextStage}`, LogLevel.VERBOSE);
+      state.nextStage = nextStage;
+      state.visibleGameStage = EGameStage.REPORT;
+      state.showingSolution = true;
+    },
+
+    solutionSeen(state:GameState){
+      WriteLog(`gameStore.ts > solutionSeen > nextState is ${state.nextStage}`, LogLevel.VERBOSE);
+      state.showingSolution = false;
+      commitChangeStage();
+    },
+
     nextPlaythrough(state){
       state.firstPlaythrough = false;
     },
@@ -265,6 +299,14 @@ export const gameStore = createStore({
 
     isMuted: (state) => {
       return state.isMuted;
+    },
+    
+    showingSolution: (state) => {
+      return state.showingSolution;
+    },
+    
+    nextStage: (state) => {
+      return state.nextStage;
     }
   }
 });

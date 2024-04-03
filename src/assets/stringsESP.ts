@@ -1,8 +1,6 @@
 export const GENERAL_STRINGS = {
-    NUM_PLACEHOLDER: "YYY",
-    NUM_PLACEHOLDER_2: "XXX",
-    POINTS_INFO: "Puntuación: YYY pts",
-    REPORTS_REMAINING: "Informes realizados: YYY / XXX",
+    POINTS_INFO: "Puntuación: {0} pts",
+    REPORTS_REMAINING: "Informes realizados: {0} / {1}",
     GAME_TITLE: "Groombuster",
     GAME_SUBTITLE: "Y tú, ¿Sabrías reconocer casos de online grooming?",
     START: "Comenzar a jugar",
@@ -13,31 +11,37 @@ export const GENERAL_STRINGS = {
     DAILY_QUIZ_TIME: "¡Hora de poner a prueba lo aprendido!",
     ANSWER: "El informe es",
     PROMPT_QUESTIONNAIRE: "Antes de volver a jugar, agradeceríamos que rellanaras el siguiente cuestionario:",
-    CLICK_TO_QUESTIONNAIRE: "Clica aquí para ir al cuestionario"
+    CLICK_TO_QUESTIONNAIRE: "Clica aquí para ir al cuestionario",
+    CONTINUE: "Continuar"
 }
 
 export const PROFILE_STRINGS = {
     USERNAME: "Username:",
     ONLINE_AGE: "Edad online:",
     REAL_AGE: "Edad real:",
-    FRIENDSHIP_START: "Han sido amigos por: ",
-    FRIENDSHIP_YEARS: "años,",
-    FRIENDSHIP_MONTHS: "meses y",
-    FRIENDSHIP_DAYS: "días",
+    FRIENDSHIP: "Han sido amigos por: {0} años, {1} meses y {2} días",
 }
 
 export const RESULT_CARD_STRINGS = {
-    NUM_PLACEHOLDER: "YYY",
     CORRECT: "CORRECTA",
     PARTIALLY_CORRECT: "PARCIALMENTE CORRECTA",
     INCORRECT: "INCORRECTA",
-    REPORT_CORRECT: "¡Enhorabuena! Has sumado YYY puntos.\n ¡Sigue así!",
-    REPORT_P_CORRECT: "Has sumado YYY puntos, pero no te confíes. \n¡Sigamos mejorando!",
+    REPORT_CORRECT: "¡Enhorabuena! Has sumado {0} puntos.\n ¡Sigue así!",
+    REPORT_P_CORRECT: "Has sumado {0} puntos, pero no te confíes. \n¡Sigamos mejorando!",
     REPORT_INCORRECT: "Esta vez no has sumado puntos, pero no desistas. \n¡Sigamos mejorando!",
     QUIZ_CORRECT: "¡Enhorabuena! Se ha añadido 0.5 a tu multiplicador de puntuación.", //TODO: Change this if the increase / deduct change
     QUIZ_INCORRECT: "Se ha restado 0.1 a tu multiplicador de puntuación.",
     QUIZ_CORRECT_ANSWER_WAS: "La respuesta correcta era: ",
-    NEW_SCORE: "Nueva puntuación: YYY pts",
-    NEW_MULTIPLIER: "Nuevo multiplicador: xYYY",
-    CONTINUE: "Continuar"
+    NEW_SCORE: "Nueva puntuación: {0} pts",
+    NEW_MULTIPLIER: "Nuevo multiplicador: x{0}",
+    SHOW_SOLUTION: "Ver Solución",
 };
+
+export const SOLUTION_STRINGS = {
+    GROOMING_SELECTION_CORRECT: "Acertaste en que el informe es {0}",
+    GROOMING_SELECTION_PARTIALLY_CORRECT: "Acertaste en que el informe es {0}, pero no seleccionaste todos los extractos correctamente",
+    GROOMING_SELECTION_INCORRECT: "Pusiste que el informe es {0}, pero es {1}",
+    SELECTED_SNIPPET_SOLUTION_NORMAL: "Marcaste el extracto, pero es uno normal",
+    SELECTED_SNIPPET_SOLUTION_GROOMING: "NO marcaste el extracto cuando es grooming ",
+    SELECTED_STAGE_SOLUTION: "Marcaste el extracto como '{0}', pero era '{1}'"
+}

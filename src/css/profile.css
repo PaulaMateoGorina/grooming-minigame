@@ -49,4 +49,10 @@
         max-height: 25vh;
         margin-top: 10px;
     }
+
+    @media (max-width: 1700px) {
+        .profile-container{
+            width: 40vw;
+        }
+    }
 }

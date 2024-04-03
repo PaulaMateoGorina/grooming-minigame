@@ -67,7 +67,7 @@ body {
 @media (max-width: 1500px) {
     .info{
         width: auto;
-        top: 3.5%;
+        top: 6vh;
         right: 1.5%;
     }
 

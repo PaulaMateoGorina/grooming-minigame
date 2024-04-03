@@ -57,12 +57,36 @@
     flex-direction: column;
 }
 
+.centered-text{
+    text-align: center !important;
+}
+
+.correct{
+    color: #41935c;
+}
+
+.partially-correct{
+    color: #d17000;
+}
+
+.incorrect{
+    color: #e04f4f;
+}
+
 .fade-in {
 	opacity: 1;
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
 	animation-duration: 0.5s;
+}
+
+.quick-fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.15s;
 }
 
 @media (max-height: 850px) {

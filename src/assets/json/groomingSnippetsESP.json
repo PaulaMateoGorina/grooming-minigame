@@ -166,9 +166,9 @@
     "arrayIdx": 1,
     "stage": 3,
     "Messages": [
-      {"sender": "User1", "text": "Ayer le pasé una captura de pantalla de un chat con mi amigo Pablo a Alex y se enfadó muchísimo"},
-      {"sender": "User1", "text": "Ni que la captura fuera de su chat!"},
-      {"sender": "User2", "text": "Bueno es normal, yo no paso capturas porque a mi tampoco me gustaría que fueran pasando lo que hablo con mis amigas por ahí sbs."}
+      {"sender": "User2", "text": "Ayer le pasé una captura de pantalla de un chat con mi amigo Pablo a Alex y se enfadó muchísimo"},
+      {"sender": "User2", "text": "Ni que la captura fuera de su chat!"},
+      {"sender": "User1", "text": "Bueno es normal, yo no paso capturas porque a mi tampoco me gustaría que fueran pasando lo que hablo con mis amigas por ahí sbs."}
     ]
   },
   {
@@ -250,7 +250,7 @@
       {"sender": "User1", "text": "Hola??? Por q no contestas? Estás con otra?"},
       {"sender": "User2", "text": "Qué? No!! Estaba en llamada con Juan, no estaba mirando el móvil"},
       {"sender": "User1", "text": "Si te hablo contéstame, esto no lo vuelvas a hacer"},
-      {"sender": "User1", "text": "No, no lo haré, perdón 😔"}
+      {"sender": "User2", "text": "No, no lo haré, perdón 😔"}
     ]
   },
   {

@@ -1,24 +1,49 @@
 <template>
     <div>
         <div class="report flex-center-aligned">
-            <div v-if="currentPage === 0">
-                <ProfilesPageComponent v-if="user1 && user2 && friendshipTime" 
-                    :user1="user1" :user2="user2" :friendshipTime="friendshipTime" 
-                />
-            </div>
+            <div class="report-content">
+                <div v-if="currentPage === 0">
+                    <ProfilesPageComponent v-if="user1 && user2 && friendshipTime" 
+                        :user1="user1" :user2="user2" :friendshipTime="friendshipTime" 
+                    />
 
-            <div v-if="currentPage === 1 && snippetIdxPairsPage1.length > 0">
-                <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1"/>
-            </div>
+                    <div v-if="isSolution" 
+                        :class="{
+                            'flex-center-aligned': true,
+                            'centered-text': true,
+                            'medium-big-text': true,
+                            'semi-bold': true,
+                            'correct': correctness === ECorrectness.CORRECT, 
+                            'partially-correct': correctness === ECorrectness.PARTIALLY_CORRECT,
+                            'incorrect': correctness === ECorrectness.INCORRECT
+                        }"
+                    >
+                        {{solution}}
+                    </div>
+                </div>
 
-            <div v-if="currentPage === 2 && snippetIdxPairsPage2.length > 0">
-                <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2"/>
+                <div v-if="currentPage === 1 && snippetIdxPairsPage1.length > 0">
+                    <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1" :isGrooming="isGrooming"/>
+                </div>
+
+                <div v-if="currentPage === 2 && snippetIdxPairsPage2.length > 0">
+                    <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2" :isGrooming="isGrooming"/>
+                </div>
             </div>
             
-            <div v-if="showReportButtonsContainerInside" class="report-buttons-container non-selectable-text flex-center-aligned flex-col">
+            <div v-if="showReportButtonsContainerInside" 
+                :class="{ 
+                    'report-buttons-container': true, 
+                    'non-selectable-text': true,
+                    'flex-center-aligned': true,
+                    'flex-col': true,
+                    'flex-spaced-out': isSolution
+                }"
+            >
                 <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
-                <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
-                <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
+                <div v-if="isSolution" class="my-button report-continue-button" @click="handleSolutionSeen">{{ GENERAL_STRINGS.CONTINUE }}</div>
+                <CButton v-if="!isSolution" color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
+                <CButton v-if="!isSolution" color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
                 <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
             </div>
             
@@ -26,15 +51,11 @@
         </div>
 
         <div v-if="!showReportButtonsContainerInside" class="bottom-report-buttons-container non-selectable-text flex-center-aligned flex-col">
-            <div class="button-container">
-                <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
-            </div>
-            <div class="button-container">
-                <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
-            </div>
+            <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
+            <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
         </div>
 
-        <div v-if="!showReportButtonsContainerInside" class="floating-report-buttons-container non-selectable-text">
+        <div v-if="!isSolution && !showReportButtonsContainerInside" class="floating-report-buttons-container non-selectable-text">
             <p>{{ GENERAL_STRINGS.ANSWER }}</p>
             <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
@@ -56,11 +77,12 @@ import ErrorModalComponent from '@/components/ErrorModal.vue'
 import Snippet from '@/utils/model/Snippet'
 import Profile from '@/utils/model/Profile'
 import { NUM_CONSTANTS, REPORT_CONSTANTS } from '@/utils/constants'
-import { ESound } from '@/utils/enums'
-import { GENERAL_STRINGS } from '@/assets/stringsESP';
+import { ECorrectness, ESound } from '@/utils/enums'
+import { GENERAL_STRINGS, SOLUTION_STRINGS } from '@/assets/stringsESP';
 
 import { CButton } from '@coreui/vue'
 import SoundManager from '@/utils/SoundManager'
+import { stringFormat } from '@/utils/utils'
 
 export default defineComponent({
     name: 'ReportComponent',
@@ -74,9 +96,12 @@ export default defineComponent({
         return {
             currentPage: 0,
             solveReportErrorModalVisible: false,
-            liveExampleVisible: false,
-            GENERAL_STRINGS: GENERAL_STRINGS
+            GENERAL_STRINGS: GENERAL_STRINGS,
+            ECorrectness: ECorrectness
         };
+    },
+    props: {
+        correctness: Number,
     },
     methods: {
         changePage(isNext: boolean) {
@@ -102,6 +127,10 @@ export default defineComponent({
         handleCloseModal(){
             this.solveReportErrorModalVisible = false;
             SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+        },
+
+        handleSolutionSeen(){
+            gameStore.commit('solutionSeen');
         }
     },
     computed: {
@@ -130,6 +159,12 @@ export default defineComponent({
                 [];
         },
 
+        isGrooming(): boolean {
+            const chatReport = gameStore.state.curReport;
+            const result = chatReport ? chatReport.isGrooming : false;
+            return result;
+        },
+
         numPages(): number{
             let result = 1;
             const chatReport = gameStore.state.curReport;
@@ -156,6 +191,28 @@ export default defineComponent({
         friendshipTime(): number[] | undefined{
             const chatReport = gameStore.state.curReport;
             return chatReport && chatReport.friendshipTime ? chatReport.friendshipTime : undefined;
+        },
+
+        isSolution(): boolean{
+            return gameStore.getters.showingSolution;
+        },
+
+        solution(): string{
+            let result = "";
+            const correct = gameStore.state.curReport!.isGrooming ? "grooming" : "normal";
+            const incorrect = !gameStore.state.curReport!.isGrooming ? "grooming" : "normal";
+
+            if(gameStore.getters.showingSolution){
+                if( this.correctness === ECorrectness.INCORRECT)
+                    result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_INCORRECT, incorrect, correct);
+
+                else if(this.correctness === ECorrectness.PARTIALLY_CORRECT)
+                    result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_PARTIALLY_CORRECT, correct);
+                
+                else
+                    result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_CORRECT, correct);
+            }
+            return result;
         }
     }
 })

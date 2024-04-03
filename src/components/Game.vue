@@ -16,7 +16,7 @@
     <NarrativeScreenComponent class="fade-in" v-if="curGameStage === EGameStage.NARRATION"/>
     
     <!-- Report -->
-    <ReportComponent @solveReport="handleSolveReport" v-if="curGameStage === EGameStage.REPORT" class="fade-in"/>
+    <ReportComponent @solveReport="handleSolveReport" v-if="curGameStage === EGameStage.REPORT" class="fade-in" :correctness="correctness" />
 
     <Transition name="slide-fade">
       <div v-if="curGameStage === EGameStage.REPORT" class="info">
@@ -61,6 +61,7 @@ import { ECorrectness, EGameStage, ESound } from '@/utils/enums';
 import SoundManager from '@/utils/SoundManager'
 
 import { cilVolumeHigh, cilVolumeOff } from '@coreui/icons';
+import { stringFormat } from '@/utils/utils';
 
 export default defineComponent({
   name: 'GameComponent',
@@ -144,15 +145,13 @@ export default defineComponent({
   },
   computed : {
     pointsText(){
-      return GENERAL_STRINGS.POINTS_INFO.replace(GENERAL_STRINGS.NUM_PLACEHOLDER, gameStore.state.points.toString());
+      return stringFormat(GENERAL_STRINGS.POINTS_INFO, gameStore.state.points.toString());
     },
     reportsRemainingText(){
       // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
       const totalNumReports = gameStore.state.curDay!.numReports;
       const reportsDone = gameStore.state.curReportIdx;
-      let message =  GENERAL_STRINGS.REPORTS_REMAINING.replace(GENERAL_STRINGS.NUM_PLACEHOLDER, reportsDone.toString());
-      return message.replace(GENERAL_STRINGS.NUM_PLACEHOLDER_2, totalNumReports.toString());
-
+      return stringFormat(GENERAL_STRINGS.REPORTS_REMAINING, reportsDone.toString(), totalNumReports.toString());
     },
     isGrooming(){
       return gameStore.state.curReport ?  gameStore.state.curReport.isGrooming : false;

@@ -22,6 +22,7 @@ export enum EStageIdx{
 }
 
 export enum EGameStage{
+    NONE,
     GAME_START,
     NARRATION,
     REPORT,

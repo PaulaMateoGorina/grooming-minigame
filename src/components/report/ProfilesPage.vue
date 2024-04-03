@@ -2,8 +2,7 @@
     <div class="flex-center-aligned flex-column">
         <ProfileComponent :user="user1"/>
         <ProfileComponent :user="user2"/>
-        <p>{{PROFILE_STRINGS.FRIENDSHIP_START}} {{ friendshipTime![2] }} {{PROFILE_STRINGS.FRIENDSHIP_YEARS}}
-            {{ friendshipTime![1] }} {{PROFILE_STRINGS.FRIENDSHIP_MONTHS}} {{ friendshipTime![0] }} {{PROFILE_STRINGS.FRIENDSHIP_DAYS}}</p>
+        <p>{{ friendshipTimeString }}</p>
     </div>
 </template>
 
@@ -12,6 +11,7 @@ import { defineComponent } from 'vue'
 import Profile from '@/utils/model/Profile';
 import ProfileComponent from './Profile.vue'
 import { PROFILE_STRINGS } from '@/assets/stringsESP';
+import { stringFormat } from '@/utils/utils';
 
 export default defineComponent({
     name: 'ProfilesPageComponent',
@@ -28,6 +28,15 @@ export default defineComponent({
         user2: Profile,
         friendshipTime: {
             type: Array as () => number[]
+        }
+    },
+    computed: {
+        friendshipTimeString(): string{
+            const result = this.friendshipTime && this.friendshipTime.length === 3 ? 
+                stringFormat(PROFILE_STRINGS.FRIENDSHIP, this.friendshipTime[2], this.friendshipTime[1], this.friendshipTime[0])
+                :
+                stringFormat(PROFILE_STRINGS.FRIENDSHIP, 0, 0, 0)
+            return result;
         }
     }
 })

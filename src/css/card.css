@@ -30,10 +30,22 @@
     flex-wrap: wrap;
 }
 
+.card-button-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
 .card-button{
+    flex-grow: 100;
     border-color: var(--primary);
     color: #5873ad;
-    margin-bottom: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
     padding: 10px; 
     cursor: pointer;
     font-weight: 600;
