@@ -123,9 +123,9 @@ export const gameStore = createStore({
       DataService.getInstance();
 
       if(state.debugMode){
-        state.visibleGameStage = EGameStage.NARRATION;
+        state.visibleGameStage = EGameStage.GAME_START;
   
-        state.curDayIdx = 6; 
+        state.curDayIdx = 0; 
         state.showingSolution = false;
         
         state.points = NUM_CONSTANTS.ZERO;

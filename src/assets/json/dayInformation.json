@@ -28,14 +28,16 @@
                 "options":[
                     {"text": "Claro que sí.", "goTo": 7}, 
                     {"text": "No, no lo sé.", "goTo": 10}
-                ]
+                ],
+                "dataUserProperty": "answer1"
             },
             {"text": "Ajá. ¿Y qué significa?", "audioFile": "day1.1/day1.1_7.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Es cuando un adulto establece una relación con un menor para abusar de este.", "goTo": 8}, 
                     {"text": "Se da cuando una persona percibe falsamente a su ídolo como un amigo.", "goTo": 9},
                     {"text": "Vale, lo admito. No lo sé.", "goTo": 10}
-                ]
+                ],
+                "dataUserProperty": "answer2"
             },
             {"text": "¡Correcto! Y cuando se da en las redes, se llama online grooming.", "audioFile": "day1.1/day1.1_8.mp3", "goTo": 12},
             {"text": "¡Incorrecto! A eso se le llama una relación parasocial. A veces se puede dar en casos de grooming, pero no es grooming en sí.", "audioFile": "day1.1/day1.1_9.mp3", "goTo": 11},

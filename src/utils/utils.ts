@@ -39,6 +39,5 @@ export function stringFormat(template: string, ...args: any[]): string {
 }
 
 export function generateRandomId(): string{
-    console.log(Math.floor(Math.random() * Math.floor(Math.random() * Date.now())).toString(16));
     return Math.floor(Math.random() * Math.floor(Math.random() * Date.now())).toString(16);
 }

@@ -13,7 +13,7 @@
             />
 
             <div v-if="curNode && curNode.options !== undefined && typingFinished && (voiceOverFinished || isMuted)" class="fade-in narrative-option-container">
-                <div v-for="option in curNode.options" :key="option.text" @click.stop="goTo(option.goTo)" class="narrative-option">
+                <div v-for="(option, idx) in curNode.options" :key="option.text" @click.stop="goTo(option.goTo, idx)" class="narrative-option">
                     {{ option.text }}
                 </div>
             </div>
@@ -37,6 +37,8 @@ import NarrationNode from '@/utils/model/NarrationNode';
 import SoundManager from '@/utils/SoundManager';
 
 import { OnClickOutside } from '@vueuse/components'
+import DataService from '@/utils/DataService';
+import { UserData } from '@/utils/model/UserData';
 
 export default defineComponent({
     name: 'NarrativeScreenComponent',
@@ -89,7 +91,12 @@ export default defineComponent({
                 }
             }
         },
-        goTo(to: number){
+        goTo(to: number, answerIdx: number){
+            if(this.curNode !== undefined && this.curNode.dataUserProperty !== undefined){
+                const userPropertyKey: keyof UserData = this.curNode.dataUserProperty as keyof UserData;
+                DataService.getInstance().modifyDataObject(userPropertyKey, answerIdx);
+            }
+
             if(to > 0){
                 this.curNode = this.narrationNodes[to];
                 this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
