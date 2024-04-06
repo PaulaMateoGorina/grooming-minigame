@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-var-requires */
-
 import { createStore } from 'vuex';
 
 // Model
@@ -16,6 +15,7 @@ import { NUM_CONSTANTS, GAME_CONSTANTS, QUIZ_CONSTANTS, STAGE_CONSTANTS } from '
 import { LogLevel, WriteLog } from '@/utils/logger'
 import DayManager from './utils/loaders/DayManager';
 import SoundManager from '@/utils/SoundManager';
+import DataService from './utils/DataService';
 
 
 function commitNewDay(){
@@ -65,7 +65,7 @@ export interface GameState {
   hasError: boolean,
   debugMode: boolean,
 
-  firstPlaythrough: boolean
+  runNumber: number
 }
 
 // Create a new store instance.
@@ -100,7 +100,7 @@ export const gameStore = createStore({
 
     hasError: false,
     debugMode: true,
-    firstPlaythrough: true
+    runNumber: 0
     
   } as GameState,
   //#endregion
@@ -120,9 +120,10 @@ export const gameStore = createStore({
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
       DayManager.getInstance().resetDays();
       SoundManager.getInstance();
+      DataService.getInstance();
 
       if(state.debugMode){
-        state.visibleGameStage = EGameStage.REPORT;
+        state.visibleGameStage = EGameStage.NARRATION;
   
         state.curDayIdx = 6; 
         state.showingSolution = false;
@@ -131,6 +132,7 @@ export const gameStore = createStore({
         state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
   
         state.isMuted = false;
+        state.runNumber = 0;
       }
       else{
         state.visibleGameStage = EGameStage.GAME_START;
@@ -142,7 +144,6 @@ export const gameStore = createStore({
   
         state.isMuted = false;
       }
-      
       commitNewDay();
     },
 
@@ -242,7 +243,6 @@ export const gameStore = createStore({
     },
 
     showSolution(state:GameState){
-      console.log(state.snippetStagesSelected); //TODO: delete
       state.visibleGameStage = EGameStage.REPORT;
       state.showingSolution = true;
     },
@@ -254,7 +254,7 @@ export const gameStore = createStore({
     },
 
     nextPlaythrough(state){
-      state.firstPlaythrough = false;
+      state.runNumber++;
     },
 
     toggleMute(state){
@@ -292,7 +292,7 @@ export const gameStore = createStore({
     },
 
     isFirstPlaythrough: (state) => {
-      return state.firstPlaythrough;
+      return state.runNumber === 0;
     },
 
     isMuted: (state) => {

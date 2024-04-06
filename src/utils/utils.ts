@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-var-requires */
 export function getRandomNumber(max: number, min?: number){
     return min ? 
         min + ~~(Math.random() * (max - min + 1))
@@ -35,4 +36,9 @@ export function stringFormat(template: string, ...args: any[]): string {
     return template.replace(/{(\d+)}/g, (match, index) => {
         return typeof args[index] !== 'undefined' ? args[index] : match;
     });
+}
+
+export function generateRandomId(): string{
+    console.log(Math.floor(Math.random() * Math.floor(Math.random() * Date.now())).toString(16));
+    return Math.floor(Math.random() * Math.floor(Math.random() * Date.now())).toString(16);
 }

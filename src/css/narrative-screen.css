@@ -59,3 +59,21 @@
         bottom: 1.5em;
     }
 }
+
+.skip-button{
+    position: absolute;
+    bottom: -10%;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid #374253;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.skip-button:hover{
+    border-color: #374253;
+    background-color: #374253;
+    color: #d9d8d8;
+    cursor: pointer;
+}

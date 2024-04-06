@@ -1,19 +1,23 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import * as utils from '@/utils/utils'
 import { DATA_SAVER_CONSTANTS } from './constants';
 import { LogLevel, WriteLog } from './logger'
+import { UserData, defaultData } from './model/UserData';
 
-type UserData = {
-    string1: string; 
-    string2: string
-}
 
 class DataService{
     private static instance: DataService | null
     private data: UserData; //TODO: change to the actual data lmao
 
     constructor(){
-       this.data = {string1: "sample1", string2: "sample2"};
+        this.data = {
+            userId: utils.generateRandomId(),
+            answer1: -1,
+            answer2: -1,
+            run: 0
+        }
+        console.log(this.data);
     }
 
     public static getInstance(): DataService {
@@ -21,6 +25,16 @@ class DataService{
             DataService.instance = new DataService();
         }
         return DataService.instance;
+    }
+
+    public newRun(){
+        const userId = this.data.userId;
+        const runNumber = this.data.run + 1;
+
+        this.data = defaultData;
+
+        this.data.userId = userId;
+        this.data.run = runNumber;
     }
 
     public modifyDataObject(property: keyof UserData, newValue: any){
@@ -36,15 +50,13 @@ class DataService{
                 throw new Error("New value was null or undefined.")
 
             if(typeof(this.data[property]) !== typeof(newValue))
-                throw new Error(`Incompatible types. ${property} is a ${typeof(this.data[property])} while newValue is a ${typeof(newValue)}.`)
-            
+                throw new Error(`Incompatible types. ${property} is a ${typeof(this.data[property])} while newValue is a ${typeof(newValue)}.`);
 
-            this.data[property] = newValue
+            (this.data[property as keyof UserData] as any) = newValue;
         } 
         catch (error) {
             WriteLog("DataService.ts > modifyDataObject > ERROR: " + error, LogLevel.ERROR);
         }
-        this.data[property] = newValue;
     }
 
     public async sendUserData(): Promise<void>{

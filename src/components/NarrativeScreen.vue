@@ -17,8 +17,9 @@
                     {{ option.text }}
                 </div>
             </div>
-
             <p id="continue-narration" class="pulsating-element" v-if="typingFinished && (voiceOverFinished || isMuted) && !curNodeHasOptions">{{ GENERAL_STRINGS.CONTINUE_NARRATION }}</p>
+            
+            <div v-if="!firstRun" @click.stop="skip" class="skip-button">{{ GENERAL_STRINGS.SKIP }}</div> 
         </div>
     </OnClickOutside>
 </template>
@@ -104,6 +105,9 @@ export default defineComponent({
             else{
                 gameStore.commit('changeStage', EGameStage.REPORT);
             }
+        },
+        skip(){
+            gameStore.commit('changeStage', EGameStage.REPORT);
         }
     },
     computed:{
@@ -113,6 +117,10 @@ export default defineComponent({
 
         isMuted(){
             return gameStore.getters.isMuted;
+        },
+
+        firstRun(){
+            return gameStore.getters.isFirstPlaythrough;
         }
     },
     created(){

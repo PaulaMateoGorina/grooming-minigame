@@ -13,7 +13,8 @@ export const GENERAL_STRINGS = {
     PROMPT_QUESTIONNAIRE: "Antes de volver a jugar, agradeceríamos que rellanaras el siguiente cuestionario:",
     CLICK_TO_QUESTIONNAIRE: "Clica aquí para ir al cuestionario",
     CONTINUE: "Continuar",
-    GO_BACK: "Volver"
+    GO_BACK: "Volver",
+    SKIP: "Saltar explicación"
 }
 
 export const PROFILE_STRINGS = {
