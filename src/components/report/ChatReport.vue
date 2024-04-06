@@ -1,6 +1,14 @@
 <template>
     <div>
-        <div class="report flex-center-aligned">
+        <div 
+            :class="{ 
+                'report': true, 
+                'flex-center-aligned': true, 
+                'report-correct': isSolution && correctness === ECorrectness.CORRECT,
+                'report-partially-correct': isSolution && correctness === ECorrectness.PARTIALLY_CORRECT,
+                'report-incorrect': isSolution && correctness === ECorrectness.INCORRECT,
+            }"
+        >
             <div class="report-content">
                 <div v-if="currentPage === 0">
                     <ProfilesPageComponent v-if="user1 && user2 && friendshipTime" 
@@ -23,11 +31,11 @@
                 </div>
 
                 <div v-if="currentPage === 1 && snippetIdxPairsPage1.length > 0">
-                    <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1" :isGrooming="isGrooming"/>
+                    <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage1" :isGrooming="isGrooming" :correctness="correctness"/>
                 </div>
 
                 <div v-if="currentPage === 2 && snippetIdxPairsPage2.length > 0">
-                    <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2" :isGrooming="isGrooming"/>
+                    <ChatSnippetPageComponent :snippetIdxPairs="snippetIdxPairsPage2" :isGrooming="isGrooming" :correctness="correctness"/>
                 </div>
             </div>
             
@@ -41,7 +49,7 @@
                 }"
             >
                 <div @click="changePage(false)" :class="{ 'report-button': true, 'prev-button': true, 'invisible': currentPage === 0 }">&#8249;</div>
-                <div v-if="isSolution" class="my-button report-continue-button" @click="handleSolutionSeen">{{ GENERAL_STRINGS.CONTINUE }}</div>
+                <div v-if="isSolution" class="my-button report-go-back-button" @click="handleSolutionSeen">{{ GENERAL_STRINGS.GO_BACK }}</div>
                 <CButton v-if="!isSolution" color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
                 <CButton v-if="!isSolution" color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
                 <div @click="changePage(true)" :class="{ 'report-button': true, 'next-button': true, 'invisible': currentPage === numPages - 1 }">&#8250;</div>
@@ -60,11 +68,15 @@
             <CButton color="danger" variant="outline" @click="sendSolveReport(true)" class="answer-button my-button">Grooming</CButton>
             <CButton color="success" variant="outline" @click="sendSolveReport(false)" class="answer-button my-button">Normal</CButton>
         </div>
+
+        <div v-if="isSolution && !showReportButtonsContainerInside" class="floating-report-buttons-container my-button report-go-back-button" @click="handleSolutionSeen">{{ GENERAL_STRINGS.GO_BACK }}</div>
+
     </div>
 </template>
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { defineComponent } from 'vue'
 import { gameStore } from '@/gameStore'
 
@@ -130,6 +142,7 @@ export default defineComponent({
         },
 
         handleSolutionSeen(){
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
             gameStore.commit('solutionSeen');
         }
     },

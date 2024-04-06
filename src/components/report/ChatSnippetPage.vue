@@ -1,6 +1,6 @@
 <template>
   <div v-for="snippetIdxPair in snippetIdxPairs" :key="snippetIdxPair[0].id">
-    <ChatSnippetComponent :chatSnippet="snippetIdxPair[0]" :arrayIdx="snippetIdxPair[1]" :isGrooming="isGrooming"/>
+    <ChatSnippetComponent :chatSnippet="snippetIdxPair[0]" :arrayIdx="snippetIdxPair[1]" :isGrooming="isGrooming" :correctness="correctness"/>
   </div>
 </template>
   
@@ -18,7 +18,8 @@ export default defineComponent({
     snippetIdxPairs: {
       type: Array as () => [Snippet, number][]
     },
-    isGrooming: Boolean
+    isGrooming: Boolean,
+    correctness: Number
   }
 })
 </script>

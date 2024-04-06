@@ -54,11 +54,11 @@
     "arrayIdx": 0,
     "stage": 1,
     "Messages": [
-      {"sender": "User2", "text": "Y tú q sueles hacer cuando estás libre?"},
-      {"sender": "User1", "text": "No mucho, es q en la escuela se meten conmigo"},
-      {"sender": "User1", "text": "Ojala ser como tú, seguro que tienes muchos amigos 😔​😔​"},
-      {"sender": "User2", "text": "Jo que mal"},
-      {"sender": "User2", "text": "No tengo tantos la vd, pero con los que me llevo son muy majos conmigo"}
+      {"sender": "User1", "text": "Y tú q sueles hacer cuando estás libre?"},
+      {"sender": "User2", "text": "No mucho, es q en la escuela se meten conmigo"},
+      {"sender": "User2", "text": "Ojala ser como tú, seguro que tienes muchos amigos 😔​😔​"},
+      {"sender": "User1", "text": "Jo que mal"},
+      {"sender": "User1", "text": "No tengo tantos la vd, pero con los que me llevo son muy majos conmigo"}
     ]
   },
   {
@@ -288,7 +288,7 @@
     "stage": 4,
     "Messages": [
       {"sender": "User2", "text": "Perdón, estaba jugando con Marta al GoG"},
-      {"sender": "User1", "text": "Pasas demasiado tiempo con ella, me tienes abandonado 😔💔, eguro que ya no te gusto"},
+      {"sender": "User1", "text": "Pasas demasiado tiempo con ella, me tienes abandonado 😔💔, seguro que ya no te gusto"},
       {"sender": "User2", "text": "Claro que me sigues gustandoo 🥺🥺"},
       {"sender": "User2", "text": "Mañana quedamos para llamar"}
     ]

@@ -22,7 +22,7 @@
                 <p class="medium-big-text accepts-new-line">{{ message }}</p>
                 
                 <div class="card-button-container">
-                    <div class="my-button card-button" @click="showResult" v-if="isReportResult && correctness !== ECorrectness.CORRECT">{{ RESULT_CARD_STRINGS.SHOW_SOLUTION }}</div>
+                    <div class="my-button card-button" @click="showResult" v-if="isReportResult">{{ RESULT_CARD_STRINGS.SHOW_SOLUTION }}</div>
                     <div class="my-button card-button" @click="handleContinue">{{ GENERAL_STRINGS.CONTINUE }}</div>
                 </div>
             </div>
@@ -37,9 +37,10 @@ import { CCard, CCardBody} from '@coreui/vue'
 import { gameStore } from '@/gameStore'
 import { WriteLog, LogLevel } from '@/utils/logger'
 
-import { ECorrectness, EGameStage } from '@/utils/enums';
+import { ECorrectness, EGameStage, ESound } from '@/utils/enums';
 import { RESULT_CARD_STRINGS, GENERAL_STRINGS } from '@/assets/stringsESP';
 import { stringFormat } from '@/utils/utils';
+import SoundManager from '@/utils/SoundManager';
 
 export default defineComponent({
     name: 'ResultCardComponent',
@@ -64,7 +65,8 @@ export default defineComponent({
             gameStore.commit('changeStage', this.isReportResult ? EGameStage.REPORT : EGameStage.NARRATION);
         },
         showResult(){
-            gameStore.commit('showSolution', this.isReportResult ? EGameStage.REPORT : EGameStage.NARRATION);
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            gameStore.commit('showSolution');
         }
     },
     computed: {

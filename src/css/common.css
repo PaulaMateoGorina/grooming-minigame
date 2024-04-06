@@ -1,5 +1,12 @@
 :root{
     --primary: #8aa6e4;
+    --correct: #41935c;
+    --partiallyCorrect: #d17000;
+    --incorrect: #e04f4f;
+}
+
+s{
+    text-decoration: line-through solid 2px;
 }
 
 .invisible{

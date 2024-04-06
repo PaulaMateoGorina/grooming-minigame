@@ -30,8 +30,8 @@ function commitNewGame(){
   gameStore.commit('newGame');
 }
 
-function commitChangeStage(){
-  gameStore.commit('newStage');
+function commitChangeStage(goTo: EGameStage){
+  gameStore.commit('changeStage', goTo);
 }
 
 export interface GameState {
@@ -124,7 +124,7 @@ export const gameStore = createStore({
       if(state.debugMode){
         state.visibleGameStage = EGameStage.REPORT;
   
-        state.curDayIdx = 4; 
+        state.curDayIdx = 6; 
         state.showingSolution = false;
         
         state.points = NUM_CONSTANTS.ZERO;
@@ -158,12 +158,11 @@ export const gameStore = createStore({
         
         state.curReportIdx = 0;
         const curReport: Report | undefined = curDay.reports[state.curReportIdx];
-        state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
-
-        if(curDay === undefined){
+        if(curReport === undefined){
           throw new Error("Error when fetching the first report of the day.");
         }
         state.curReport = curReport;
+        state.snippetStagesSelected = (state.curReport && state.curReport.snippets.length > 0) ? Array(state.curReport.snippets.length).fill(-1): [];
         
         const curDailyQuiz: DailyQuiz | undefined = curDay.dailyQuiz;
         state.curDailyQuiz = curDailyQuiz;
@@ -242,9 +241,8 @@ export const gameStore = createStore({
       state.snippetStagesSelected[payload.idx] = payload.stage;
     },
 
-    showSolution(state:GameState, nextStage: EGameStage){
-      WriteLog(`gameStore.ts > showSolution > nextState is ${nextStage}`, LogLevel.VERBOSE);
-      state.nextStage = nextStage;
+    showSolution(state:GameState){
+      console.log(state.snippetStagesSelected); //TODO: delete
       state.visibleGameStage = EGameStage.REPORT;
       state.showingSolution = true;
     },
@@ -252,7 +250,7 @@ export const gameStore = createStore({
     solutionSeen(state:GameState){
       WriteLog(`gameStore.ts > solutionSeen > nextState is ${state.nextStage}`, LogLevel.VERBOSE);
       state.showingSolution = false;
-      commitChangeStage();
+      commitChangeStage(EGameStage.RESULT);
     },
 
     nextPlaythrough(state){

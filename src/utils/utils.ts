@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function getRandomNumber(max: number, min?: number){
     return min ? 
         min + ~~(Math.random() * (max - min + 1))

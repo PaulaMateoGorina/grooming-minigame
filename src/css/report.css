@@ -1,5 +1,8 @@
-:root {
+:root{
     --primary: #8aa6e4;
+    --correct: #41935c;
+    --partiallyCorrect: #d17000;
+    --incorrect: #e04f4f;
 }
 
 .report {
@@ -11,6 +14,18 @@
     border-color: var(--primary);
     background-color: white;
     box-shadow: 12.5px 12.5px 10px rgb(63, 65, 68);
+}
+
+.report-correct {
+    border: var(--correct) solid 4px;
+}
+
+.report-partially-correct {
+    border: var(--partiallyCorrect) solid 4px;
+}
+
+.report-incorrect {
+    border: var(--incorrect) solid 4px;
 }
 
 .report-content{
@@ -36,18 +51,18 @@
     height: 50%;
 }
 
-.report-continue-button{
+.report-go-back-button{
     border-color: var(--primary);
     color: #5873ad;
     margin-right: 10px;
     margin-left: 10px;
-    padding: 10px; 
+    padding: 5px 10px; 
     cursor: pointer;
     font-weight: 600;
     transition: 0.2s;
 }
 
-.report-continue-button:hover{
+.report-go-back-button:hover{
     background-color: var(--primary);
     color: #374253;
     font-weight: 600;
@@ -57,12 +72,14 @@
     font-size: 50px;
     justify-content: flex-end;
     margin-right: auto;
+    margin-top: -5px;
 }
 
 .next-button {
     font-size: 50px;
     justify-content: flex-end;
     margin-left: auto;
+    margin-top: -5px;
 }
 
 .fade-enter-active,

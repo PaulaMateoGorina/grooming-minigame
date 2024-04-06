@@ -12,7 +12,8 @@ export const GENERAL_STRINGS = {
     ANSWER: "El informe es",
     PROMPT_QUESTIONNAIRE: "Antes de volver a jugar, agradeceríamos que rellanaras el siguiente cuestionario:",
     CLICK_TO_QUESTIONNAIRE: "Clica aquí para ir al cuestionario",
-    CONTINUE: "Continuar"
+    CONTINUE: "Continuar",
+    GO_BACK: "Volver"
 }
 
 export const PROFILE_STRINGS = {
@@ -34,14 +35,16 @@ export const RESULT_CARD_STRINGS = {
     QUIZ_CORRECT_ANSWER_WAS: "La respuesta correcta era: ",
     NEW_SCORE: "Nueva puntuación: {0} pts",
     NEW_MULTIPLIER: "Nuevo multiplicador: x{0}",
-    SHOW_SOLUTION: "Ver Solución",
+    SHOW_SOLUTION: "Revisar informe",
 };
 
 export const SOLUTION_STRINGS = {
     GROOMING_SELECTION_CORRECT: "Acertaste en que el informe es {0}",
     GROOMING_SELECTION_PARTIALLY_CORRECT: "Acertaste en que el informe es {0}, pero no seleccionaste todos los extractos correctamente",
     GROOMING_SELECTION_INCORRECT: "Pusiste que el informe es {0}, pero es {1}",
-    SELECTED_SNIPPET_SOLUTION_NORMAL: "Marcaste el extracto, pero es uno normal",
-    SELECTED_SNIPPET_SOLUTION_GROOMING: "NO marcaste el extracto cuando es grooming ",
-    SELECTED_STAGE_SOLUTION: "Marcaste el extracto como '{0}', pero era '{1}'"
+    CORRECT_SELECTED_SNIPPET_SOLUTION_NORMAL: "Normal",
+    CORRECT_SELECTED_SNIPPET_SOLUTION_GROOMING: "Grooming",
+    INCORRECT_SELECTED_SNIPPET_SOLUTION_NORMAL: "<s>Grooming</s> ⟶ Normal",
+    INCORRECT_SELECTED_SNIPPET_SOLUTION_GROOMING: "<s>Normal</s> ⟶ Grooming",
+    SELECTED_STAGE_SOLUTION: "<s>{0}</s> ⟶ {1}"
 }
