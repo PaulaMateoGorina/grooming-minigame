@@ -59,7 +59,6 @@ class DayManager{
 
     // #region methods to load data
     private loadDays(): void{
-        WriteLog(`DayManager.ts > loadDays > START`, LogLevel.VERBOSE);   
         try{
             const jsonDays = dayInformationJson as {numDay: number; numReports: number; configuration: DayConfiguration; narrationNodes: NarrationNode[]}[];
             for(const jsonDay of jsonDays){
@@ -77,7 +76,6 @@ class DayManager{
         catch (error) {
             WriteLog(`DayManager.ts > loadDays > ERROR loading the day information and creating the days. #ERROR: ${error}`, LogLevel.ERROR);   
         }
-        WriteLog(`DayManager.ts > loadDays > END`, LogLevel.VERBOSE);   
     }
     // #endregion
 

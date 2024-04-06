@@ -142,7 +142,7 @@ export const gameStore = createStore({
   
         state.isMuted = false;
       }
-
+      
       commitNewDay();
     },
 

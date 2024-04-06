@@ -102,3 +102,10 @@ export const SOUND_PATHS = [
     "select.mp3",
     "error.mp3",
 ]
+
+export const DATA_SAVER_CONSTANTS = {
+    JSON_BIN_API_URL: "https://api.jsonbin.io/v3/b/",
+    USER_DATA_MASTER_KEY: "$2a$10$lDxxFaAV/3hvX4YGPOYkIee/HCgvGV33.ou5cVboMih9okzxsOswC",
+    BIN_LIST_MASTER_KEY: "$2a$10$lDxxFaAV/3hvX4YGPOYkIee/HCgvGV33.ou5cVboMih9okzxsOswC",
+    BIN_LIST_BIN_ID: "66115c8cacd3cb34a8345bf9"
+}

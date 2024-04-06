@@ -297,8 +297,6 @@ class ReportManager{
     }
 
     public generateReport(configuration: DayConfiguration): Report | undefined{
-        WriteLog("generateReport > Start", LogLevel.VERBOSE);
-
         const isGrooming = utils.getBoolean(configuration.groomingProbability);
         let result: Report | undefined = undefined;
 
@@ -333,7 +331,6 @@ class ReportManager{
         } catch (error) {
             WriteLog(`ReportManager.ts > generateReport > ERROR generating a report. #ERROR: ${error}`, LogLevel.ERROR);   
         }
-        WriteLog("generateReport > END", LogLevel.VERBOSE);
         return result;
     }
     // #endregion
