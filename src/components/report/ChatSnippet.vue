@@ -29,7 +29,7 @@
                     >
                     </div>
                     <div v-else>
-                        <div v-if="selectSnippetStage && stage > 0" class="floating-text-wrapper">
+                        <div v-if="!isSolution && selectSnippetStage && stage > 0" class="floating-text-wrapper">
                             {{selectedStageName}}
                         </div>
                     </div>
@@ -42,7 +42,7 @@
         <Transition>
             <div v-if="selectSnippetStage && stageSelectorVisible" class="non-selectable-text stages-list"
             :style="{ marginLeft: mousePosition.x + 'px', top: mousePosition.y + 'px' }">
-                <div class="stages-list-item" v-for="stage in STAGES" :key="stage.enumValue" @click="handleClickStage({name: stage.name, enumVal: stage.enumValue})">
+                <div class="stages-list-item" v-for="stage in visibleStages" :key="stage.enumValue" @click="handleClickStage({name: stage.name, enumValue: stage.enumValue})">
                 {{ debugMode? stage.enumValue + ": " : ""}}{{ stage.name }}
                 </div>
             </div>
@@ -77,7 +77,7 @@ export default defineComponent({
         return {
             stageSelectorVisible: false,
             mousePosition: {x: 0, y: 0},
-            STAGES: STAGES,
+            allStages: STAGES,
             showSolution: false,
             isSolutionCorrect: true,
             solutionMessage: "",
@@ -122,23 +122,23 @@ export default defineComponent({
             }
         },
 
-        handleClickStage(stage: {name: string, enumVal: number}){
+        handleClickStage(stage: {name: string, enumValue: number}){
             if(!this.isSolution){
                 try {
                     if(stage.name === null || stage.name === ""){
                         throw new Error("Stage name was null or empty.");
                     }
-                    if(stage.enumVal === null || isNaN(stage.enumVal)) {
+                    if(stage.enumValue === null || isNaN(stage.enumValue)) {
                         throw new Error("Value for the enum was null or not a numerical value");
                     }
                     
                     const possibleEnumValues = Object.values(EStage).filter((value) => typeof value === 'number') as EStage[];
-                    if (!possibleEnumValues.includes(stage.enumVal)) {
+                    if (!possibleEnumValues.includes(stage.enumValue)) {
                         throw new Error("Value for the enum was not valid.");
                     }
 
-                    WriteLog(`ChatSnippet.vue > handleClickStage > ${stage.name} ${stage.enumVal}`, LogLevel.VERBOSE);
-                    gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: stage.enumVal })
+                    WriteLog(`ChatSnippet.vue > handleClickStage > ${stage.name} ${stage.enumValue}`, LogLevel.VERBOSE);
+                    gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: stage.enumValue })
                     this.stageSelectorVisible = false;
                     SoundManager.getInstance().playSoundEffect(ESound.SELECT);
                 } 
@@ -188,6 +188,23 @@ export default defineComponent({
 
         isSolution(): boolean{
             return gameStore.getters.showingSolution;
+        },
+
+        visibleStages(): {name: string, enumValue: number}[]{
+            const selectableStages: number[] = gameStore.getters.selectableStages;
+            let stages: {name: string, enumValue: number}[] = [];
+
+            if(gameStore.state.selectSnippetStages && selectableStages.length > 0){
+                stages.push(this.allStages[0]);
+
+                selectableStages.forEach(stageIdx => {
+                    stages.push(this.allStages[stageIdx + 1])
+                });
+            }
+            else{
+                stages = this.allStages;
+            }
+            return stages;
         }
     },
     mounted() {

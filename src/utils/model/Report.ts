@@ -2,6 +2,7 @@ import Snippet from './Snippet'
 import Profile from './Profile'
 import { EStage, ECorrectness } from '@/utils/enums'
 import { NUM_CONSTANTS } from '@/utils/constants'
+import { WriteLog, LogLevel } from '../logger';
 
 class Report {
     public isGrooming: boolean;
@@ -41,9 +42,8 @@ class Report {
             }
         } 
         catch (error) {
-            console.error(`Report.ts solveAndGetScore > ERROR: Error trying to get the points resulting of solving the report.`)
+            WriteLog(`Report.ts solveAndGetScore > ERROR: Error trying to get the points resulting of solving the report.`, LogLevel.ERROR);
         }
-
         return result;
     }
 }

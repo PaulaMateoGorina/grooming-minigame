@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-var-requires */
+
+/**
+ * 
+ * @param max 
+ * @param min 
+ * @returns A random number between the min and max, both included
+ */
 export function getRandomNumber(max: number, min?: number){
     return min ? 
         min + ~~(Math.random() * (max - min + 1))

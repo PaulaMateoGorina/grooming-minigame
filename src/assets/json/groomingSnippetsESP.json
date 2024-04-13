@@ -25,7 +25,7 @@
     "stage": 1,
     "Messages": [
       {"sender": "User1", "text": "Eyy, soy el de la partida anterior. Jugamos juntos? "},
-      {"sender": "User2", "text": "Uff no s"},
+      {"sender": "User2", "text": "Uff no se"},
       {"sender": "User1", "text": "Porfaa, te regalo una skin si quieres"},
       {"sender": "User2", "text": "Bueno venga"}
     ]
@@ -54,11 +54,9 @@
     "arrayIdx": 0,
     "stage": 1,
     "Messages": [
-      {"sender": "User1", "text": "Y tú q sueles hacer cuando estás libre?"},
-      {"sender": "User2", "text": "No mucho, es q en la escuela se meten conmigo"},
-      {"sender": "User2", "text": "Ojala ser como tú, seguro que tienes muchos amigos 😔​😔​"},
-      {"sender": "User1", "text": "Jo que mal"},
-      {"sender": "User1", "text": "No tengo tantos la vd, pero con los que me llevo son muy majos conmigo"}
+      {"sender": "User1", "text": "Y tú, tienes muchos amigos?"},
+      {"sender": "User2", "text": "No la verdad, es q en la escuela se meten conmigo"},
+      {"sender": "User1", "text": "Jo, que mal"}
     ]
   },
   {
@@ -102,7 +100,7 @@
     ]
   },
   {
-    "arrayIdx": 0,
+    "arrayIdx": 1,
     "stage": 3,
     "Messages": [
       {"sender": "User1", "text": "Tus padres son muy estrictos?"},
@@ -167,8 +165,8 @@
     "stage": 3,
     "Messages": [
       {"sender": "User2", "text": "Ayer le pasé una captura de pantalla de un chat con mi amigo Pablo a Alex y se enfadó muchísimo"},
-      {"sender": "User2", "text": "Ni que la captura fuera de su chat!"},
-      {"sender": "User1", "text": "Bueno es normal, yo no paso capturas porque a mi tampoco me gustaría que fueran pasando lo que hablo con mis amigas por ahí sbs."}
+      {"sender": "User2", "text": "Todo el mundo lo hace, a que si?"},
+      {"sender": "User1", "text": "Pues yo estoy de parte de tu amigo, ir pasando lo que hablas con otra gente esta feo"}
     ]
   },
   {
@@ -300,7 +298,7 @@
       {"sender": "User1", "text": "Si es algo que te molesta creo que deberías hablarlo cara a cara con Carlos para aclarar cualquier malentendido."},
       {"sender": "User2", "text": "Mmm, supongo que sí"},
       {"sender": "User2", "text": "Muchas gracias por aconsejarme, siempre puedo confiar en ti 😌😌"},
-      {"sender": "User1", "text": "Claro que sí, para algo somos mejores amigos 😉😉❤️"}
+      {"sender": "User1", "text": "Claro que sí, para eso estoy 😉😉❤️"}
     ]
   },
   {

@@ -121,9 +121,9 @@ export const gameStore = createStore({
       DataService.getInstance();
 
       if(state.debugMode){
-        state.visibleGameStage = EGameStage.GAME_START;
+        state.visibleGameStage = EGameStage.REPORT;
   
-        state.curDayIdx = 0; 
+        state.curDayIdx = 6; 
         state.showingSolution = false;
         
         state.points = NUM_CONSTANTS.ZERO;
@@ -298,6 +298,13 @@ export const gameStore = createStore({
     
     showingSolution: (state) => {
       return state.showingSolution;
+    },
+
+    selectableStages: (state) => {
+      if(state.curDay === undefined || state.curDay.configuration.selectableStagesIdx === undefined)
+        return []
+      else
+        return state.curDay.configuration.selectableStagesIdx;
     }
   }
 });

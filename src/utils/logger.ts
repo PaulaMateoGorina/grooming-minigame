@@ -5,18 +5,25 @@ export const LogLevel = {
 }
 
 export function WriteLog(message: string, level: number){
-    switch (level){
-        case LogLevel.INFO:
-            console.info(message);
-            break;
+    const queryString = window.location.search;
+    const searchParams = new URLSearchParams(queryString);
+    const shouldLog = searchParams.has("log") && searchParams.get("log") === "1";
 
-        case LogLevel.VERBOSE:
-            console.debug(message);
-            break;
+    if(shouldLog){
+        switch (level){
+            case LogLevel.INFO:
+                console.info(message);
+                break;
 
-        case LogLevel.ERROR:
-            console.error(message);
-            break;
-                    
+            case LogLevel.VERBOSE:
+                console.debug(message);
+                break;
+
+            case LogLevel.ERROR:
+                console.error(message);
+                break;
+                        
+        }
     }
+
 }

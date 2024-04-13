@@ -22,8 +22,8 @@
             },
             {"text": "¡Perfecto! Deja que te explique tus tareas.", "audioFile": "day1.1/day1.1_2.mp3", "goTo": 4},
             {"text": "¿En serio? Vaya, te va a tocar trabajar igualmente ^^. Deja que te explique tus tareas.", "audioFile": "day1.1/day1.1_3.mp3", "goTo": 4},
-            {"text": "Básicamente serás un moderador de chats.", "audioFile": "day1.1/day1.1_4.mp3", "goTo": 5},
-            {"text": "Durante el día te llegarán chats que son posibles casos de grooming, y tendrás que decidir si lo son, o si son chats normales.", "audioFile": "day1.1/day1.1_5.mp3", "goTo": 6},
+            {"text": "Básicamente serás un moderador de chats.", "audioFile": "day1.1/day1.1_4.mp3", "goTo": 0},
+            {"text": "Durante el día te llegarán chats que son posibles casos de grooming, y tendrás que decidir si lo son, o si son chats normales.", "audioFile": "day1.1/day1.1_5.mp3", "goTo": 0},
             {"text": "Espera... ¿Sabes siquiera lo que significa el término grooming?", "audioFile": "day1.1/day1.1_6.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Claro que sí.", "goTo": 7}, 
@@ -226,7 +226,8 @@
             "selectSnippetStages": true,
             "groomingProbability": 0.75,
             "minAgeGroomer": 22,
-            "maxAgeGroomer": 65
+            "maxAgeGroomer": 65,
+            "selectableStagesIdx": [0, 1, 4]
         },
         "narrationNodes": 
         [
@@ -298,7 +299,8 @@
             "selectSnippetStages": true,
             "groomingProbability": 0.6,
             "minAgeGroomer": 22,
-            "maxAgeGroomer": 65
+            "maxAgeGroomer": 65,
+            "selectableStagesIdx": [2, 3, 4]
         },
         "narrationNodes": 
         [

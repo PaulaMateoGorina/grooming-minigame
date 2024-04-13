@@ -51,9 +51,7 @@ class DataService{
             if(typeof(this.data[property]) !== typeof(newValue))
                 throw new Error(`Incompatible types. ${property} is a ${typeof(this.data[property])} while newValue is a ${typeof(newValue)}.`);
 
-            console.log(this.data[property]);
             (this.data[property as keyof UserData] as any) = newValue;
-            console.log(this.data[property]);
         } 
         catch (error) {
             WriteLog("DataService.ts > modifyDataObject > ERROR: " + error, LogLevel.ERROR);

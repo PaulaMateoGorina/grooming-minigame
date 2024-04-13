@@ -63,7 +63,6 @@ class DayManager{
             const jsonDays = dayInformationJson as {numDay: number; numReports: number; configuration: DayConfiguration; narrationNodes: NarrationNode[]}[];
             for(const jsonDay of jsonDays){
                 const day : Day | undefined = this.createDay(jsonDay);
-                
                 if(day === undefined){
                     throw("DailyQuiz created was undefined.");
                 }

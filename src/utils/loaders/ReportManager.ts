@@ -140,7 +140,7 @@ class ReportManager{
     // #endregion
 
     // #region helper methods to generate data structures
-    private generateGroomingSnippetList(numSnippets: number): Snippet[]{
+    private generateGroomingSnippetList(numSnippets: number, selectableStagesIdx?: number[]): Snippet[]{
         const result: Snippet[] = [];
 
         try {
@@ -159,8 +159,16 @@ class ReportManager{
 
                 if(i === normalSnippetIdx)
                     snippet = this.sampleNormalSnippet();
-                else
-                    snippet = this.sampleGroomingSnippet();
+                else{
+                    if(selectableStagesIdx !== null && selectableStagesIdx !== undefined && selectableStagesIdx.length > 0){
+                        const idx = utils.getRandomIdx(selectableStagesIdx.length)
+                        const snippetStage = selectableStagesIdx[idx];
+                        snippet = this.sampleGroomingSnippet(snippetStage)
+                    }
+                    else{
+                        snippet = this.sampleGroomingSnippet();
+                    }
+                }
 
                 if(snippet && !snippetIds.includes(snippet.id)){
                     snippet.chosen = true;
@@ -199,12 +207,12 @@ class ReportManager{
         return result;
     }
 
-    private generateSnippetList(isGrooming: boolean): Snippet[]{
+    private generateSnippetList(isGrooming: boolean, selectableStagesIdx?: number[]): Snippet[]{
         let result: Snippet[] = [];
         
         try {
             const numSnippets = REPORT_CONSTANTS.MIN_SNIPPETS_PER_REPORT +  utils.getRandomNumber(REPORT_CONSTANTS.MAX_SNIPPETS_PER_REPORT, REPORT_CONSTANTS.MIN_SNIPPETS_PER_REPORT);
-            result = isGrooming ? this.generateGroomingSnippetList(numSnippets) : this.generateNormalSnippetList(numSnippets);
+            result = isGrooming ? this.generateGroomingSnippetList(numSnippets, selectableStagesIdx) : this.generateNormalSnippetList(numSnippets);
 
         } catch (error) {
             WriteLog(`ReportManager.ts > generateSnippetList > ERROR generating snippet list. #ERROR: ${error}`, LogLevel.ERROR);   
@@ -269,7 +277,7 @@ class ReportManager{
         try{
             let stageSnippetListLength = NUM_CONSTANTS.ZERO;
 
-            if(!stage){
+            if(stage === null || stage === undefined){
                 stage = utils.getRandomIdx(STAGE_CONSTANTS.NUM_GROOMING_STAGES);
             }
             stageSnippetListLength = this.numGroomingSnippets[stage]
@@ -324,7 +332,7 @@ class ReportManager{
             //snippets
             let snippets: Snippet[] = [];
             if(configuration.hasSnippets){
-                snippets = this.generateSnippetList(isGrooming);
+                snippets = this.generateSnippetList(isGrooming, configuration.selectableStagesIdx);
             }
             result = new Report(isGrooming, profile1Nullable, profile1Nullable2, friendshipTime, snippets);
 

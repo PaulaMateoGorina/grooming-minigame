@@ -16,6 +16,7 @@ export interface DayConfiguration{
     groomingProbability: number;
     minAgeGroomer: number;
     maxAgeGroomer: number;
+    selectableStagesIdx?: number[];
 }
 
 export class Day{
@@ -33,7 +34,7 @@ export class Day{
         this.numDay = numDay;
         this.numReports = numReports;
         this.configuration = configuration;
-        
+
         // Create the narration nodes
         this.narrationNodes = narrationNodes;
         for(const node of this.narrationNodes){
