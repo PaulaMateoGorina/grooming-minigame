@@ -18,6 +18,11 @@ export const NUM_CONSTANTS = {
     ONE: 1.0
 };
 
+export const NARRATION_CONSTANTS ={
+    NEXT_NODE: -1,
+    NEXT_STAGE: -2
+}
+
 export const GAME_CONSTANTS = {
     INITIAL_MULTIPLIER: 1.0,
     NUM_PLAYING_STAGES: 4

@@ -29,7 +29,7 @@ import { defineComponent } from 'vue'
 import TypewriterTextComponent from '@/components/TypewriterText.vue'
 
 import { GENERAL_STRINGS } from '@/assets/stringsESP';
-import { NUM_CONSTANTS } from '@/utils/constants';
+import { NUM_CONSTANTS, NARRATION_CONSTANTS } from '@/utils/constants';
 import { EGameStage } from '@/utils/enums';
 
 import { gameStore } from '@/gameStore';
@@ -54,7 +54,8 @@ export default defineComponent({
             curNodeHasOptions: false,
             newTextDelay: 0,
             typingFinished: false,
-            voiceOverFinished: false
+            voiceOverFinished: false,
+            curNodeIdx: 0
         }
     },
     methods:{
@@ -74,8 +75,15 @@ export default defineComponent({
                     this.typingFinished = false;
                     this.voiceOverFinished = false;
 
-                    if(to > 0){
+                    if(to === NARRATION_CONSTANTS.NEXT_STAGE){
+                        gameStore.commit('changeStage', EGameStage.REPORT);
+                    }
+                    else{
+                        if(to === NARRATION_CONSTANTS.NEXT_NODE)
+                            to = this.curNodeIdx + 1;
+
                         this.curNode = this.narrationNodes[to];
+                        this.curNodeIdx = to;
                         this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
                         SoundManager.getInstance().stopSounds();
 
@@ -84,9 +92,6 @@ export default defineComponent({
                                 this.voiceOverFinished = true;
                             })
                         }
-                    }
-                    else{
-                        gameStore.commit('changeStage', EGameStage.REPORT);
                     }
                 }
             }
@@ -99,6 +104,7 @@ export default defineComponent({
 
             if(to > 0){
                 this.curNode = this.narrationNodes[to];
+                this.curNodeIdx = to;
                 this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
                 this.typingFinished = false;
                 this.voiceOverFinished = false;
@@ -109,7 +115,7 @@ export default defineComponent({
                     })
                 }
             }
-            else{
+            else if(to === NARRATION_CONSTANTS.NEXT_STAGE){
                 gameStore.commit('changeStage', EGameStage.REPORT);
             }
         },

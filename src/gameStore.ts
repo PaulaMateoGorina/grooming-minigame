@@ -37,7 +37,6 @@ function commitChangeStage(goTo: EGameStage){
 export interface GameState {
   // Game stage
   visibleGameStage: EGameStage,
-  nextStage: EGameStage,
   
   // Tracking
   curDayIdx: number,
@@ -74,7 +73,6 @@ export const gameStore = createStore({
   state: {
     // Game stage visible:
     visibleGameStage: EGameStage.GAME_START,
-    nextStage: EGameStage.NONE,
 
     // Tracking
     curDayIdx: 0,
@@ -248,7 +246,6 @@ export const gameStore = createStore({
     },
 
     solutionSeen(state:GameState){
-      WriteLog(`gameStore.ts > solutionSeen > nextState is ${state.nextStage}`, LogLevel.VERBOSE);
       state.showingSolution = false;
       commitChangeStage(EGameStage.RESULT);
     },
@@ -301,10 +298,6 @@ export const gameStore = createStore({
     
     showingSolution: (state) => {
       return state.showingSolution;
-    },
-    
-    nextStage: (state) => {
-      return state.nextStage;
     }
   }
 });
