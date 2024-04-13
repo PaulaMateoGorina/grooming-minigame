@@ -116,9 +116,9 @@ export const gameStore = createStore({
 
     newGame(state: GameState){
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
+      DataService.getInstance();
       DayManager.getInstance().resetDays();
       SoundManager.getInstance();
-      DataService.getInstance();
 
       if(state.debugMode){
         state.visibleGameStage = EGameStage.REPORT;
@@ -300,11 +300,15 @@ export const gameStore = createStore({
       return state.showingSolution;
     },
 
+    numDay: (state) => {
+      return state.curDay!.numDay;
+    },
+
     selectableStages: (state) => {
       if(state.curDay === undefined || state.curDay.configuration.selectableStagesIdx === undefined)
         return []
       else
         return state.curDay.configuration.selectableStagesIdx;
-    }
+    },
   }
 });

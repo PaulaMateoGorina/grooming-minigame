@@ -11,6 +11,15 @@ export const STAGES = [
     { name: "Petición de fotos indecentes", enumValue: 9 }
 ];
 
+export const STAGES_TO_IDX = new Map<number, number>([
+    [-1, 0],
+    [1, 1],
+    [3, 2],
+    [4, 3],
+    [7, 4],
+    [9, 5]
+]);
+
 export const NUM_CONSTANTS = {
     NEG: -1.0,
     ZERO: 0.0,
@@ -25,7 +34,8 @@ export const NARRATION_CONSTANTS ={
 
 export const GAME_CONSTANTS = {
     INITIAL_MULTIPLIER: 1.0,
-    NUM_PLAYING_STAGES: 4
+    NUM_PLAYING_STAGES: 4,
+    NUM_DAYS: 5
 }
 
 export const STAGE_CONSTANTS = {
@@ -112,5 +122,13 @@ export const DATA_SAVER_CONSTANTS = {
     JSON_BIN_API_URL: "https://api.jsonbin.io/v3/b/",
     USER_DATA_MASTER_KEY: "$2a$10$lDxxFaAV/3hvX4YGPOYkIee/HCgvGV33.ou5cVboMih9okzxsOswC",
     BIN_LIST_MASTER_KEY: "$2a$10$lDxxFaAV/3hvX4YGPOYkIee/HCgvGV33.ou5cVboMih9okzxsOswC",
-    BIN_LIST_BIN_ID: "66115c8cacd3cb34a8345bf9"
+    BIN_LIST_BIN_ID: "66115c8cacd3cb34a8345bf9",
+
+    N_GROOMING_REPORTS : "numGroomingReports",
+    N_GROOMING_REPORTS_FLAGGED : "numGroomingReportsFlagged",
+    N_NORMAL_REPORTS : "numNormalReports",
+    N_NORMAL_REPORTS_CORRECT : "numNormalReportsCorrect",
+    N_SNIPPETS_PER_STAGE : "numSnippetsPerStage",
+    N_FLAGGED_SNIPPETS_PER_STAGE : "numFlaggedSnippetsPerStage",
+    N_CORRECT_SNIPPETS_PER_STAGE : "numCorrectSnippetsPerStage",
 }

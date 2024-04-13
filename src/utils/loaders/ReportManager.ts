@@ -9,8 +9,10 @@ import Message from '@/utils/model/Message'
 import Report from '@/utils/model/Report'
 import { DayConfiguration } from '@/utils/model/Day'
 import { EStageIdx } from '@/utils/enums'
-import { NUM_CONSTANTS, STAGE_CONSTANTS, REPORT_CONSTANTS, PROFILE_CONSTANTS, FRIENDSHIP_TIME_CONSTANTS } from '@/utils/constants'
+import { NUM_CONSTANTS, STAGE_CONSTANTS, REPORT_CONSTANTS, PROFILE_CONSTANTS, FRIENDSHIP_TIME_CONSTANTS, DATA_SAVER_CONSTANTS } from '@/utils/constants'
 import { LogLevel, WriteLog } from '../logger'
+import DataService from '../DataService'
+import { DayData } from '../model/UserData'
 
 class ReportManager{
     private static instance: ReportManager | null
@@ -140,7 +142,7 @@ class ReportManager{
     // #endregion
 
     // #region helper methods to generate data structures
-    private generateGroomingSnippetList(numSnippets: number, selectableStagesIdx?: number[]): Snippet[]{
+    private generateGroomingSnippetList(numDay: number, numSnippets: number, selectableStagesIdx?: number[]): Snippet[]{
         const result: Snippet[] = [];
 
         try {
@@ -158,15 +160,15 @@ class ReportManager{
                 let snippet: Snippet | undefined = undefined;
 
                 if(i === normalSnippetIdx)
-                    snippet = this.sampleNormalSnippet();
+                    snippet = this.sampleNormalSnippet(numDay);
                 else{
                     if(selectableStagesIdx !== null && selectableStagesIdx !== undefined && selectableStagesIdx.length > 0){
                         const idx = utils.getRandomIdx(selectableStagesIdx.length)
                         const snippetStage = selectableStagesIdx[idx];
-                        snippet = this.sampleGroomingSnippet(snippetStage)
+                        snippet = this.sampleGroomingSnippet(numDay, snippetStage)
                     }
                     else{
-                        snippet = this.sampleGroomingSnippet();
+                        snippet = this.sampleGroomingSnippet(numDay);
                     }
                 }
 
@@ -184,7 +186,7 @@ class ReportManager{
         return result;
     }
 
-    private generateNormalSnippetList(numSnippets: number): Snippet[]{
+    private generateNormalSnippetList(numDay:number, numSnippets: number): Snippet[]{
         const result: Snippet[] = [];
 
         try {
@@ -192,7 +194,7 @@ class ReportManager{
             const snippetIds: number[] = [];
 
             while(i < numSnippets) {
-                const snippet: Snippet | undefined = this.sampleNormalSnippet();
+                const snippet: Snippet | undefined = this.sampleNormalSnippet(numDay);
 
                 if(snippet && !snippetIds.includes(snippet.id)){
                     result.push(snippet);             
@@ -207,12 +209,12 @@ class ReportManager{
         return result;
     }
 
-    private generateSnippetList(isGrooming: boolean, selectableStagesIdx?: number[]): Snippet[]{
+    private generateSnippetList(numDay: number, isGrooming: boolean, selectableStagesIdx?: number[]): Snippet[]{
         let result: Snippet[] = [];
         
         try {
-            const numSnippets = REPORT_CONSTANTS.MIN_SNIPPETS_PER_REPORT +  utils.getRandomNumber(REPORT_CONSTANTS.MAX_SNIPPETS_PER_REPORT, REPORT_CONSTANTS.MIN_SNIPPETS_PER_REPORT);
-            result = isGrooming ? this.generateGroomingSnippetList(numSnippets, selectableStagesIdx) : this.generateNormalSnippetList(numSnippets);
+            const numSnippets = utils.getRandomNumber(REPORT_CONSTANTS.MAX_SNIPPETS_PER_REPORT, REPORT_CONSTANTS.MIN_SNIPPETS_PER_REPORT);
+            result = isGrooming ? this.generateGroomingSnippetList(numDay, numSnippets, selectableStagesIdx) : this.generateNormalSnippetList(numDay, numSnippets);
 
         } catch (error) {
             WriteLog(`ReportManager.ts > generateSnippetList > ERROR generating snippet list. #ERROR: ${error}`, LogLevel.ERROR);   
@@ -271,7 +273,7 @@ class ReportManager{
     // #endregion
 
     // #region public methods
-    public sampleGroomingSnippet(stage?: EStageIdx) : Snippet | undefined{
+    public sampleGroomingSnippet(numDay: number, stage?: EStageIdx) : Snippet | undefined{
         let result: Snippet | undefined = undefined;
         
         try{
@@ -283,6 +285,7 @@ class ReportManager{
             stageSnippetListLength = this.numGroomingSnippets[stage]
 
             result = this.groomingSnippets[stage][utils.getRandomIdx(stageSnippetListLength)];
+            DataService.getInstance().add1ToDayData(numDay, DATA_SAVER_CONSTANTS.N_SNIPPETS_PER_STAGE as keyof DayData, stage + 1);
         }
         catch (error){
             WriteLog(`ReportManager.ts > sampleGroomingSnippet > ERROR sampling a random grooming snippet. #ERROR: ${error}`, LogLevel.ERROR);   
@@ -291,11 +294,12 @@ class ReportManager{
         return result;
     }
 
-    public sampleNormalSnippet(): Snippet | undefined{
+    public sampleNormalSnippet(numDay: number): Snippet | undefined{
         let result: Snippet | undefined = undefined;
         
         try{
             result = this.normalSnippets[utils.getRandomIdx(this.numNormalSnippets)];
+            DataService.getInstance().add1ToDayData(numDay, DATA_SAVER_CONSTANTS.N_SNIPPETS_PER_STAGE as keyof DayData, 0);
         }
         catch (error){
             WriteLog(`ReportManager.ts > sampleNormalSnippet > ERROR sampling a random normal snippet. #ERROR: ${error}`, LogLevel.ERROR);   
@@ -304,7 +308,7 @@ class ReportManager{
         return result;
     }
 
-    public generateReport(configuration: DayConfiguration): Report | undefined{
+    public generateReport(numDay: number, configuration: DayConfiguration): Report | undefined{
         const isGrooming = utils.getBoolean(configuration.groomingProbability);
         let result: Report | undefined = undefined;
 
@@ -332,7 +336,7 @@ class ReportManager{
             //snippets
             let snippets: Snippet[] = [];
             if(configuration.hasSnippets){
-                snippets = this.generateSnippetList(isGrooming, configuration.selectableStagesIdx);
+                snippets = this.generateSnippetList(numDay, isGrooming, configuration.selectableStagesIdx);
             }
             result = new Report(isGrooming, profile1Nullable, profile1Nullable2, friendshipTime, snippets);
 

@@ -1,9 +1,8 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as utils from '@/utils/utils'
 import { DATA_SAVER_CONSTANTS } from './constants';
 import { LogLevel, WriteLog } from './logger'
-import { UserData, defaultData } from './model/UserData';
+import { DayData, UserData } from './model/UserData';
 
 
 class DataService{
@@ -11,12 +10,7 @@ class DataService{
     private data: UserData; //TODO: change to the actual data lmao
 
     constructor(){
-        this.data = {
-            userId: utils.generateRandomId(),
-            answer1: -1,
-            answer2: -1,
-            run: 0
-        }
+        this.data = new UserData();
     }
 
     public static getInstance(): DataService {
@@ -30,7 +24,7 @@ class DataService{
         const userId = this.data.userId;
         const runNumber = this.data.run + 1;
 
-        this.data = defaultData;
+        this.data.reset();
 
         this.data.userId = userId;
         this.data.run = runNumber;
@@ -55,6 +49,32 @@ class DataService{
         } 
         catch (error) {
             WriteLog("DataService.ts > modifyDataObject > ERROR: " + error, LogLevel.ERROR);
+        }
+    }
+
+    public add1ToDayData(numDay: number, property: keyof DayData, idx?: number){
+        try {
+            WriteLog("DataService.ts > add1ToDayData > trying to modify property: " + property, LogLevel.VERBOSE);
+
+            if(this.data.daysData[numDay] === null || this.data.daysData[numDay] === undefined)
+                throw new Error("No day with index: " + numDay);
+
+            const dayData = this.data.daysData[numDay];
+            if(!(property in dayData))
+                throw new Error("Trying to modify a property that is not found in the day data object.")
+
+            if(idx !== null && idx !== undefined){
+                if((dayData[property]as number[])[idx]  === null || (dayData[property]as number[])[idx] === undefined)
+                    throw new Error(`Could not access idx ${idx} in the property ${property}.`);
+                (dayData[property]as number[])[idx]++;
+            }
+            else{
+                dayData[property]++;
+            }
+
+        } 
+        catch (error) {
+            WriteLog("DataService.ts > add1ToDayData > ERROR: " + error, LogLevel.ERROR);
         }
     }
 

@@ -6,7 +6,9 @@ import DailyQuiz from '@/utils/model/DailyQuiz';
 import QuizManager from '@/utils/loaders/QuizManager';
 import NarrationNode from '@/utils/model/NarrationNode';
 
-import { IMPORT_CONSTANTS } from '@/utils/constants'
+import { DATA_SAVER_CONSTANTS, IMPORT_CONSTANTS } from '@/utils/constants'
+import DataService from '../DataService';
+import { DayData } from './UserData';
 
 export interface DayConfiguration{
     shouldSkipQuiz: boolean;
@@ -61,10 +63,14 @@ export class Day{
 
         this.reports = [];
         for(let i = 0; i < this.numReports;){
-            const report: Report | undefined = reportManager.generateReport(this.configuration);
+            const report: Report | undefined = reportManager.generateReport(this.numDay, this.configuration);
             
             if(report !== undefined){
                 this.reports.push(report);
+                if(report.isGrooming)
+                    DataService.getInstance().add1ToDayData(this.numDay, DATA_SAVER_CONSTANTS.N_GROOMING_REPORTS as keyof DayData);
+                else
+                    DataService.getInstance().add1ToDayData(this.numDay, DATA_SAVER_CONSTANTS.N_NORMAL_REPORTS as keyof DayData);
                 i++;
             }
         }

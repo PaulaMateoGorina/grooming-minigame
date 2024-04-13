@@ -1,8 +1,10 @@
 import Message from './Message'
 
-import { NUM_CONSTANTS } from '@/utils/constants'
+import { DATA_SAVER_CONSTANTS, NUM_CONSTANTS, STAGES_TO_IDX } from '@/utils/constants'
 import { EStage, ECorrectness } from '@/utils/enums'
 import { LogLevel, WriteLog } from '../logger';
+import DataService from '../DataService';
+import { DayData } from './UserData';
 
 class Snippet {
     public id: number;
@@ -17,14 +19,23 @@ class Snippet {
         this.chosen = false;
     }
 
-    public getAnswerResult(stageSelected: EStage, checkStageSelected: boolean) : ECorrectness{
+    public getAnswerResult(stageSelected: EStage, checkStageSelected: boolean, numDay: number) : ECorrectness{
         let result = ECorrectness.INCORRECT;
 
         try {
             if(checkStageSelected){
                 WriteLog("Snippet.ts > getAnswerResult > check selected", LogLevel.VERBOSE);
                 if(this.stage * stageSelected > 0){
-                    result = this.stage === stageSelected ? ECorrectness.CORRECT : ECorrectness.PARTIALLY_CORRECT;
+                    const stageIdx = STAGES_TO_IDX.get(this.stage);
+                    DataService.getInstance().add1ToDayData(numDay, DATA_SAVER_CONSTANTS.N_FLAGGED_SNIPPETS_PER_STAGE as keyof DayData, stageIdx)
+
+                    if(this.stage === stageSelected){
+                        result = ECorrectness.CORRECT;
+                        DataService.getInstance().add1ToDayData(numDay, DATA_SAVER_CONSTANTS.N_CORRECT_SNIPPETS_PER_STAGE as keyof DayData, stageIdx)
+                    }
+                    else{
+                        result = ECorrectness.PARTIALLY_CORRECT;
+                    }
                 }
             }
             else{
@@ -33,6 +44,9 @@ class Snippet {
                 // same sign and the player's answer is correct.
                 if(this.stage * stageSelected > NUM_CONSTANTS.ZERO){
                     result = ECorrectness.CORRECT;
+
+                    const stageIdx = STAGES_TO_IDX.get(this.stage);
+                    DataService.getInstance().add1ToDayData(numDay, DATA_SAVER_CONSTANTS.N_CORRECT_SNIPPETS_PER_STAGE as keyof DayData, stageIdx)
                 }
             }
             

@@ -90,8 +90,10 @@ export default defineComponent({
       const curState: GameState = gameStore.state;
       let score = NUM_CONSTANTS.ZERO;
 
-      if(curState.curReport)
-        score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected);
+      if(curState.curReport){
+        const numDay = gameStore.getters.numDay;
+        score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected, numDay);
+      }
 
       if(score === NUM_CONSTANTS.ONE){
         this.correctness = ECorrectness.CORRECT;
