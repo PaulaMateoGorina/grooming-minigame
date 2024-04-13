@@ -227,7 +227,7 @@
             "groomingProbability": 0.75,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 65,
-            "selectableStagesIdx": [0, 1, 4]
+            "selectableStagesIdx": [0, 0, 1, 1, 4]
         },
         "narrationNodes": 
         [
@@ -300,7 +300,7 @@
             "groomingProbability": 0.6,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 65,
-            "selectableStagesIdx": [2, 3, 4]
+            "selectableStagesIdx": [2, 2, 3, 3, 4]
         },
         "narrationNodes": 
         [

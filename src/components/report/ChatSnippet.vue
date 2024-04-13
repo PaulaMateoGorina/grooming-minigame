@@ -191,7 +191,7 @@ export default defineComponent({
         },
 
         visibleStages(): {name: string, enumValue: number}[]{
-            const selectableStages: number[] = gameStore.getters.selectableStages;
+            const selectableStages: number[] = [...new Set(gameStore.getters.selectableStages)] as number[];
             let stages: {name: string, enumValue: number}[] = [];
 
             if(gameStore.state.selectSnippetStages && selectableStages.length > 0){

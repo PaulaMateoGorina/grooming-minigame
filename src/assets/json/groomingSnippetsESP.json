@@ -295,7 +295,7 @@
     "arrayIdx": 2,
     "stage": 4,
     "Messages": [
-      {"sender": "User1", "text": "Si es algo que te molesta creo que deberías hablarlo cara a cara con Carlos para aclarar cualquier malentendido."},
+      {"sender": "User1", "text": "Yo la verdad que dejaría de hablarme con Carlos, no parece muy buena persona..."},
       {"sender": "User2", "text": "Mmm, supongo que sí"},
       {"sender": "User2", "text": "Muchas gracias por aconsejarme, siempre puedo confiar en ti 😌😌"},
       {"sender": "User1", "text": "Claro que sí, para eso estoy 😉😉❤️"}
