@@ -32,12 +32,16 @@ export class UserData{
     public daysData: DayData[];
     public answerThinksKnowsGrooming: number;
     public answerKnowsGrooming: number;
+    public answerAgeGroomers: number;
+    public answerVictimType: number;
     public run: number
 
     constructor() {
         this.userId = utils.generateRandomId();
         this.answerThinksKnowsGrooming = -1;
         this.answerKnowsGrooming = -1;
+        this.answerAgeGroomers = -1;
+        this.answerVictimType = -1;
         this.run = 0;
 
         this.daysData = [];
@@ -49,6 +53,8 @@ export class UserData{
     public reset(): void{
         this.answerThinksKnowsGrooming = -1;
         this.answerKnowsGrooming = -1;
+        this.answerAgeGroomers = -1;
+        this.answerVictimType = -1;
         this.run++;
     }
 }
