@@ -121,16 +121,15 @@ export const gameStore = createStore({
       SoundManager.getInstance();
 
       if(state.debugMode){
-        state.visibleGameStage = EGameStage.REPORT;
+        state.visibleGameStage = EGameStage.GAME_FINISHED;
   
-        state.curDayIdx = 6; 
+        state.curDayIdx = 0; 
         state.showingSolution = false;
         
         state.points = NUM_CONSTANTS.ZERO;
         state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
   
         state.isMuted = false;
-        state.runNumber = 0;
       }
       else{
         state.visibleGameStage = EGameStage.GAME_START;
@@ -231,6 +230,7 @@ export const gameStore = createStore({
         commitNewDay();
       }
       else{
+        // Game has been finished!
         state.visibleGameStage = EGameStage.GAME_FINISHED
       }
     },
@@ -252,6 +252,7 @@ export const gameStore = createStore({
 
     nextPlaythrough(state){
       state.runNumber++;
+      DataService.getInstance().newRun();
     },
 
     toggleMute(state){

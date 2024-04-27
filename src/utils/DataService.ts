@@ -7,7 +7,7 @@ import { DayData, UserData } from './model/UserData';
 
 class DataService{
     private static instance: DataService | null
-    private data: UserData; //TODO: change to the actual data lmao
+    private data: UserData;
 
     constructor(){
         this.data = new UserData();
@@ -23,9 +23,9 @@ class DataService{
     public newRun(){
         const userId = this.data.userId;
         const runNumber = this.data.run + 1;
-
+        
         this.data.reset();
-
+        
         this.data.userId = userId;
         this.data.run = runNumber;
     }

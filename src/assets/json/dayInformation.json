@@ -43,7 +43,7 @@
             {"text": "¡Incorrecto! A eso se le llama una relación parasocial. A veces se puede dar en casos de grooming, pero no es grooming en sí.", "audioFile": "day1.1/day1.1_9.mp3", "goTo": 11},
             {"text": "No pasa nada, ahora te lo explico.", "audioFile": "day1.1/day1.1_10.mp3", "goTo": 11},
             {"text": "El grooming es cuando un adulto forma una relación con un menor para abusar de este. Si se da en las redes, es online grooming.", "audioFile": "day1.1/day1.1_11.mp3", "goTo": 12},
-            {"text": "Cuando hablamos de adultos. ¿En qué piensas?.", "audioFile": "day1.1/day1.1_.mp3", "goTo": -1,
+            {"text": "Por cierto, cuando hablamos de adultos... ¿En qué piensas?.", "audioFile": "day1.1/day1.1_12.mp3", "goTo": -1,
             "options":[
                     {"text": "Cualquier persona mayor de 18.", "goTo": 13}, 
                     {"text": "Alguien de 25 para arriba.", "goTo": 13},
@@ -51,12 +51,12 @@
                 ],
                 "dataUserProperty": "answerAgeGroomers"
             },
-            {"text": "Interesante.", "audioFile": "day1.1/day1.1_.mp3", "goTo": 0},
-            {"text": "Bueno, volvamos a tu trabajo", "audioFile": "day1.1/day1.1_.mp3", "goTo": 0},
-            {"text": "Como te he dicho, revisarás informes con información diversa.", "audioFile": "day1.1/day1.1_.mp3", "goTo": 0},
-            {"text": "Comencemos con algo sencillo. Los siguientes informes tienen la edad de los usuarios, el primero el posible groomer (acosador), y el tiempo de amistad.", "audioFile": "day1.1/day1.1_.mp3", "goTo": 0},
-            {"text": "En base a eso, marca si es grooming o no.", "audioFile": "day1.1/day1.1_.mp3", "goTo": 0},
-            {"text": "Si aciertas te daré puntos. Cuantos más tengas, más posibilidades tendrás de conseguir el puesto de trabajo. ¿Listo?", "audioFile": "day1.3/day1.1_.mp3", "goTo": -1, 
+            {"text": "Interesante.", "audioFile": "day1.1/day1.1_13.mp3", "goTo": 0},
+            {"text": "Bueno, volvamos a tu trabajo", "audioFile": "day1.1/day1.1_14.mp3", "goTo": 0},
+            {"text": "Como te he dicho, revisarás informes con información diversa.", "audioFile": "day1.1/day1.1_15.mp3", "goTo": 0},
+            {"text": "Comencemos con algo sencillo. Los siguientes informes tienen la edad de los usuarios, el primero siendo el posible groomer (acosador), y el tiempo de amistad.", "audioFile": "day1.1/day1.1_16.mp3", "goTo": 0},
+            {"text": "En base a eso, marca si es grooming o no.", "audioFile": "day1.1/day1.1_17.mp3", "goTo": 0},
+            {"text": "Si aciertas te daré puntos. Cuantos más tengas, más posibilidades tendrás de conseguir el puesto de trabajo. ¿Listo?", "audioFile": "day1.1/day1.1_18.mp3", "goTo": -1, 
                 "options":[
                     {"text": "¡A ello!", "goTo": -1}
                 ]
@@ -88,11 +88,11 @@
             {"text": "Obviamente, no se puede juzgar su relación solamente por la edad.", "audioFile": "day1.2/day1.2_3.mp3", "goTo": 0},
             {"text": "Aun así, es importante saber que no todos los groomers son personas 'mayores' (40 - 60 años).", "audioFile": "day1.2/day1.2_4.mp3", "goTo": 0},
             {"text": "Muchos lo pintan así, pero no es verdad. Los acosadores tampoco suelen ser agresivos, o raptar a niños como dicen.", "audioFile": "day1.2/day1.2_5.mp3", "goTo": 0},
-            {"text": "En fin. Como he dicho, necesitamos contexto para saber si algo es grooming o no.", "audioFile": "day1.2/day1.2_.mp3", "goTo": 0},
-            {"text": "Por mucho que uno de los dos sea un adulto, no tiene por qué serlo.", "audioFile": "day1.2/day1.2_.mp3", "goTo": 0},
-            {"text": "Ahora te voy a mostrar 3 informes más, pero esta vez tendrás también extractos de su chat.", "audioFile": "day1.2/day1.2_.mp3", "goTo": 0},
-            {"text": "Cada informe tiene varias páginas. Cambia de página usando las flechas que hay al final.", "audioFile": "day1.2/day1.2_.mp3", "goTo": 0},
-            {"text": "¡Mucha suerte!", "audioFile": "day1.2/day1.2_.mp3", "goTo": 0}
+            {"text": "En fin. Como he dicho, necesitamos contexto para saber si algo es grooming o no.", "audioFile": "day1.2/day1.2_6.mp3", "goTo": 0},
+            {"text": "Por mucho que uno de los dos sea un adulto, no tiene por qué serlo.", "audioFile": "day1.2/day1.2_7.mp3", "goTo": 0},
+            {"text": "Ahora te voy a mostrar 3 informes más, pero esta vez tendrás también extractos de su chat.", "audioFile": "day1.2/day1.2_8.mp3", "goTo": 0},
+            {"text": "Cada informe tiene varias páginas. Cambia de página clicando en las flechas que hay al final.", "audioFile": "day1.2/day1.2_9.mp3", "goTo": 0},
+            {"text": "¡Mucha suerte!", "audioFile": "day1.2/day1.2_10.mp3", "goTo": -1}
         ]
     },
     {
@@ -116,18 +116,18 @@
                     {"text": "Un poco difícil, no sabía qué buscar.", "goTo": 3}
                 ]
             },
-            {"text": "Me alegro.", "audioFile": "day1.3/day1.3_.mp3", "goTo": 4},
-            {"text": "Bueno, no te preocupes. Mañana te daré más información.", "audioFile": "day1.3/day1.3_.mp3", "goTo": 4},
-            {"text": "En fin, creo que es suficiente por hoy. Pasemos al quiz diario", "audioFile": "day1.3/day1.3_.mp3", "goTo": -1, 
+            {"text": "Me alegro.", "audioFile": "day1.3/day1.3_2.mp3", "goTo": 4},
+            {"text": "Bueno, no te preocupes. Mañana te daré más información.", "audioFile": "day1.3/day1.3_3.mp3", "goTo": 4},
+            {"text": "Pero bueno, es suficiente por hoy. Pasemos al quiz diario", "audioFile": "day1.3/day1.3_4.mp3", "goTo": -1, 
                 "options":[
-                    {"text": "¿Quiz diario?", "goTo": 5}
+                    {"text": "¿Quiz diario?", "goTo": 5} 
                 ]
             },
         
-            {"text": "Ya decía yo que se me olvidaba algo...", "audioFile": "day1.3/day1.3_.mp3", "goTo": 4},
-            {"text": "Cuando marcas un informe correctamente, los puntos que ganas se multiplican por tu multiplicador de puntos.", "audioFile": "day1.3/day1.3_.mp3", "goTo": 4},
-            {"text": "Al final de cada día, vendré a preguntarte algo sobre lo que hemos aprendido", "audioFile": "day1.3/day1.3_.mp3", "goTo": 4},
-            {"text": "Si aciertas, incrementaré dicho número.", "audioFile": "day1.3/day1.3_.mp3", "goTo": -1, 
+            {"text": "Ya decía yo que se me olvidaba algo...", "audioFile": "day1.3/day1.3_5.mp3", "goTo": 4},
+            {"text": "Cuando marcas un informe correctamente, los puntos que ganas se multiplican por un numerito, tu multiplicador de puntos.", "audioFile": "day1.3/day1.3_6.mp3", "goTo": 4},
+            {"text": "Al final de cada día, vendré a preguntarte algo sobre lo que hemos aprendido", "audioFile": "day1.3/day1.3_7.mp3", "goTo": 4},
+            {"text": "Si aciertas, incrementaré dicho número.", "audioFile": "day1.3/day1.3_8.mp3", "goTo": -1, 
                 "options":[
                     {"text": "¿Y si fallo?", "goTo": 9}
                 ]
@@ -159,8 +159,8 @@
                     {"text": "Listo.", "goTo": 2}
                 ]
             },
-            {"text": "Perfecto! La mecánica es la misma que ayer. Te daré informes con la información de los usuarios y algunos extractos.", "audioFile": "day2/day2_.mp3", "goTo": 3},
-            {"text": "En base a eso, marca si es grooming o no.", "audioFile": "day2/day2_.mp3", "goTo": -1, 
+            {"text": "Perfecto! La mecánica es la misma que ayer. Te daré informes con la información de los usuarios y algunos extractos.", "audioFile": "day2/day2_2.mp3", "goTo": 3},
+            {"text": "En base a eso, marca si es grooming o no.", "audioFile": "day2/day2_3.mp3", "goTo": -1, 
                 "options":[
                     {"text": "¿Qué signos debería buscar en los chats?", "goTo": 4}
                 ]
@@ -257,7 +257,7 @@
             },
             {"text": "Traaaanqui, a eso iba.", "audioFile": "day4/day4_4.mp3", "goTo": 0},
             {"text": "Hay que recalcar que las llamamos fases, pero no necesariamente se dan en orden. Es más para englobar ciertos comportamientos comunes en los groomers.", "audioFile": "day4/day4_5.mp3", "goTo": 0},
-            {"text": "Definimos 7 fases, pero te las enseñaré poco a poco. Hoy veremos las fases 1, 2, 3 y 5. ¿Listo?", "audioFile": "day4/day4_.mp3", "goTo": -1,
+            {"text": "Definimos 7 fases, pero te las enseñaré poco a poco. Hoy veremos las fases 1, 2, 3 y 5. ¿Listo?", "audioFile": "day4/day4_6.mp3", "goTo": -1,
                 "options":[
                     {"text": "Listo.", "goTo": 7}
                 ]    
@@ -271,18 +271,18 @@
             {"text": "También si ese dispositivo es compartido entre miembros de la família, si se lo revisa su tutor, o si está en algún sitio visible como el comedor.", "audioFile": "day4/day4_13.mp3", "goTo": 14},
             {"text": "En la 5a fase, 'Fase sexual', el groomer comienza a introducir temas sexuales.", "audioFile": "day4/day4_14.mp3", "goTo": 15},
             {"text": "Esto lo puede hacer preguntando por la sexualidad del menor o haciendo comentarios subidos de tono, por ejemplo.", "audioFile": "day4/day4_15.mp3", "goTo": 16},
-            {"text": "Como eres nuevo, no te saldrán extractos de la 5a fase: 'Fase sexual', en los informes.", "audioFile": "day4/day4_16.mp3", "goTo": 17},
-            {"text": "Aun así, te puede salir en el quiz diario.", "audioFile": "day4/day4_17.mp3", "goTo": 18},
+            {"text": "Como eres nuevo, no te saldrán extractos de la 'Fase sexual' en los informes.", "audioFile": "day4/day4_16.mp3", "goTo": 17},
+            {"text": "Aun así, te puedo preguntar sobre ella en el quiz diario.", "audioFile": "day4/day4_17.mp3", "goTo": 18},
             {"text": "Todo bien, ¿o te lo repito?", "audioFile": "day4/day4_18.mp3", "goTo": -1,
                 "options":[
                     {"text": "Todo bien.", "goTo": 20},
                     {"text": "Repíte, por favor.", "goTo": 19}
                 ]    
             },
-            {"text": "Hay 7 fases. Hoy te explicaré la 1, 2, 3 y 5.", "audioFile": "day4/day4_.mp3", "goTo": 7},
-            {"text": "Perfecto. Además de estas fases, también saldrán extractos del acosador pidiendo fotos indebidas.", "audioFile": "day4/day4_.mp3", "goTo": 0},
-            {"text": "Marca la fase o cambia tu selección haciendo click en el extracto y después en la fase.", "audioFile": "day4/day4_.mp3", "goTo": 0},
-            {"text": "Para marcar rápidamente un extracto como normal, haz click derecho.", "audioFile": "day4/day4_.mp3", "goTo": 0},
+            {"text": "Hay 7 fases. Hoy te explicaré la 1, 2, 3 y 5.", "audioFile": "day4/day4_19.mp3", "goTo": 7},
+            {"text": "Perfecto. Además de estas fases, también saldrán extractos del acosador pidiendo fotos indebidas.", "audioFile": "day4/day4_20.mp3", "goTo": 0},
+            {"text": "Para marcar la fase o cambiar tu selección, clica en el extracto y después en la fase.", "audioFile": "day4/day4_21.mp3", "goTo": 0},
+            {"text": "Para marcar rápidamente un extracto como normal, puedes hacer click derecho.", "audioFile": "day4/day4_22.mp3", "goTo": 0},
             {"text": "En fin, ¡A ello!", "audioFile": "day4/day4_23.mp3", "goTo": -1}
         ]
     },
@@ -302,24 +302,24 @@
         },
         "narrationNodes": 
         [
-            {"text": "Buenas, hoy te hablaré de las fases que nos quedaron de ayer: la 4, 6 y 7.", "audioFile": "day5/day5_.mp3", "goTo": 0},
-            {"text": "La 4a fase, 'Fase de exclusividad', es donde el acosador se gana a la víctima y forma una relación romántica con esta.", "audioFile": "day5/day5_.mp3", "goTo": 0},
-            {"text": "En esta fase, los groomers se intentan mostrar como una persona de confianza, a la que el menor le puede contar cualquier cosa.", "audioFile": "day5/day5_15.mp3", "goTo": 0},
-            {"text": "Una vez el 'noviazgo' ha comenzado, el acosador se muestra muy cariñoso con la víctima.", "audioFile": "day5/day5_16.mp3", "goTo": 0},
-            {"text": "Luego tenemos la 6a fase, a la que llamamos 'Reproducción de fantasías'.", "audioFile": "day5/day5_22.mp3", "goTo": 0},
-            {"text": "En esta fase el acosador y el menor recrean una fantasía sexual por chat. Dicha recreación puede también incluir el intercambio de fotos indebidas.", "audioFile": "day5/day5_23.mp3", "goTo": 0},
-            {"text": "Finalmente, en la 7a fase, 'Mitigación de daños', el acosador se intenta asegurar de que la víctima no le contará a nadie de su relación.", "audioFile": "day5/day5_24.mp3", "goTo": 0},
-            {"text": "Esto incluye elogios por mantener la relación en secreto, insistencia en el secretismo e incluso amenazas, en caso de tener fotos del menor.", "audioFile": "day5/day5_25.mp3", "goTo": 0},
-            {"text": "Se ha entendido todo?", "audioFile": "day5/day5_26.mp3", "goTo": -1,
+            {"text": "Buenas, hoy te hablaré de las fases que nos quedaron de ayer: la 4, 6 y 7.", "audioFile": "day5/day5_1.mp3", "goTo": 0},
+            {"text": "La 4a fase, 'Fase de exclusividad', es donde el acosador se gana a la víctima y forma una relación romántica con esta.", "audioFile": "day5/day5_2.mp3", "goTo": 0},
+            {"text": "En esta fase, los groomers se intentan mostrar como una persona de confianza, a la que el menor le puede contar cualquier cosa.", "audioFile": "day5/day5_3.mp3", "goTo": 0},
+            {"text": "Una vez el 'noviazgo' ha comenzado, el acosador se muestra muy cariñoso con la víctima.", "audioFile": "day5/day5_4.mp3", "goTo": 0},
+            {"text": "Luego tenemos la 6a fase, a la que llamamos 'Reproducción de fantasías'.", "audioFile": "day5/day5_5.mp3", "goTo": 0},
+            {"text": "En esta fase el acosador y el menor recrean una fantasía sexual por chat. Dicha recreación puede también incluir el intercambio de fotos indebidas.", "audioFile": "day5/day5_6.mp3", "goTo": 0},
+            {"text": "Finalmente, en la 7a fase, 'Mitigación de daños', el acosador se intenta asegurar de que la víctima no le contará a nadie de su relación.", "audioFile": "day5/day5_7.mp3", "goTo": 0},
+            {"text": "Esto incluye elogios por mantener la relación en secreto, insistencia en el secretismo e incluso amenazas, en caso de tener fotos del menor.", "audioFile": "day5/day5_8.mp3", "goTo": 0},
+            {"text": "Se ha entendido todo?", "audioFile": "day5/day5_9.mp3", "goTo": -1,
                 "options":[
                     {"text": "Sí, lo tengo todo claro.", "goTo": 11},
                     {"text": "No todo. ¿Me lo repites?", "goTo": 10}
                 ]    
             },
-            {"text": "Claro. Como te decía, hoy hablaremos de las fases 4, 6 y 7.", "audioFile": "day5/day5_.mp3", "goTo": 0},
-            {"text": "¡Genial! Como ayer, te pueden salir también extractos pidiendo fotos indebidas.", "audioFile": "day5/day5_.mp3", "goTo": 0},
-            {"text": "No te saldrá la fase 6, 'Reproducción de fantasías', en los informes, pero te puedo preguntar sobre ella en el quiz diario.", "audioFile": "day5/day5_.mp3", "goTo": 0},
-            {"text": "¡Suerte!", "audioFile": "day5/day5_.mp3", "goTo": -1}
+            {"text": "Claro. Como te decía, hoy hablaremos de las fases 4, 6 y 7.", "audioFile": "day5/day5_10.mp3", "goTo": 0},
+            {"text": "¡Genial! No te saldrá la fase 'Reproducción de fantasías' en los informes, pero sí te puede salir en el quiz diario.", "audioFile": "day5/day5_11.mp3", "goTo": 0},
+            {"text": "Y recuerda, te pueden salir también extractos pidiendo fotos indebidas.", "audioFile": "day5/day5_12.mp3", "goTo": 0},
+            {"text": "En fin, ¡mucha surete!", "audioFile": "day5/day5_13.mp3", "goTo": -1}
         ]
     },
     {
@@ -365,7 +365,7 @@
                     {"text": "Repite, por favor.", "goTo": 6}
                 ]    
             },
-            {"text": "Pues ale. ¡A trabajar!.", "audioFile": "day/day6_19.mp3", "goTo": -1}
+            {"text": "Pues ale. ¡A trabajar!.", "audioFile": "day6/day6_19.mp3", "goTo": -1}
         ]
     }
 ]

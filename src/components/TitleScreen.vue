@@ -22,11 +22,13 @@
 
     <CModal alignment="center" :visible="questionnaireModalOpen" @close="() => { closeModal() }">
         <CModalBody>
-            <h4 style="font-size: 18px;">{{ GENERAL_STRINGS.PROMPT_QUESTIONNAIRE }}</h4>
-            <a href="https://forms.gle/wwxafQtGNyxz2Fn76" target="_blank" style="font-size: 18px;">{{ GENERAL_STRINGS.CLICK_TO_QUESTIONNAIRE }}</a>
+            <h4 v-if="isStart" style="font-size: 18px;">{{  GENERAL_STRINGS.PROMPT_QUESTIONNAIRE_START }}</h4>
+            <h4 v-else style="font-size: 18px;">{{  GENERAL_STRINGS.PROMPT_QUESTIONNAIRE_RESET }}</h4>
+            <a v-if="isStart" href="https://forms.gle/wwxafQtGNyxz2Fn76" target="_blank" style="font-size: 18px;" @click="questionnaireClicked">{{ GENERAL_STRINGS.CLICK_TO_QUESTIONNAIRE }}</a>
         </CModalBody>
         <CModalFooter>
-            <CButton variant="outline" @click="closeModal" class="title-screen-button play-again-button">{{ GENERAL_STRINGS.PLAY_AGAIN }}</CButton>
+            <CButton v-if="isStart" variant="outline" @click="startGame" class="title-screen-button play-again-button" :disabled="!clickedOnQuestionnaire">{{ GENERAL_STRINGS.START }}</CButton>
+            <CButton v-else variant="outline" @click="closeModal" class="title-screen-button play-again-button">{{ GENERAL_STRINGS.PLAY_AGAIN }}</CButton>
         </CModalFooter>
     </CModal>
 </template>
@@ -48,7 +50,8 @@ export default defineComponent({
     data(){
         return{
             GENERAL_STRINGS: GENERAL_STRINGS,
-            questionnaireModalOpen: false
+            questionnaireModalOpen: false,
+            clickedOnQuestionnaire: false,
         }
     },
     components: {
@@ -63,17 +66,28 @@ export default defineComponent({
     
     methods:{
         startGame(){
-            gameStore.commit('changeStage', EGameStage.NARRATION);
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            if(gameStore.getters.isFirstPlaythrough && !this.clickedOnQuestionnaire){
+                this.questionnaireModalOpen = true;
+            }
+            else{
+                gameStore.commit('changeStage', EGameStage.NARRATION);
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            }
         },
         resetGame(){
-            if(this.firstPlaythrough){
+            console.log(gameStore.getters.isFirstPlaythrough)
+            if(gameStore.getters.isFirstPlaythrough){
                 this.questionnaireModalOpen = true;
             }
             else{
                 gameStore.commit('newGame');
+                gameStore.commit('nextPlaythrough');
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
             }
             SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+        },
+        questionnaireClicked(){
+            this.clickedOnQuestionnaire = true;
         },
         closeModal(){
             this.questionnaireModalOpen = false;
@@ -86,10 +100,6 @@ export default defineComponent({
     computed:{
         total_points(){
             return gameStore.state.points;
-        },
-
-        firstPlaythrough(){
-            return gameStore.getters.isFirstPlaythrough;
         }
     }
 })

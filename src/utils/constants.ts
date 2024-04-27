@@ -35,7 +35,7 @@ export const NARRATION_CONSTANTS ={
 export const GAME_CONSTANTS = {
     INITIAL_MULTIPLIER: 1.0,
     NUM_PLAYING_STAGES: 4,
-    NUM_DAYS: 5
+    NUM_DAYS: 6
 }
 
 export const STAGE_CONSTANTS = {
