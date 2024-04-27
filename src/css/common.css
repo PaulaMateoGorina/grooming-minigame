@@ -1,12 +1,16 @@
 :root{
     --primary: #8aa6e4;
-    --correct: #41935c;
+    --correct: #1d5f33;
     --partiallyCorrect: #d17000;
     --incorrect: #e04f4f;
 }
 
 s{
     text-decoration: line-through solid 2px;
+}
+
+.text-align-center{
+    text-align: center;
 }
 
 .invisible{
@@ -69,15 +73,15 @@ s{
 }
 
 .correct{
-    color: #41935c;
+    color: var(--correct)
 }
 
 .partially-correct{
-    color: #d17000;
+    color: var(--partiallyCorrect)
 }
 
 .incorrect{
-    color: #e04f4f;
+    color: var(--incorrect)
 }
 
 .fade-in {
@@ -130,4 +134,14 @@ s{
     100%{
         opacity: 0;
     }
+}
+
+.myModal{
+    width: 80vw !important;
+}
+
+.invisibleButton{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
 }

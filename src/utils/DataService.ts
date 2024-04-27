@@ -30,6 +30,10 @@ class DataService{
         this.data.run = runNumber;
     }
 
+    public getUserId(): string{
+        return this.data.userId;
+    }
+
     public modifyDataObject(property: keyof UserData, newValue: any){
         try {
             WriteLog("DataService.ts > modifyDataObject > trying to modify property: " + property, LogLevel.VERBOSE);

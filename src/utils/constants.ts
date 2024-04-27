@@ -2,6 +2,11 @@ export const IMPORT_CONSTANTS = {
     ESP_AUDIO: "audio/ESP"
 }
 
+export const LINKS = {
+    QUESTIONNAIRE: "https://forms.gle/4xA2aiD2mRYJoXRx6",
+    GROOMING_INFO: "https://drive.google.com/file/d/1UPfX-wu18jIXexGbY9J1Sem2l4trFeX7/view?usp=sharing",
+}
+
 export const STAGES = [
     { name: "Normal", enumValue: -1 },
     { name: "Comienzo de la amistad y relación", enumValue: 1 },
@@ -35,7 +40,8 @@ export const NARRATION_CONSTANTS ={
 export const GAME_CONSTANTS = {
     INITIAL_MULTIPLIER: 1.0,
     NUM_PLAYING_STAGES: 4,
-    NUM_DAYS: 6
+    NUM_DAYS: 6,
+    MIN_PTS_TO_GET_THE_JOB: 7500
 }
 
 export const STAGE_CONSTANTS = {

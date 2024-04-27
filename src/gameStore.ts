@@ -35,6 +35,8 @@ function commitChangeStage(goTo: EGameStage){
 }
 
 export interface GameState {
+  userId: string;
+
   // Game stage
   visibleGameStage: EGameStage,
   
@@ -71,6 +73,8 @@ export interface GameState {
 export const gameStore = createStore({
   //#region State init
   state: {
+    userId: "",
+
     // Game stage visible:
     visibleGameStage: EGameStage.GAME_START,
 
@@ -116,12 +120,12 @@ export const gameStore = createStore({
 
     newGame(state: GameState){
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
-      DataService.getInstance();
+      state.userId = DataService.getInstance().getUserId();
       DayManager.getInstance().resetDays();
       SoundManager.getInstance();
 
       if(state.debugMode){
-        state.visibleGameStage = EGameStage.GAME_FINISHED;
+        state.visibleGameStage = EGameStage.GAME_START;
   
         state.curDayIdx = 0; 
         state.showingSolution = false;
@@ -155,11 +159,13 @@ export const gameStore = createStore({
         state.selectSnippetStages = curDay.configuration.selectSnippetStages;
         
         state.curReportIdx = 0;
-        const curReport: Report | undefined = curDay.reports[state.curReportIdx];
-        if(curReport === undefined){
-          throw new Error("Error when fetching the first report of the day.");
+        if(curDay.reports.length > 0){
+          const curReport: Report | undefined = curDay.reports[state.curReportIdx];
+          if(curReport === undefined){
+            throw new Error("Error when fetching the first report of the day.");
+          }
+          state.curReport = curReport;
         }
-        state.curReport = curReport;
         state.snippetStagesSelected = (state.curReport && state.curReport.snippets.length > 0) ? Array(state.curReport.snippets.length).fill(-1): [];
         
         const curDailyQuiz: DailyQuiz | undefined = curDay.dailyQuiz;
@@ -310,6 +316,10 @@ export const gameStore = createStore({
         return []
       else
         return state.curDay.configuration.selectableStagesIdx;
+    },
+
+    userId: (state) => {
+      return state.userId;
     },
   }
 });
