@@ -124,10 +124,12 @@ export const gameStore = createStore({
       DayManager.getInstance().resetDays();
       SoundManager.getInstance();
 
+      state.debugMode = true;
+
       if(state.debugMode){
         state.visibleGameStage = EGameStage.GAME_START;
   
-        state.curDayIdx = 1; 
+        state.curDayIdx = 0; 
         state.showingSolution = false;
         
         state.points = NUM_CONSTANTS.ZERO;

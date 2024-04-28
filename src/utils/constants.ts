@@ -41,7 +41,7 @@ export const GAME_CONSTANTS = {
     INITIAL_MULTIPLIER: 1.0,
     NUM_PLAYING_STAGES: 4,
     NUM_DAYS: 6,
-    MIN_PTS_TO_GET_THE_JOB: 7500
+    MIN_PTS_TO_GET_THE_JOB: 12500
 }
 
 export const STAGE_CONSTANTS = {
@@ -126,9 +126,9 @@ export const SOUND_PATHS = [
 
 export const DATA_SAVER_CONSTANTS = {
     JSON_BIN_API_URL: "https://api.jsonbin.io/v3/b/",
-    USER_DATA_MASTER_KEY: "$2a$10$lDxxFaAV/3hvX4YGPOYkIee/HCgvGV33.ou5cVboMih9okzxsOswC",
-    BIN_LIST_MASTER_KEY: "$2a$10$lDxxFaAV/3hvX4YGPOYkIee/HCgvGV33.ou5cVboMih9okzxsOswC",
-    BIN_LIST_BIN_ID: "66115c8cacd3cb34a8345bf9",
+    USER_DATA_MASTER_KEY: "$2a$10$ix33ZZrx8KIa8O8oUFLfYufO8hHdRtH3kWUdeRFch99Tpkqgq2iUK",
+    BIN_LIST_MASTER_KEY: "$2a$10$1V1ppBm0MF2B..YS1.sYr.G/enoDNPkgrwr6rMom3q9naInCuryF6",
+    BIN_LIST_BIN_ID: "662e6417e41b4d34e4eb6f50",
 
     N_GROOMING_REPORTS : "numGroomingReports",
     N_GROOMING_REPORTS_FLAGGED : "numGroomingReportsFlagged",
