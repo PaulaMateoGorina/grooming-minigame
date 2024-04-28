@@ -124,7 +124,7 @@ export const gameStore = createStore({
       DayManager.getInstance().resetDays();
       SoundManager.getInstance();
 
-      state.debugMode = true;
+      state.debugMode = false;
 
       if(state.debugMode){
         state.visibleGameStage = EGameStage.GAME_START;

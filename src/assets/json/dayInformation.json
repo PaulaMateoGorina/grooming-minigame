@@ -43,7 +43,7 @@
             {"text": "¡Incorrecto! A eso se le llama una relación parasocial. A veces se puede dar en casos de grooming, pero no es grooming en sí.", "audioFile": "day1.1/day1.1_9.mp3", "goTo": 11},
             {"text": "No pasa nada, ahora te lo explico.", "audioFile": "day1.1/day1.1_10.mp3", "goTo": 11},
             {"text": "El grooming es cuando un adulto establece una relación con un menor para abusar de este. Si se da en las redes, es online grooming.", "audioFile": "day1.1/day1.1_11.mp3", "goTo": 12},
-            {"text": "Por cierto, cuando hablamos de adultos... ¿En qué piensas?.", "audioFile": "day1.1/day1.1_12.mp3", "goTo": -1,
+            {"text": "Por cierto, cuando hablamos de adultos... ¿En qué piensas?", "audioFile": "day1.1/day1.1_12.mp3", "goTo": -1,
             "options":[
                     {"text": "Cualquier persona mayor de 18.", "goTo": 13}, 
                     {"text": "Alguien de 25 para arriba.", "goTo": 13},
@@ -52,7 +52,7 @@
                 "dataUserProperty": "answerAgeGroomers"
             },
             {"text": "Interesante.", "audioFile": "day1.1/day1.1_13.mp3", "goTo": 0},
-            {"text": "Bueno, volvamos a tu trabajo", "audioFile": "day1.1/day1.1_14.mp3", "goTo": 0},
+            {"text": "Bueno, volvamos a tu trabajo.", "audioFile": "day1.1/day1.1_14.mp3", "goTo": 0},
             {"text": "Como te he dicho, revisarás informes con información diversa.", "audioFile": "day1.1/day1.1_15.mp3", "goTo": 0},
             {"text": "Comencemos con algo sencillo. Los siguientes informes tienen la edad de los usuarios, el primero siendo el posible groomer (acosador), y el tiempo de amistad.", "audioFile": "day1.1/day1.1_16.mp3", "goTo": 0},
             {"text": "En base a eso, marca si es grooming o no.", "audioFile": "day1.1/day1.1_17.mp3", "goTo": 0},
@@ -72,7 +72,7 @@
             "hasSnippets": true,
             "selectSnippets": false,
             "selectSnippetStages": false,
-            "groomingProbability": 0.6,
+            "groomingProbability": 0.7,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 30
         },
@@ -118,7 +118,7 @@
             },
             {"text": "Me alegro.", "audioFile": "day1.3/day1.3_2.mp3", "goTo": 4},
             {"text": "Bueno, no te preocupes. Mañana te daré más información.", "audioFile": "day1.3/day1.3_3.mp3", "goTo": 4},
-            {"text": "Pero bueno, es suficiente por hoy. Pasemos al quiz diario", "audioFile": "day1.3/day1.3_4.mp3", "goTo": -1, 
+            {"text": "Pero bueno, es suficiente por hoy. Pasemos al quiz diario.", "audioFile": "day1.3/day1.3_4.mp3", "goTo": -1, 
                 "options":[
                     {"text": "¿Quiz diario?", "goTo": 5} 
                 ]
@@ -171,7 +171,7 @@
             {"text": "Finalmente, está el groomer 'polivalente', que cambia su estrategia según la víctima.", "audioFile": "day2/day2_7.mp3", "goTo": 8},
             {"text": "Todos tienen en común que, al principio, intentan sacarle información al menor sobre cosas como su situación en casa, en la escuela, etc. Eso les dice si son vulnerables o no.", "audioFile": "day2/day2_8.mp3", "goTo": 9},
             {"text": "También hay mucho énfasis en el secretismo, en caso de que haya relación.", "audioFile": "day2/day2_9.mp3", "goTo": 10},
-            {"text": "De esto te dire más otro día, de momento con esto ya basta.", "audioFile": "day2/day2_10.mp3", "goTo": 11},
+            {"text": "De todo esto te dire más otro día, de momento con esto ya basta.", "audioFile": "day2/day2_10.mp3", "goTo": 11},
             {"text": "Todo bien?", "audioFile": "day2/day2_11.mp3", "goTo": -1, 
                 "options":[
                     {"text": "Sí, estoy listo para comenzar el día.", "goTo": 14},
@@ -192,7 +192,7 @@
             "hasSnippets": true,
             "selectSnippets": true,
             "selectSnippetStages": false,
-            "groomingProbability": 0.6,
+            "groomingProbability": 0.7,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 45
         },
@@ -241,7 +241,7 @@
             "hasSnippets": true,
             "selectSnippets": true,
             "selectSnippetStages": true,
-            "groomingProbability": 0.75,
+            "groomingProbability": 0.85,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 45,
             "selectableStagesIdx": [0, 0, 1, 1, 4]
@@ -295,7 +295,7 @@
             "hasSnippets": true,
             "selectSnippets": true,
             "selectSnippetStages": true,
-            "groomingProbability": 0.75,
+            "groomingProbability": 0.85,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 45,
             "selectableStagesIdx": [2, 2, 3, 3, 4]
@@ -324,7 +324,7 @@
     },
     {
         "numDay": 6,
-        "numReports": 4,
+        "numReports": 5,
         "configuration": 
         {
             "shouldSkipQuiz": false,
@@ -358,7 +358,7 @@
             {"text": "Aquí el acosador y el menor reproducen fantasías sexuales, y puede que intercambien fotos subidas de tono.", "audioFile": "day6/day6_14.mp3", "goTo": 15},
             {"text": "7a y última fase: 'Mitigación de daños'.", "audioFile": "day6/day6_15.mp3", "goTo": 16},
             {"text": "El acosador intentará manipular a la víctima para que mantenga su relación en secreto. Puede ser sutilmente, o a base de amenazas.", "audioFile": "day6/day6_16.mp3", "goTo": 17},
-            {"text": "Te recuerdo que, aunque numeremos las fases, no es algo que suceda de manera lineal. Algunos groomers se saltan fases, o las hacen en diferente orden", "audioFile": "day6/day6_17.mp3", "goTo": 18},
+            {"text": "Te recuerdo que, aunque numeremos las fases, no es algo que suceda de manera lineal. Algunos groomers se saltan fases, o las hacen en diferente orden.", "audioFile": "day6/day6_17.mp3", "goTo": 18},
             {"text": "¿Entendido o repito?", "audioFile": "day6/day6_18.mp3", "goTo": -1,
                 "options":[
                     {"text": "Vale, lo he pillado.", "goTo": 19},

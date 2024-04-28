@@ -76,6 +76,7 @@ class DataService{
             else{
                 dayData[property]++;
             }
+            console.log(this.data)
         } 
         catch (error) {
             WriteLog("DataService.ts > add1ToDayData > ERROR: " + error, LogLevel.ERROR);
