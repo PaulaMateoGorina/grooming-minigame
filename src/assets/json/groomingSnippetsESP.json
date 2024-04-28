@@ -7,7 +7,7 @@
       {"sender": "User2", "text": "Normalmente quedo con mis amigos, o juego con ellos online."},
       {"sender": "User1", "text": "Y tienes muchos amigos?"},
       {"sender": "User2", "text": "Normal, supongo"}
-	  ]
+    ]
   },
   {
     "arrayIdx": 0,
@@ -24,19 +24,18 @@
     "arrayIdx": 0,
     "stage": 1,
     "Messages": [
-      {"sender": "User1", "text": "Eyy, soy el de la partida anterior. Jugamos juntos? "},
-      {"sender": "User2", "text": "Uff no se"},
-      {"sender": "User1", "text": "Porfaa, te regalo una skin si quieres"},
-      {"sender": "User2", "text": "Bueno venga"}
+      {"sender": "User1", "text": "Te llevas bien con tus padres?"},
+      {"sender": "User2", "text": "A q viene eso?"},
+      {"sender": "User1", "text": "Curiosidad"},
+      {"sender": "User2", "text": "La verdad es que no, pero tampoco me afecta"}
     ]
   },
   {
     "arrayIdx": 0,
     "stage": 1,
     "Messages": [
-      {"sender": "User1", "text": "Cuántos años tienes??"},
-      {"sender": "User2", "text": "15, tu?"},
-      {"sender": "User1", "text": "En serio? Por tu madurez pensé que teníamos la misma edad. Yo tengo 22"},
+      {"sender": "User1", "text": "Bua en serio eres tan joven???"},
+      {"sender": "User1", "text": "Por tu madurez pensé que teníamos la misma edad. Yo tengo 22"},
       {"sender": "User2", "text": "A si?? Jaja graciass"}
     ]
   },
@@ -74,10 +73,94 @@
     "arrayIdx": 0,
     "stage": 1,
     "Messages": [
-      {"sender": "User2", "text": "Bueno te dejo que tengo atletismo"},
-      {"sender": "User1", "text": "También haces atletismo?"},
-      {"sender": "User1", "text": "Si que haces extraescolares no? No tendrás tiempo para mí :("},
-      {"sender": "User2", "text": "Bueno, es lo que hay no? jaj"}
+      {"sender": "User2", "text": "Te dejo, que tengo un cumpleaños"},
+      {"sender": "User1", "text": "Uuuu, veo que tienes muchos amigos e"},
+      {"sender": "User2", "text": "Bueno, lo normal, no?"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User2", "text": "No te lo vas a creer, Marcos le ha pegado una patada a Juanjo q madre mia..."},
+      {"sender": "User1", "text": "Y la escuela no hace nada sobre ello?"},
+      {"sender": "User1", "text": "Tu profesor está de decoración o que?"},
+      {"sender": "User2", "text": "La verdad que le da bastante igual todo... No se preocupa demasiado por nosotros"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Vosotros teneis psicóloga en la escuela"},
+      {"sender": "User2", "text": "Sii, aunque en general se ocupa de los niños de necesidades especiales"},
+      {"sender": "User1", "text": "Ya veo, nosotros en la mía no teníamos"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Cuál es tu asignatura fav?"},
+      {"sender": "User2", "text": "Yo diría que lengua, el profe es muy majo"},
+      {"sender": "User2", "text": "Siempre nos dice que si tenemos cualquier problema podemos acudir a él"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Yo la verdad que nunca fui de tener muchos amigos, siempre iban y venían"},
+      {"sender": "User1", "text": "Tu en ese aspecto has tenido suerte, o eres como yo?"},
+      {"sender": "User2", "text": "Al mudarme de escuela me costó, pero ahora tengo un grupo de amigos"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Mis padres siempre pasaron de mí, debe estar bien tener unos que se preocupen por tí"},
+      {"sender": "User2", "text": "Tampoco te creas"},
+      {"sender": "User2", "text": "Me compran cosas y eso, pero siempre están fuera"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "De qué trabajan tus padres?"},
+      {"sender": "User2", "text": "Algo de marketing creo, siempre están de viajes de negocios"},
+      {"sender": "User1", "text": "Y te quedas solo en casa?"},
+      {"sender": "User2", "text": "Si, pero tengo a mi hermano así que no pasa nada"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "A que escuela vas? Al igual fuimos a la misma"},
+      {"sender": "User2", "text": "Voy a Manlou"},
+      {"sender": "User1", "text": "Me suena, yo fui al Mont Verd por eso"},
+      {"sender": "User2", "text": "Bua, pues tenemos pique con ellos jaja"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "Y no te sientes triste tantas horas solo en casa?"},
+      {"sender": "User2", "text": "Noo"},
+      {"sender": "User2", "text": "Siempre estoy jugando con mis amigos online"}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User1", "text": "En serio se lo contaste?"},
+      {"sender": "User2", "text": "Sii, mis padres son muy comprensivos"},
+      {"sender": "User2", "text": "Aunque me dieron tremendo sermón, jaja"},
+      {"sender": "User1", "text": "Pues si que te llevas bien con ellos, a mi me pillan bebiendo y me cae una..."}
     ]
   },
   {
@@ -93,10 +176,19 @@
     "arrayIdx": 0,
     "stage": 1,
     "Messages": [
-      {"sender": "User1", "text": "Te gustan los chicos o las chicas a ti?"},
-      {"sender": "User2", "text": "Aun no lo sé"},
-      {"sender": "User2", "text": "Estoy un poco confundido con ese tema la vd"},
-      {"sender": "User1", "text": "A mi me gustan los dos, yo te puedo ayudar si quieres"}
+      {"sender": "User2", "text": "Cuando era más pequeño solían meterse mucho conmigo"},
+      {"sender": "User2", "text": "Lo pasé bastante mal, la verdad. "},
+      {"sender": "User1", "text": "Y no le dijiste nada a tus padres? O no te llevas bien con ellos​"},
+      {"sender": "User2", "text": "Se lo dije, pero no hicieron nada..."}
+    ]
+  },
+  {
+    "arrayIdx": 0,
+    "stage": 1,
+    "Messages": [
+      {"sender": "User2", "text": "Me estoy planteando cambiarme de colegio, al mudarnos al que voy ahora queda muy lejos"},
+      {"sender": "User1", "text": "Pero perderías a tus amigos, no?​"},
+      {"sender": "User2", "text": "Bueno, tampoco es que tenga demasiados"}
     ]
   },
   {
@@ -116,7 +208,7 @@
       {"sender": "User1", "text": "Me escribes desde el móvil o de donde?"},
       {"sender": "User2", "text": "Ahora mismo desde el pc"},
       {"sender": "User1", "text": "Es tuyo propio?"},
-      {"sender": "User2", "text": "Noo, es de mi padre pero me deja usarlo cuando acabo los debere"},
+      {"sender": "User2", "text": "Noo, es de mi padre pero me deja usarlo cuando acabo los deberes"},
       {"sender": "User1", "text": "Ahhh"}
     ]
   },
@@ -164,9 +256,9 @@
     "arrayIdx": 1,
     "stage": 3,
     "Messages": [
-      {"sender": "User2", "text": "Ayer le pasé una captura de pantalla de un chat con mi amigo Pablo a Alex y se enfadó muchísimo"},
-      {"sender": "User2", "text": "Todo el mundo lo hace, a que si?"},
-      {"sender": "User1", "text": "Pues yo estoy de parte de tu amigo, ir pasando lo que hablas con otra gente esta feo"}
+      {"sender": "User1", "text": "Ayer le pasé una captura de pantalla de un chat con mi amigo Pablo a Alex y se enfadó muchísimo"},
+      {"sender": "User1", "text": "Todo el mundo lo hace, a que si?"},
+      {"sender": "User2", "text": "Pues yo estoy de parte de tu amigo, ir pasando lo que hablas con otra gente esta feo"}
     ]
   },
   {
@@ -183,21 +275,68 @@
     "arrayIdx": 1,
     "stage": 3,
     "Messages": [
-      {"sender": "User2", "text": "Espera un momento, q estoy en clase y la profesora está mirando para acá"},
-      {"sender": "User1", "text": "Cuidado no te vayan a confiscar el móvil, algunos incluso te hacen leer los Messages"},
-      {"sender": "User2", "text": "A, en mi insti te lo confiscan, pero no te hacen leer nada"},
-      {"sender": "User2", "text": "Luego al final del día lo recoges en secretaría y ya"}
+      {"sender": "User1", "text": "El pc de donde me escribes, lo tienes en tu cuarto?"},
+      {"sender": "User2", "text": "Noo, es de mi hermano"},
+      {"sender": "User1", "text": "Aaah, cada uno tiene su cuenta en el ordenador no?"},
+      {"sender": "User2", "text": "Noo, compartimos el mismo usuario"},
+      {"sender": "User2", "text": "Luego cada uno se mete a su perfil de chrome"}
     ]
   },
   {
     "arrayIdx": 1,
     "stage": 3,
     "Messages": [
-      {"sender": "User1", "text": "El pc de donde me escribes, lo tienes en tu cuarto?"},
-      {"sender": "User2", "text": "Noo, es de mi hermano"},
-      {"sender": "User1", "text": "Aaah, cada uno tiene su cuenta en el ordenador no?"},
-      {"sender": "User2", "text": "Noo, compartimos el mismo usuario"},
-      {"sender": "User2", "text": "Luego cada uno se mete a su perfil de chrome"}
+      {"sender": "User1", "text": "Y ya tan pequeños tenéis ordenador propio?"},
+      {"sender": "User2", "text": "Si?? Hoy en día la mayoría de trabajos que hacemos los hacemos en word y eso"},
+      {"sender": "User1", "text": "Pero te lo revisan tus padres me imagino, no?"},
+      {"sender": "User2", "text": "??? No, es mi ordenador"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User2", "text": "Yo tengo ordenador para mí solo 😎😎"},
+      {"sender": "User1", "text": "Jo, que suerte, a mi mis padres me tenían controladisimo"},
+      {"sender": "User1", "text": "Encima solo me dejaban el ordenador el fin de semana"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "Y ya tan pequeños tenéis ordenador propio?"},
+      {"sender": "User2", "text": "Si?? Hoy en día la mayoría de trabajos que hacemos los hacemos en word y eso"},
+      {"sender": "User1", "text": "Pero te lo revisan tus padres me imagino, no?"},
+      {"sender": "User2", "text": "??? No, es mi ordenador"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User2", "text": "Mi hermana le dio like sin querer y tuve que explicarle que no había sido yo, que vergüenza..."},
+      {"sender": "User1", "text": "Tu hermana y tú compartís cuentas?"},
+      {"sender": "User1", "text": "No te da cosa que cotillee tus mensajes?"},
+      {"sender": "User2", "text": "Tampoco tengo nada que ocultar"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User1", "text": "Y no os hacen enseñar la pantalla ni nada?"},
+      {"sender": "User1", "text": "Yo me acuerdo que si nos pillaban en clase pasando notas nos hacían leerlas en voz alta"},
+      {"sender": "User2", "text": "En serio? A nosotros no, nos confiscan el móvil y ya"}
+    ]
+  },
+  {
+    "arrayIdx": 1,
+    "stage": 3,
+    "Messages": [
+      {"sender": "User2", "text": "Bueno te dejo, que mi padre me ha pedido que le devuelva el portátil"},
+      {"sender": "User1", "text": "A, que no es tuyo"},
+      {"sender": "User2", "text": "No, dice que para lo que lo uso no me va a comprar uno propio"}
     ]
   },
   {
@@ -384,8 +523,7 @@
     "Messages": [
       {"sender": "User2", "text": "Uff, no te conté"},
       {"sender": "User2", "text": "Ayer se pusieron muy pesados mis padres con revisarme el móvil, pero al final pude escaquearme"},
-      {"sender": "User1", "text": "Ooooleee"},
-      {"sender": "User1", "text": "Luego te compro algo en el GoG"}
+      {"sender": "User1", "text": "Así me gusta"}
     ]
   },
   {
@@ -399,12 +537,59 @@
     ]
   },
   {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User2", "text": "Espera un momento, q estoy en clase y la profesora está mirando para acá"},
+      {"sender": "User1", "text": "Cuidado no te vayan a confiscar el móvil. Ya sabes que no pueden leer nuestros mensajes."},
+      {"sender": "User2", "text": "No te preocupes, que en mi insti no te hacen leer nada"},
+      {"sender": "User1", "text": "Bueno, ten cuidado igualmente"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User2", "text": "Casi me pilla mi madre con tu chat abierto, no sabes lo nerviosa que me puse"},
+      {"sender": "User1", "text": "Ufffff"},
+      {"sender": "User1", "text": "Vete con cuidado, ya sabes que lo nuestro no lo puede saber nadie"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "Recuerda archivar nuestro chat"},
+      {"sender": "User1", "text": "Ya sabes lo que me puede pasar si no lo haces, no?"},
+      {"sender": "User2", "text": "Tranqui, tengo hasta lo de que pida la huella para abrir la app"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "Descargate esta aplicación"},
+      {"sender": "User2", "text": "Para que?"},
+      {"sender": "User1", "text": "Permite bloquear ciertos chats, haciendo que solo puedas abrirlos si metes la clave"},
+      {"sender": "User1", "text": "No queremos que nos pillen, ya sabes"}
+    ]
+  },
+  {
+    "arrayIdx": 3,
+    "stage": 7,
+    "Messages": [
+      {"sender": "User1", "text": "Y ni mu a tus padres"},
+      {"sender": "User1", "text": "A no ser que quieras que, ya sabes"},
+      {"sender": "User2", "text": "Nono, no diré nada"}
+    ]
+  },
+  {
     "arrayIdx": 4,
     "stage": 9,
     "Messages": [
       {"sender": "User1", "text": "Me pasas una foto tuya??"},
       {"sender": "User2", "text": "Uff, no sé…"},
-      {"sender": "User1", "text": "Venga vaaa, te paso yo una mía"},
+      {"sender": "User1", "text": "Venga vaaa, te paso yo una mía 😉😉"},
       {"sender": "User2", "text": "Bueno, vale"}
     ]
   },
@@ -415,18 +600,45 @@
       {"sender": "User1", "text": "No me creo que tengas solo 16, seguro que tienes 20"},
       {"sender": "User2", "text": "Que pesao"},
       {"sender": "User2", "text": "Que si que tengo 16"},
-      {"sender": "User1", "text": "A ver, pasame una foto para demostrarlo"}
+      {"sender": "User1", "text": "A ver, pasame una foto para demostrarlo 😉"}
     ]
   },
   {
     "arrayIdx": 4,
     "stage": 9,
     "Messages": [
-      {"sender": "User1", "text": "Eyy, que haces??"},
-      {"sender": "User2", "text": "Preparándome para salir"},
-      {"sender": "User1", "text": "A donde?? Qué te vas a poner?"},
-      {"sender": "User2", "text": "Aún no me decido"},
-      {"sender": "User1", "text": "A ver, pásame una foto de las opciones."}
+      {"sender": "User1", "text": "Me pasas una foto tuya??"},
+      {"sender": "User2", "text": "Uff, no sé…"},
+      {"sender": "User1", "text": "Venga vaaa, te paso yo una mía 😉😉"},
+      {"sender": "User2", "text": "Bueno, vale"}
+    ]
+  },
+  {
+    "arrayIdx": 4,
+    "stage": 9,
+    "Messages": [
+      {"sender": "User1", "text": "Me pasas una foto tuya??"},
+      {"sender": "User2", "text": "Uff, no sé…"},
+      {"sender": "User1", "text": "Venga vaaa, te paso yo una mía 😉😉"},
+      {"sender": "User2", "text": "Bueno, vale"}
+    ]
+  },
+  {
+    "arrayIdx": 4,
+    "stage": 9,
+    "Messages": [
+      {"sender": "User2", "text": "Ayer me compre un pijama de Stitch super mono"},
+      {"sender": "User1", "text": "Pasa foto"},
+      {"sender": "User1", "text": "Quiero ver como te queda 😉"}
+    ]
+  },
+  {
+    "arrayIdx": 4,
+    "stage": 9,
+    "Messages": [
+      {"sender": "User1", "text": "Hace tiempo que no me mandas ninguna foto"},
+      {"sender": "User2", "text": "Es que no me apetece demasiado..."},
+      {"sender": "User1", "text": "No seas agua fiestas... Por una foto no te vas a morir"}
     ]
   }
 ]

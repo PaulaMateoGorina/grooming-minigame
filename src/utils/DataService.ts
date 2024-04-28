@@ -58,7 +58,7 @@ class DataService{
 
     public add1ToDayData(numDay: number, property: keyof DayData, idx?: number){
         try {
-            WriteLog("DataService.ts > add1ToDayData > trying to modify property: " + property, LogLevel.VERBOSE);
+            WriteLog("DataService.ts > add1ToDayData > trying to modify property: " + property + "for day: " + numDay, LogLevel.VERBOSE);
 
             if(this.data.daysData[numDay] === null || this.data.daysData[numDay] === undefined)
                 throw new Error("No day with index: " + numDay);
@@ -70,12 +70,12 @@ class DataService{
             if(idx !== null && idx !== undefined){
                 if((dayData[property]as number[])[idx]  === null || (dayData[property]as number[])[idx] === undefined)
                     throw new Error(`Could not access idx ${idx} in the property ${property}.`);
+
                 (dayData[property]as number[])[idx]++;
             }
             else{
                 dayData[property]++;
             }
-
         } 
         catch (error) {
             WriteLog("DataService.ts > add1ToDayData > ERROR: " + error, LogLevel.ERROR);

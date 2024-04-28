@@ -95,7 +95,7 @@ export default defineComponent({
         score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected, numDay);
       }
 
-      if(score === NUM_CONSTANTS.ONE){
+      if(score >= NUM_CONSTANTS.ONE){
         this.correctness = ECorrectness.CORRECT;
         SoundManager.getInstance().playSoundEffect(ESound.CORRECT);
       }

@@ -79,6 +79,10 @@
     cursor: pointer;
 }
 
+.wide{
+    width: 60vw;
+}
+
 .title-screen-button:hover {
     border-color: #374253;
     background-color: #374253;

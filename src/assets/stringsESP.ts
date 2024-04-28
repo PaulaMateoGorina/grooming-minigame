@@ -11,7 +11,8 @@ export const GENERAL_STRINGS = {
     DAILY_QUIZ_TIME: "¡Hora de poner a prueba lo aprendido!",
     ANSWER: "El informe es",
     PROMPT_QUESTIONNAIRE_START: "Por favor, rellena el siguiente cuestionario antes de empezar a jugar. <b>No podrás continuar hasta que lo hayas abierto.Tu identificador es: {0}</b>.\n",
-    PROMPT_QUESTIONNAIRE_RESET: "<p style='font-size: 20px'>Antes de volver a jugar, <b style='text-decoration:underline'>recuerda completar el cuestionario que comenzaste al inicio de la sesión.</b></p><b>Si quieres saber más del tema</b>, este enlace te llevará a una infografía que puedes descargar: ",
+    PROMPT_QUESTIONNAIRE_RESET: "Si quieres saber más del tema</b>, este enlace te llevará a una infografía que puedes descargar: ",
+    REMIND_QUESTIONNAIRE: "Antes de cerrar este mensaje, <b style='text-decoration:underline'>recuerda completar el cuestionario que comenzaste al inicio de la sesión.</b>",
     PROMPT_MORE_INFO: "Clica aquí para verla",
     CLICK_TO_QUESTIONNAIRE: "Clica aquí para ir al cuestionario",
     CONTINUE: "Continuar",
@@ -28,7 +29,7 @@ sentimientos de culpa por 'dejar que sucediera', transtornos del estado del áni
         \n<ul> \
         <li><a target='_blank' href='https://www.anar.org/'>ANAR</a>: una asociación que ayuda jóvenes en situación de riesgo. Puedes llamar al 900 202 010 de manera gratuita y anónima.</li> \
         <li><a target='_blank' href='https://www.incibe.es/menores/ayuda'>INCIBE</a>: el Instituto Nacional de Ciberseguridad, una entidad que vela por mejorar los conocimientos de ciberseguridad en la población Española. Puedes llamar al 017, o mandar un WhatsApp al 900 116 117</li> \
-        <li><a target='_blank' href='https://dretssocials.gencat.cat/ca/ambits_tematics/infancia_i_adolescencia/proteccio_a_la_infancia_i_ladolescencia/maltractaments_dinfants_i_adolescents/infancia_respon/telefon_infancia_respon_116_111/'>Infancia responde</a>: Un servicio público 24h que opera con tal de prevenir y detectar los abusos a menores. Puedes llamar al 116 111</li> \
+        <li><a target='_blank' href='https://dretssocials.gencat.cat/ca/ambits_tematics/infancia_i_adolescencia/proteccio_a_la_infancia_i_ladolescencia/maltractaments_dinfants_i_adolescents/infancia_respon/telefon_infancia_respon_116_111/'>Infancia responde</a>: Un servicio público 24h que opera con tal de prevenir y detectar los abusos a menores. Su teléfono es 116 111.</li> \
         </ul>",
     CLOSE: "Cerrar"
 }

@@ -6,7 +6,7 @@
                 <p class="game-title">{{GENERAL_STRINGS.GAME_TITLE}}</p>
                 <div class="divisor"/>
                 <p class="game-subtitle">{{GENERAL_STRINGS.GAME_SUBTITLE}}</p>
-                <div class="title-screen-button flex-center-aligned" @click="startGame">{{ GENERAL_STRINGS.START }}</div>
+                <div class="title-screen-button wide flex-center-aligned" @click="startGame" >{{ GENERAL_STRINGS.START }}</div>
             </div>
 
             <!-- End screen -->
@@ -16,7 +16,7 @@
                 <p class="game-subtitle" v-html="pointsMessage"></p>
                 <p class="game-subtitle-2" v-html="gotTheJobMessage"></p>
                 <div v-if="sawConsequences || !firstPlaythrough" class="title-screen-button flex-center-aligned" @click="resetGame">{{ GENERAL_STRINGS.PLAY_AGAIN }}</div>
-                <div v-else class="title-screen-button flex-center-aligned" @click="showConsequences">{{ showConsequencesMessage }}</div>
+                <div v-else class="title-screen-button wide flex-center-aligned" @click="showConsequences">{{ showConsequencesMessage }}</div>
             </div>
         </div>
     </div>
@@ -27,6 +27,7 @@
             <p class="consequences-explanation" v-html="GENERAL_STRINGS.CONSEQUENCES"></p>
         </CModalBody>
         <CModalFooter>
+            <p v-html="GENERAL_STRINGS.REMIND_QUESTIONNAIRE"></p>
             <CButton variant="outline" @click="closeModal" class="title-screen-button play-again-button">{{ GENERAL_STRINGS.CLOSE }}</CButton>
         </CModalFooter>
     </CModal>
@@ -43,7 +44,7 @@
         </CModalBody>
         <CModalFooter>
             <CButton v-if="isStart" variant="outline" @click="startGame" class="title-screen-button play-again-button" :disabled="!clickedOnQuestionnaire">{{ GENERAL_STRINGS.START }}</CButton>
-            <CButton v-else variant="outline" @click="closeModal" class="title-screen-button play-again-button">{{ GENERAL_STRINGS.PLAY_AGAIN }}</CButton>
+            <CButton v-else variant="outline" @click="closeModal(false)" class="title-screen-button play-again-button">{{ GENERAL_STRINGS.PLAY_AGAIN }}</CButton>
         </CModalFooter>
     </CModal>
 </template>
@@ -112,6 +113,7 @@ export default defineComponent({
             SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         },
         showConsequences(){
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
             this.consequencesModalOpen = true;
             this.sawConsequences = true;
         },
@@ -127,8 +129,8 @@ export default defineComponent({
                 this.questionnaireModalOpen = false;
                 gameStore.commit('newGame');
                 gameStore.commit('nextPlaythrough');
-                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
             }
+            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         }
     },
     

@@ -8,7 +8,7 @@
             "hasSnippets": false,
             "selectSnippets": false,
             "selectSnippetStages": false,
-            "groomingProbability": 0.85,
+            "groomingProbability": 1,
             "minAgeGroomer": 20,
             "maxAgeGroomer": 35
         },
@@ -42,7 +42,7 @@
             {"text": "¡Correcto! Y cuando se da en las redes, se llama online grooming.", "audioFile": "day1.1/day1.1_8.mp3", "goTo": 12},
             {"text": "¡Incorrecto! A eso se le llama una relación parasocial. A veces se puede dar en casos de grooming, pero no es grooming en sí.", "audioFile": "day1.1/day1.1_9.mp3", "goTo": 11},
             {"text": "No pasa nada, ahora te lo explico.", "audioFile": "day1.1/day1.1_10.mp3", "goTo": 11},
-            {"text": "El grooming es cuando un adulto forma una relación con un menor para abusar de este. Si se da en las redes, es online grooming.", "audioFile": "day1.1/day1.1_11.mp3", "goTo": 12},
+            {"text": "El grooming es cuando un adulto establece una relación con un menor para abusar de este. Si se da en las redes, es online grooming.", "audioFile": "day1.1/day1.1_11.mp3", "goTo": 12},
             {"text": "Por cierto, cuando hablamos de adultos... ¿En qué piensas?.", "audioFile": "day1.1/day1.1_12.mp3", "goTo": -1,
             "options":[
                     {"text": "Cualquier persona mayor de 18.", "goTo": 13}, 
@@ -69,7 +69,7 @@
         "configuration": 
         {
             "shouldSkipQuiz": true,
-            "hasSnippets": false,
+            "hasSnippets": true,
             "selectSnippets": false,
             "selectSnippetStages": false,
             "groomingProbability": 0.6,
@@ -124,9 +124,9 @@
                 ]
             },
         
-            {"text": "Ya decía yo que se me olvidaba algo...", "audioFile": "day1.3/day1.3_5.mp3", "goTo": 4},
-            {"text": "Cuando marcas un informe correctamente, los puntos que ganas se multiplican por un numerito, tu multiplicador de puntos.", "audioFile": "day1.3/day1.3_6.mp3", "goTo": 4},
-            {"text": "Al final de cada día, vendré a preguntarte algo sobre lo que hemos aprendido", "audioFile": "day1.3/day1.3_7.mp3", "goTo": 4},
+            {"text": "Ya decía yo que se me olvidaba algo...", "audioFile": "day1.3/day1.3_5.mp3", "goTo": 0},
+            {"text": "Cuando marcas un informe correctamente, los puntos que ganas se multiplican por un numerito, tu multiplicador de puntos.", "audioFile": "day1.3/day1.3_6.mp3", "goTo": 0},
+            {"text": "Al final de cada día, vendré a preguntarte algo sobre lo que hemos aprendido.", "audioFile": "day1.3/day1.3_7.mp3", "goTo": 0},
             {"text": "Si aciertas, incrementaré dicho número.", "audioFile": "day1.3/day1.3_8.mp3", "goTo": -1, 
                 "options":[
                     {"text": "¿Y si fallo?", "goTo": 9}
@@ -221,12 +221,12 @@
             {"text": "También suelen ser víctimas los chicos que dudan de su sexualidad y menores con problemas de salud mental.", "audioFile": "day3/day3_9.mp3", "goTo": 10},
             {"text": "Pero bueno, que me voy por las ramas.", "audioFile": "day3/day3_10.mp3", "goTo": 11},
             {"text": "Hoy aumentaremos la dificultad otro poco.", "audioFile": "day3/day3_11.mp3", "goTo": 12},
-            {"text": "Aparte de marcar el informe como grooming o no, tendrás que marcar qué extractos son indicios de grooming.", "audioFile": "day3/day3_12.mp3", "goTo": 0},
+            {"text": "Aparte de marcar el informe como grooming o no, tendrás que indicar qué extractos son indicios de grooming.", "audioFile": "day3/day3_12.mp3", "goTo": 0},
             {"text": "Clica en los extractos para marcarlos como grooming. Se mostrarán en rojo.", "audioFile": "day3/day3_13.mp3", "goTo": 0},
             {"text": "Para marcarlos como normales, vuelve a clicar.", "audioFile": "day3/day3_14.mp3", "goTo": 0},
             {"text": "Ya sabes qué buscar: énfasis en el secretismo de la relación, preguntas sobre la relación con los padres, etc. ¿Listo?", "audioFile": "day3/day3_15.mp3", "goTo": -1,
                 "options":[
-                    {"text": "Listo.", "goTo": 15}
+                    {"text": "Listo.", "goTo": 16}
                 ]
             },
             {"text": "¡Comenzamos!", "audioFile": "day3/day3_16.mp3", "goTo": -1}
@@ -234,14 +234,14 @@
     },
     {
         "numDay": 4,
-        "numReports": 3,
+        "numReports": 4,
         "configuration": 
         {
             "shouldSkipQuiz": false,
             "hasSnippets": true,
             "selectSnippets": true,
             "selectSnippetStages": true,
-            "groomingProbability": 0.65,
+            "groomingProbability": 0.75,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 45,
             "selectableStagesIdx": [0, 0, 1, 1, 4]
@@ -288,14 +288,14 @@
     },
     {
         "numDay": 5,
-        "numReports": 3,
+        "numReports": 4,
         "configuration": 
         {
             "shouldSkipQuiz": false,
             "hasSnippets": true,
             "selectSnippets": true,
             "selectSnippetStages": true,
-            "groomingProbability": 0.65,
+            "groomingProbability": 0.75,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 45,
             "selectableStagesIdx": [2, 2, 3, 3, 4]
@@ -316,22 +316,22 @@
                     {"text": "No todo. ¿Me lo repites?", "goTo": 10}
                 ]    
             },
-            {"text": "Claro. Como te decía, hoy hablaremos de las fases 4, 6 y 7.", "audioFile": "day5/day5_10.mp3", "goTo": 0},
+            {"text": "Claro. Como te decía, hoy hablaremos de las fases 4, 6 y 7.", "audioFile": "day5/day5_10.mp3", "goTo": 2},
             {"text": "¡Genial! No te saldrá la fase 'Reproducción de fantasías' en los informes, pero sí te puede salir en el quiz diario.", "audioFile": "day5/day5_11.mp3", "goTo": 0},
             {"text": "Y recuerda, te pueden salir también extractos pidiendo fotos indebidas.", "audioFile": "day5/day5_12.mp3", "goTo": 0},
-            {"text": "En fin, ¡mucha surete!", "audioFile": "day5/day5_13.mp3", "goTo": -1}
+            {"text": "En fin, ¡mucha suerte!", "audioFile": "day5/day5_13.mp3", "goTo": -1}
         ]
     },
     {
         "numDay": 6,
-        "numReports": 5,
+        "numReports": 4,
         "configuration": 
         {
             "shouldSkipQuiz": false,
             "hasSnippets": true,
             "selectSnippets": true,
             "selectSnippetStages": true,
-            "groomingProbability": 0.6,
+            "groomingProbability": 0.75,
             "minAgeGroomer": 22,
             "maxAgeGroomer": 45
         },

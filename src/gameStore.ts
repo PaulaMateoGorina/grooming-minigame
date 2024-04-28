@@ -101,7 +101,7 @@ export const gameStore = createStore({
     isMuted: false,
 
     hasError: false,
-    debugMode: true,
+    debugMode: false,
     runNumber: 0
     
   } as GameState,
@@ -127,7 +127,7 @@ export const gameStore = createStore({
       if(state.debugMode){
         state.visibleGameStage = EGameStage.GAME_START;
   
-        state.curDayIdx = 0; 
+        state.curDayIdx = 1; 
         state.showingSolution = false;
         
         state.points = NUM_CONSTANTS.ZERO;
@@ -236,7 +236,8 @@ export const gameStore = createStore({
         commitNewDay();
       }
       else{
-        // Game has been finished!
+        // Game has finished!
+        DataService.getInstance().sendUserData();
         state.visibleGameStage = EGameStage.GAME_FINISHED
       }
     },

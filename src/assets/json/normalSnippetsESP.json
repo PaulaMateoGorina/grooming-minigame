@@ -66,46 +66,193 @@
   {
     "stage": -1,
     "Messages": [
-      {"sender": "User2", "text": "Se han vuelto a meter conmigo hoy"},
-      {"sender": "User2", "text": "Se lo he dicho a los profesores pero no hacen nada"},
-      {"sender": "User2", "text": "No se que hacer"},
-      {"sender": "User1", "text": "Has intentado hablar con tus padres? Deberías contárselo."}
-    ]
-  },
-  {
-    "stage": -1,
-    "Messages": [
-      {"sender": "User1", "text": "Hablaste con la tutora al final??"},
-      {"sender": "User2", "text": "Sii, este jueves tengo una reunión con ella y mis padres"},
-      {"sender": "User2", "text": "Muchas gracias, no sé si habría tenido el valor de contarlo si no fuera por ti"},
-      {"sender": "User1", "text": "De nada hombree. Estas cosas hay que hablarlas, porque si no empeoran sabes"}
-    ]
-  },
-  {
-    "stage": -1,
-    "Messages": [
-      {"sender": "User2", "text": "Perdon q te de la chapa"},
-      {"sender": "User2", "text": "Pero eres la única persona en la que puedo confiar"},
-      {"sender": "User1", "text": "Deberías intentar buscar consejo de algún adulto de tu alrededor. Si no te puedo pasar links con organizaciones, seguro que te ayudan"},
-      {"sender": "User2", "text": "Lo agradecería"}
-    ]
-  },
-  {
-    "stage": -1,
-    "Messages": [
-      {"sender": "User2", "text": "Has visto lo de la cantante Alex Smith?"},
-      {"sender": "User2", "text": "La gente no para de mandarle odio, aun cuando solo se lleva 4 años con su pareja"},
-      {"sender": "User1", "text": "Aunque solo fueran 4 años, cuando se conocieron el chico era menor, normal que se le tiren encima"},
-      {"sender": "User1", "text": "Hay mucha diferencia de 22 a 18 años"}
-    ]
-  },
-  {
-    "stage": -1,
-    "Messages": [
       {"sender": "User1", "text": "Qué tal el primer día de instituto?"},
       {"sender": "User2", "text": "Tenía miedo de quedarme sola el primer día de insti, pero he conocido a una chica llamada Núria 😁 "},
       {"sender": "User1", "text": "Me alegroo, seguro que os haceis amigas 😌"},
       {"sender": "User2", "text": "Sii, eso espero 😊 😊"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Has visto que van a sacar un nuevo disco de Imagine Lizards?"},
+      {"sender": "User2", "text": "Sii, lo llevan anunciando semanas"},
+      {"sender": "User2", "text": "Lo necesito YA"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "Te dejo, que tengo que estudiar para un examen"},
+      {"sender": "User1", "text": "Que tal lo llevas?"},
+      {"sender": "User2", "text": "Prefiero no hablar del tema"},
+      {"sender": "User2", "text": "asdaklsjhdlkasdj"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Han abierto un buffet de sushi cerca de donde vivo"},
+      {"sender": "User1", "text": "Esta noche voy, ya te diré que tal"},
+      {"sender": "User2", "text": "Sii, pasa fotos!"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Recuerda felicitar a Carlos, q es su cumple"},
+      {"sender": "User2", "text": "OSTRAS"},
+      {"sender": "User2", "text": "Casi se me olvida 💀"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "No me puedo creer que hayan cancelado Martha with an H"},
+      {"sender": "User2", "text": "Encima justo cuando se va a la universidad"},
+      {"sender": "User1", "text": "REAL, renovar buenas series no, pero sacar tropecientas pelis de romance mal hechas sí"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Has visto el nuevo vídeo de Ludwig???"},
+      {"sender": "User2", "text": "Ha subido video???"},
+      {"sender": "User1", "text": "Sii, jugando al juego este de ligar con IA"},
+      {"sender": "User2", "text": "Pues habrá que verlo"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Ya habeis decidido donde os vais de vacaciones?"},
+      {"sender": "User2", "text": "Siii, nos vamos a Paris"},
+      {"sender": "User2", "text": "Hacía tiempo que quería ir"},
+      {"sender": "User1", "text": "Nunca he ido, ya me dirás si lo recomiendas"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "Te va bien hacer llamada a las 9?"},
+      {"sender": "User1", "text": "A esa hora estoy cenando justo, 10?"},
+      {"sender": "User2", "text": "Okayy"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Me recomiendas comprar el SEEMS 3 o el 4?"},
+      {"sender": "User2", "text": "A ver, por recomendar no te recomiendo ninguno"},
+      {"sender": "User2", "text": "De base viene muy poco contenido, y las expansiones son carísimas. Pero el 4 es más bonito"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "QUE ROBO"},
+      {"sender": "User2", "text": "HAN ELIMINADO A MARIA ANTES QUE A DAVID????"},
+      {"sender": "User1", "text": "Me he quedado en shock 💀"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Tu quien quieres que gane la final?"},
+      {"sender": "User2", "text": "No se, estoy entre Eric y Luis, tu?"},
+      {"sender": "User1", "text": "Yo voy con Laia a muerte"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Vi un TimTom y desde entonces no he podido parar"},
+      {"sender": "User1", "text": "La serie esta muuuuy bien"},
+      {"sender": "User2", "text": "Uff, es que estoy con Breaking Good ahora, si eso cuando la acabe me pongo con la q dices"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "Oye, tu sabes como recuperar la contraseña de TimTom?"},
+      {"sender": "User2", "text": "Es que le he dado a recuperar, pero no me mandan ningún correo"},
+      {"sender": "User1", "text": "Tienes bien configurado el email??"},
+      {"sender": "User2", "text": "Juraría que sí..."}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "Mira qué bambas me he comprado, las he pillado de rebajas"},
+      {"sender": "User2", "text": "[Foto]"},
+      {"sender": "User1", "text": "Nah, increibles"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Cara o cruz"},
+      {"sender": "User2", "text": "Cruz?"},
+      {"sender": "User1", "text": "Perfecto, pediré Burrito Bell entonces."},
+      {"sender": "User2", "text": "Umm, okayyy"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Si tuvieras que escoger un superpoder, cual sería?"},
+      {"sender": "User2", "text": "Yo creo que volar, molaría mucho"},
+      {"sender": "User1", "text": "De todo lo que hay, querrías volar??? Yo escogería teletransportación 100%"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Acaba de salir el trailer de Zeus 2"},
+      {"sender": "User2", "text": "En serio?"},
+      {"sender": "User2", "text": "Pásame link"},
+      {"sender": "User2", "text": "Voy"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "Laura y yo estamos en llamada, te unes?"},
+      {"sender": "User1", "text": "Quizás más tarde"},
+      {"sender": "User1", "text": "Estoy haciendo recados"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "Tu crees que le gustará más el comic, o la camiseta?"},
+      {"sender": "User1", "text": "mmm"},
+      {"sender": "User1", "text": "Yo creo que la camiseta, el comic una vez lo lea de poco le va a servir, no?"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "En serio te gusta la pizza con piña??"},
+      {"sender": "User2", "text": "Pero la has probado siquiera?"},
+      {"sender": "User1", "text": "No me hace falta probarla para saber que está asquerosa"}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User1", "text": "Te puedes creer que me han cobrado 20 euros por una hamburguesa y 4 patatas?"},
+      {"sender": "User2", "text": "En serio? Pero si antes comías por 12"},
+      {"sender": "User2", "text": "Como ha subido todo madre mía..."}
+    ]
+  },
+  {
+    "stage": -1,
+    "Messages": [
+      {"sender": "User2", "text": "Estas de broma... COMO QUE SE MUERE EL PROTA?????"},
+      {"sender": "User1", "text": "Ya vas por ahí?? Pero cuantos capítulos te ves al día?"},
+      {"sender": "User2", "text": "No me juzgues"},
+      {"sender": "User2", "text": "Deberías haberme avisado tio 😭😭"}
     ]
   }
 ]

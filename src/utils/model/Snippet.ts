@@ -27,7 +27,10 @@ class Snippet {
                 WriteLog("Snippet.ts > getAnswerResult > check selected", LogLevel.VERBOSE);
                 if(this.stage * stageSelected > 0){
                     const stageIdx = STAGES_TO_IDX.get(this.stage);
-                    DataService.getInstance().add1ToDayData(numDay, DATA_SAVER_CONSTANTS.N_FLAGGED_SNIPPETS_PER_STAGE as keyof DayData, stageIdx)
+
+                    if(this.stage > 0)
+                        DataService.getInstance().add1ToDayData(numDay, DATA_SAVER_CONSTANTS.N_FLAGGED_SNIPPETS_PER_STAGE as keyof DayData, stageIdx)
+
 
                     if(this.stage === stageSelected){
                         result = ECorrectness.CORRECT;

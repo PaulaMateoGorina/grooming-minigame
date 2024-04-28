@@ -25,25 +25,29 @@ class Report {
         let result = NUM_CONSTANTS.ZERO;
 
         try {
+            
             if(this.isGrooming === isGrooming){
                 result += ECorrectness.CORRECT;
-
+                
                 const correctProperty = this.isGrooming ? DATA_SAVER_CONSTANTS.N_GROOMING_REPORTS_FLAGGED : DATA_SAVER_CONSTANTS.N_NORMAL_REPORTS_CORRECT;
                 DataService.getInstance().add1ToDayData(numDay, correctProperty as keyof DayData);
-                
-                // If it is not grooming, then we do not need to check that the stage is correct, it will be
-                if(isGrooming && selectGroomingSnippets && this.snippets){
-                    for(let i = 0; i < this.snippets.length; i++){
-                        const snippet:Snippet = this.snippets[i];
-                        const stageSelected:EStage = stagesSelected[i];
-    
-                        result += snippet.getAnswerResult(stageSelected, selectSnippetStages, numDay);
-                    }
-                    result /= (this.snippets.length + NUM_CONSTANTS.ZERO);
+            }
+
+            if(selectGroomingSnippets && this.snippets){
+                for(let i = 0; i < this.snippets.length; i++){
+                    const snippet:Snippet = this.snippets[i];
+                    const stageSelected:EStage = stagesSelected[i];
+
+                    result += snippet.getAnswerResult(stageSelected, selectSnippetStages, numDay);
                 }
-                else{
-                    result = NUM_CONSTANTS.ONE;
-                }
+                result /= (this.snippets.length + NUM_CONSTANTS.ONE);
+            }
+            else{
+                result = NUM_CONSTANTS.ONE;
+            }
+            
+            if(this.isGrooming !== isGrooming){
+                result = ECorrectness.INCORRECT;
             }
         } 
         catch (error) {
