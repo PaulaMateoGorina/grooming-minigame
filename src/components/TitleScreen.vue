@@ -15,6 +15,7 @@
                 <div class="divisor"/>
                 <p class="game-subtitle" v-html="pointsMessage"></p>
                 <p class="game-subtitle-2" v-html="gotTheJobMessage"></p>
+                <p v-if="firstPlaythrough" class="game-subtitle-2" v-html="GENERAL_STRINGS.REMIND_QUESTIONNAIRE_2"></p>
                 <div v-if="sawConsequences || !firstPlaythrough" class="title-screen-button flex-center-aligned" @click="resetGame">{{ GENERAL_STRINGS.PLAY_AGAIN }}</div>
                 <div v-else class="title-screen-button wide flex-center-aligned" @click="showConsequences">{{ showConsequencesMessage }}</div>
             </div>
@@ -39,7 +40,7 @@
                 <p style="font-size: 18px; white-space: pre-wrap;" v-html="questionnairePromptMessage"></p>
             </span>
             <span v-else style="font-size: 18px; white-space: pre-wrap;" v-html="GENERAL_STRINGS.PROMPT_QUESTIONNAIRE_RESET"></span>
-            <button class="invisibleButton" v-if="isStart" @click="questionnaireClicked"><a :href="LINKS.QUESTIONNAIRE" target="_blank" style="font-size: 18px;">{{ GENERAL_STRINGS.CLICK_TO_QUESTIONNAIRE }}</a></button>
+            <button class="invisibleButton" v-if="isStart" @click="questionnaireClicked"><a :href="LINKS.QUESTIONNAIRE" target="_blank" style="font-size: 18px; font-weight:600">{{ GENERAL_STRINGS.CLICK_TO_QUESTIONNAIRE }}</a></button>
             <a v-else :href="LINKS.GROOMING_INFO" target="_blank" style="font-size: 18px;">{{ GENERAL_STRINGS.PROMPT_MORE_INFO }}</a>
         </CModalBody>
         <CModalFooter>
