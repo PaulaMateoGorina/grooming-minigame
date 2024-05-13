@@ -82,22 +82,24 @@ class DataService{
         }
     }
 
-    public async sendUserData(): Promise<void>{
+    public async sendUserData(isFinalData: boolean): Promise<void>{
         try {
             WriteLog("DataService.ts > sendUserData > Saving User Data", LogLevel.VERBOSE);
             const binId = await this.addBin(DATA_SAVER_CONSTANTS.USER_DATA_MASTER_KEY, this.data);
             if(binId === null || binId === undefined || binId === "")
             throw new Error("Could not add user data properly")
         
-            WriteLog("DataService.ts > sendUserData > Fetching bin list", LogLevel.VERBOSE);
-            const binListObject = await this.getBin(DATA_SAVER_CONSTANTS.BIN_LIST_MASTER_KEY, DATA_SAVER_CONSTANTS.BIN_LIST_BIN_ID);
-            if(binListObject === null || binListObject === undefined || !binListObject.bins)
-            throw new Error("Could not retrieve bin list properly")
-        
-            binListObject.bins.push(binId);
-        
-            WriteLog("DataService.ts > sendUserData > Updating bin list", LogLevel.VERBOSE);
-            await this.updateBin(DATA_SAVER_CONSTANTS.BIN_LIST_MASTER_KEY, DATA_SAVER_CONSTANTS.BIN_LIST_BIN_ID, binListObject);            
+            if(isFinalData){
+                WriteLog("DataService.ts > sendUserData > Fetching bin list", LogLevel.VERBOSE);
+                const binListObject = await this.getBin(DATA_SAVER_CONSTANTS.BIN_LIST_MASTER_KEY, DATA_SAVER_CONSTANTS.BIN_LIST_BIN_ID);
+                if(binListObject === null || binListObject === undefined || !binListObject.bins)
+                throw new Error("Could not retrieve bin list properly")
+            
+                binListObject.bins.push(binId);
+            
+                WriteLog("DataService.ts > sendUserData > Updating bin list", LogLevel.VERBOSE);
+                await this.updateBin(DATA_SAVER_CONSTANTS.BIN_LIST_MASTER_KEY, DATA_SAVER_CONSTANTS.BIN_LIST_BIN_ID, binListObject);   
+            }
         } 
         catch (error) {
             WriteLog("DataService.ts > sendUserData > ERROR: " + error, LogLevel.ERROR);

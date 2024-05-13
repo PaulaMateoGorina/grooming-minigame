@@ -235,11 +235,12 @@ export const gameStore = createStore({
       state.curDayIdx++;
       if(state.curDayIdx < DayManager.getInstance().getNumDays())
       {
+        DataService.getInstance().sendUserData(false);
         commitNewDay();
       }
       else{
         // Game has finished!
-        DataService.getInstance().sendUserData();
+        DataService.getInstance().sendUserData(true);
         state.visibleGameStage = EGameStage.GAME_FINISHED
       }
     },
