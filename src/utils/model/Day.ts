@@ -9,6 +9,7 @@ import NarrationNode from '@/utils/model/NarrationNode';
 import { DATA_SAVER_CONSTANTS, IMPORT_CONSTANTS } from '@/utils/constants'
 import DataService from '../DataService';
 import { DayData } from './UserData';
+import { WriteLog, LogLevel } from '../logger';
 
 export interface DayConfiguration{
     shouldSkipQuiz: boolean;
@@ -59,30 +60,40 @@ export class Day{
     }
 
     public resetReports():void{
-        const reportManager = ReportManager.getInstance();
+        try {
+            const reportManager = ReportManager.getInstance();
 
-        this.reports = [];
-        for(let i = 0; i < this.numReports;){
-            const report: Report | undefined = reportManager.generateReport(this.numDay, this.configuration);
-            
-            if(report !== undefined){
-                this.reports.push(report);
-                if(report.isGrooming)
-                    DataService.getInstance().add1ToDayData(this.numDay, DATA_SAVER_CONSTANTS.N_GROOMING_REPORTS as keyof DayData);
-                else
-                    DataService.getInstance().add1ToDayData(this.numDay, DATA_SAVER_CONSTANTS.N_NORMAL_REPORTS as keyof DayData);
-                i++;
+            this.reports = [];
+            for(let i = 0; i < this.numReports;){
+                const report: Report | undefined = reportManager.generateReport(this.numDay, this.configuration);
+                
+                if(report !== undefined){
+                    this.reports.push(report);
+                    if(report.isGrooming)
+                        DataService.getInstance().add1ToDayData(this.numDay, DATA_SAVER_CONSTANTS.N_GROOMING_REPORTS as keyof DayData);
+                    else
+                        DataService.getInstance().add1ToDayData(this.numDay, DATA_SAVER_CONSTANTS.N_NORMAL_REPORTS as keyof DayData);
+                    i++;
+                }
             }
+        } 
+        catch (error) {
+            WriteLog(`Day.ts > resetReports > #ERROR: ${error}`, LogLevel.ERROR);
         }
     }
 
     public resetDailyQuiz():void{
-        const quizManager = QuizManager.getInstance();
+        try {
+            const quizManager = QuizManager.getInstance();
 
-        if(!this.configuration.shouldSkipQuiz){
-            const dailyQuiz = quizManager.sampleDailyQuiz(this.numDay);
-            if(dailyQuiz)
-                this.dailyQuiz = dailyQuiz;
+            if(!this.configuration.shouldSkipQuiz){
+                const dailyQuiz = quizManager.sampleDailyQuiz(this.numDay);
+                if(dailyQuiz)
+                    this.dailyQuiz = dailyQuiz;
+            }
+        } 
+        catch (error) {
+            WriteLog(`Day.ts > resetDailyQuiz > #ERROR: ${error}`, LogLevel.ERROR);
         }
     }
 }

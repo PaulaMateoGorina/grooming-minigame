@@ -25,20 +25,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import TypewriterTextComponent from '@/components/TypewriterText.vue'
+import TypewriterTextComponent from '@/components/TypewriterText.vue';
+import { defineComponent } from 'vue';
 
 import { GENERAL_STRINGS } from '@/assets/stringsESP';
-import { NUM_CONSTANTS, NARRATION_CONSTANTS } from '@/utils/constants';
+import { NARRATION_CONSTANTS, NUM_CONSTANTS } from '@/utils/constants';
 import { EGameStage } from '@/utils/enums';
 
 import { gameStore } from '@/gameStore';
 import NarrationNode from '@/utils/model/NarrationNode';
 import SoundManager from '@/utils/SoundManager';
 
-import { OnClickOutside } from '@vueuse/components'
 import DataService from '@/utils/DataService';
 import { UserData } from '@/utils/model/UserData';
+import { OnClickOutside } from '@vueuse/components';
+import { WriteLog, LogLevel } from '@/utils/logger';
 
 export default defineComponent({
     name: 'NarrativeScreenComponent',
@@ -63,60 +64,61 @@ export default defineComponent({
             this.typingFinished = true;
         },
         nextDialogue(goto: number){
-            let to = -1;
-            
-            if(!isNaN(goto))
-                to = goto;
-            else if(this.curNode)
-                to = this.curNode.goTo;
+            try {
+                let to = -1;
+                
+                if(!isNaN(goto))
+                    to = goto;
+                else if(this.curNode)
+                    to = this.curNode.goTo;
 
-            if(this.typingFinished && (this.isMuted || this.voiceOverFinished)){
-                if(!this.curNodeHasOptions){
-                    this.typingFinished = false;
-                    this.voiceOverFinished = false;
+                if(this.typingFinished && (this.isMuted || this.voiceOverFinished)){
+                    if(!this.curNodeHasOptions){
+                        this.typingFinished = false;
+                        this.voiceOverFinished = false;
 
-                    if(to === NARRATION_CONSTANTS.NEXT_STAGE){
-                        gameStore.commit('changeStage', EGameStage.REPORT);
-                    }
-                    else{
-                        if(to === NARRATION_CONSTANTS.NEXT_NODE)
-                            to = this.curNodeIdx + 1;
+                        if(to === NARRATION_CONSTANTS.NEXT_STAGE){
+                            gameStore.commit('changeStage', EGameStage.REPORT);
+                        }
+                        else{
+                            if(to === NARRATION_CONSTANTS.NEXT_NODE)
+                                to = this.curNodeIdx + 1;
 
-                        this.curNode = this.narrationNodes[to];
-                        this.curNodeIdx = to;
-                        this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
-                        SoundManager.getInstance().stopSounds();
-
-                        if(this.curNode.audio){
-                            SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
-                                this.voiceOverFinished = true;
-                            })
+                            this.goTo(to, -1)
                         }
                     }
                 }
+            } 
+            catch (error) {
+                WriteLog("NarrativeScreen.vue > nextDialogue > ERROR: " + error, LogLevel.ERROR);
             }
         },
         goTo(to: number, answerIdx: number){
-            if(this.curNode !== undefined && this.curNode.dataUserProperty !== undefined){
-                const userPropertyKey: keyof UserData = this.curNode.dataUserProperty as keyof UserData;
-                DataService.getInstance().modifyDataObject(userPropertyKey, answerIdx);
-            }
-
-            if(to > 0){
-                this.curNode = this.narrationNodes[to];
-                this.curNodeIdx = to;
-                this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
-                this.typingFinished = false;
-                this.voiceOverFinished = false;
-                
-                if(this.curNode.audio){
-                    SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
-                        this.voiceOverFinished = true;
-                    })
+            try {
+                if(this.curNode !== undefined && this.curNode.dataUserProperty !== undefined){
+                    const userPropertyKey: keyof UserData = this.curNode.dataUserProperty as keyof UserData;
+                    DataService.getInstance().modifyDataObject(userPropertyKey, answerIdx);
                 }
-            }
-            else if(to === NARRATION_CONSTANTS.NEXT_STAGE){
-                gameStore.commit('changeStage', EGameStage.REPORT);
+
+                if(to > 0){
+                    this.curNode = this.narrationNodes[to];
+                    this.curNodeIdx = to;
+                    this.curNodeHasOptions = this.narrationNodes[to].options !== undefined;
+                    this.typingFinished = false;
+                    this.voiceOverFinished = false;
+                    
+                    if(this.curNode.audio){
+                        SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
+                            this.voiceOverFinished = true;
+                        })
+                    }
+                }
+                else if(to === NARRATION_CONSTANTS.NEXT_STAGE){
+                    gameStore.commit('changeStage', EGameStage.REPORT);
+                }
+            } 
+            catch (error) {
+                WriteLog("NarrativeScreen.vue > goTo > ERROR: " + error, LogLevel.ERROR);
             }
         },
         skip(){
@@ -125,24 +127,51 @@ export default defineComponent({
     },
     computed:{
         narrationNodes(){
-            return gameStore.state.curDay && gameStore.state.curDay.narrationNodes ? gameStore.state.curDay.narrationNodes : []
+            let result:NarrationNode[] = [];
+            try {
+                if(gameStore.state.curDay && gameStore.state.curDay.narrationNodes)        
+                    result = gameStore.state.curDay.narrationNodes
+            } 
+            catch (error) {
+                WriteLog("NarrativeScreen.vue > computed > narrationNodes > ERROR: " + error, LogLevel.ERROR);
+            }
+            return result;
         },
 
         isMuted(){
-            return gameStore.getters.isMuted;
+            let result = false;
+            try {
+                result = gameStore.getters.isMuted;
+            } 
+            catch (error) {
+                WriteLog("NarrativeScreen.vue > computed > isMuted > ERROR: " + error, LogLevel.ERROR);
+            }
+            return result;
         },
 
         firstRun(){
-            return gameStore.getters.isFirstPlaythrough;
+            let result = true;
+            try {
+                result = gameStore.getters.isFirstPlaythrough;
+            } 
+            catch (error) {
+                WriteLog("NarrativeScreen.vue > computed > isMuted > ERROR: " + error, LogLevel.ERROR);
+            }
+            return result;
         }
     },
     created(){
-        this.curNode = this.narrationNodes[NUM_CONSTANTS.ZERO];
-        this.curNodeHasOptions = this.curNode.options !== undefined && this.curNode.options.length > 0;
-        if(this.curNode.audio){
-            SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
-                this.voiceOverFinished = true;
-            })
+        try {
+            this.curNode = this.narrationNodes[NUM_CONSTANTS.ZERO];
+            this.curNodeHasOptions = this.curNode.options !== undefined && this.curNode.options.length > 0;
+            if(this.curNode.audio){
+                SoundManager.getInstance().playSound(this.curNode.audio).then(()=>{
+                    this.voiceOverFinished = true;
+                })
+            }
+        } 
+        catch (error) {
+            WriteLog("NarrativeScreen.vue > created > ERROR: " + error, LogLevel.ERROR);
         }
     }
 })

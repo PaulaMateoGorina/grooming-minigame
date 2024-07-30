@@ -36,15 +36,18 @@ class DataService{
 
     public modifyDataObject(property: keyof UserData, newValue: any){
         try {
+            if(property === null || property === undefined)
+                throw new Error("Parameter property was null or undefined.")
+            
+            if(newValue === null || newValue === undefined)
+                throw new Error("Parameter newValue was null or undefined.")
+
             WriteLog("DataService.ts > modifyDataObject > trying to modify property: " + property, LogLevel.VERBOSE);
             WriteLog("DataService.ts > modifyDataObject > newValue: ", LogLevel.VERBOSE);
             WriteLog(newValue, LogLevel.VERBOSE);
 
             if(!(property in this.data))
                 throw new Error("Trying to modify a property that is not found in the data object.")
-
-            if(newValue === null || newValue === undefined)
-                throw new Error("New value was null or undefined.")
 
             if(typeof(this.data[property]) !== typeof(newValue))
                 throw new Error(`Incompatible types. ${property} is a ${typeof(this.data[property])} while newValue is a ${typeof(newValue)}.`);
@@ -58,6 +61,12 @@ class DataService{
 
     public add1ToDayData(numDay: number, property: keyof DayData, idx?: number){
         try {
+            if(numDay === null || numDay === undefined)
+                throw new Error("Parameter numDay was null or undefined.")
+            
+            if(property === null || property === undefined)
+                throw new Error("Parameter property was null or undefined.")
+
             WriteLog("DataService.ts > add1ToDayData > trying to modify property: " + property + "for day: " + numDay, LogLevel.VERBOSE);
 
             if(this.data.daysData[numDay] === null || this.data.daysData[numDay] === undefined)
@@ -84,6 +93,9 @@ class DataService{
 
     public async sendUserData(isFinalData: boolean): Promise<void>{
         try {
+            if(isFinalData === null || isFinalData === undefined)
+                throw new Error("Parameter isFinalData was null or undefined.")
+
             WriteLog("DataService.ts > sendUserData > Saving User Data", LogLevel.VERBOSE);
             const binId = await this.addBin(DATA_SAVER_CONSTANTS.USER_DATA_MASTER_KEY, this.data);
             if(binId === null || binId === undefined || binId === "")
@@ -110,10 +122,15 @@ class DataService{
         let result = "";
 
         try {
+            if(masterKey === null || masterKey === undefined || masterKey === "")
+                throw new Error("Parameter masterKey was null or undefined.")
+            
+            if(data === null || data === undefined )
+                throw new Error("Parameter data was null or undefined.")
+
             const response = await this.postCall(masterKey, data);
             if(response === undefined)
                 throw new Error("Error in the call");
-
                 
             if (!response.metadata || !response.metadata.id) 
                 throw new Error("Response does not contain metadata or id")
@@ -131,6 +148,12 @@ class DataService{
     private async postCall(masterKey: string, data: any): Promise<any>{
         let result = undefined;
         try {
+            if(masterKey === null || masterKey === undefined || masterKey === "")
+                throw new Error("Parameter masterKey was null or undefined.")
+            
+            if(data === null || data === undefined )
+                throw new Error("Parameter data was null or undefined.")
+
             const headers = {
                 'Content-Type': 'application/json',
                 'X-Master-Key': masterKey,
@@ -149,8 +172,8 @@ class DataService{
                 throw new Error("Post call failed with status: " + response.status);
 
             result = await response.json();
-            WriteLog("DataService.ts > postCall > Result: ", LogLevel.INFO); //TODO: Change to verbose
-            WriteLog(result, LogLevel.INFO);
+            WriteLog("DataService.ts > postCall > Result: ", LogLevel.VERBOSE); 
+            WriteLog(result, LogLevel.VERBOSE);
         } 
         catch (error) {
             WriteLog("DataService.ts > postCall > Could not make post call. ERROR: " + error, LogLevel.ERROR);
@@ -161,6 +184,12 @@ class DataService{
     private async getBin(masterKey: string, binId: string): Promise<any>{
         let result = undefined;
         try {
+            if(masterKey === null || masterKey === undefined || masterKey === "")
+                throw new Error("Parameter masterKey was null or undefined.")
+            
+            if(binId === null || binId === undefined || binId === "")
+                throw new Error("Parameter binId was null or undefined.")
+
             const headers = {
                 'Content-Type': 'application/json',
                 'X-Master-Key': masterKey,
@@ -176,8 +205,8 @@ class DataService{
                 throw new Error("Get call failed with status: " + response.status);
 
             result = await response.json();
-            WriteLog("DataService.ts > postCall > Result: ", LogLevel.INFO); //TODO: Change to verbose
-            WriteLog(result, LogLevel.INFO);
+            WriteLog("DataService.ts > getBin > Result: ", LogLevel.VERBOSE);
+            WriteLog(result, LogLevel.VERBOSE);
         } 
         catch (error) {
             WriteLog("DataService.ts > getBin > Could not make post call. ERROR: " + error, LogLevel.ERROR);
@@ -188,6 +217,15 @@ class DataService{
     private async updateBin(masterKey: string, binId: string, newBinData: any): Promise<any>{
         let result = undefined;
         try {
+            if(masterKey === null || masterKey === undefined || masterKey === "")
+                throw new Error("Parameter binId was null, undefined or empty.")
+            
+            if(binId === null || binId === undefined || binId === "")
+                throw new Error("Parameter binId was null, undefined or empty.")
+
+            if(newBinData === null || newBinData === undefined)
+                throw new Error("Parameter newBinData was null or undefined.")
+
             const headers = {
                 'Content-Type': 'application/json',
                 'X-Master-Key': masterKey,
@@ -205,11 +243,11 @@ class DataService{
                 throw new Error("PUT call failed with status: " + response.status);
 
             result = await response.json();
-            WriteLog("DataService.ts > postCall > Result: ", LogLevel.INFO); //TODO: Change to verbose
-            WriteLog(result, LogLevel.INFO);
+            WriteLog("DataService.ts > updateBin > Result: ", LogLevel.VERBOSE); 
+            WriteLog(result, LogLevel.VERBOSE);
         } 
         catch (error) {
-            WriteLog("DataService.ts > getBin > Could not make post call. ERROR: " + error, LogLevel.ERROR);
+            WriteLog("DataService.ts > updateBin > Could not make post call. ERROR: " + error, LogLevel.ERROR);
         }
         return result;
     }

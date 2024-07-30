@@ -62,7 +62,7 @@ import { EStage, ESound, ECorrectness } from '@/utils/enums'
 
 //external imports
 import { OnClickOutside } from '@vueuse/components'
-import { STAGES, STAGE_CONSTANTS } from '@/utils/constants'
+import { NUM_CONSTANTS, STAGES, STAGE_CONSTANTS } from '@/utils/constants'
 import SoundManager from '@/utils/SoundManager'
 import { stringFormat } from '@/utils/utils'
 import { SOLUTION_STRINGS } from '@/assets/stringsESP'
@@ -92,18 +92,23 @@ export default defineComponent({
     },
     methods: {
         hideOptions(){
-            this.stageSelectorVisible = false;
+            try {
+                this.stageSelectorVisible = false;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > hideOptions > #ERROR: ${error}`, LogLevel.ERROR);
+            }
         },
 
         handleClickInside(event: MouseEvent){
-            if(!this.isSolution){
-                try {
+            try {
+                if(!this.isSolution){
+
                     const messageContainer = document.getElementById('message-container');
                     if(messageContainer === null)
                         throw new Error("Parent element was null");
     
                     this.mousePosition.x = event.pageX - messageContainer.getBoundingClientRect().x;
-                    //TODO: FIX THIS
                     this.mousePosition.y = event.pageY + 10;
     
                     if (this.selectSnippet) {
@@ -116,15 +121,15 @@ export default defineComponent({
                         }
                         SoundManager.getInstance().playSoundEffect(ESound.SELECT);
                     }
-                } catch (error) {
-                    WriteLog(`ChatSnippet.vue > handleClickInside >#ERROR: #ERROR: ${error}`, LogLevel.ERROR);
                 }
+            } catch (error) {
+                WriteLog(`ChatSnippet.vue > handleClickInside > #ERROR: ${error}`, LogLevel.ERROR);
             }
         },
 
         handleClickStage(stage: {name: string, enumValue: number}){
-            if(!this.isSolution){
-                try {
+            try {
+                if(!this.isSolution){
                     if(stage.name === null || stage.name === ""){
                         throw new Error("Stage name was null or empty.");
                     }
@@ -141,68 +146,129 @@ export default defineComponent({
                     gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: stage.enumValue })
                     this.stageSelectorVisible = false;
                     SoundManager.getInstance().playSoundEffect(ESound.SELECT);
-                } 
-                catch (error) {
-                    WriteLog(`ChatSnippet.vue > handleClickStage > #ERROR: #ERROR: ${error}`, LogLevel.ERROR);
                 }
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > handleClickStage > #ERROR: ${error}`, LogLevel.ERROR);
             }
         },
         
         handleRightClick(){
-            gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL });
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            try {
+                gameStore.commit('changeSnippetStageSelected', { idx: this.arrayIdx, stage: STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL });
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > handleRightClick > #ERROR: ${error}`, LogLevel.ERROR);
+            }
         },
 
         handleMouseOver(){
-            if(this.isSolution)
-                this.showSolution = false;
+            try {
+                if(this.isSolution)
+                    this.showSolution = false;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > handleMouseOver > #ERROR: ${error}`, LogLevel.ERROR);
+            }
         },
 
         handleMouseOut(){
-            if(this.isSolution)
-                this.showSolution = true;
+            try {
+                if(this.isSolution)
+                    this.showSolution = true;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > handleMouseOver > #ERROR: ${error}`, LogLevel.ERROR);
+            }
         }
     },
     computed: {
         selectSnippet(): boolean {
-            return gameStore.state.selectGroomingSnippets;
+            let result = false;
+            try {
+                result = gameStore.state.selectGroomingSnippets;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > computed > selectSnippet > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result;
         },
         
         selectSnippetStage(): boolean {
-            return gameStore.state.selectSnippetStages;
+            let result = false;
+            try {
+                result = gameStore.state.selectSnippetStages;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > computed > selectSnippetStage > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result;
         },
 
         stage(): number{
-            return this.arrayIdx !== undefined && gameStore.state.snippetStagesSelected.length > this.arrayIdx ? gameStore.state.snippetStagesSelected[this.arrayIdx] : -1;
+            let result = NUM_CONSTANTS.NEG;
+            try {
+                if(this.arrayIdx !== undefined && gameStore.state.snippetStagesSelected.length > this.arrayIdx)
+                    result = gameStore.state.snippetStagesSelected[this.arrayIdx]
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > computed > stage > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result;
         },
         
         selectedStageName(): string{
             let result = "";
-            result = STAGES.filter(stage => stage.enumValue === this.stage)[0].name;
+            try {
+                result = STAGES.filter(stage => stage.enumValue === this.stage)[0].name;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > computed > selectedStageName > #ERROR: ${error}`, LogLevel.ERROR);
+            }
             return result;
         },
         
         debugMode(): boolean{
-            return gameStore.getters.isDebugMode;
+            let result = false;
+            try {
+                result = gameStore.getters.isDebugMode;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > computed > debugMode > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result;
         },
 
         isSolution(): boolean{
-            return gameStore.getters.showingSolution;
+            let result = false;
+            try {
+                result =  gameStore.getters.showingSolution;
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > computed > isSolution > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result;
         },
 
         visibleStages(): {name: string, enumValue: number}[]{
-            const selectableStages: number[] = [...new Set(gameStore.getters.selectableStages)] as number[];
             let stages: {name: string, enumValue: number}[] = [];
+            try {
+                const selectableStages: number[] = [...new Set(gameStore.getters.selectableStages)] as number[];
 
-            if(gameStore.state.selectSnippetStages && selectableStages.length > 0){
-                stages.push(this.allStages[0]);
+                if(gameStore.state.selectSnippetStages && selectableStages.length > 0){
+                    stages.push(this.allStages[0]);
 
-                selectableStages.forEach(stageIdx => {
-                    stages.push(this.allStages[stageIdx + 1])
-                });
-            }
-            else{
-                stages = this.allStages;
+                    selectableStages.forEach(stageIdx => {
+                        stages.push(this.allStages[stageIdx + 1])
+                    });
+                }
+                else{
+                    stages = this.allStages;
+                }
+            } 
+            catch (error) {
+                WriteLog(`ChatSnippet.vue > computed > visibleStages > #ERROR: ${error}`, LogLevel.ERROR);
             }
             return stages;
         }

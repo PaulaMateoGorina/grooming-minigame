@@ -27,12 +27,13 @@ class SoundManager{
     
 
     public async playSoundEffect(audioIdx: number, loop?: boolean): Promise<void>{
-        
-        if(audioIdx === null || audioIdx === undefined || isNaN(audioIdx)){
-            WriteLog(`SoundManager.ts > playSound > Sound was null, undefined or non-numerical`, LogLevel.ERROR);
-        }
-        else{
-            return new Promise<void>((resolve) => {
+        let result = undefined;
+        try {
+            if(audioIdx === null || audioIdx === undefined || isNaN(audioIdx)){
+                throw new Error("Sound was null, undefined or non-numerical");
+            }
+
+            result = new Promise<void>((resolve) => {
                 // audio ready to be played
                 if(this.availableSoundEffects[audioIdx].readyState >= 3){
                     this.availableSoundEffects[audioIdx].play();
@@ -57,16 +58,22 @@ class SoundManager{
                     }
                 }
             })
+        } 
+        catch (error) {
+            WriteLog("SoundManager.ts > playSoundEffect > #ERROR: " + error, LogLevel.ERROR);
         }
+        return result;
     }
 
     public async playSound(audio: HTMLAudioElement, loop?: boolean): Promise<void>{
-        
-        if(audio === null || audio === undefined){
-            WriteLog(`SoundManager.ts > playSound > Sound was null or undefined`, LogLevel.ERROR);
-        }
-        else{
-            return new Promise<void>((resolve) => {
+        let result = undefined;
+
+        try {
+            if(audio === null || audio === undefined){
+                throw new Error("Audio was null or undefined");
+            }
+
+            result =  new Promise<void>((resolve) => {
                 // audio ready to be played
                 if(audio.readyState >= 3){
                     audio.play();
@@ -92,26 +99,46 @@ class SoundManager{
                 }
             })
         }
+        catch(error){
+            WriteLog("SoundManager.ts > playSound > #ERROR: " + error, LogLevel.ERROR);
+        }
+        return result
     }
 
     public mute():void{
-        for(const audio of this.audiosPlaying){
-            audio.volume = 0;
+        try {
+            for(const audio of this.audiosPlaying){
+                audio.volume = 0;
+            }
+        } 
+        catch (error) {
+            WriteLog("SoundManager.ts > mute > #ERROR: " + error, LogLevel.ERROR);
+            
         }
     }
 
     public unmute():void{
-        for(const audio of this.audiosPlaying){
-            audio.volume = 1;
+        try {
+            for(const audio of this.audiosPlaying){
+                audio.volume = 1;
+            }
+        } 
+        catch (error) {
+            WriteLog("SoundManager.ts > unmute > #ERROR: " + error, LogLevel.ERROR);
         }
     }
 
     public stopSounds():void{
-        for(const audio of this.audiosPlaying){
-            audio.pause();
-            audio.currentTime = 0;
+        try {
+            for(const audio of this.audiosPlaying){
+                audio.pause();
+                audio.currentTime = 0;
+            }
+            this.audiosPlaying = [];
+        } 
+        catch (error) {
+            WriteLog("SoundManager.ts > stopSounds > #ERROR: " + error, LogLevel.ERROR);
         }
-        this.audiosPlaying = [];
     }
 }
 

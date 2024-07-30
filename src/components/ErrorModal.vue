@@ -14,6 +14,7 @@
 import { defineComponent } from 'vue'
 
 import { CModal, CModalBody, CModalFooter, CButton } from '@coreui/vue'
+import { WriteLog, LogLevel } from '@/utils/logger';
 
 export default defineComponent({
     name: 'ErrorModalComponent',
@@ -29,7 +30,12 @@ export default defineComponent({
     },
     methods: {
         sendCloseModal() {
-            this.$emit('closeModal');
+            try {
+                this.$emit('closeModal');
+            } 
+            catch (error) {
+                WriteLog(`ErrorModal.vue > sendCloseModal > ERROR: Could not emit event. #ERROR: ${error}`, LogLevel.ERROR);
+            }
         }
     }
 })

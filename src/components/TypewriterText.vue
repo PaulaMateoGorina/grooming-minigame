@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { NUM_CONSTANTS } from '@/utils/constants';
+import { WriteLog, LogLevel } from '@/utils/logger';
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -24,23 +25,33 @@ export default defineComponent({
     },
     methods: {
         typeText() {
-            if (this.charIndex < this.textToWrite.length) {
-                if (!this.typeStatus) this.typeStatus = true;
-                    this.curText += this.textToWrite.charAt(this.charIndex);
+            try {
+                if (this.charIndex < this.textToWrite.length) {
+                    if (!this.typeStatus) this.typeStatus = true;
+                        this.curText += this.textToWrite.charAt(this.charIndex);
 
-                this.charIndex += 1;
-                setTimeout(this.typeText, this.typingSpeed);
-            }
-            else{
-                this.$emit('finishedTyping');
+                    this.charIndex += 1;
+                    setTimeout(this.typeText, this.typingSpeed);
+                }
+                else{
+                    this.$emit('finishedTyping');
+                }
+            } 
+            catch (error) {
+                WriteLog(`TypewriterText.vue > handleClickInside >#ERROR: #ERROR: ${error}`, LogLevel.ERROR);
             }
         }
     },
     watch: {
         textToWriteProp(){
-            this.curText = "";
-            this.charIndex = NUM_CONSTANTS.ZERO;
-            setTimeout(this.typeText, this.typingSpeed);
+            try {
+                this.curText = "";
+                this.charIndex = NUM_CONSTANTS.ZERO;
+                setTimeout(this.typeText, this.typingSpeed);
+            } 
+            catch (error) {
+                WriteLog(`TypewriterText.vue > watch > textToWriteProp > #ERROR: #ERROR: ${error}`, LogLevel.ERROR);
+            }
         }
     },
     computed:{

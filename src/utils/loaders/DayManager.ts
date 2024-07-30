@@ -19,19 +19,24 @@ class DayManager{
     }
 
     public resetDays(): void{
-        this.days = [];
+        try {
+            this.days = [];
         
-        // Load days for the first time if there are none
-        if(this.days.length === 0){
-            this.loadDays();
-            this.numDays = this.days.length;
-        }
-        // Otherwise reset them
-        else{
-            for(const day of this.days){
-                day.resetReports();
-                day.resetDailyQuiz();
+            // Load days for the first time if there are none
+            if(this.days.length === 0){
+                this.loadDays();
+                this.numDays = this.days.length;
             }
+            // Otherwise reset them
+            else{
+                for(const day of this.days){
+                    day.resetReports();
+                    day.resetDailyQuiz();
+                }
+            }
+        } 
+        catch (error) {
+            WriteLog(`DayManager.ts > resetDays > #ERROR: ${error}`, LogLevel.ERROR);        
         }
     }
 

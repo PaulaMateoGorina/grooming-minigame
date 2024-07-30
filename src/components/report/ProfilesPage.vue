@@ -12,6 +12,7 @@ import Profile from '@/utils/model/Profile';
 import ProfileComponent from './Profile.vue'
 import { PROFILE_STRINGS } from '@/assets/stringsESP';
 import { stringFormat } from '@/utils/utils';
+import { WriteLog, LogLevel } from '@/utils/logger';
 
 export default defineComponent({
     name: 'ProfilesPageComponent',
@@ -32,10 +33,16 @@ export default defineComponent({
     },
     computed: {
         friendshipTimeString(): string{
-            const result = this.friendshipTime && this.friendshipTime.length === 3 ? 
-                stringFormat(PROFILE_STRINGS.FRIENDSHIP, this.friendshipTime[2], this.friendshipTime[1], this.friendshipTime[0])
-                :
-                stringFormat(PROFILE_STRINGS.FRIENDSHIP, 0, 0, 0)
+            let result = ""
+            try {
+                result = this.friendshipTime && this.friendshipTime.length === 3 ? 
+                    stringFormat(PROFILE_STRINGS.FRIENDSHIP, this.friendshipTime[2], this.friendshipTime[1], this.friendshipTime[0])
+                    :
+                    stringFormat(PROFILE_STRINGS.FRIENDSHIP, 0, 0, 0)
+            } 
+            catch (error) {
+                WriteLog("ProfilesPage.vue > friendshipTimeString > Error constructing the friendship time string: " + error, LogLevel.ERROR);
+            }
             return result;
         }
     }

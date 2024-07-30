@@ -51,16 +51,21 @@ export default defineComponent({
 
     methods: {
         countdownTimer(){
-            if (this.active){
-                if(this.timeRemaining > 0){
-                    setTimeout( () => {
-                        this.timeRemaining -= 1;
-                        this.countdownTimer()
-                    }, 1000)
+            try {
+                if (this.active){
+                    if(this.timeRemaining > 0){
+                        setTimeout( () => {
+                            this.timeRemaining -= 1;
+                            this.countdownTimer()
+                        }, 1000)
+                    }
+                    else{
+                        this.sendSolveDailyQuiz(NUM_CONSTANTS.NEG);
+                    }
                 }
-                else{
-                    this.sendSolveDailyQuiz(NUM_CONSTANTS.NEG);
-                }
+            } 
+            catch (error) {
+                WriteLog(`ChatReport.vue > countdownTimer > #ERROR: ${error}`, LogLevel.ERROR);
             }
         },
 
@@ -77,17 +82,41 @@ export default defineComponent({
 
     computed: {
         question(): string{
-            const dailyQuiz = gameStore.state.curDailyQuiz;
-            return dailyQuiz ? dailyQuiz.question : "";
+            let result = ""
+            try {
+                const dailyQuiz = gameStore.state.curDailyQuiz;
+                if(dailyQuiz)
+                    result = dailyQuiz.question;
+            } 
+            catch (error) {
+                WriteLog(`ChatReport.vue > computed > question > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result
         },
 
         options(): string[]{
-            const dailyQuiz = gameStore.state.curDailyQuiz;
-            return dailyQuiz ? dailyQuiz.options : [];
+            let result:string[] = []
+            try {
+                const dailyQuiz = gameStore.state.curDailyQuiz;
+                if(dailyQuiz)
+                    result = dailyQuiz.options
+            } 
+            catch (error) {
+                WriteLog(`ChatReport.vue > computed > question > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result
         },
         numOptions(): number{
-            const dailyQuiz = gameStore.state.curDailyQuiz;
-            return dailyQuiz ? dailyQuiz.numOptions : NUM_CONSTANTS.ZERO;
+            let result = 0
+            try {
+                const dailyQuiz = gameStore.state.curDailyQuiz;
+                if(dailyQuiz)
+                    result = dailyQuiz.numOptions
+            } 
+            catch (error) {
+                WriteLog(`ChatReport.vue > computed > question > #ERROR: ${error}`, LogLevel.ERROR);
+            }
+            return result
         }
     }
 })

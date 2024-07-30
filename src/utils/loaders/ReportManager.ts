@@ -223,7 +223,6 @@ class ReportManager{
         return result;
     }
 
-    // TODO: change so that the profile pictures and the usernam are random
     private generateGroomerProfile(doAgesMatch: boolean, minAge?: number, maxAge?: number): Profile | undefined{
         let profile: Profile | undefined = undefined;
         const min = minAge ? minAge : PROFILE_CONSTANTS.MIN_AGE_GROOMER;
@@ -241,7 +240,6 @@ class ReportManager{
         return profile;
     }
     
-    // TODO: change so that the profile pictures and the usernam are random
     private generateTeenProfile(doAgesMatch: boolean): Profile| undefined{
         let profile: Profile | undefined = undefined;
         try {

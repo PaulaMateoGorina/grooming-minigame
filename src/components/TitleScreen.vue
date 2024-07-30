@@ -62,6 +62,7 @@ import { CModal, CModalBody, CModalFooter, CButton } from '@coreui/vue'
 
 import SoundManager from '@/utils/SoundManager'
 import { stringFormat } from '@/utils/utils';
+import { WriteLog, LogLevel } from '@/utils/logger';
 
 export default defineComponent({
     name: 'TitleScreenComponent',
@@ -93,63 +94,94 @@ export default defineComponent({
     
     methods:{
         startGame(){
-            if(gameStore.getters.isFirstPlaythrough && !this.clickedOnQuestionnaire){
-                this.questionnaireModalOpen = true;
-            }
-            else{
-                gameStore.commit('changeStage', EGameStage.NARRATION);
-                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            try {
+                if(gameStore.getters.isFirstPlaythrough && !this.clickedOnQuestionnaire){
+                    this.questionnaireModalOpen = true;
+                }
+                else{
+                    gameStore.commit('changeStage', EGameStage.NARRATION);
+                    SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+                }
+            } 
+            catch (error) {
+                WriteLog("TitleScreen.vue > startGame > #ERROR: " + error, LogLevel.ERROR);
             }
         },
         resetGame(){
-            if(this.firstPlaythrough){
-                this.questionnaireModalOpen = true;
-            }
-            else{
-                this.questionnaireModalOpen = false;
-                gameStore.commit('newGame');
-                gameStore.commit('nextPlaythrough');
+            try {
+                if(this.firstPlaythrough){
+                    this.questionnaireModalOpen = true;
+                }
+                else{
+                    this.questionnaireModalOpen = false;
+                    gameStore.commit('newGame');
+                    gameStore.commit('nextPlaythrough');
+                    SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+                }
                 SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            } 
+            catch (error) {
+                WriteLog("TitleScreen.vue > resetGame > #ERROR: " + error, LogLevel.ERROR);
             }
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         },
         showConsequences(){
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
-            this.consequencesModalOpen = true;
-            this.sawConsequences = true;
+            try {
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+                this.consequencesModalOpen = true;
+                this.sawConsequences = true;
+            } 
+            catch (error) {
+                WriteLog("TitleScreen.vue > showConsequences > #ERROR: " + error, LogLevel.ERROR);
+            }
         },
         questionnaireClicked(){
-            this.clickedOnQuestionnaire = true;
-            navigator.clipboard.writeText(gameStore.getters.userId);
+            try {
+                this.clickedOnQuestionnaire = true;
+                navigator.clipboard.writeText(gameStore.getters.userId);
+            } 
+            catch (error) {
+                WriteLog("TitleScreen.vue > questionnaireClicked > #ERROR: " + error, LogLevel.ERROR);
+            }
         },
         closeModal(isConsequencesModal: boolean){
-            if(isConsequencesModal){
-                this.consequencesModalOpen = false;
+            try {
+                
+                if(isConsequencesModal){
+                    this.consequencesModalOpen = false;
+                }
+                else{
+                    this.questionnaireModalOpen = false;
+                    gameStore.commit('newGame');
+                    gameStore.commit('nextPlaythrough');
+                }
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            } 
+            catch (error) {
+                WriteLog("TitleScreen.vue > closeModal > #ERROR: " + error, LogLevel.ERROR);
             }
-            else{
-                this.questionnaireModalOpen = false;
-                gameStore.commit('newGame');
-                gameStore.commit('nextPlaythrough');
-            }
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
         }
     },
     
     mounted(){
-        this.pointsMessage =  stringFormat(GENERAL_STRINGS.END_PTS_TEXT, gameStore.state.points.toString());
+        try {
+            this.pointsMessage =  stringFormat(GENERAL_STRINGS.END_PTS_TEXT, gameStore.state.points.toString());
 
-        if(gameStore.state.points >= GAME_CONSTANTS.MIN_PTS_TO_GET_THE_JOB){
-            this.gotTheJobMessage = GENERAL_STRINGS.GOT_THE_JOB;
-            this.showConsequencesMessage = GENERAL_STRINGS.CONSEQUENCES_GOOD;
+            if(gameStore.state.points >= GAME_CONSTANTS.MIN_PTS_TO_GET_THE_JOB){
+                this.gotTheJobMessage = GENERAL_STRINGS.GOT_THE_JOB;
+                this.showConsequencesMessage = GENERAL_STRINGS.CONSEQUENCES_GOOD;
+            }
+            else{
+                this.gotTheJobMessage = GENERAL_STRINGS.DID_NOT_GET_THE_JOB
+                this.showConsequencesMessage = GENERAL_STRINGS.CONSEQUENCES_BAD;
+            }
+
+            this.questionnairePromptMessage = stringFormat(GENERAL_STRINGS.PROMPT_QUESTIONNAIRE_START, gameStore.getters.userId);
+
+            this.firstPlaythrough = gameStore.getters.isFirstPlaythrough;
+        } 
+        catch (error) {
+            WriteLog("TitleScreen.vue > mounted > #ERROR: " + error, LogLevel.ERROR);
         }
-        else{
-            this.gotTheJobMessage = GENERAL_STRINGS.DID_NOT_GET_THE_JOB
-            this.showConsequencesMessage = GENERAL_STRINGS.CONSEQUENCES_BAD;
-        }
-
-        this.questionnairePromptMessage = stringFormat(GENERAL_STRINGS.PROMPT_QUESTIONNAIRE_START, gameStore.getters.userId);
-
-        this.firstPlaythrough = gameStore.getters.isFirstPlaythrough;
     }
 })
 </script>

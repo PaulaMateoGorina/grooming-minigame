@@ -120,34 +120,39 @@ export const gameStore = createStore({
 
     newGame(state: GameState){
       WriteLog("gameStore.ts > newGame", LogLevel.INFO);
-      state.userId = DataService.getInstance().getUserId();
-      DayManager.getInstance().resetDays();
-      SoundManager.getInstance();
+      try {
+        state.userId = DataService.getInstance().getUserId();
+        DayManager.getInstance().resetDays();
+        SoundManager.getInstance();
 
-      state.debugMode = false;
+        state.debugMode = false;
 
-      if(state.debugMode){
-        state.visibleGameStage = EGameStage.GAME_START;
-  
-        state.curDayIdx = 0; 
-        state.showingSolution = false;
-        
-        state.points = NUM_CONSTANTS.ZERO;
-        state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
-  
-        state.isMuted = false;
+        if(state.debugMode){
+          state.visibleGameStage = EGameStage.REPORT;
+    
+          state.curDayIdx = 4; 
+          state.showingSolution = false;
+          
+          state.points = NUM_CONSTANTS.ZERO;
+          state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
+    
+          state.isMuted = false;
+        }
+        else{
+          state.visibleGameStage = EGameStage.GAME_START;
+    
+          state.curDayIdx = 0; 
+          
+          state.points = NUM_CONSTANTS.ZERO;
+          state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
+    
+          state.isMuted = false;
+        }
+        commitNewDay();
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > newGame > #ERROR: " + error, LogLevel.ERROR);
       }
-      else{
-        state.visibleGameStage = EGameStage.GAME_START;
-  
-        state.curDayIdx = 0; 
-        
-        state.points = NUM_CONSTANTS.ZERO;
-        state.multiplier = GAME_CONSTANTS.INITIAL_MULTIPLIER;
-  
-        state.isMuted = false;
-      }
-      commitNewDay();
     },
 
     newDay(state: GameState){
@@ -179,101 +184,146 @@ export const gameStore = createStore({
     },
 
     changeStage(state: GameState, toStage: EGameStage){
-      // If we want to move to the next report, and we do not come from the narration
-      if(toStage === EGameStage.REPORT){
-        if(state.visibleGameStage !== EGameStage.NARRATION)
-          state.curReportIdx++;
+      try {
+        // If we want to move to the next report, and we do not come from the narration
+        if(toStage === EGameStage.REPORT){
+          if(state.visibleGameStage !== EGameStage.NARRATION)
+            state.curReportIdx++;
 
-        // If there are still reports left unsolved, then we change the curReport accordingly and display it
-        if(state.curReportIdx < state.curDay!.numReports){
-          state.curReport = state.curDay!.reports[state.curReportIdx];
-          state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
-        
-          if(state.visibleGameStage !== EGameStage.RESULT && !state.showingSolution)
-            SoundManager.getInstance().stopSounds();
-          SoundManager.getInstance().playSoundEffect(ESound.REPORT_MUSIC, true);
+          // If there are still reports left unsolved, then we change the curReport accordingly and display it
+          if(state.curReportIdx < state.curDay!.numReports){
+            state.curReport = state.curDay!.reports[state.curReportIdx];
+            state.snippetStagesSelected = (state.curReport && state.curReport.snippets) ? Array(state.curReport.snippets.length).fill(STAGE_CONSTANTS.NORMAL_SNIPPET_STAGE_VAL): [];
+          
+            if(state.visibleGameStage !== EGameStage.RESULT && !state.showingSolution)
+              SoundManager.getInstance().stopSounds();
+            SoundManager.getInstance().playSoundEffect(ESound.REPORT_MUSIC, true);
 
-          state.visibleGameStage = EGameStage.REPORT;
+            state.visibleGameStage = EGameStage.REPORT;
+          }
+          // If not, then we must move to the daily quiz, if there is any
+          else{
+            if(state.curDay && state.curDay.configuration.shouldSkipQuiz){
+              commitChangeDay();
+              SoundManager.getInstance().stopSounds();
+              state.visibleGameStage = EGameStage.NARRATION;
+            }
+            else
+            {
+              state.visibleGameStage = EGameStage.DAILY_QUIZ;
+              SoundManager.getInstance().stopSounds();
+              SoundManager.getInstance().playSoundEffect(ESound.QUIZ_MUSIC, true);
+            }
+          }
         }
-        // If not, then we must move to the daily quiz, if there is any
+        // If we are trying to go to a narration, then it is a new day, unless the previous state was the initial page
+        else if(toStage === EGameStage.NARRATION && state.visibleGameStage !== EGameStage.GAME_START)
+        {
+          SoundManager.getInstance().stopSounds();
+          state.visibleGameStage = EGameStage.NARRATION
+          commitChangeDay();
+        }
         else{
-          if(state.curDay && state.curDay.configuration.shouldSkipQuiz){
-            commitChangeDay();
-            SoundManager.getInstance().stopSounds();
-            state.visibleGameStage = EGameStage.NARRATION;
-          }
-          else
-          {
-            state.visibleGameStage = EGameStage.DAILY_QUIZ;
-            SoundManager.getInstance().stopSounds();
-            SoundManager.getInstance().playSoundEffect(ESound.QUIZ_MUSIC, true);
-          }
-        }
-      }
-      // If we are trying to go to a narration, then it is a new day, unless the previous state was the initial page
-      else if(toStage === EGameStage.NARRATION && state.visibleGameStage !== EGameStage.GAME_START)
-      {
-        SoundManager.getInstance().stopSounds();
-        state.visibleGameStage = EGameStage.NARRATION
-        commitChangeDay();
-      }
-      else{
-        state.visibleGameStage = toStage;
+          state.visibleGameStage = toStage;
+        } 
       } 
+      catch (error) {
+        WriteLog("gameStore.ts > changeStage > #ERROR: " + error, LogLevel.ERROR);
+      }
     },
 
     addScore(state: GameState, points: number){
-      state.points = Math.round(state.points + points);
+      try {
+        state.points = Math.round(state.points + points);
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > addScore > #ERROR: " + error, LogLevel.ERROR);
+      }
     },
 
     changeMultiplier(state: GameState, shouldIncrease: boolean){
-      if(state.curDay && (state.curDay.numDay !== 0 || shouldIncrease))
-        state.multiplier += shouldIncrease ? QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_INCREASE : NUM_CONSTANTS.NEG * QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_DEDUCTION; 
+      try {
+        if(state.curDay && (state.curDay.numDay !== 0 || shouldIncrease))
+          state.multiplier += shouldIncrease ? QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_INCREASE : NUM_CONSTANTS.NEG * QUIZ_CONSTANTS.SUCCESS_MULTIPLIER_DEDUCTION; 
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > changeMultiplier > #ERROR: " + error, LogLevel.ERROR);
+      }
     },
 
     changeDay(state: GameState){
-      state.curDayIdx++;
-      if(state.curDayIdx < DayManager.getInstance().getNumDays())
-      {
-        DataService.getInstance().sendUserData(false);
-        commitNewDay();
-      }
-      else{
-        // Game has finished!
-        DataService.getInstance().sendUserData(true);
-        state.visibleGameStage = EGameStage.GAME_FINISHED
+      try {
+        state.curDayIdx++;
+        if(state.curDayIdx < DayManager.getInstance().getNumDays())
+        {
+          DataService.getInstance().sendUserData(false);
+          commitNewDay();
+        }
+        else{
+          // Game has finished!
+          DataService.getInstance().sendUserData(true);
+          state.visibleGameStage = EGameStage.GAME_FINISHED
+        }
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > changeDay > #ERROR: " + error, LogLevel.ERROR);
       }
     },
 
     changeSnippetStageSelected(state: GameState, payload: {idx: number, stage: EStage}){
-      WriteLog(`gameStore.ts > changeSnippetStageSelected > new stage for idx ${payload.idx} is ${payload.stage}`, LogLevel.VERBOSE);
-      state.snippetStagesSelected[payload.idx] = payload.stage;
+      try {
+        WriteLog(`gameStore.ts > changeSnippetStageSelected > new stage for idx ${payload.idx} is ${payload.stage}`, LogLevel.VERBOSE);
+        state.snippetStagesSelected[payload.idx] = payload.stage;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > changeSnippetStageSelected > #ERROR: " + error, LogLevel.ERROR);
+      }
     },
 
     showSolution(state:GameState){
-      state.visibleGameStage = EGameStage.REPORT;
-      state.showingSolution = true;
+      try {
+        state.visibleGameStage = EGameStage.REPORT;
+        state.showingSolution = true;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > showSolution > #ERROR: " + error, LogLevel.ERROR);
+      }
     },
 
     solutionSeen(state:GameState){
-      state.showingSolution = false;
-      commitChangeStage(EGameStage.RESULT);
+      try {
+        state.showingSolution = false;
+        commitChangeStage(EGameStage.RESULT);
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > solutionSeen > #ERROR: " + error, LogLevel.ERROR);
+      }
     },
 
     nextPlaythrough(state){
-      state.runNumber++;
-      DataService.getInstance().newRun();
+      try {
+        state.runNumber++;
+        DataService.getInstance().newRun();
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > nextPlaythrough > #ERROR: " + error, LogLevel.ERROR);
+      }
     },
 
     toggleMute(state){
-      if(state.isMuted){
-        SoundManager.getInstance().unmute();
-        state.isMuted = false;
-      }
-      else
-      {
-        SoundManager.getInstance().mute();
-        state.isMuted = true;
+      try {
+        if(state.isMuted){
+          SoundManager.getInstance().unmute();
+          state.isMuted = false;
+        }
+        else
+        {
+          SoundManager.getInstance().mute();
+          state.isMuted = true;
+        }
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > toggleMute > #ERROR: " + error, LogLevel.ERROR);
       }
     }
   },
@@ -281,49 +331,108 @@ export const gameStore = createStore({
     aSnippetIsSelected: (state) => {
       let result = false;
 
-      for(const snippetStageSelected of state.snippetStagesSelected){
-        if(snippetStageSelected > NUM_CONSTANTS.ZERO){
-          result = true;
-          break;
+      try {
+        for(const snippetStageSelected of state.snippetStagesSelected){
+          if(snippetStageSelected > NUM_CONSTANTS.ZERO){
+            result = true;
+            break;
+          }
         }
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > aSnippetIsSelected > #ERROR: " + error, LogLevel.ERROR);
       }
 
       return result;
     },
 
     isFirstDay: (state) => {
-      return state.curDay?.numDay === 0 ;
+      let result = true
+      try {
+        result = state.curDay?.numDay === 0
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > isFirstDay > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
 
     isDebugMode: (state) => {
-      return state.debugMode;
+      let result = true
+      try {
+        result = state.debugMode
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > isDebugMode > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
 
     isFirstPlaythrough: (state) => {
-      return state.runNumber === 0;
+      let result = true
+      try {
+        result = state.runNumber === 0;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > isFirstPlaythrough > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
 
     isMuted: (state) => {
-      return state.isMuted;
+      let result = true
+      try {
+        result = state.isMuted;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > isMuted > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
     
     showingSolution: (state) => {
-      return state.showingSolution;
+      let result = true
+      try {
+        result = state.showingSolution;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > showingSolution > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
 
     numDay: (state) => {
-      return state.curDay!.numDay;
+      let result = 0
+      try {
+        result = state.curDay!.numDay;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > numDay > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
 
     selectableStages: (state) => {
-      if(state.curDay === undefined || state.curDay.configuration.selectableStagesIdx === undefined)
-        return []
-      else
-        return state.curDay.configuration.selectableStagesIdx;
+      let result: number[] = []
+      try {
+        if(state.curDay !== undefined && state.curDay.configuration.selectableStagesIdx !== undefined)
+          result = state.curDay.configuration.selectableStagesIdx;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > numDay > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
 
     userId: (state) => {
-      return state.userId;
+      let result = ""
+      try {
+        result = state.userId;
+      } 
+      catch (error) {
+        WriteLog("gameStore.ts > userId > #ERROR: " + error, LogLevel.ERROR);
+      }
+      return result
     },
   }
 });

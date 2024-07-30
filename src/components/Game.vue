@@ -62,6 +62,7 @@ import SoundManager from '@/utils/SoundManager'
 
 import { cilVolumeHigh, cilVolumeOff } from '@coreui/icons';
 import { stringFormat } from '@/utils/utils';
+import { WriteLog, LogLevel } from '@/utils/logger';
 
 export default defineComponent({
   name: 'GameComponent',
@@ -87,82 +88,138 @@ export default defineComponent({
   },
   methods: {
     handleSolveReport(isGrooming: boolean) {
-      const curState: GameState = gameStore.state;
-      let score = NUM_CONSTANTS.ZERO;
+      try {
+        const curState: GameState = gameStore.state;
+        let score = NUM_CONSTANTS.ZERO;
 
-      if(curState.curReport){
-        const numDay = gameStore.getters.numDay;
-        score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected, numDay);
-      }
+        if(curState.curReport){
+          const numDay = gameStore.getters.numDay;
+          score = curState.curReport.getAnswerResult(isGrooming, curState.selectGroomingSnippets, curState.selectSnippetStages, curState.snippetStagesSelected, numDay);
+        }
 
-      if(score >= NUM_CONSTANTS.ONE){
-        this.correctness = ECorrectness.CORRECT;
-        SoundManager.getInstance().playSoundEffect(ESound.CORRECT);
-      }
-      else if(score > NUM_CONSTANTS.ZERO){
-        this.correctness = ECorrectness.PARTIALLY_CORRECT;
-        SoundManager.getInstance().playSoundEffect(ESound.PARTIALLY_CORRECT);
-      }
-      else{
-        this.correctness = ECorrectness.INCORRECT;
-        SoundManager.getInstance().playSoundEffect(ESound.INCORRECT);
-      }
+        if(score >= NUM_CONSTANTS.ONE){
+          this.correctness = ECorrectness.CORRECT;
+          SoundManager.getInstance().playSoundEffect(ESound.CORRECT);
+        }
+        else if(score > NUM_CONSTANTS.ZERO){
+          this.correctness = ECorrectness.PARTIALLY_CORRECT;
+          SoundManager.getInstance().playSoundEffect(ESound.PARTIALLY_CORRECT);
+        }
+        else{
+          this.correctness = ECorrectness.INCORRECT;
+          SoundManager.getInstance().playSoundEffect(ESound.INCORRECT);
+        }
 
-      score = gameStore.state.multiplier * REPORT_CONSTANTS.POINTS_PER_REPORT * score;
-      this.pointsGotten = score; 
-      
-      gameStore.commit('addScore', score);
-      gameStore.commit('changeStage', EGameStage.RESULT);
+        score = gameStore.state.multiplier * REPORT_CONSTANTS.POINTS_PER_REPORT * score;
+        this.pointsGotten = score; 
+        
+        gameStore.commit('addScore', score);
+        gameStore.commit('changeStage', EGameStage.RESULT);
+      } 
+      catch (error) {
+          WriteLog(`Game.vue > handleSolveReport > #ERROR: ${error}`, LogLevel.ERROR);
+      }
     },
 
     handleSolveDailyQuiz(optionSelected: number){
-      
-      const curState: GameState = gameStore.state;
+      try{
+        const curState: GameState = gameStore.state;
 
-      let wasCorrect = false;
-      if(curState.curDailyQuiz)
-        wasCorrect = curState.curDailyQuiz.getAnswerResult(optionSelected);
-      
-      if(wasCorrect){
-        SoundManager.getInstance().playSoundEffect(ESound.CORRECT);
-        this.correctness = ECorrectness.CORRECT;
-      }
-      else{
-        this.correctness = ECorrectness.INCORRECT;
-        SoundManager.getInstance().playSoundEffect(ESound.INCORRECT);
-      }
-      this.pointsGotten = NUM_CONSTANTS.NEG;
+        let wasCorrect = false;
+        if(curState.curDailyQuiz)
+          wasCorrect = curState.curDailyQuiz.getAnswerResult(optionSelected);
+        
+        if(wasCorrect){
+          SoundManager.getInstance().playSoundEffect(ESound.CORRECT);
+          this.correctness = ECorrectness.CORRECT;
+        }
+        else{
+          this.correctness = ECorrectness.INCORRECT;
+          SoundManager.getInstance().playSoundEffect(ESound.INCORRECT);
+        }
+        this.pointsGotten = NUM_CONSTANTS.NEG;
 
-      gameStore.commit('changeMultiplier', wasCorrect);
-      gameStore.commit('changeStage', EGameStage.RESULT);
+        gameStore.commit('changeMultiplier', wasCorrect);
+        gameStore.commit('changeStage', EGameStage.RESULT);
+      }
+      catch (error) {
+          WriteLog(`Game.vue > handleSolveDailyQuiz > #ERROR: ${error}`, LogLevel.ERROR);
+      }
       
     },
     
     muteGame(): void {
-      gameStore.commit('toggleMute');
+      try {
+       gameStore.commit('toggleMute');
+      } 
+      catch (error) {
+        WriteLog(`Game.vue > muteGame > #ERROR: ${error}`, LogLevel.ERROR);
+      }
     }
   },
   created() {
-    gameStore.commit('initialize');
+    try {
+      gameStore.commit('initialize');
+    } 
+    catch (error) {
+      WriteLog(`Game.vue > created > #ERROR: ${error}`, LogLevel.ERROR);
+    }
   },
   computed : {
     pointsText(){
-      return stringFormat(GENERAL_STRINGS.POINTS_INFO, gameStore.state.points.toString());
+      let result = ""
+      try {
+        result = stringFormat(GENERAL_STRINGS.POINTS_INFO, gameStore.state.points.toString());
+      } 
+      catch (error) {
+      WriteLog(`Game.vue > compued > pointsText > #ERROR: ${error}`, LogLevel.ERROR);
+      }
+      return result;
     },
     reportsRemainingText(){
-      // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
-      const totalNumReports = gameStore.state.curDay!.numReports;
-      const reportsDone = gameStore.state.curReportIdx;
-      return stringFormat(GENERAL_STRINGS.REPORTS_REMAINING, reportsDone.toString(), totalNumReports.toString());
+      let result = ""
+      try {
+        // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
+        const totalNumReports = gameStore.state.curDay!.numReports;
+        const reportsDone = gameStore.state.curReportIdx;
+        result = stringFormat(GENERAL_STRINGS.REPORTS_REMAINING, reportsDone.toString(), totalNumReports.toString());
+      } 
+      catch (error) {
+        WriteLog(`Game.vue > compued > reportsRemainingText > #ERROR: ${error}`, LogLevel.ERROR);
+      }
+      return result;
     },
     isGrooming(){
-      return gameStore.state.curReport ?  gameStore.state.curReport.isGrooming : false;
+      let result = false
+      try {
+        if(gameStore.state.curReport)
+          result = gameStore.state.curReport.isGrooming;
+      } 
+      catch (error) {
+        WriteLog(`Game.vue > compued > isGrooming > #ERROR: ${error}`, LogLevel.ERROR);
+      }
+      return result;
     },
     curGameStage(){
-      return gameStore.state.visibleGameStage;
+      let result = EGameStage.GAME_START
+      try {
+        result = gameStore.state.visibleGameStage;
+      } 
+      catch (error) {
+        WriteLog(`Game.vue > compued > curGameStage > #ERROR: ${error}`, LogLevel.ERROR);
+      }
+      return result;
     },
     isMuted(){
-      return gameStore.getters.isMuted;
+      let result = false
+      try {
+        if(gameStore.state.curReport)
+          result = gameStore.getters.isMuted;
+      } 
+      catch (error) {
+        WriteLog(`Game.vue > compued > isGrooming > #ERROR: ${error}`, LogLevel.ERROR);
+      }
+      return result;
     }
   }
 });

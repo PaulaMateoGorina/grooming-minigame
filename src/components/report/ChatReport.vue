@@ -117,13 +117,19 @@ export default defineComponent({
     },
     methods: {
         changePage(isNext: boolean) {
-            const numPages = this.numPages ? this.numPages : 1;
-            this.currentPage = isNext ? Math.min(this.currentPage + 1, numPages - 1) : Math.max(this.currentPage - 1, 0);
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
-        },
-        sendSolveReport(isGrooming: boolean){
-            WriteLog(`ChatReport.vue > sendSolveReport > Grooming: ${isGrooming}`, LogLevel.VERBOSE);
             try {
+                const numPages = this.numPages ? this.numPages : 1;
+                this.currentPage = isNext ? Math.min(this.currentPage + 1, numPages - 1) : Math.max(this.currentPage - 1, 0);
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > changePage > #ERROR: " + error, LogLevel.ERROR);
+            }
+        },
+
+        sendSolveReport(isGrooming: boolean){
+            try {
+                WriteLog(`ChatReport.vue > sendSolveReport > Grooming: ${isGrooming}`, LogLevel.VERBOSE);
                 if(!isGrooming && gameStore.getters.aSnippetIsSelected){
                     this.solveReportErrorModalVisible = true;
                     SoundManager.getInstance().playSoundEffect(ESound.ERROR);
@@ -132,18 +138,30 @@ export default defineComponent({
                     this.$emit('solveReport', isGrooming);
                     this.currentPage = NUM_CONSTANTS.ZERO;
                 }
-            } catch (error) {
+            } 
+            catch (error) {
                 WriteLog(`ChatReport.vue > sendSolveReport > ERROR: Could not emit event. #ERROR: ${error}`, LogLevel.ERROR);
             }
         },
+
         handleCloseModal(){
-            this.solveReportErrorModalVisible = false;
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            try {
+                this.solveReportErrorModalVisible = false;
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > handleCloseModal > #ERROR: " + error, LogLevel.ERROR);
+            }
         },
 
         handleSolutionSeen(){
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
-            gameStore.commit('solutionSeen');
+            try {
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+                gameStore.commit('solutionSeen');
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > handleSolutionSeen > #ERROR: " + error, LogLevel.ERROR);
+            }
         }
     },
     computed: {
@@ -152,58 +170,115 @@ export default defineComponent({
         },
 
         snippetIdxPairsPage1(): [Snippet, number][] {
-            const chatReport = gameStore.state.curReport;
+            let result: [Snippet, number][] = []
+            try {
+                const chatReport = gameStore.state.curReport;
 
-            return chatReport && chatReport.snippets ?
-                chatReport.snippets.slice(NUM_CONSTANTS.ZERO, REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE)
-                    .map((snippet: Snippet, index: number) => [snippet, index])
-                : 
-                [];
+                result = chatReport && chatReport.snippets ?
+                    chatReport.snippets.slice(NUM_CONSTANTS.ZERO, REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE)
+                        .map((snippet: Snippet, index: number) => [snippet, index])
+                    : 
+                    [];
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > snippetIdxPairsPage1 > #ERROR: " + error, LogLevel.ERROR);
+            }
+            return result
+            
         },
 
         snippetIdxPairsPage2(): [Snippet, number][] {
-            const chatReport = gameStore.state.curReport;
+            let result: [Snippet, number][] = []
+            try {
+                const chatReport = gameStore.state.curReport;
 
-            return chatReport && chatReport.snippets && chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ? 
-                chatReport.snippets
-                    .slice(REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE, 2 * REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE)
-                    .map((snippet: Snippet, index: number) => [snippet, index + REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE])
-                : 
-                [];
+                result = chatReport && chatReport.snippets && chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ? 
+                    chatReport.snippets
+                        .slice(REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE, 2 * REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE)
+                        .map((snippet: Snippet, index: number) => [snippet, index + REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE])
+                    : 
+                    [];
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > snippetIdxPairsPage2 > #ERROR: " + error, LogLevel.ERROR);
+            }
+            return result
         },
 
         isGrooming(): boolean {
-            const chatReport = gameStore.state.curReport;
-            const result = chatReport ? chatReport.isGrooming : false;
+            let result = false
+            try {
+                const chatReport = gameStore.state.curReport;
+                result = chatReport ? chatReport.isGrooming : false;
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > isGrooming > #ERROR: " + error, LogLevel.ERROR);
+            }
             return result;
         },
 
         numPages(): number{
             let result = 1;
-            const chatReport = gameStore.state.curReport;
+            try {
+                
+                const chatReport = gameStore.state.curReport;
 
-            if(chatReport && chatReport.snippets.length > 0){
-                result = chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ?
-                    REPORT_CONSTANTS.NUM_REPORT_PAGES_MULTI
-                    :
-                    REPORT_CONSTANTS.NUM_REPORT_PAGES_SINGLE;
+                if(chatReport && chatReport.snippets.length > 0){
+                    result = chatReport.snippets.length > REPORT_CONSTANTS.NUM_SNIPPETS_PER_PAGE ?
+                        REPORT_CONSTANTS.NUM_REPORT_PAGES_MULTI
+                        :
+                        REPORT_CONSTANTS.NUM_REPORT_PAGES_SINGLE;
+                }
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > numPages > #ERROR: " + error, LogLevel.ERROR);
             }
             return result;
         },
 
         user1(): Profile | undefined{
-            const chatReport = gameStore.state.curReport;
-            return chatReport && chatReport.user1Profile ? chatReport.user1Profile : undefined;
+            let result = undefined;
+
+            try {
+                const chatReport = gameStore.state.curReport;
+                if(chatReport && chatReport.user1Profile)
+                    result = chatReport.user1Profile
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > user1 > #ERROR: " + error, LogLevel.ERROR);
+            }
+
+            return result
         },
 
         user2(): Profile | undefined{
-            const chatReport = gameStore.state.curReport;
-            return chatReport && chatReport.user2Profile ? chatReport.user2Profile : undefined;
+            let result = undefined;
+
+            try {
+                const chatReport = gameStore.state.curReport;
+                if(chatReport && chatReport.user2Profile)
+                    result = chatReport.user2Profile
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > user2 > #ERROR: " + error, LogLevel.ERROR);
+            }
+
+            return result
         },
 
         friendshipTime(): number[] | undefined{
-            const chatReport = gameStore.state.curReport;
-            return chatReport && chatReport.friendshipTime ? chatReport.friendshipTime : undefined;
+            let result = undefined;
+
+            try {
+                const chatReport = gameStore.state.curReport;
+                if(chatReport && chatReport.friendshipTime)
+                    result = chatReport.friendshipTime
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > friendshipTime > #ERROR: " + error, LogLevel.ERROR);
+            }
+
+            return result
         },
 
         isSolution(): boolean{
@@ -212,18 +287,23 @@ export default defineComponent({
 
         solution(): string{
             let result = "";
-            const correct = gameStore.state.curReport!.isGrooming ? "grooming" : "normal";
-            const incorrect = !gameStore.state.curReport!.isGrooming ? "grooming" : "normal";
+            try {
+                const correct = gameStore.state.curReport!.isGrooming ? "grooming" : "normal";
+                const incorrect = !gameStore.state.curReport!.isGrooming ? "grooming" : "normal";
 
-            if(gameStore.getters.showingSolution){
-                if( this.correctness === ECorrectness.INCORRECT)
-                    result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_INCORRECT, incorrect, correct);
+                if(gameStore.getters.showingSolution){
+                    if( this.correctness === ECorrectness.INCORRECT)
+                        result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_INCORRECT, incorrect, correct);
 
-                else if(this.correctness === ECorrectness.PARTIALLY_CORRECT)
-                    result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_PARTIALLY_CORRECT, correct);
-                
-                else
-                    result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_CORRECT, correct);
+                    else if(this.correctness === ECorrectness.PARTIALLY_CORRECT)
+                        result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_PARTIALLY_CORRECT, correct);
+                    
+                    else
+                        result = stringFormat(SOLUTION_STRINGS.GROOMING_SELECTION_CORRECT, correct);
+                }
+            } 
+            catch (error) {
+                WriteLog("ChatReport.vue > computed > friendshipTime > #ERROR: " + error, LogLevel.ERROR);
             }
             return result;
         }

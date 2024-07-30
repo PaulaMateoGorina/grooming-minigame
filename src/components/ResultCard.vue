@@ -62,11 +62,21 @@ export default defineComponent({
     },
     methods:{
         handleContinue(){
-            gameStore.commit('changeStage', this.isReportResult ? EGameStage.REPORT : EGameStage.NARRATION);
+            try {
+                gameStore.commit('changeStage', this.isReportResult ? EGameStage.REPORT : EGameStage.NARRATION);
+            } 
+            catch (error) {
+                WriteLog("ResultCard.vue > handleContinue > #ERROR: " + error, LogLevel.ERROR);
+            }
         },
         showResult(){
-            SoundManager.getInstance().playSoundEffect(ESound.SELECT);
-            gameStore.commit('showSolution');
+            try {
+                SoundManager.getInstance().playSoundEffect(ESound.SELECT);
+                gameStore.commit('showSolution');
+            } 
+            catch (error) {
+                WriteLog("ResultCard.vue > showResult > #ERROR: " + error, LogLevel.ERROR);
+            }
         }
     },
     computed: {
@@ -92,7 +102,7 @@ export default defineComponent({
                 }   
             }
             catch (error) {
-                WriteLog("ResultCard.vue > Computed - message > Error computing the message, ERROR: " + error, LogLevel.ERROR);
+                WriteLog("ResultCard.vue > computed > message > Error computing the message, ERROR: " + error, LogLevel.ERROR);
             }
             return result;
         },
@@ -106,7 +116,7 @@ export default defineComponent({
                     stringFormat(RESULT_CARD_STRINGS.NEW_MULTIPLIER, gameStore.state.multiplier.toString())
             } 
             catch (error) {
-                WriteLog("ResultCard.vue > Computed - newScoreOrMultiplierMessage > ERROR: " + error, LogLevel.ERROR);
+                WriteLog("ResultCard.vue > computed > newScoreOrMultiplierMessage > ERROR: " + error, LogLevel.ERROR);
             }
             return result;
         },
@@ -120,13 +130,20 @@ export default defineComponent({
                 }           
             } 
             catch (error) {
-                WriteLog("ResultCard.vue > Computed - correctAnswer > ERROR: " + error, LogLevel.ERROR);
+                WriteLog("ResultCard.vue > computed > correctAnswer > ERROR: " + error, LogLevel.ERROR);
             }
             return result;
         },
 
         isFirstDay(){
-            return gameStore.getters.isFirstDay;
+            let result = true
+            try {
+                result = gameStore.getters.isFirstDay;
+            } 
+            catch (error) {
+                WriteLog("ResultCard.vue > isFirstDay > correctAnswer > ERROR: " + error, LogLevel.ERROR);
+            }
+            return result
         }
     }
 })
